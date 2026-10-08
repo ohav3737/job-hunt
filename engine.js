@@ -211,7 +211,7 @@ function experience(title, text) {
 
   let level, fit;
   if (isSenior && !isJunior) { level = 'בכיר'; fit = 0.1; }
-  else if (years === null) { level = isJunior ? 'ג׳וניור / ללא ניסיון' : 'לא צוין'; fit = isJunior ? 1 : 0.9; }
+  else if (years === null) { level = isJunior ? 'ג׳וניור / ללא ניסיון' : 'ניסיון לא צוין'; fit = isJunior ? 1 : 0.9; }
   else if (years === 0) { level = 'ללא ניסיון'; fit = 1; }
   else if (years === 1) { level = 'עד שנה'; fit = 0.8; }
   else if (years === 2) { level = '2 שנים'; fit = 0.5; }
