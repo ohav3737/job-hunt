@@ -89,7 +89,12 @@ function chips(el, items, current, onPick) {
 
 // ---------- מסך משרות ----------
 function renderJobs() {
-  chips($('catChips'), [['all', 'כל התחומים'], ['pm', 'ניהול פרויקטים'], ['product', 'מוצר'], ['analyst', 'אנליסט'], ['ops', 'תפעול / תעשייה'], ['other', 'אחר']], ui.cat, v => { ui.cat = v; renderJobs(); });
+  chips($('catChips'), [['all', 'כל התחומים'], ['pm', 'ניהול פרויקטים'], ['product', 'מוצר'], ['analyst', 'אנליסט'], ['ops', 'תפעול / תעשייה'], ['consulting', 'ייעוץ'], ['other', 'אחר']], ui.cat, v => { ui.cat = v; ui.sub = 'all'; renderJobs(); });
+  // תת-סוגים של אנליסט
+  if (ui.cat === 'analyst') {
+    chips($('subChips'), [['all', 'כל האנליסטים'], ...['BI', 'דאטה', 'מוצר', 'שיווק', 'עסקי', 'פיננסי', 'תפעולי'].map(x => [x, x])], ui.sub || 'all', v => { ui.sub = v; renderJobs(); });
+    $('subChips').style.display = '';
+  } else $('subChips').style.display = 'none';
   chips($('regionChips'), [['ta', 'ת"א + רמת גן'], ['core', 'ת"א + סובב'], ['center', 'כל המרכז'], ['all', 'כל הארץ']], ui.region, v => { ui.region = v; renderJobs(); });
   chips($('ageChips'), [['day', '🕒 24 שעות'], ['3days', '3 ימים'], ['week', 'שבוע'], ['month', 'חודש'], ['any', 'הכל']], ui.age, v => { ui.age = v; renderJobs(); });
   const sources = [...new Set(state.jobs.map(j => j.source).filter(Boolean))].sort();
@@ -103,9 +108,13 @@ function renderJobs() {
   if (ui.roleTerms) $('roleFilterText').textContent = 'מסונן לפי תפקיד: ' + ui.roleTerms[0];
   $('feedInfo').textContent = state.feedUpdated ? 'משרות נאספו לאחרונה: ' + fmtStamp(state.feedUpdated) + (freshCount ? ' · ' + freshCount + ' חדשות' : '') : '';
   const allowed = { ta: ['ta', 'remote', 'unknown'], core: ['ta', 'core', 'remote', 'unknown'], center: ['ta', 'core', 'center', 'remote', 'unknown'], all: null }[ui.region];
-  const q = ui.q.trim().toLowerCase();
+  const terms = searchTerms(ui.q);
+  const bypass = terms.length && ui.searchAll; // "הצגת כל התוצאות": חיפוש בלי הסינונים האחרים
   let list = state.jobs.map(j => ({ j, a: analysis(j) })).filter(({ j, a }) => {
+    if (terms.length && !matchesSearch(j, terms)) return false;
+    if (bypass) return true;
     if (ui.cat !== 'all' && a.category.id !== ui.cat) return false;
+    if (ui.cat === 'analyst' && ui.sub && ui.sub !== 'all' && !a.category.label.endsWith('· ' + ui.sub)) return false;
     if (allowed && !allowed.includes(a.region)) return false;
     if (ui.sort === 'junior' && a.experience.isSenior) return false;
     if (ui.sort === 'junior' && a.experience.years >= 2) return false;
@@ -119,13 +128,14 @@ function renderJobs() {
     if (ui.noexp && !noExperience(j, a)) return false;
     if (ui.roleTerms && !ui.roleTerms.some(t => (j.title + ' ' + (j.description || '')).toLowerCase().includes(t))) return false;
     if (ui.sort === 'hide' && (j.status === 'skip' || j.status === 'rejected')) return false;
-    if (q && ![j.title, j.company, j.location, a.city].join(' ').toLowerCase().includes(q)) return false;
     return true;
   });
   if (ui.sort === 'match') list.sort((x, y) => y.a.match - x.a.match);
   else if (ui.sort === 'date') list.sort((x, y) => postedTime(y.j) - postedTime(x.j));
   else if (ui.sort === 'smart') list.sort((x, y) => x.a.sortKey - y.a.sortKey);
   else list.sort((x, y) => worth(y.j, y.a) - worth(x.j, x.a)); // 'best' + 'fit': הכי שוות להגשה קודם
+  // בחיפוש: משרות שהמילים מופיעות בשם התפקיד שלהן קודם
+  if (terms.length) list.sort((x, y) => titleHits(y.j, terms) - titleHits(x.j, terms));
 
   if (!state.jobs.length) {
     $('jobList').innerHTML = `<div class="empty"><div class="big">🔎</div>
@@ -134,9 +144,33 @@ function renderJobs() {
       <button class="btn secondary" onclick="loadDemo()">הצגת משרות לדוגמה</button></div>`;
     return;
   }
-  if (!list.length) { $('jobList').innerHTML = '<div class="empty">אין משרות שמתאימות לסינון</div>'; return; }
-  $('jobList').innerHTML = list.map(({ j, a }) => jobCard(j, a)).join('');
+  let head = '';
+  if (terms.length) {
+    const total = state.jobs.filter(j => matchesSearch(j, terms)).length;
+    head = `<div class="row small muted" style="margin:0 4px 8px"><span>${list.length} תוצאות</span><span class="spacer"></span>` +
+      (bypass ? `<button class="chip" onclick="ui.searchAll=false;renderJobs()">חזרה לסינונים</button>`
+        : total > list.length ? `<button class="chip" onclick="ui.searchAll=true;renderJobs()">עוד ${total - list.length} מוסתרות בגלל הסינונים, הצגת הכל</button>` : '') + '</div>';
+  }
+  if (!list.length) { $('jobList').innerHTML = head + '<div class="empty">אין משרות שמתאימות לחיפוש ולסינון</div>'; return; }
+  $('jobList').innerHTML = head + list.map(({ j, a }) => jobCard(j, a)).join('');
 }
+
+// ---------- חיפוש חופשי ----------
+// מחפש בכל הטקסט של המשרה. כמה מילים = כולן צריכות להופיע. "בגרשיים" = ביטוי מדויק.
+const normSearch = t => ' ' + String(t || '').toLowerCase().replace(/[\u2019`׳]/g, "'").replace(/[״"]/g, '"')
+  .replace(/\s*[\/.]\s*(ית|ת|ה)(?=[\s,.)\-|]|$)/g, '').replace(/\s+/g, ' ') + ' ';
+const searchCache = new Map();
+function searchText(j) {
+  if (!searchCache.has(j.id)) searchCache.set(j.id, normSearch([j.title, j.company, j.location, j.source, j.description].join(' ')));
+  return searchCache.get(j.id);
+}
+function searchTerms(q) {
+  const out = [];
+  String(q || '').replace(/"([^"]+)"|(\S+)/g, (m, phrase, word) => { out.push(normSearch(phrase || word).trim()); });
+  return out.filter(Boolean);
+}
+const matchesSearch = (j, terms) => { const t = searchText(j); return terms.every(w => t.includes(w)); };
+const titleHits = (j, terms) => { const t = normSearch(j.title); return terms.filter(w => t.includes(w)).length; };
 
 // כמה שווה להגיש: התאמה, סיכוי לעבור סינון, וטריות (משרה חדשה = פחות מתחרים)
 function worth(j, a) {
@@ -296,6 +330,7 @@ function editJob(id) {
     let target;
     if (id) { target = state.jobs.find(x => x.id === id); Object.assign(target, data); target.updated = Date.now(); }
     else { target = { id: uid(), ...data, status: 'new', dateAdded: today(), updated: Date.now(), history: [] }; state.jobs.unshift(target); }
+    searchCache.delete(target.id);
     save(); render(); openJob(target.id);
   };
 }
@@ -674,6 +709,9 @@ async function loadFeed(manual) {
       state.jobs.push(nj); addedJobs.push(nj);
       added++;
     }
+    // משרות שנאספו אוטומטית, ירדו מהאתרים, ולא טיפלת בהן: מסירים (משרות עם סטטוס נשארות במעקב)
+    const feedUrls = new Set((feed.jobs || []).map(f => f.url));
+    if (feedUrls.size > 50) state.jobs = state.jobs.filter(j => !j.auto || j.status !== 'new' || feedUrls.has(j.url));
     // בטעינה הראשונה כל המשרות "חדשות", אז לא מתריעים עליהן
     if (state.feedUpdated) notifyMatches(addedJobs);
     state.feedUpdated = feed.updated;
@@ -791,7 +829,7 @@ document.addEventListener('visibilitychange', () => { if (!document.hidden) try 
 let toastTimer;
 function toast(msg) { const t = $('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove('show'), 2400); }
 
-$('jobSearch').addEventListener('input', e => { ui.q = e.target.value; renderJobs(); });
+$('jobSearch').addEventListener('input', e => { ui.q = e.target.value; if (!ui.q.trim()) ui.searchAll = false; renderJobs(); });
 
 function render() {
   if (ui.view === 'jobs') renderJobs();

@@ -134,6 +134,9 @@ const CATEGORIES = [
   { id: 'product', label: 'מוצר', priority: 1,
     title: ['product manager', 'product owner', 'associate product', 'product operations', 'product ops', 'מנהל מוצר', 'מנהלת מוצר', 'מנהל/ת מוצר', 'מנהל.ת מוצר', 'אחראי מוצר'],
     desc: ['roadmap', 'רודמאפ', 'prd', 'אפיון מוצר', 'user stories'] },
+  { id: 'consulting', label: 'ייעוץ', priority: 2,
+    title: ['consultant', 'consulting', 'advisory', 'יועץ', 'יועצת', 'ייעוץ', 'יועץ/ת'],
+    desc: ['ייעוץ ארגוני', 'ייעוץ עסקי', 'management consulting', 'לקוחות הייעוץ'] },
   { id: 'analyst', label: 'אנליסט', priority: 2,
     title: ['analyst', 'אנליסט', 'אנליסטית', 'אנליסט/ית', 'bi developer', 'bi', 'data scientist', 'insights', 'analytics'],
     desc: ['data analysis', 'ניתוח נתונים', 'dashboards', 'דשבורד', 'sql', 'power bi', 'tableau'] },
@@ -291,7 +294,7 @@ function regionOf(city) {
 // ---------- שכר ----------
 // הערכה גסה לשכר ברוטו חודשי למשרת ג׳וניור באזור המרכז (₪). זו לא הבטחה, רק נקודת ייחוס.
 const SALARY = {
-  pm: [12000, 16000], product: [15000, 21000], analyst: [13000, 18000], ops: [12000, 16000], other: [10000, 14000],
+  consulting: [12000, 17000], pm: [12000, 16000], product: [15000, 21000], analyst: [13000, 18000], ops: [12000, 16000], other: [10000, 14000],
 };
 const ANALYST_SALARY = { 'BI': [13000, 18000], 'מוצר': [15000, 20000], 'שיווק': [12000, 16000], 'עסקי': [13000, 17000], 'פיננסי': [12000, 16000], 'דאטה': [14000, 19000], 'תפעולי': [12000, 16000] };
 
