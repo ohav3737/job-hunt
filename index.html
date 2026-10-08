@@ -17,7 +17,10 @@
 <body>
   <header class="topbar">
     <h1 id="title">משרות</h1>
-    <button class="icon-btn" id="addBtn" aria-label="הוספת משרה">+</button>
+    <div class="row">
+      <button class="icon-btn secondary" id="refreshBtn" aria-label="חיפוש משרות חדשות">↻</button>
+      <button class="icon-btn" id="addBtn" aria-label="הוספת משרה">+</button>
+    </div>
   </header>
 
   <main>
@@ -27,6 +30,7 @@
         <b>להתקנה כאפליקציה באייפון/אייפד:</b>
         <div class="small">ב-Safari לחצי על כפתור השיתוף <b>⎙</b> ואז <b>"הוספה למסך הבית"</b>.</div>
       </div>
+      <div class="small muted" id="feedInfo" style="margin:0 4px 6px"></div>
       <input class="search" id="jobSearch" type="search" placeholder="חיפוש לפי תפקיד, חברה, עיר…">
       <div class="chips" id="catChips"></div>
       <div class="chips" id="regionChips"></div>

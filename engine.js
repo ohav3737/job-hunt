@@ -175,8 +175,9 @@ function classify(title, desc) {
 }
 
 // ---------- ניסיון ובכירות ----------
-function experience(text) {
-  const t = norm(text);
+// בכירות נבדקת לפי שם התפקיד בלבד: בתיאורים מופיעות מילים כמו "lead" גם במשרות ג׳וניור
+function experience(title, text) {
+  const t = norm(text), tt = norm(title);
   const junior = ['junior', "ג'וניור", 'ג׳וניור', 'entry level', 'entry-level', 'graduate', 'בוגר', 'בוגרת', 'בוגרי', 'ללא ניסיון', 'no experience', 'סטודנט', 'student', 'intern', 'התמחות', 'משרת כניסה', 'first job'];
   const senior = ['senior', 'סניור', 'בכיר', 'בכירה', 'lead', 'team lead', 'head of', 'director', 'vp', 'ראש צוות', 'ראש תחום', 'principal', 'staff'];
   const studentOnly = ['משרת סטודנט', 'student position', 'סטודנט/ית בלבד', 'חלקית', 'part time', 'part-time', 'משמרות'];
@@ -199,7 +200,7 @@ function experience(text) {
   if (years !== null && years > 15) years = null;
 
   const isJunior = junior.some(w => hasAlias(t, w));
-  const isSenior = senior.some(w => hasAlias(t, w));
+  const isSenior = senior.some(w => hasAlias(tt, w));
   const notFullTime = studentOnly.some(w => t.includes(w));
 
   let level, fit;
@@ -210,7 +211,8 @@ function experience(text) {
   else if (years === 2) { level = '2 שנים'; fit = 0.5; }
   else { level = years + '+ שנים'; fit = years === 3 ? 0.3 : 0.15; }
 
-  return { years, level, fit, isJunior, isSenior, notFullTime };
+  const temporary = ['maternity', 'temporary', 'contract', 'חופשת לידה', 'זמני', 'זמנית', 'מילוי מקום'].some(w => t.includes(w));
+  return { years, level, fit, isJunior, isSenior, notFullTime, temporary };
 }
 
 // ---------- תואר ----------
@@ -321,10 +323,11 @@ function analyze(job, profile) {
   let num = 0, den = 0;
   for (const r of mustRes) { const w = GROUP_WEIGHT[SKILL_BY_ID[r.id].group] || 1; num += w * r.credit; den += w; }
   for (const r of niceRes) { const w = 0.4 * (GROUP_WEIGHT[SKILL_BY_ID[r.id].group] || 1); num += w * r.credit; den += w; }
-  const skillScore = den ? num / den : 0.6;
+  // החלקה: כשהמשרה מזכירה מעט כישורים, הציון נמשך לאמצע ולא קופץ ל-100%
+  const skillScore = (num + 0.5 * 1.5) / (den + 1.5);
 
   const cat = classify(job.title, job.description);
-  const exp = experience(text);
+  const exp = experience(job.title, text);
   const deg = degreeFit(job.description);
   const loc = job.location ? detectCity(job.location) : detectCity(text);
   const region = REGION[loc.region];
@@ -343,7 +346,8 @@ function analyze(job, profile) {
 
   let verdict;
   if (exp.isSenior && !exp.isJunior) verdict = { level: 'no', text: 'לא מומלץ: משרה בכירה' };
-  else if (match >= 70 && screenPct >= 50) verdict = { level: 'yes', text: 'כדאי להגיש' };
+  else if (exp.years >= 3) verdict = { level: 'no', text: 'דורשת ' + exp.years + '+ שנות ניסיון' };
+  else if (match >= 70 && screenPct >= 50 && exp.fit >= 0.8) verdict = { level: 'yes', text: 'כדאי להגיש' };
   else if (match >= 55) verdict = { level: 'maybe', text: 'שווה לנסות, עם התאמת קו״ח' };
   else verdict = { level: 'no', text: 'התאמה נמוכה' };
 
@@ -352,6 +356,7 @@ function analyze(job, profile) {
   if (exp.isJunior) reasons.push('מתאימה לג׳וניור / בוגרים');
   if (exp.years >= 2) reasons.push('דורשת ' + exp.years + '+ שנות ניסיון');
   if (exp.notFullTime) reasons.push('נראית כמשרה חלקית או משרת סטודנט');
+  if (exp.temporary) reasons.push('משרה זמנית (למשל החלפת חופשת לידה). לפעמים זו דרך טובה להיכנס לחברה');
   if (missingMust.length) reasons.push('חסרים כישורי חובה: ' + missingMust.map(r => r.name).join(', '));
   const sim = [...mustRes, ...niceRes].filter(r => r.state === 'similar');
   if (sim.length) reasons.push('יש לך כישורים דומים: ' + sim.map(r => r.via[0] + ' ≈ ' + r.name).join(', '));

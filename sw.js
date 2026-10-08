@@ -1,5 +1,5 @@
 // מאפשר לאפליקציה לעבוד גם בלי אינטרנט
-const CACHE = 'jobhunt-v1';
+const CACHE = 'jobhunt-v2';
 const FILES = ['./', 'index.html', 'styles.css', 'engine.js', 'app.js', 'manifest.webmanifest', 'icons/icon-180.png', 'icons/icon-192.png', 'icons/icon-512.png'];
 
 self.addEventListener('install', e => {

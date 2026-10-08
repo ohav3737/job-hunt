@@ -62,6 +62,9 @@ a { color: var(--accent); }
   display: flex; align-items: center; justify-content: space-between; gap: 12px;
 }
 .topbar h1 { font-size: 26px; margin: 0; letter-spacing: -.02em; }
+.icon-btn.secondary { background: var(--accent-soft); color: var(--accent); font-size: 20px; }
+.icon-btn.spin { animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
 .icon-btn {
   border: 0; background: var(--accent); color: #fff; width: 40px; height: 40px; border-radius: 50%;
   font-size: 24px; line-height: 1; display: grid; place-items: center; cursor: pointer; flex: none;

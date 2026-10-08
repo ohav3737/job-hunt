@@ -72,8 +72,10 @@ function chips(el, items, current, onPick) {
 function renderJobs() {
   chips($('catChips'), [['all', 'כל התחומים'], ['pm', 'ניהול פרויקטים'], ['product', 'מוצר'], ['analyst', 'אנליסט'], ['ops', 'תפעול / תעשייה'], ['other', 'אחר']], ui.cat, v => { ui.cat = v; renderJobs(); });
   chips($('regionChips'), [['ta', 'תל אביב'], ['core', 'ת"א + סובב'], ['center', 'כל המרכז'], ['all', 'כל הארץ']], ui.region, v => { ui.region = v; renderJobs(); });
-  chips($('sortChips'), [['smart', 'מיון חכם'], ['match', 'לפי התאמה'], ['date', 'החדשות קודם'], ['junior', 'רק ג׳וניור'], ['hide', 'בלי לא רלוונטיות']], ui.sort, v => { ui.sort = v; renderJobs(); });
+  chips($('sortChips'), [['smart', 'מיון חכם'], ['match', 'לפי התאמה'], ['date', 'החדשות קודם'], ['fresh', 'רק חדשות'], ['junior', 'רק ג׳וניור'], ['hide', 'בלי לא רלוונטיות']], ui.sort, v => { ui.sort = v; renderJobs(); });
 
+  const freshCount = state.jobs.filter(j => j.fresh).length;
+  $('feedInfo').textContent = state.feedUpdated ? 'משרות נאספו לאחרונה: ' + fmtDate(state.feedUpdated) + (freshCount ? ' · ' + freshCount + ' חדשות' : '') : '';
   const allowed = { ta: ['ta', 'remote', 'unknown'], core: ['ta', 'core', 'remote', 'unknown'], center: ['ta', 'core', 'center', 'remote', 'unknown'], all: null }[ui.region];
   const q = ui.q.trim().toLowerCase();
   let list = state.jobs.map(j => ({ j, a: analysis(j) })).filter(({ j, a }) => {
@@ -81,6 +83,7 @@ function renderJobs() {
     if (allowed && !allowed.includes(a.region)) return false;
     if (ui.sort === 'junior' && a.experience.isSenior) return false;
     if (ui.sort === 'junior' && a.experience.years >= 2) return false;
+    if (ui.sort === 'fresh' && !j.fresh) return false;
     if (ui.sort === 'hide' && (j.status === 'skip' || j.status === 'rejected')) return false;
     if (q && ![j.title, j.company, j.location, a.city].join(' ').toLowerCase().includes(q)) return false;
     return true;
@@ -116,6 +119,7 @@ function jobCard(j, a) {
       <span class="badge">${fmtMoney(a.salary.min)}–${fmtMoney(a.salary.max)}</span>
       ${j.status !== 'new' ? `<span class="badge">${STATUS_LABEL[j.status]}</span>` : ''}
       ${j.demo ? '<span class="badge">דוגמה</span>' : ''}
+      ${j.fresh ? '<span class="badge yes">חדש</span>' : ''}
     </div>
   </div>`;
 }
@@ -145,6 +149,7 @@ function skillRows(list) {
 function openJob(id) {
   const j = state.jobs.find(x => x.id === id);
   if (!j) return;
+  if (j.fresh) { j.fresh = false; save(); render(); }
   const a = analysis(j);
   const noCv = !state.profile.cv.trim();
   openSheet(j.title || 'משרה', `
@@ -432,6 +437,34 @@ function loadDemo() {
   save(); render();
 }
 
+// ---------- משרות שנאספו אוטומטית (jobs.json) ----------
+async function loadFeed(manual) {
+  const btn = $('refreshBtn');
+  btn.classList.add('spin');
+  try {
+    const res = await fetch('jobs.json', { cache: 'no-cache' });
+    if (!res.ok) throw new Error();
+    const feed = await res.json();
+    const known = new Set(state.jobs.map(j => j.url).filter(Boolean));
+    // משרות חדשות מסומנות כ"חדש" עד שפותחים אותן
+    let added = 0;
+    for (const f of feed.jobs || []) {
+      if (!f.url || known.has(f.url)) continue;
+      state.jobs.push({ id: uid(), ...f, status: 'new', fresh: true, auto: true, dateAdded: today(), updated: Date.now(), history: [] });
+      added++;
+    }
+    state.feedUpdated = feed.updated;
+    save();
+    if (manual || added) toast(added ? 'נמצאו ' + added + ' משרות חדשות' : 'אין משרות חדשות מאז הבדיקה הקודמת');
+  } catch (e) {
+    if (manual) toast('לא הצלחתי לטעון משרות חדשות');
+  } finally {
+    btn.classList.remove('spin');
+    render();
+  }
+}
+$('refreshBtn').onclick = () => loadFeed(true);
+
 // ---------- כללי ----------
 let toastTimer;
 function toast(msg) { const t = $('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove('show'), 2400); }
@@ -452,3 +485,4 @@ if (!standalone && /iphone|ipad|ipod|macintosh/i.test(navigator.userAgent) && 'o
 if ('serviceWorker' in navigator && location.protocol !== 'file:') navigator.serviceWorker.register('sw.js').catch(() => {});
 
 render();
+loadFeed(false);
