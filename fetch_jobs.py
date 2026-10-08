@@ -384,7 +384,7 @@ def fetch_drushim(skip_keys):
             continue
         seen |= {key, j['url']}
         kept.append(j)
-    kept = [j for j in kept if FIELDS.search(j['title']) or DEGREE.search(j['description'])]
+    kept = [j for j in kept if FIELDS.search(j['title']) or DEGREE.search(j['description']) or signals(j['description']) >= 2]
     for j in kept:
         drushim_details(j)
         # שומרים את רמת הניסיון מהכרטיס בתוך התיאור, כדי שהמנוע יזהה אותה
@@ -452,7 +452,7 @@ def fetch_jobmaster(skip_keys):
             continue
         seen.add(key)
         kept.append(j)
-    kept = [j for j in kept if FIELDS.search(j['title']) or DEGREE.search(j['description'])]
+    kept = [j for j in kept if FIELDS.search(j['title']) or DEGREE.search(j['description']) or signals(j['description']) >= 2]
     for j in kept:
         jobmaster_details(j)
     print(f'JobMaster: {len(kept)} רלוונטיות מתוך {len(out)}')
@@ -581,13 +581,72 @@ def min_years(text):
     return n if n <= 15 else 0
 
 
+# סימנים בתיאור המשרה שהעבודה עצמה בתחומים שלך, גם כששם התפקיד לא מסגיר את זה
+SIGNALS = [re.compile(p, re.I) for p in [
+    r'ניהול פרו?יקטים|project management|managing projects|pmo', r'לוחות זמנים|timelines|milestones|גאנט|gantt',
+    r'power ?bi|tableau|looker|qlik|\bbi\b', r'\bsql\b', r'excel|אקסל', r'python|פייתון',
+    r'ניתוח נתונים|ניתוח מידע|data analysis|analytics|אנליטי', r'דשבורד|dashboard|דוחות|reports?\b|reporting',
+    r'kpi|מדדי|metrics', r'שיפור תהליכים|ייעול|process improvement|optimization|אופטימיזציה|מיפוי תהליכים',
+    r'אפיון|requirements|specifications|prd|user stories', r'roadmap|רודמאפ|product lifecycle',
+    r'stakeholders?|ממשקים|cross[- ]functional', r'שרשרת אספקה|supply chain|לוגיסטיקה|logistics|מלאי|inventory',
+    r'\berp\b|\bsap\b|priority|פריוריטי', r'lean|six sigma|שש סיגמא', r'תכנון ובקרה|בקרה|planning|forecast|חיזוי',
+    r'תקציב|budget|עלויות|cost', r'הנדסת תעשי|industrial engineering', r'הטמעה|implementation|onboarding',
+]]
+
+
+def signals(text):
+    return sum(1 for p in SIGNALS if p.search(text or ''))
+
+
 def fits_me(j):
     if EXCLUDE.search(j['title']) or ALLJOBS_EXCLUDE.search(j['title']):
         return False
     text = j['title'] + '\n' + j['description']
-    if not (FIELDS.search(j['title']) or DEGREE.search(text)):
+    # שם תפקיד בתחומים שלך, או תיאור שמראה עבודה בתחומים שלך (3 סימנים לפחות)
+    if not (FIELDS.search(j['title']) or DEGREE.search(text) or signals(j['description']) >= 3):
         return False
     return min_years(j['description']) < 3  # ג׳וניור / עד שנתיים ניסיון
+
+
+def _fingerprint(j):
+    """טביעת אצבע של תיאור המשרה: אותה מודעה באתרים שונים, גם כשהכותרת או שם החברה שונים."""
+    d = re.sub(r'[^0-9a-zא-ת]+', '', (j.get('description') or '').lower())
+    return d[:220] if len(d) >= 160 else None
+
+
+def _better(a, b):
+    """איזו משתי גרסאות של אותה משרה עדיפה: עם שם חברה אמיתי, תיאור מלא יותר."""
+    score = lambda j: (j['company'] not in ('', 'חברה חסויה'), len(j.get('description') or ''))
+    return a if score(a) >= score(b) else b
+
+
+def dedupe(jobs):
+    index, unique = {}, []
+    for j in jobs:
+        keys = {j['url'], (re.sub(r'\W+', '', j['title']).lower(), j['company'])}
+        fp = _fingerprint(j)
+        if fp:
+            keys.add(fp)
+        # אותו שם תפקיד באותה עיר (למשל פעם עם שם החברה ופעם "חסוי") = כנראה אותה משרה
+        t = re.sub(r'\W+', '', re.sub(r'\s*[/.]\s*(?:ית|ת|ה)\b', '', j['title'])).lower()
+        city = re.sub(r'\W+', '', (j['location'] or '').split(',')[0])[:10]
+        if len(t) >= 12 and city:
+            keys.add(('t+c', t, city))
+        hit = next((index[k] for k in keys if k in index), None)
+        if hit is None:
+            unique.append(j)
+            pos = len(unique) - 1
+        else:
+            pos = hit
+            best = _better(unique[pos], j)
+            if best is j:
+                j.setdefault('alsoAt', []).append(unique[pos]['url'])
+                unique[pos] = j
+            else:
+                unique[pos].setdefault('alsoAt', []).append(j['url'])
+        for k in keys:
+            index[k] = pos
+    return unique
 
 
 def main():
@@ -610,12 +669,7 @@ def main():
     jobs = [j for j in jobs if in_center(j['location'])]
     print(f'הוסרו {before - len(jobs)} משרות מחוץ לאזור המרכז')
     # אותה משרה מתפרסמת לפעמים כמה פעמים: מסננים לפי קישור ולפי תפקיד+חברה
-    seen, unique = set(), []
-    for j in jobs:
-        keys = {j['url'], (re.sub(r'\W+', '', j['title']).lower(), j['company'])}
-        if not keys & seen:
-            seen |= keys
-            unique.append(j)
+    unique = dedupe(jobs)
     out = Path(__file__).with_name('jobs.json')
     # אם מקור שלם לא החזיר כלום הפעם (חסימה זמנית, תקלה), משאירים את המשרות הקודמות שלו
     if out.exists():
@@ -637,7 +691,7 @@ def refilter():
     out = Path(__file__).with_name('jobs.json')
     data = json.loads(out.read_text())
     before = len(data['jobs'])
-    data['jobs'] = [j for j in data['jobs'] if fits_me(j) and in_center(j['location'])]
+    data['jobs'] = dedupe([j for j in data['jobs'] if fits_me(j) and in_center(j['location'])])
     out.write_text(json.dumps(data, ensure_ascii=False, indent=1))
     print(f'נשארו {len(data["jobs"])} מתוך {before}')
 

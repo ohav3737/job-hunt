@@ -23,23 +23,29 @@ const notifiedSet = new Set(notified);
 
 const threshold = config.threshold || 95;
 const profile = { cv: '', extraSkills: config.skills || [] };
+// מקסימום התראות ביום (ברירת מחדל 4): רק המשרות הכי שוות, לא הצפה
+let log = {};
+try { log = JSON.parse(fs.readFileSync('notified-log.json', 'utf8')); } catch {}
+const day = new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Jerusalem' });
+const room = Math.max(0, (config.maxPerDay || 4) - (log[day] || 0));
+const worth = (j, a) => 0.55 * a.match + 0.45 * a.screenPct + (a.category.priority <= 2 ? 3 : 0);
 const hits = readJobs('jobs.json')
   .filter(j => j.url && !prevUrls.has(j.url) && !notifiedSet.has(j.url))
   .map(j => ({ j, a: Engine.analyze(j, profile) }))
-  .filter(x => x.a.match >= threshold && x.a.verdict.level !== 'no')
-  .sort((x, y) => y.a.match - x.a.match);
+  .filter(x => x.a.match >= threshold && x.a.verdict.level === 'yes')
+  .sort((x, y) => worth(y.j, y.a) - worth(x.j, x.a))
+  .slice(0, room);
 
 console.log(`משרות חדשות עם התאמה של ${threshold}% ומעלה: ${hits.length}`);
 if (!hits.length) process.exit(0);
 
 webpush.setVapidDetails('mailto:job-collector@users.noreply.github.com', process.env.VAPID_PUBLIC_KEY, process.env.VAPID_PRIVATE_KEY);
 
-const messages = hits.slice(0, 3).map(({ j, a }) => ({
+const messages = hits.map(({ j, a }) => ({
   title: `🎯 ${a.match}% התאמה: ${j.title}`,
   body: [j.company, j.location || a.city].filter(Boolean).join(' · '),
   url: j.url,
 }));
-if (hits.length > 3) messages.push({ title: `ועוד ${hits.length - 3} משרות מתאימות`, body: 'פתחי את האפליקציה לרשימה המלאה', url: '' });
 
 for (const device of config.devices) {
   for (const m of messages) {
@@ -52,5 +58,7 @@ for (const device of config.devices) {
   }
 }
 
+log[day] = (log[day] || 0) + hits.length;
+fs.writeFileSync('notified-log.json', JSON.stringify(Object.fromEntries(Object.entries(log).slice(-30))));
 fs.writeFileSync('notified.json', JSON.stringify([...notified, ...hits.map(x => x.j.url)].slice(-3000)));
 console.log('נשלחו התראות');

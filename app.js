@@ -13,7 +13,7 @@ const STATUSES = [
 const STATUS_LABEL = Object.fromEntries(STATUSES.map(s => [s.id, s.label]));
 
 let state = load();
-const ui = { view: 'jobs', cat: 'all', region: 'core', sort: state.profile.cv.trim() ? 'fit' : 'smart', q: '', trackSort: 'date', trackFilter: 'active', source: 'all', city: '', noexp: false };
+const ui = { view: 'jobs', cat: 'all', region: 'core', sort: state.profile.cv.trim() ? 'best' : 'smart', q: '', trackSort: 'date', trackFilter: 'active', source: 'all', city: '', noexp: false, age: 'week' };
 
 function load() {
   try {
@@ -91,9 +91,10 @@ function chips(el, items, current, onPick) {
 function renderJobs() {
   chips($('catChips'), [['all', 'כל התחומים'], ['pm', 'ניהול פרויקטים'], ['product', 'מוצר'], ['analyst', 'אנליסט'], ['ops', 'תפעול / תעשייה'], ['other', 'אחר']], ui.cat, v => { ui.cat = v; renderJobs(); });
   chips($('regionChips'), [['ta', 'ת"א + רמת גן'], ['core', 'ת"א + סובב'], ['center', 'כל המרכז'], ['all', 'כל הארץ']], ui.region, v => { ui.region = v; renderJobs(); });
+  chips($('ageChips'), [['day', '🕒 24 שעות'], ['3days', '3 ימים'], ['week', 'שבוע'], ['month', 'חודש'], ['any', 'הכל']], ui.age, v => { ui.age = v; renderJobs(); });
   const sources = [...new Set(state.jobs.map(j => j.source).filter(Boolean))].sort();
   chips($('sourceChips'), [['all', 'כל המקורות'], ...sources.map(x => [x, x])], ui.source, v => { ui.source = v; renderJobs(); });
-  chips($('sortChips'), [['fit', 'מתאימות לי'], ['smart', 'הכל, מיון חכם'], ['match', 'לפי התאמה'], ['date', 'שפורסמו לאחרונה'], ['fresh', 'רק חדשות'], ['junior', 'רק ג׳וניור'], ['hide', 'בלי לא רלוונטיות']], ui.sort, v => { ui.sort = v; renderJobs(); });
+  chips($('sortChips'), [['best', '🔥 הכי שוות'], ['fit', 'מתאימות לי'], ['smart', 'הכל, לפי תחום'], ['match', 'לפי התאמה'], ['date', 'שפורסמו לאחרונה'], ['fresh', 'רק חדשות'], ['junior', 'רק ג׳וניור'], ['hide', 'בלי לא רלוונטיות']], ui.sort, v => { ui.sort = v; renderJobs(); });
 
   $('cvNudge').style.display = state.profile.cv.trim() ? 'none' : 'block';
   renderCityFilter();
@@ -108,6 +109,9 @@ function renderJobs() {
     if (allowed && !allowed.includes(a.region)) return false;
     if (ui.sort === 'junior' && a.experience.isSenior) return false;
     if (ui.sort === 'junior' && a.experience.years >= 2) return false;
+    const maxAge = { day: 1, '3days': 3, week: 7, month: 31 }[ui.age];
+    if (maxAge && Date.now() - postedTime(j) > maxAge * 86400000) return false;
+    if (ui.sort === 'best' && a.verdict.level !== 'yes') return false;
     if (ui.sort === 'fit' && a.verdict.level === 'no') return false;
     if (ui.sort === 'fresh' && !j.fresh) return false;
     if (ui.source !== 'all' && j.source !== ui.source) return false;
@@ -120,7 +124,8 @@ function renderJobs() {
   });
   if (ui.sort === 'match') list.sort((x, y) => y.a.match - x.a.match);
   else if (ui.sort === 'date') list.sort((x, y) => postedTime(y.j) - postedTime(x.j));
-  else list.sort((x, y) => x.a.sortKey - y.a.sortKey); // 'fit' + 'smart'
+  else if (ui.sort === 'smart') list.sort((x, y) => x.a.sortKey - y.a.sortKey);
+  else list.sort((x, y) => worth(y.j, y.a) - worth(x.j, x.a)); // 'best' + 'fit': הכי שוות להגשה קודם
 
   if (!state.jobs.length) {
     $('jobList').innerHTML = `<div class="empty"><div class="big">🔎</div>
@@ -133,6 +138,13 @@ function renderJobs() {
   $('jobList').innerHTML = list.map(({ j, a }) => jobCard(j, a)).join('');
 }
 
+// כמה שווה להגיש: התאמה, סיכוי לעבור סינון, וטריות (משרה חדשה = פחות מתחרים)
+function worth(j, a) {
+  const days = (Date.now() - postedTime(j)) / 86400000;
+  const fresh = days < 1 ? 8 : days < 3 ? 5 : days < 7 ? 2 : days < 14 ? 0 : -5;
+  const field = a.category.priority <= 2 ? 3 : 0;
+  return 0.55 * a.match + 0.45 * a.screenPct + fresh + field;
+}
 function noExperience(j, a) {
   if (a.experience.isSenior || a.experience.years > 0) return false;
   return a.experience.years === 0 || a.experience.isJunior || /ללא ניסיון|ללא נסיון|no experience|entry[- ]level|graduate|בוגר/i.test(j.title + ' ' + (j.description || ''));
@@ -215,6 +227,7 @@ function openJob(id) {
       <span>תחום: <b>${esc(a.category.label)}</b></span> · <span>${esc(a.degree.label)}</span>
     </div>
 
+    ${j.alsoAt?.length ? `<div class="small muted" style="margin:0 4px 8px">🔁 אותה משרה מתפרסמת גם ב-${j.alsoAt.length} מקומות נוספים (זוהתה ככפילות ולא מוצגת פעמיים)</div>` : ''}
     ${a.reasons.length ? `<div class="section-title">למה</div><div class="card"><ul class="reasons">${a.reasons.map(r => `<li>${esc(r)}</li>`).join('')}</ul></div>` : ''}
 
     <div class="section-title">דרישות חובה</div>
@@ -416,7 +429,7 @@ function toggleSkill(id) {
 
 $('saveCv').onclick = () => {
   state.profile.cv = $('cvText').value;
-  if (state.profile.cv.trim()) ui.sort = 'fit';
+  if (state.profile.cv.trim()) ui.sort = 'best';
   save(); profileChanged(); renderCv();
   toast('נשמר. זוהו ' + Engine.extractSkills(state.profile.cv).size + ' כישורים');
 };
@@ -474,7 +487,7 @@ $('cvFile').onchange = async e => {
     if (!text.trim()) throw new Error('empty');
     state.profile.cv = text.replace(/\n{3,}/g, '\n\n').trim();
     state.profile.cvFile = f.name;
-    ui.sort = 'fit';
+    ui.sort = 'best';
     save(); profileChanged(); renderCv();
     toast('קורות החיים נטענו. זוהו ' + Engine.extractSkills(state.profile.cv).size + ' כישורים');
   } catch (err) {
@@ -686,17 +699,18 @@ function notifySettings() { return state.notify || (state.notify = { on: false, 
 async function notifyMatches(jobs) {
   const n = notifySettings();
   if (!n.on || !state.profile.cv.trim() || !('Notification' in window) || Notification.permission !== 'granted') return;
-  const hits = jobs.map(j => ({ j, a: analysis(j) })).filter(x => x.a.match >= n.threshold && x.a.verdict.level !== 'no')
-    .sort((x, y) => y.a.match - x.a.match);
+  const day = today();
+  if (n.day !== day) { n.day = day; n.sentToday = 0; }
+  const room = Math.max(0, (n.maxPerDay || 4) - n.sentToday);
+  const hits = jobs.map(j => ({ j, a: analysis(j) })).filter(x => x.a.match >= n.threshold && x.a.verdict.level === 'yes')
+    .sort((x, y) => worth(y.j, y.a) - worth(x.j, x.a)).slice(0, room);
   if (!hits.length) return;
+  n.sentToday += hits.length; save();
   const reg = await navigator.serviceWorker?.getRegistration();
-  for (const { j, a } of hits.slice(0, 3)) {
+  for (const { j, a } of hits) {
     const title = `🎯 ${a.match}% התאמה: ${j.title}`;
     const opts = { body: [j.company, j.location || a.city].filter(Boolean).join(' · '), tag: j.id, icon: 'icons/icon-192.png', badge: 'icons/icon-192.png', data: { job: j.id } };
     try { reg ? await reg.showNotification(title, opts) : new Notification(title, opts); } catch (e) { /* התראה לא נתמכת */ }
-  }
-  if (hits.length > 3) {
-    try { reg?.showNotification(`ועוד ${hits.length - 3} משרות מתאימות`, { tag: 'more', icon: 'icons/icon-192.png', data: {} }); } catch (e) {}
   }
   // מספר על אייקון האפליקציה במסך הבית
   try { navigator.setAppBadge?.(state.jobs.filter(j => j.fresh && analysis(j).match >= n.threshold).length); } catch (e) {}
@@ -743,7 +757,7 @@ async function pushCode() {
   let sub = await reg.pushManager.getSubscription();
   if (!sub) sub = await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: b64ToBytes(PUSH_KEY) });
   // קוד החיבור כולל רק את כתובת ההתראות, רשימת הכישורים והסף. לא את קורות החיים
-  return JSON.stringify({ devices: [sub.toJSON()], skills: profile().extraSkills, threshold: notifySettings().threshold });
+  return JSON.stringify({ devices: [sub.toJSON()], skills: profile().extraSkills, threshold: notifySettings().threshold, maxPerDay: 4 });
 }
 async function showPushCode() {
   const box = $('pushCodeBox');

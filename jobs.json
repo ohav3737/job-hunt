@@ -38,49 +38,17 @@
    "source": "אתר החברה"
   },
   {
-   "title": "Pentest Product Associate",
-   "company": "Wiz",
-   "location": "Tel Aviv",
-   "url": "https://www.wiz.io/careers/job/4645081006/:title?gh_jid=4645081006",
-   "description": "Come join the organization that is redefining security for the AI era. As one of the fastest-growing startups ever, we enable teams to secure cloud and AI applications by connecting code, cloud, and runtime into a single shared context. Trusted by security teams all over the world, we have a proven track record of success and a culture that values world-class talent. Not to mention, we're now powered by Google, meaning we offer our customers an AI-powered platform that harnesses Google’s Threat Intelligence and Security Operations to better detect, prevent, and respond to threats across all environments, allowing for further innovation.\nOur Wizards from all over the globe work together to protect the infrastructure of our customers, including over 65% of the Fortune 100, who trust us to scan and secure over 230 billion files daily. We’re honored to be a leading player in a massive and growing market, and we continue to look for exceptional Wizards who are eager to make a significant impact on our team. At Wiz, you’ll have the freedom to think creatively, dream big, and use your full range of skills to contribute to our momentous growth. Come join our team and help us create secure cloud environments that allow even the best companies to move faster, all while having some fun!\nMinimum Qualifications\n- 2 years of hands-on experience in AppSec or penetration testing, including proficiency with enterprise tools like Burp Suite, OWASP ZAP, or Acunetix.\n- Hands-on experience with Linux, Windows, Docker, Kubernetes, web protocols (HTTP/S, REST, GraphQL), and authentication mechanisms (OAuth, SAML).\n- Proficiency in scripting languages such as Python, Bash, or Go to automate security tasks and interact with codebases.\n- Solid knowledge of networking concepts, the OSI model, and cloud infrastructure (AWS, Azure, or GCP).\nPreferred Qualifications\n- Knowledge of AI/ML and how LLMs or reinforcement learning agents operate within a cybersecurity context.\n- SaaS and cloud experience, with familiarity in AWS, Azure, or GCP environments and modern cloud-native architectures.\n- A red teaming background, with experience in simulated adversarial attacks and bypassing standard WAF or security controls.\n- An analytical mindset with the ability to diagnose complex logs and scans to distinguish between tool failures, configuration issues, and valid security findings.\n- Self-motivated with the ability to work collaboratively and communicate high-stakes security concepts effectively across teams.\nAbout the job\nWe’re looking for a Pentest Product Associate to join our Product team and help expand the power of Wiz. In this pivotal role, you will be the primary operator of our cutting-edge AI-driven Dynamic Application Security Testing (DAST) agent while simultaneously innovating detection mechanisms for cloud-native technologies. You will bridge the gap between automated AI testing and cloud infrastructure, defining the \"rules of engagement\" for our agents to ensure they effectively simulate sophisticated attacks and accurately classify the modern attack surface.\nResponsibilities\n- Develop advanced detection algorithms to classify cloud technologies while fine-tuning the attack policies that define how our agents identify and exploit vulnerabilities.\n- Analyze cloud services, APIs, and log payloads to review complex attack paths, reducing false positives and ensuring compliance with industry standards.\n- Stay at the forefront of novel attack vectors and emerging cloud/API threats, translating new techniques into executable behaviors for the Wiz DAST engine.\n- Collaborate directly with Research, Backend, and R&D teams to turn operational insights into feature requests, positioning Wiz as the market leader in vulnerability management.\nApplicants must have the legal right to work in the country where the position is based, without the need for visa sponsorship. This role does not offer visa sponsorship.\nWiz is an equal opportunity employer. We do not discriminate based upon race, religion, color, national origin, sex (including pregnancy, childbirth, reproductive health decisions, or related medical conditions), sexual orientation, gender identity, gender expression, age, status as a protected veteran, status as an individual with a disability, genetic information, political views or activity, or other applicable legally protected characteristics. \nBy submitting your application, you acknowledge that Wiz will process your personal data in accordance with Wiz's Privacy Policy.",
-   "postedAt": "2026-08-20",
-   "source": "אתר החברה"
-  },
-  {
    "title": "Product Marketing Manager",
    "company": "Wiz",
    "location": "Tel Aviv",
    "url": "https://www.wiz.io/careers/job/4710823006/:title?gh_jid=4710823006",
    "description": "Come join the organization that is redefining security for the AI era. As one of the fastest-growing startups ever, we enable teams to secure cloud and AI applications by connecting code, cloud, and runtime into a single shared context. Trusted by security teams all over the world, we have a proven track record of success and a culture that values world-class talent. Not to mention, we're now powered by Google, meaning we offer our customers an AI-powered platform that harnesses Google’s Threat Intelligence and Security Operations to better detect, prevent, and respond to threats across all environments, allowing for further innovation.\nOur Wizards from all over the globe work together to protect the infrastructure of our customers, including over 65% of the Fortune 100, who trust us to scan and secure over 230 billion files daily. We’re honored to be a leading player in a massive and growing market, and we continue to look for exceptional Wizards who are eager to make a significant impact on our team. At Wiz, you’ll have the freedom to think creatively, dream big, and use your full range of skills to contribute to our momentous growth. Come join our team and help us create secure cloud environments that allow even the best companies to move faster, all while having some fun!\nMinimum qualifications\n- Degree in Computer Science, equivalent technical background, or hands-on technical experience.\n- Experience in product marketing, solutions engineering, or product management at an enterprise-focused software or SaaS company.\n- Excellent written and verbal communication, presentation, and core messaging skills in English.\n- Proven track record of driving product adoption, GTM strategy, and marketing for technical audiences with the ability to effectively engage security, cloud, and developer personas within enterprises.\nPreferred qualifications\n- Prior experience working with major cloud providers such as AWS, Azure, and GCP.\n- Experience in the cybersecurity industry.\n- Proven track record of leading end-to-end product and feature launches.\n- Demonstrated experience working closely with cross-functional sales and product teams.\n- Proven ability to think strategically, problem-solve, and execute independently.\n- Strong project management skills to manage multiple priorities in a dynamic environment, with a willingness to roll up your sleeves and get scrappy in a startup environment.\nAbout the job\nIn this role, we are looking for a Go To Market (GTM) to own business growth and product strategy to support the rapid growth of Wiz. This includes owning the product go to market strategy for one of our product areas, creating compelling messaging and positioning, launching new features, enabling the field teams, and partnering with marketing and revenue to target the right buyers and influencers.\nResponsibilities\n- Act as a business owner for your product area to measure and accelerate commercial success and product growth by owning launch execution, pipeline impact, and market expansion.\n- Define use cases, product messaging and positioning, value propositions, and customer profiles to showcase the value of Wiz.\n- Become a subject matter expert in cloud security with an in-depth understanding of the market and products, including overall value proposition, features, functionality, and the verticals and use cases in which they are relevant.\n- Partner closely with product management to ensure we are delivering on end to end scenarios that meet customer needs and to execute world class product and feature launches.\n- Develop tools and training to support the full sales cycle, including product demos, sales training, reference architectures, and competitive intelligence to the field and marketing organizations.\n- Define the strategic narrative for GTM and deliver key messages that enable our marketing team to execute high-quality digital and event-based campaigns and programs.\n- Work closely with our demand generation teams to drive the pipeline for the sales organization.\nBy submitting your application, you acknowledge that Wiz will process your personal data in accordance with Wiz's Privacy Policy and that you consent to the retention of your application for consideration for future opportunities at Wiz.\nApplicants must have the legal right to work in the country where the position is based, without the need for visa sponsorship. This role does not offer visa sponsorship.\nWiz is an equal opportunity employer. We do not discriminate based upon race, religion, color, national origin, sex (including pregnancy, childbirth, reproductive health decisions, or related medical conditions), sexual orientation, gender identity, gender expression, age, status as a protected veteran, status as an individual with a disability, genetic information, political views or activity, or other applicable legally protected characteristics. \nBy submitting your application, you acknowledge that Wiz will process your personal data in accordance with Wiz's Privacy Policy.",
    "postedAt": "2026-10-06",
-   "source": "אתר החברה"
-  },
-  {
-   "title": "Technical Product Associate",
-   "company": "Wiz",
-   "location": "Tel Aviv",
-   "url": "https://www.wiz.io/careers/job/4615170006/:title?gh_jid=4615170006",
-   "description": "Come join the organization that is redefining security for the AI era. As one of the fastest-growing startups ever, we enable teams to secure cloud and AI applications by connecting code, cloud, and runtime into a single shared context. Trusted by security teams all over the world, we have a proven track record of success and a culture that values world-class talent. Not to mention, we're now powered by Google, meaning we offer our customers an AI-powered platform that harnesses Google’s Threat Intelligence and Security Operations to better detect, prevent, and respond to threats across all environments, allowing for further innovation.\nOur Wizards from all over the globe work together to protect the infrastructure of our customers, including over 65% of the Fortune 100, who trust us to scan and secure over 230 billion files daily. We’re honored to be a leading player in a massive and growing market, and we continue to look for exceptional Wizards who are eager to make a significant impact on our team. At Wiz, you’ll have the freedom to think creatively, dream big, and use your full range of skills to contribute to our momentous growth. Come join our team and help us create secure cloud environments that allow even the best companies to move faster, all while having some fun!\nMinimum Qualifications\n- Hands-on proficiency in Linux, Windows, Python, Bash, Docker, Kubernetes, PowerShell, and a strong understanding of the OSI model.\n- Solid knowledge of networking concepts and cloud infrastructure.\n- Proven experience in applying cybersecurity best practices to real-world scenarios.\nPreferred Qualifications\n- Degree in Computer Science, equivalent technical background, or hands-on technical experience.\n- Self-motivated and capable of working both independently and collaboratively within a team.\n- Strong communication skills.\nAbout the job\nWe’re looking for a Technical Product Associate to join our Product team and help expand the power of Wiz. In this role, you’ll play a key role in protecting our customers' cloud environments from cyber threats. Your work will directly contribute to customer success and push the boundaries of cloud security. This isn’t just a job, it’s a unique growth opportunity. You’ll gain hands-on experience that can pave the way for exciting career paths in product management, security research, or development\nResponsibilities\n- Innovate and develop advanced detection mechanisms, algorithms, and automated solutions to accurately identify and classify technologies within cloud environments, enhancing Wiz's vulnerability management offering.\n- Analyze cloud services, APIs, and log payloads to ensure compliance with industry standards and customer requirements.\n- Stay current with the latest technologies and industry trends.\n- Implement customer requests and industry standards to position Wiz as a market leader.\n- Collaborate with our Research and Backend teams.\nApplicants must have the legal right to work in the country where the position is based, without the need for visa sponsorship. This role does not offer visa sponsorship.\nWiz is an equal opportunity employer. We do not discriminate based upon race, religion, color, national origin, sex (including pregnancy, childbirth, reproductive health decisions, or related medical conditions), sexual orientation, gender identity, gender expression, age, status as a protected veteran, status as an individual with a disability, genetic information, political views or activity, or other applicable legally protected characteristics. \nBy submitting your application, you acknowledge that Wiz will process your personal data in accordance with Wiz's Privacy Policy.",
-   "postedAt": "2026-10-06",
-   "source": "אתר החברה"
-  },
-  {
-   "title": "Biz Ops Coordinator (Temporary position for Maternity Leave)",
-   "company": "Cato Networks",
-   "location": "Tel Aviv District, Israel",
-   "url": "https://www.catonetworks.com/careers/careers-post/4967775101?gh_jid=4967775101",
-   "description": "Welcome to the future of cloud networking and security! \nCato Networks is the first company to converge enterprise networking and security into one centralized and global service that is delivered by cloud. It is led by networking and security pioneer Shlomo Kramer (Check Point, Imperva) and early investor (Palo Alto Networks, Exabeam, Trusteer and more). Cato’s unique technology inspired a brand-new product category, later named “SASE” by Gartner and a market expected to reach $28.5 billion by 2028.\nThis is your opportunity to get on the rocket ship and join a company that is building a cutting-edge enterprise network and secure cloud platform, and is on a fast track to becoming the worldwide market leader – don’t miss it!\nThe Business Operations Coordinator will support the efficient functioning of the business by managing various operational tasks. This role involves coordinating with different departments (DevOps, Finance, NetOps Legal), handling multiple tasks in parallel, working with multiple vendors and ensuring smooth day-to-day operations. \nResponsibilities: \n- Assist with the execution of business projects and initiatives. \n- Manage the delivery and installation process of new PoPs. \n- Manage the Logistics of all PoP gear and network, including order submission and inventory monitoring. \n- Manage and track ongoing tasks, including forecasting. \n- Coordinate Operational tasks with various vendors. \n- Maintain and update tasks on a weekly basis. \n- Provide operational support to various departments as needed. \nRequirements: \n- A strong “how can we make it happen” mindset, with a proactive attitude and willingness to take ownership. \n- Ability to manage and support multiple processes in parallel in a fast-paced environment. \n- Good communication and interpersonal skills, and the ability to work with multiple teams, departments, and external stakeholders. \n- High self-learning ability and motivation to continuously learn new tools and business. \n- Familiarity with operational and monitoring tools such as Jira and Grafana (hands-on experience is an advantage). \n- Organized, detail-oriented, and able to work independently while being a strong team player. \n- Basic networking knowledge - An advantage. \n- Occasional availability after work hours (on urgent occasions). \n- Bachelor’s degree in Logistics, Supply Chain or Business Economics - An advantage.",
-   "postedAt": "2026-10-08",
-   "source": "אתר החברה"
-  },
-  {
-   "title": "Business Operations Specialist",
-   "company": "Cato Networks",
-   "location": "Tel Aviv District, Israel",
-   "url": "https://www.catonetworks.com/careers/careers-post/4997328101?gh_jid=4997328101",
-   "description": "Welcome to the future of cloud networking and security! \nCato Networks is the first company to converge enterprise networking and security into one centralized and global service that is delivered by cloud. It is led by networking and security pioneer Shlomo Kramer (Check Point, Imperva) and early investor (Palo Alto Networks, Exabeam, Trusteer and more). Cato’s unique technology inspired a brand-new product category, later named “SASE” by Gartner and a market expected to reach $28.5 billion by 2028.\nThis is your opportunity to get on the rocket ship and join a company that is building a cutting-edge enterprise network and secure cloud platform, and is on a fast track to becoming the worldwide market leader – don’t miss it!\n We are looking for a highly organized and proactive Business Operations Specialist to support the ongoing operations of the Support organization. \nThe role combines department-wide operational ownership with administrative support for the department Chief, and includes responsibility for events, budget management, vendors, systems, and ongoing organizational needs. \nResponsibilities\n- Manage ongoing operational activities and projects across the Support organization. \n- Lead the planning and execution of global Support events at scale, covering venues, travel, vendors, logistics, budgets, contracts, and on-site coordination. \n- Own the department’s annual budget planning and ongoing management, including spend tracking, forecasting, reporting, budget utilization, invoices, financial visibility for leadership, and the implementation and ongoing management of the supporting budget-management solution and related financial processes. \n- Manage initiatives arising from Regional Councils and other Support programs, including prioritization, stakeholder coordination, execution, and follow-through. \n- Manage operational systems and tools, including implementation of new solutions and ongoing coordination with vendors around renewals, contracts, licenses, and commercial needs. \n- Provide leadership visibility across key operational initiatives, including progress, priorities, risks, dependencies, and budget utilization. \n- Coordinate with Finance, Procurement, HR, Travel, IT, Workplace, and other internal stakeholders. \n- Own additional department-wide operational needs, such as senior leadership visits, employee travel, office seating changes, and other organizational initiatives. \n- Provide administrative and operational support to the department Chief, including calendar management, travel arrangements, invoice and expense approvals, meetings, and follow-ups. \nRequirements\n- Strong organizational and project management skills. \n- Ability to manage multiple priorities independently and drive tasks through completion. \n- Strong attention to detail and a high level of ownership. \n- Experience working with budgets, vendors, events, or operational processes. \n- Strong communication and stakeholder-management skills. \n- Ability to work effectively with senior leadership and global teams. \n- Ability to understand operational context, translate needs into clear actions, and proactively manage risks, blockers, and dependencies. \n- Excellent English and Hebrew.",
-   "postedAt": "2026-10-07",
-   "source": "אתר החברה"
+   "source": "אתר החברה",
+   "alsoAt": [
+    "https://www.wiz.io/careers/job/4645081006/:title?gh_jid=4645081006",
+    "https://www.wiz.io/careers/job/4615170006/:title?gh_jid=4615170006"
+   ]
   },
   {
    "title": "MDR Security Analyst (Threat Hunting)",
@@ -89,7 +57,10 @@
    "url": "https://www.catonetworks.com/careers/careers-post/4839355101?gh_jid=4839355101",
    "description": "Welcome to the future of cloud networking and security! \nCato Networks is the first company to converge enterprise networking and security into one centralized and global service that is delivered by cloud. It is led by networking and security pioneer Shlomo Kramer (Check Point, Imperva) and early investor (Palo Alto Networks, Exabeam, Trusteer and more). Cato’s unique technology inspired a brand-new product category, later named “SASE” by Gartner and a market expected to reach $28.5 billion by 2028.\nThis is your opportunity to get on the rocket ship and join a company that is building a cutting-edge enterprise network and secure cloud platform, and is on a fast track to becoming the worldwide market leader – don’t miss it!\nWe are seeking a highly energetic and talented security analyst to join Cato Networks' Managed Detection and Response (MDR) team. As an MDR security analyst, your primary responsibility will be to identify and respond to security threats across our service customers. You will utilize the groundbreaking Cato Threat Hunting System to proactively seek out unknown threats and enhance Cato Networks hunting capabilities. Leveraging the Cato Cloud data warehouse, you will develop threat hunting technics to effectively detect and address security threats. Moreover, you will serve as a trusted advisor to our MDR service clients, providing valuable insights into their security posture and the threat landscape they face \nThis position offers an exceptional opportunity for network security enthusiasts who are passionate about Network Security, Malware Analysis, Threat Hunting, and Threat Intelligence. \nResponsibilities \n- Act as a Customer Security Advisor, conducting threat-hunting activities and performing security assessments on customer networks. Effectively communicate findings, recommendations for remediation, and mitigation strategies to customers \n- Serve as an escalation point for the SOC analysts, assisting in the investigation, analysis, and response to security incidents \n- Develop cyber kill-chain indicators of an attack and hunting heuristics to enhance the ongoing threat-hunting process \n- Enhance the product accuracy and its capacity to detect emerging threats within the dynamic security landscape \nRequirements and skills \n- Proven hands-on experience in the cybersecurity industry \n- Excellent customer service skills \n- Strong knowledge of networking architecture and protocols, including TCP/IP, DNS, SSL, SMB, HTTP, IP Routing, etc. \n- Comprehensive understanding of the cybersecurity landscape, common threats, and attack scenarios, such as malware infections, command and control (C&C) communication, drive-by attacks, phishing, and network scans \n- Practical experience with security technologies, including firewalls (FW), intrusion prevention systems/intrusion detection systems (IPS/IDS), antivirus (AV), security information and event management (SIEM) systems, endpoint protection, and network forensics tools \n- Analytical mindset, capable of formulating hypotheses and validating them through in-depth analysis and technical evidence \n- Fluent in English with exceptional communication skills \n- Proficiency in at least one scripting language such as Python or Ruby \n- Advantageous: Experience with Extended Detection and Response (XDR) solutions \n- Advantageous: Previous experience working in Managed Security Service Provider (MSSP) or Managed Detection and Response (MDR) providers as a Threat Hunter or Security Analyst \n- Ability to work effectively as a team player, demonstrating responsibility and strong organizational skills \nEducation \n- Advantage – BSc. in Computer Science, Information technology, Mathematics or similar",
    "postedAt": "2026-10-02",
-   "source": "אתר החברה"
+   "source": "אתר החברה",
+   "alsoAt": [
+    "https://www.catonetworks.com/careers/careers-post/4997328101?gh_jid=4997328101"
+   ]
   },
   {
    "title": "Customer Success Manager",
@@ -110,13 +81,16 @@
    "source": "אתר החברה"
   },
   {
-   "title": "Onboarding Manager SMB",
+   "title": "Search User Acquisition Manager",
    "company": "Connecteam",
    "location": "Tel Aviv District, Israel",
-   "url": "https://connecteam.com/careers/6177515004?gh_jid=6177515004",
-   "description": "Who Connecteam is:\nConnecteam is the leading platform for managing deskless teams, trusted by over 80,000 businesses worldwide.\nWe built Connecteam for real operators - the people running shifts, jobs, and teams across stores and sites. The kind of work that doesn’t happen behind a desk, and doesn’t have time for messy spreadsheets, scattered group chats, or tools that don’t talk to each other. Connecteam brings daily operations and team communication into one intuitive app - from hiring and scheduling to training, tasks, and day-to-day coordination. It gives teams the clarity and control to run the day, shift after shift, job after job.\nBacked by $220M+ from Insights Partners, Stripes, and Tiger Global, Connecteam is rapidly expanding worldwide - empowering frontline teams to work smarter, stay connected, and operate with greater efficiency.\nAbout the role:\nAs Connecteam’s SMB Onboarding Manager, you will lead customers through their first and most critical phase with our product - onboarding. You’ll partner with small and growing businesses to ensure they successfully adopt and implement Connecteam’s solution, driving measurable value and setting the foundation for long-term success.\nKey Responsibilities:\n- Managing the end-to-end onboarding process for SMB customers, from kick-off call to activation\n- Delivering tailored training sessions to help clients configure and implement Connecteam based on their unique business needs\n- Guiding customers to quick wins that showcase the platform’s value and increase adoption\n- Ensuring customers establish strong usage habits that drive retention and satisfaction\n- Identifying at-risk clients early and creating proactive strategies to mitigate churn\n- Becoming the customer advocate within Connecteam, collaborating with Product, Development, and Customer Success teams to ensure customer needs are heard\n- Continuously optimizing the onboarding process to improve efficiency, scalability, and customer experience\nWork days are Sunday to Thursday, during standard business hours.\nExperience & Skills:\n- Fluent English (spoken and written) - MUST\n- Fluent Hebrew (spoken and written) - MUST, due to working with a portion of our Israeli customers\n- 1+ years of experience in SaaS onboarding, implementation, or customer-facing roles - MUST\n- Experience working with SMB clients from all regions including ISR - strong advantage\n- Strong presentation and training skills (remote and in-person)\n- Tech-savvy with the ability to quickly learn and explain software solutions\n- High level of organization and ability to manage multiple onboarding projects simultaneously\n- A team player who thrives in a dynamic, fast-paced startup environment\nPositive attitude, empathy, and high energy!\n#LI-Hybrid\nJoining Connecteam Is The Smart Move:\n- We build our people up. Every team member is treated as a long-term investment and we recognize the value in always nurturing and training them so they can go above and beyond in their skills and job duties.\n- We make an impact on our customer’s business. We are on a mission to provide managers of all business types and sizes with the tools they need to communicate, operate, engage, and run their deskless workforce. Our product offers them an effective and affordable solution to run their business.\n- We get the job done. Connecteam employees are passionate in executing their job duties so they can drive the company forward and provide real value to our customers. \n- We have fun! From weekly happy hours to holiday parties, we always enjoy each other’s company (and good food, of course). Connecteam is like one big, happy family!\n- Everyone is welcome. Connecteam is committed to building an encouraging, caring, and supportive environment. We share a responsibility to support our team and enrich their lives. \nTogether we will shape the future of work!\nOur privacy policy",
-   "postedAt": "2026-09-22",
-   "source": "אתר החברה"
+   "url": "https://connecteam.com/careers/6210697004?gh_jid=6210697004",
+   "description": "Who Connecteam is:\nConnecteam is the leading platform for managing deskless teams, trusted by over 80,000 businesses worldwide.\nWe built Connecteam for real operators - the people running shifts, jobs, and teams across stores and sites. The kind of work that doesn’t happen behind a desk, and doesn’t have time for messy spreadsheets, scattered group chats, or tools that don’t talk to each other.\nConnecteam brings daily operations and team communication into one intuitive app - from hiring and scheduling to training, tasks, and day-to-day coordination. It gives teams the clarity and control to run the day, shift after shift, job after job.\nBacked by $220M+ from Insight Partners, Stripes, and Tiger Global, Connecteam is rapidly expanding worldwide - empowering frontline teams to work smarter, stay connected, and operate with greater efficiency.\nAbout The Role:\nAs an Expert Search User Acquisition Manager in Connecteam, you will help our acquisition efforts, be responsible for setting, optimizing, and scaling campaigns on Search campaigns (Google and Bing ads). You'll work closely with the bigger team, providing actionable insights and sharing best practices and knowledge. \nKey Responsibilities:\n- Set, optimize, and scale search campaigns in order to achieve KPIs\n- Share actionable insights and knowledge with existing PPC account managers.\n- Analyze performance based on ROI and engagement to drive actionable insights\n- Co-initiate and implement team’s performance oriented projects, constantly seeking improvement opportunities\n- Work together with CS, Sales and product to optimize every step of the funnel\n- Work closely with the creative and content teams to improve Conv Rate\n- Identify trends and constantly come up with new growth opportunities\n- Initiate, structure and measure AB tests on landing pages\n- Combine business and creative thinking to understand user pain points, identify growth opportunities, and translate insights into practical actions that improve campaign and funnel performance.\nExperience & Skills:\n- Excellent interpersonal, and communication skills\n- Fast learner with a proactive, self-sufficient approach; able to independently research, troubleshoot, and find solutions in a dynamic growth environment.\n- “Can-do” and hands-on mentality, growth mindset, adaptability, and a drive for continuous improvement\n- Strong attention to detail, with the ability to dive deep into campaign data, keyword structures, funnels, and experiments to uncover optimization opportunities\n- At Least 2 years hands-on experience managing Google search campaigns\n- Fluent English verbal and written \n- Outstanding analytical and quantitative skill set - a must\n- Proficiency in Microsoft Excel and large-scale‌ ‌data‌ ‌analysis\n- Capable of working independently, while also being a great‌ ‌team‌ ‌player\n- Prioritize high-impact initiatives and focus on actions that move the needle on acquisition growth, efficiency, and business KPIs.\n- Critical thinker and problem solver\n- Bachelor’s degree (BA/BS) in exact science, economics, industrial engineering, marketing, business or related fields\n- Experience with other acquisition channels is an advantage \n- Experience in a B2B SaaS company - huge advantage\n#LI-Hybrid\nJoining Connecteam Is The Smart Move:\n- We build our people up. Every team member is treated as a long-term investment and we recognize the value in always nurturing and training them so they can go above and beyond in their skills and job duties.\n- We make an impact on our customer’s business. We are on a mission to provide managers of all business types and sizes with the tools they need to communicate, operate, engage, and run their deskless workforce. Our product offers them an effective and affordable solution to run their business.\n- We get the job done. Connecteam employees are passionate in executing their job duties so they can drive the company forward and provide real value to our customers. \n- We have fun! From weekly happy hours to holiday parties, we always enjoy each other’s company (and good food, of course). Connecteam is like one big, happy family!\n- Everyone is welcome. Connecteam is committed to building an encouraging, caring, and supportive environment. We share a responsibility to support our team and enrich their lives. \nTogether we will shape the future of work!\nOur privacy policy",
+   "postedAt": "2026-09-30",
+   "source": "אתר החברה",
+   "alsoAt": [
+    "https://connecteam.com/careers/6177515004?gh_jid=6177515004"
+   ]
   },
   {
    "title": "Product Manager",
@@ -125,15 +99,6 @@
    "url": "https://connecteam.com/careers/5840326004?gh_jid=5840326004",
    "description": "Connecteam is a TLV-based startup that’s on a mission to change the work experience for 80% of the world’s global workforce — the deskless workforce. Our all-in-one workforce management solution allows 36,000+ businesses all across the globe to easily communicate, operate and train their frontline employees.\nWhat’s the job?\nWe are seeking a passionate Product Manager with experience in building web and mobile products in an agile software development environment.\nOur ideal candidate lives and breathes product, loves technology, and is addicted to building tools with great user experience.\nYou will work directly with our product teams in order to deliver a great product while keeping its core values: easy-to-use, fun, and intuitive. \nWhat you'll be doing: \n- Define the roadmap and product vision.\n- Manage the full product cycle of new products.\n- Research and analyze users’ needs and competitors.\n- Define user flows and sketch wireframes.\n- Work closely with our product teams, Product Designers, Analyst, and Developers all the way to production.\nWhich qualifications you’ll need:\n- At least 2-3 years of experience in Product management in a SaaS company/ Fintech/ SU\n- Experience in one of the following areas: HR technology (such as HRIS, ATS, or employee management systems), building AI agents, or B2B SaaS growth (such as activation, conversion, and customer expansion).\n- Self-driven, with proven ability to push new initiates and manage ongoing projects from A-Z\n- A self-starter with the ability to manage deadlines and prioritize tasks in a fast-paced environment\n- Capable of working independently, while also being a great‌ ‌team‌ ‌player \n- Highly motivated with a can-do attitude and hands-on mentality\n- Superior communication, both written and verbal\n- Detail-oriented, organized with a keen eye for detail\n- A people person with excellent organizational and interpersonal skills\n- Experience in third-party integrations and APIs (nice to have)\nJoining Connecteam Is The Smart Move:\n- We build our people up. Every team member is treated as a long-term investment and we recognize the value in always nurturing and training them so they can go above and beyond in their skills and job duties.\n- We make an impact on our customer’s business. We are on a mission to provide managers of all business types and sizes with the tools they need to communicate, operate, engage, and run their deskless workforce. Our product offers them an effective and affordable solution to run their business.\n- We get the job done. Connecteam employees are passionate in executing their job duties so they can drive the company forward and provide real value to our customers. \n- We have fun! From weekly happy hours to holiday parties, we always enjoy each other’s company (and good food, of course). Connecteam is like one big, happy family!\n- Everyone is welcome. Connecteam is committed to building an encouraging, caring, and supportive environment. We share a responsibility to support our team and enrich their lives. \nTogether we will shape the future of work!\nOur privacy policy",
    "postedAt": "2026-08-18",
-   "source": "אתר החברה"
-  },
-  {
-   "title": "Search User Acquisition Manager",
-   "company": "Connecteam",
-   "location": "Tel Aviv District, Israel",
-   "url": "https://connecteam.com/careers/6210697004?gh_jid=6210697004",
-   "description": "Who Connecteam is:\nConnecteam is the leading platform for managing deskless teams, trusted by over 80,000 businesses worldwide.\nWe built Connecteam for real operators - the people running shifts, jobs, and teams across stores and sites. The kind of work that doesn’t happen behind a desk, and doesn’t have time for messy spreadsheets, scattered group chats, or tools that don’t talk to each other.\nConnecteam brings daily operations and team communication into one intuitive app - from hiring and scheduling to training, tasks, and day-to-day coordination. It gives teams the clarity and control to run the day, shift after shift, job after job.\nBacked by $220M+ from Insight Partners, Stripes, and Tiger Global, Connecteam is rapidly expanding worldwide - empowering frontline teams to work smarter, stay connected, and operate with greater efficiency.\nAbout The Role:\nAs an Expert Search User Acquisition Manager in Connecteam, you will help our acquisition efforts, be responsible for setting, optimizing, and scaling campaigns on Search campaigns (Google and Bing ads). You'll work closely with the bigger team, providing actionable insights and sharing best practices and knowledge. \nKey Responsibilities:\n- Set, optimize, and scale search campaigns in order to achieve KPIs\n- Share actionable insights and knowledge with existing PPC account managers.\n- Analyze performance based on ROI and engagement to drive actionable insights\n- Co-initiate and implement team’s performance oriented projects, constantly seeking improvement opportunities\n- Work together with CS, Sales and product to optimize every step of the funnel\n- Work closely with the creative and content teams to improve Conv Rate\n- Identify trends and constantly come up with new growth opportunities\n- Initiate, structure and measure AB tests on landing pages\n- Combine business and creative thinking to understand user pain points, identify growth opportunities, and translate insights into practical actions that improve campaign and funnel performance.\nExperience & Skills:\n- Excellent interpersonal, and communication skills\n- Fast learner with a proactive, self-sufficient approach; able to independently research, troubleshoot, and find solutions in a dynamic growth environment.\n- “Can-do” and hands-on mentality, growth mindset, adaptability, and a drive for continuous improvement\n- Strong attention to detail, with the ability to dive deep into campaign data, keyword structures, funnels, and experiments to uncover optimization opportunities\n- At Least 2 years hands-on experience managing Google search campaigns\n- Fluent English verbal and written \n- Outstanding analytical and quantitative skill set - a must\n- Proficiency in Microsoft Excel and large-scale‌ ‌data‌ ‌analysis\n- Capable of working independently, while also being a great‌ ‌team‌ ‌player\n- Prioritize high-impact initiatives and focus on actions that move the needle on acquisition growth, efficiency, and business KPIs.\n- Critical thinker and problem solver\n- Bachelor’s degree (BA/BS) in exact science, economics, industrial engineering, marketing, business or related fields\n- Experience with other acquisition channels is an advantage \n- Experience in a B2B SaaS company - huge advantage\n#LI-Hybrid\nJoining Connecteam Is The Smart Move:\n- We build our people up. Every team member is treated as a long-term investment and we recognize the value in always nurturing and training them so they can go above and beyond in their skills and job duties.\n- We make an impact on our customer’s business. We are on a mission to provide managers of all business types and sizes with the tools they need to communicate, operate, engage, and run their deskless workforce. Our product offers them an effective and affordable solution to run their business.\n- We get the job done. Connecteam employees are passionate in executing their job duties so they can drive the company forward and provide real value to our customers. \n- We have fun! From weekly happy hours to holiday parties, we always enjoy each other’s company (and good food, of course). Connecteam is like one big, happy family!\n- Everyone is welcome. Connecteam is committed to building an encouraging, caring, and supportive environment. We share a responsibility to support our team and enrich their lives. \nTogether we will shape the future of work!\nOur privacy policy",
-   "postedAt": "2026-09-30",
    "source": "אתר החברה"
   },
   {
@@ -164,49 +129,18 @@
    "source": "אתר החברה"
   },
   {
-   "title": "Security Analyst (Student Position)",
-   "company": "Upwind",
-   "location": "Ramat Gan, Tel Aviv, Israel",
-   "url": "https://www.upwind.io/careers/co/tel-aviv/A1.543/security-analyst-student-position/all",
-   "description": "Description\nUpwind is a next-generation Cloud Security Platform that leverages runtime context to identify and prioritize critical risks, providing precise insights and efficient cloud security management. Unlike traditional tools, Upwind uses runtime data proactively for risk prioritization and posture insights, ensuring teams focus on what truly matters. With industry-leading efficiency and eBPF-powered sensors, Upwind delivers comprehensive capabilities, including agentless cloud posture discovery, real-time threat protection, and integrated API security. From misconfigurations to malware defense, Upwind ensures end-to-end, cost-effective cloud infrastructure protection. At Upwind, you’ll have the opportunity to think creatively, explore new ideas, and use your skills to make a meaningful impact on our growth.\nWe are looking for a Security Engineer. Take a central role in safeguarding cloud environments like Kubernetes and container services from potential cyber vulnerabilities. Your contributions will enhance our runtime security platform, ensuring premier protection for our clients.\nResponsibilities \n- Develop, test, and roll out detection mechanisms to pinpoint and address security vulnerabilities specific to Upwind’s environment.\n- Keep pace with the latest cloud security practices and trends, bringing in fresh ideas to elevate Upwind’s defenses.\n- Engage directly with customers to gather feedback, understand their needs, and ensure their concerns are addressed in our threat detection mechanism.\n- Incorporate feedback and adhere to recognized industry standards, fortifying Upwind’s reputation in cloud security.\n- Collaborate effectively with our Research and Backend teams to enhance and adapt our platform.\nRequirements\n- Currently enrolled as a student in engineering or computer science\n- Experience in cybersecurity, with an emphasis on cloud environments.\n- Solid understanding of networking and networking in cloud platforms.\n- Knowledge of OS, specifically Linux & Windows, complemented by familiarity with tools like Python, Bash, Docker, and K8s.\n- Ability to adapt and learn, working effectively both solo and within a team setting.",
-   "postedAt": "2026-10-08",
-   "source": "אתר החברה"
-  },
-  {
-   "title": "Field Operations - Global Team",
-   "company": "Exodigo",
-   "location": "Tel Aviv, Israel- Nitzba - 10 floor, Israel",
-   "url": "https://www.comeet.com/jobs/exodigo/89.005/field-operations---global-team/DF.E68",
-   "description": "Description\nExodigo is the leading underground mapping solution for non-intrusive discovery. Our platforms combine multi-sensor fusion, 3D imaging, and AI technologies to create complete, accurate underground maps that enable confident decision-making for customers across the built world. We transform the project lifecycle for our customers, who include key community stakeholders in the utilities, transportation and government sectors.\nWe are experiencing sky-rocketing growth and closed a historically large $96M Series B round in July of 2025.\nJob description\nJoin Exodigo as a Field Operations - Global Team, where you will have a direct impact on our product success. We are looking for a proactive professional to manage and support our field operations activities, from initial setup through final delivery, while working in a fast-paced and innovative environment.\nResponsibilities:\n- Conduct area scanning operations for clients in various locations\n- Perform hands-on, physically demanding work in the field\n- Operate, maintain, and troubleshoot advanced technology equipment\n- Ensure all tasks are performed in accordance with company standards and procedures\n- Provide feedback and contribute to the ongoing development and improvement of our products\n- Maintain a high level of professionalism and customer service\nRequirements\n- Strong interest in technology and operations\n- U.S. citizenship- a must.\n- Willingness to travel and work in the US/EU for 3-month intervals, with 1-month intervals in Israel\n- Previous experience in field work – an advantage\n- Strong problem-solving skills and adaptability\n- Excellent communication and interpersonal skills\n- Ability to work independently and as part of a team\n- Commitment to learning and personal growth\nThis position offers the opportunity to work in a dynamic, fast-paced environment with a diverse team of professionals.\nDue to the nature of the job, candidates must have a valid passport and be able to travel internationally. The company will handle all necessary travel arrangements and accommodations.\nLearn more\nhttps://www.exodigo.com\nhttps://www.youtube.com/@exodigo2321",
-   "postedAt": "2026-10-08",
-   "source": "אתר החברה"
-  },
-  {
    "title": "Field Operations Employee",
    "company": "Exodigo",
    "location": "Tel Aviv-Yafo, Rival- Tel Aviv, Israel",
    "url": "https://www.exodigo.com/open-positions/Field_Operations_Employee_85-549",
    "description": "Description\nExodigo is the leading underground mapping solution for non-intrusive discovery. Our platforms combine multi-sensor fusion, 3D imaging, and AI technologies to create complete, accurate underground maps that enable confident decision-making for customers across the built world. We transform the project lifecycle for our customers, who include key community stakeholders in the utilities, transportation and government sectors. \nWe are experiencing sky-rocketing growth and closed a historically large $96M Series B round in July of 2025.\nJob description\nAs a Field Operator at Exodigo, you will play a crucial role in our mission to innovate underground mapping technology. You will be part of a dynamic and collaborative team that works on-site to deploy and maintain our cutting-edge equipment.\nYour responsibilities will include setting up and operating technological devices, diagnosing, and solving technical issues, and ensuring the smooth execution of field projects.\nWe value employees who demonstrate a strong work ethic, enthusiasm for learning, and the ability to adapt to new challenges. This role offers an excellent opportunity for personal and professional growth within a supportive environment. You will receive training to master our technology and gain hands-on experience in a rapidly advancing field.\nOut of our offices in Tel Aviv, The role involves physical teamwork in the field, requiring the ability to operate various technological tools and handle troubleshooting. The work schedule varies according to projects and may include night and day shifts.\nRequirements\nRequirements:\n· Ability to work flexible working hours.\n· Availability to work in the central region and occasionally throughout the country.\n· Ability to perform physical work, including prolonged walking and standing.\n· High self-discipline, initiative, and a desire to learn and grow.\n· Ability to work in a team.\n· Logical thinking and the ability to work independently and responsibly.\n· Commitment to a minimum of one year.\nAdvantages:\n· Background in engineering, drones, construction, and infrastructure.\nWe are looking for individuals who are interested in being part of a growing company.\nLearn more\nhttps://www.exodigo.com\nhttps://www.youtube.com/@exodigo2321",
    "postedAt": "2026-10-05",
-   "source": "אתר החברה"
-  },
-  {
-   "title": "Signal Analyst",
-   "company": "Exodigo",
-   "location": "Tel Aviv, Israel- Nitzba - 10 floor, Israel",
-   "url": "https://www.exodigo.com/open-positions/signal-analyst",
-   "description": "Description\nExodigo is the leading underground mapping solution for non-intrusive discovery. Our platforms combine multi-sensor fusion, 3D imaging, and AI technologies to create complete, accurate underground maps that enable confident decision-making for customers across the built world. We transform the project lifecycle for our customers, who include key community stakeholders in the utilities, transportation and government sectors. \nWe are experiencing sky-rocketing growth and closed a historically large $96M Series B round in July of 2025.\nJob description\nJoin Exodigo as a Signal Analyst, where you will have a direct impact on our Product success. \nExodigo is looking for a Signal Process Analyst. We are seeking someone to join our amazing adventure and take part in the development, production, and delivery of a unique product that is truly making a change.\nWe are creating the gold standard of underground non-intrusive discovery for industrial and commercial use by deploying proprietary, innovative AI and multi-sensor technology solutions to change the way you see the underground.\nYour main responsibilities will include Analyzing multiple data sources and technological sensors as part of the production of our main product—an underground map.\nKey responsibilities:\n- Supporting the production process of one of our products—an underground map.\n- Analyzing multiple technological sensors using advanced software.\n- Participating in QA for product development processes.\n- Fusing data sources into one product.\nRequirements\n- Technological orientation\n- High degree of accuracy and attention to detail\n- High sense of responsibility\n- Team player\n- Experience as a Visual/Geospatial Analyst – an advantage\n- Experience with analyzing physical sensors – an advantage\n- Verbal and written skills in English and Hebrew – required\nLearn more\nhttps://www.exodigo.com\nhttps://www.youtube.com/@exodigo2321",
-   "postedAt": "2026-10-08",
-   "source": "אתר החברה"
-  },
-  {
-   "title": "Utilities Coordinator",
-   "company": "Exodigo",
-   "location": "Tel Aviv-Yafo, Tel Aviv, Israel, Israel",
-   "url": "https://www.comeet.com/jobs/exodigo/89.005/utilities-coordinator/09.374",
-   "description": "Description\nExodigo is the leading underground mapping solution for non-intrusive discovery. Our platforms combine multi-sensor fusion, 3D imaging, and AI technologies to create complete, accurate underground maps that enable confident decision-making for customers across the built world. We transform the project lifecycle for our customers, who include key community stakeholders in the utilities, transportation and government sectors. \nWe are experiencing sky-rocketing growth and closed a historically large $96M Series B round in July of 2025.\nJob description\n- Utility coordination for transportation projects such as roads, railways, including light rail systems, and more. \n- Working with authorities and various stakeholders, managing processes, and advancing permits and traffic arrangements with municipal and infrastructure bodies. \n- Coordination with planners, authorities, and utility owners. \n- Centralizing, monitoring, and tracking projects managed within the department. \n- Working closely with the Project Manager and providing regular status updates. \n- Ability to analyze conflicts and propose engineering solutions. \n- Participating in and leading coordination meetings with external stakeholders.\nRequirements\n- Proven experience in utility coordination\n- Experience and familiarity with working with authorities to advance permits and approvals from utility companies and municipalities. \n- Familiarity with national infrastructure systems and municipal utility coordination systems (e.g., ECS – Tel Aviv). \n- Understanding of water, sewage, drainage, electricity, and telecommunications infrastructure. \n- Ability to read and understand traffic plans (signage, markings, etc.). \n- Knowledge of execution stages and coordination between disciplines. \n- Proficiency in AutoCAD, including designing, reading, and interpreting plans.\n- ﻿Proficiency in Office applications. \n- Ability to manage and advance multiple projects in parallel. \n- Ability to work under tight deadlines. \n- High level of organization, accuracy, and ability to work in a multi-stakeholder environment. \nLearn more\nhttps://www.exodigo.com\nhttps://www.youtube.com/@exodigo2321",
-   "postedAt": "2026-10-06",
-   "source": "אתר החברה"
+   "source": "אתר החברה",
+   "alsoAt": [
+    "https://www.comeet.com/jobs/exodigo/89.005/field-operations---global-team/DF.E68",
+    "https://www.exodigo.com/open-positions/signal-analyst",
+    "https://www.comeet.com/jobs/exodigo/89.005/utilities-coordinator/09.374"
+   ]
   },
   {
    "title": "Audit Associate - High Tech Sector",
@@ -850,23 +784,16 @@
   },
   {
    "title": "בקר /ת הונאות בריאות | אגף מטה ואסטרטגיה",
-   "company": "חברה חסויה",
-   "location": "רמת גן",
-   "url": "https://www.alljobs.co.il/Search/UploadSingle.aspx?JobID=8844507",
-   "description": "על התפקיד אגף מטה ואסטרטגיה של מנורה מבטחים מגייס בקר/ת הונאות בתחום ביטוחי בריאות. התפקיד כולל איתור, ניתוח וחקירה של מקרי הונאה, מניעתם ופיתוח תהליכי עבודה מקצועיים לשיפור מנגנוני הבקרה.\nתחומי אחריות-\n איתור דפוסים חריגים בתביעות ביטוחי בריאות.\n ביצוע חקירות עומק בתיקי תביעות בעלי חשד להונאה.\n הצלבות מידע ממערכות פנים-ארגוניות, מסמכים ומקורות מידע חיצוניים.\n בניית פרופיל סיכון ומודלים לזיהוי אנומליות והונאות סדרתיות.\n כתיבת דוחות חקירה מקצועיים והמלצות להמשך טיפול.\n פיקוח ובקרה על פעילות חוקרים.\n תחקור דוחות BI וניתוח מגמות הונאה לצורך שיפור מנגנוני הבקרה.\n עבודה מול בסיסי נתונים שונים\nדרישות:\n דרישות חובה-\n תואר ראשון - מערכות מידע, מדעי המחשב, תעשייה וניהול, כלכלה ודומיו.\n ניסיון של לפחות שנתיים באנליזת הונאות.\n ניסיון בתחומי ביטוח בריאות.\n יכולת ניתוח נתונים והסקת מסקנות.\n יכולת אנליטית גבוהה.\n חשיבה ביקורתית ויכולות זיהוי.\n כושר ביטוי גבוה בכתב ובעל פה.\n שליטה גבוהה ב-Excel.\n ניסיון במערכות BI\nיתרון - ידע ב-SQL\nמיקום: רמת גן, על קו הרכבת.\nהמשרה מתאימה גם לאנשים עם מוגבלות.\n* המשרה מיועדת לנשים ולגברים כאחד.\nעוד...\r\nהגשת מועמדות\nעדכון קורות החיים לפני שליחה\n עדכון קורות החיים לפני שליחה\r\n8844507\nמחיקת משרה\nללקוח VIP בלבד\nבטל מחיקת משרה\nשירות זה פתוח ללקוחות VIP בלבד\n רכוש חבילת\nשמירת משרה\nביטול שמירה\nרכוש חבילת \r\n שתף משרה\nשלח משרה למייל\nדיווח על תוכן לא הולם או מפלה\nדיווח על תוכן לא הולם או מפלה\nשמך המלאמה השם שלך?\nמייל\nתיאור\nתיאור\nשליחה\nתודה על שיתוף הפעולה\nמודים לך שלקחת חלק בשיפור התוכן שלנו :)\nהמשרה נמחקה\n תוכל לצפות בה בדף המשרות שלי\nהמשרה הוחזרה לרשימת תוצאות החיפוש\nהאם תרצה להסיר את המשרה מרשימת\nהמשרות השמורות שלך?\nכן\r\n לא\nאירעה שגיאה בשליחת פרטיך למשרה",
-   "postedAt": "2026-10-08",
-   "jobType": "משרה מלאה",
-   "source": "AllJobs"
-  },
-  {
-   "title": "בקר /ת הונאות בריאות | אגף מטה ואסטרטגיה",
    "company": "מנורה מבטחים פנסיה וגמל בע\"מ",
    "location": "רמת גן",
    "url": "https://www.alljobs.co.il/Search/UploadSingle.aspx?JobID=8840593",
    "description": "על התפקיד אגף מטה ואסטרטגיה של מנורה מבטחים מגייס בקר/ת הונאות בתחום ביטוחי בריאות. התפקיד כולל איתור, ניתוח וחקירה של מקרי הונאה, מניעתם ופיתוח תהליכי עבודה מקצועיים לשיפור מנגנוני הבקרה.\nתחומי אחריות-\n איתור דפוסים חריגים בתביעות ביטוחי בריאות.\n ביצוע חקירות עומק בתיקי תביעות בעלי חשד להונאה.\n הצלבות מידע ממערכות פנים-ארגוניות, מסמכים ומקורות מידע חיצוניים.\n בניית פרופיל סיכון ומודלים לזיהוי אנומליות והונאות סדרתיות.\n כתיבת דוחות חקירה מקצועיים והמלצות להמשך טיפול.\n פיקוח ובקרה על פעילות חוקרים.\n תחקור דוחות BI וניתוח מגמות הונאה לצורך שיפור מנגנוני הבקרה.\n עבודה מול בסיסי נתונים שונים\nדרישות:\n דרישות חובה-\n תואר ראשון - מערכות מידע, מדעי המחשב, תעשייה וניהול, כלכלה ודומיו.\n ניסיון של לפחות שנתיים באנליזת הונאות.\n ניסיון בתחומי ביטוח בריאות.\n יכולת ניתוח נתונים והסקת מסקנות.\n יכולת אנליטית גבוהה.\n חשיבה ביקורתית ויכולות זיהוי.\n כושר ביטוי גבוה בכתב ובעל פה.\n שליטה גבוהה ב-Excel.\n ניסיון במערכות BI\nיתרון - ידע ב-SQL\nמיקום: רמת גן, על קו הרכבת.\nהמשרה מתאימה גם לאנשים עם מוגבלות.\n* המשרה מיועדת לנשים ולגברים כאחד.\n לעוד משרות ומידע על מנורה מבטחים פנסיה וגמל בע\"מ >\r\nעוד...\r\nהגשת מועמדות\nעדכון קורות החיים לפני שליחה\n עדכון קורות החיים לפני שליחה\r\n8840593\nמחיקת משרה\nללקוח VIP בלבד\nבטל מחיקת משרה\nשירות זה פתוח ללקוחות VIP בלבד\n רכוש חבילת\nשמירת משרה\nביטול שמירה\nרכוש חבילת \r\n שתף משרה\n משרות חברה\nשלח משרה למייל\nדיווח על תוכן לא הולם או מפלה\n //rotation between zone 201 and 216\r\n var cookie_Video_zone = getCookie('cookie_Video_zone');\r\n if (cookie_Video_zone == null) { cookie_Video_zone = 201; }\r\n else if (cookie_Video_zone == '201') {\r\n cookie_Video_zone = 216;\r\n }else {\r\n cookie_Video_zone = 201;\r\n }\r\n setCookie('cookie_Video_zone',cookie_Video_zone,'/');\r\n DisplayBnrOpenXScriptWithKeywordRealtime_InContainerID(cookie_Video_zone, 'divBannerVideoMitugSecond');\r\nדיווח על תוכן לא הולם או מפלה\nשמך המלאמה השם שלך?\nמייל\nתיאור\nתיאור\nשליחה\nתודה על שיתוף הפעולה\nמודים לך שלקחת חלק בשיפור התוכן שלנו :)\nהמשרה נמחקה\n תוכל לצפות בה בדף המשרות שלי\nהמשרה הוחזרה לרשימת תוצאות החיפוש\nהאם תרצה להסיר את המשרה מרשימת\nהמשרות השמורות שלך?\nכן\r\n לא\nאירעה שגיאה בשליחת פרטיך למשרה",
    "postedAt": "2026-10-08",
    "jobType": "משרה מלאה",
-   "source": "AllJobs"
+   "source": "AllJobs",
+   "alsoAt": [
+    "https://www.alljobs.co.il/Search/UploadSingle.aspx?JobID=8844507"
+   ]
   },
   {
    "title": "מנתח תהליכים ומערכות בצוות שוק ההון",
@@ -946,7 +873,13 @@
    "description": "רוצה להתחיל קריירה בעולם הדאטה - גם בלי ניסיון? זו ההזדמנות שלך \nתחום ה- data & BI הוא אחד התחומים המבוקשים ביותר היום - ואנחנו מחפשים אותך: בוגר/ת תואר עם חשיבה אנליטית חדה ורצון להיכנס לעולם שמניע החלטות עסקיות.\nאנחנו מציעים תוכנית הכשרה ייחודית, קצרה וללא עלות - שבסופה תשתלבו בתפקידי דאטה בחברות מובילות.\nמה מחכה לך בתוכנית?\nעבודה עם SQL וPower BI \nהיכרות עם כלי AI ואפיון פרויקטי BI.\n ניתוח נתונים והפקת תובנות עסקיות אמיתיות.\nבניית דוחות ואוטומציה של תהליכים.\nניסיון מעשי שייתן לך יתרון משמעותי בכניסה לשוק העבודה.\nדרישות:\n בוגר/ת תואר ראשון בתחום רלוונטי (ממוצע 80+)\nחשיבה אנליטית גבוהה ורקע טכנולוגי בסיסי.\nמוטיבציה להיכנס לעולם הדאטה.\nלא נדרש ניסיון קודם - אנחנו מלווים אותך מהשלב הראשון ועד ההשמה.\nלא מתאים לסטודנטים/ות עם יתרת לימודים של יותר מסמסטר.\nהמשרה מיועדת לנשים ולגברים כאחד. המשרה מיועדת לנשים ולגברים כאחד.\n לעוד משרות ומידע על Experis Academy >\r\nעוד...\r\nהגשת מועמדות\nעדכון קורות החיים לפני שליחה\n עדכון קורות החיים לפני שליחה\r\n8711842\nמחיקת משרה\nללקוח VIP בלבד\nבטל מחיקת משרה\nשירות זה פתוח ללקוחות VIP בלבד\n רכוש חבילת\nשמירת משרה\nביטול שמירה\nרכוש חבילת \r\n שתף משרה\n משרות חברה\nשלח משרה למייל\nדיווח על תוכן לא הולם או מפלה\n //rotation between zone 200 and 215\r\n var cookie_Carousel_zone = getCookie('cookie_Carousel_zone');\r\n if (cookie_Carousel_zone == null) { cookie_Carousel_zone = 200; }\r\n else if(cookie_Carousel_zone == '200') {\r\n cookie_Carousel_zone = 215;\r\n }else {\r\n cookie_Carousel_zone = 200;\r\n }\r\n setCookie('cookie_Carousel_zone',cookie_Carousel_zone,'/');\r\n DisplayBnrOpenXScriptWithKeywordRealtime_InContainerID(cookie_Carousel_zone, 'divBannerCarouselMitugFirst');\r\nדיווח על תוכן לא הולם או מפלה\nשמך המלאמה השם שלך?\nמייל\nתיאור\nתיאור\nשליחה\nתודה על שיתוף הפעולה\nמודים לך שלקחת חלק בשיפור התוכן שלנו :)\nהמשרה נמחקה\n תוכל לצפות בה בדף המשרות שלי\nהמשרה הוחזרה לרשימת תוצאות החיפוש\nהאם תרצה להסיר את המשרה מרשימת\nהמשרות השמורות שלך?\nכן\r\n לא\nאירעה שגיאה בשליחת פרטיך למשרה",
    "postedAt": "2026-10-07",
    "jobType": "משרה מלאה",
-   "source": "AllJobs"
+   "source": "AllJobs",
+   "alsoAt": [
+    "https://www.alljobs.co.il/Search/UploadSingle.aspx?JobID=8711844",
+    "https://www.alljobs.co.il/Search/UploadSingle.aspx?JobID=8712561",
+    "https://www.jobmaster.co.il/jobs/checknum.asp?key=9801980",
+    "https://www.jobmaster.co.il/jobs/checknum.asp?key=9801978"
+   ]
   },
   {
    "title": "עו\"ס/ית, מרב\"ע ו/או בוגר/ת תואר שני בקרימינולוגיה/פסיכולוגיה",
@@ -956,36 +889,6 @@
    "description": "לשירות וותיק (למעלה מ-20 שנים) שמתמחה בפיתוח מענים ייחודיים למתמודדי נפש דרוש.ה עו\"ס/ית, מרב\"ע ו/או בוגר/ת תואר שני בקרימינולוגיה/פסיכולוגיה בחצי משרה ומעלה.\nאנו מלווים מתמודדי נפש שמוכרים ע\"י ביטוח לאומי ומשרד הבריאות ובמהלך השנים פתחנו מענים ייחודיים הכוללים :\nשירות תחלואה כפולה\nשירות מוכוון טראומה/טראומה מינית\nשירות מוכוון הפרעות אכילה.\nאנו נשמח שתצטרפי אלינו ומתחייבים ל :\nהקפדה על הדרכות פרטניות והדרכות קבוצתיות\nמסלולי קידום רבים.\nשילוב מיטבי בין חיים מקצועיים לחיי המשפחה. המשרה מיועדת לנשים ולגברים כאחד.\nעוד...\r\nהגשת מועמדותהגש מועמדות\nעדכון קורות החיים לפני שליחה\n עדכון קורות החיים לפני שליחה\r\n יצירת קשר עם המעסיק\r\n8837086\nמחיקת משרה\nללקוח VIP בלבד\nבטל מחיקת משרה\nשירות זה פתוח ללקוחות VIP בלבד\nרכוש חבילת\nשמירת משרה\nביטול שמירה\nרכוש חבילת \n שתף משרה\nשלח משרה למייל\nדיווח על תוכן לא הולם או מפלה\r\nדיווח על תוכן לא הולם או מפלה\nשמך המלאמה השם שלך?\nמייל\nתיאור\nתיאור\nשליחה\nתודה על שיתוף הפעולה\nמודים לך שלקחת חלק בשיפור התוכן שלנו :)\nהמשרה נמחקה\n תוכל לצפות בה בדף המשרות שלי\nהמשרה הוחזרה לרשימת תוצאות החיפוש\nהאם תרצה להסיר את המשרה מרשימת\nהמשרות השמורות שלך?\nכן\r\n לא\nאירעה שגיאה בשליחת פרטיך למשרה",
    "postedAt": "2026-10-08",
    "jobType": "משרה מלאה",
-   "source": "AllJobs"
-  },
-  {
-   "title": "Junior  BI Analyst - בוגרי תואר",
-   "company": "Experis Academy",
-   "location": "תל אביב יפו",
-   "url": "https://www.alljobs.co.il/Search/UploadSingle.aspx?JobID=8711844",
-   "description": "רוצה להתחיל קריירה בעולם הדאטה - גם בלי ניסיון? זו ההזדמנות שלך \nתחום ה- data & BI הוא אחד התחומים המבוקשים ביותר היום - ואנחנו מחפשים אותך: בוגר/ת תואר עם חשיבה אנליטית חדה ורצון להיכנס לעולם שמניע החלטות עסקיות.\nאנחנו מציעים תוכנית הכשרה ייחודית, קצרה וללא עלות - שבסופה תשתלבו בתפקידי דאטה בחברות מובילות.\nמה מחכה לך בתוכנית?\nעבודה עם SQL וPower BI \nהיכרות עם כלי AI ואפיון פרויקטי BI.\n ניתוח נתונים והפקת תובנות עסקיות אמיתיות.\nבניית דוחות ואוטומציה של תהליכים.\nניסיון מעשי שייתן לך יתרון משמעותי בכניסה לשוק העבודה.\nדרישות:\n בוגר/ת תואר ראשון בתחום רלוונטי (ממוצע 80+)\nחשיבה אנליטית גבוהה ורקע טכנולוגי בסיסי.\nמוטיבציה להיכנס לעולם הדאטה.\nלא נדרש ניסיון קודם - אנחנו מלווים אותך מהשלב הראשון ועד ההשמה.\nלא מתאים לסטודנטים/ות עם יתרת לימודים של יותר מסמסטר.\nהמשרה מיועדת לנשים ולגברים כאחד. המשרה מיועדת לנשים ולגברים כאחד.\n לעוד משרות ומידע על Experis Academy >\r\nעוד...\r\nהגשת מועמדות\nעדכון קורות החיים לפני שליחה\n עדכון קורות החיים לפני שליחה\r\n8711844\nמחיקת משרה\nללקוח VIP בלבד\nבטל מחיקת משרה\nשירות זה פתוח ללקוחות VIP בלבד\n רכוש חבילת\nשמירת משרה\nביטול שמירה\nרכוש חבילת \r\n שתף משרה\n משרות חברה\nשלח משרה למייל\nדיווח על תוכן לא הולם או מפלה\n //rotation between zone 200 and 215\r\n var cookie_Carousel_zone = getCookie('cookie_Carousel_zone');\r\n if (cookie_Carousel_zone == null) { cookie_Carousel_zone = 200; }\r\n else if(cookie_Carousel_zone == '200') {\r\n cookie_Carousel_zone = 215;\r\n }else {\r\n cookie_Carousel_zone = 200;\r\n }\r\n setCookie('cookie_Carousel_zone',cookie_Carousel_zone,'/');\r\n DisplayBnrOpenXScriptWithKeywordRealtime_InContainerID(cookie_Carousel_zone, 'divBannerCarouselMitugFirst');\r\nדיווח על תוכן לא הולם או מפלה\nשמך המלאמה השם שלך?\nמייל\nתיאור\nתיאור\nשליחה\nתודה על שיתוף הפעולה\nמודים לך שלקחת חלק בשיפור התוכן שלנו :)\nהמשרה נמחקה\n תוכל לצפות בה בדף המשרות שלי\nהמשרה הוחזרה לרשימת תוצאות החיפוש\nהאם תרצה להסיר את המשרה מרשימת\nהמשרות השמורות שלך?\nכן\r\n לא\nאירעה שגיאה בשליחת פרטיך למשרה",
-   "postedAt": "2026-10-07",
-   "jobType": "משרה מלאה",
-   "source": "AllJobs"
-  },
-  {
-   "title": "בוגרים /ות מצטיינים /ות לתפקידי  data Analyst",
-   "company": "Experis Academy",
-   "location": "תל אביב יפו",
-   "url": "https://www.alljobs.co.il/Search/UploadSingle.aspx?JobID=8712561",
-   "description": "רוצה להתחיל קריירה בעולם הדאטה - גם בלי ניסיון? זו ההזדמנות שלך!\nתחום ה- data BI הוא אחד התחומים המבוקשים ביותר היום - ואנחנו מחפשים אותך: בוגר/ת תואר עם חשיבה אנליטית חדה ורצון להיכנס לעולם שמניע החלטות עסקיות.\nאנחנו מציעים תוכנית הכשרה ייחודית, קצרה וללא עלות - שבסופה תשתלבו בתפקידי דאטה בחברות מובילות.\nמה מחכה לך בתוכנית?\nעבודה עם SQL וPower BI \nהיכרות עם כלי AI ואפיון פרויקטי BI.\n ניתוח נתונים והפקת תובנות עסקיות אמיתיות.\nבניית דוחות ואוטומציה של תהליכים.\nניסיון מעשי שייתן לך יתרון משמעותי בכניסה לשוק העבודה.\nדרישות:\n בוגר/ת תואר ראשון בתחום רלוונטי (ממוצע 80+)\nחשיבה אנליטית גבוהה ורקע טכנולוגי בסיסי.\nמוטיבציה להיכנס לעולם הדאטה.\nלא נדרש ניסיון קודם - אנחנו מלווים אותך מהשלב הראשון ועד ההשמה.\nלא מתאים לסטודנטים/ות עם יתרת לימודים של יותר מסמסטר.\nהמשרה מיועדת לנשים ולגברים כאחד. המשרה מיועדת לנשים ולגברים כאחד.\n לעוד משרות ומידע על Experis Academy >\r\nעוד...\r\nהגשת מועמדות\nעדכון קורות החיים לפני שליחה\n עדכון קורות החיים לפני שליחה\r\n8712561\nמחיקת משרה\nללקוח VIP בלבד\nבטל מחיקת משרה\nשירות זה פתוח ללקוחות VIP בלבד\n רכוש חבילת\nשמירת משרה\nביטול שמירה\nרכוש חבילת \r\n שתף משרה\n משרות חברה\nשלח משרה למייל\nדיווח על תוכן לא הולם או מפלה\nדיווח על תוכן לא הולם או מפלה\nשמך המלאמה השם שלך?\nמייל\nתיאור\nתיאור\nשליחה\nתודה על שיתוף הפעולה\nמודים לך שלקחת חלק בשיפור התוכן שלנו :)\nהמשרה נמחקה\n תוכל לצפות בה בדף המשרות שלי\nהמשרה הוחזרה לרשימת תוצאות החיפוש\nהאם תרצה להסיר את המשרה מרשימת\nהמשרות השמורות שלך?\nכן\r\n לא\nאירעה שגיאה בשליחת פרטיך למשרה",
-   "postedAt": "2026-10-07",
-   "jobType": "משרה מלאה",
-   "source": "AllJobs"
-  },
-  {
-   "title": "בוגרי מדעי המחשב? מסלול הקריירה של אינפיניטי יכניס אתכם לתעשייה!",
-   "company": "Infinity Labs R&D",
-   "location": "רמת גן, חיפה",
-   "url": "https://www.alljobs.co.il/Search/UploadSingle.aspx?JobID=8753749",
-   "description": "סיימתם תואר במדעי המחשב? עכשיו מתחיל השלב שבאמת קובע את הקריירה שלכם.\nבעידן ה-AI, חברות כבר לא מחפשות רק בוגרי תואר. הן מחפשות מהנדסי תוכנה שמבינים מערכות לעומק, חושבים ארכיטקטונית ויודעים להשתמש ב-AI ככלי שמעצים את תהליך הפיתוח.\nInfinity Labs R D מזמינה אתכם למסלול קריירה ללא עלות למתקבלים, שבסיומו אנחנו דואגים לשלב אתכם במשרת הפיתוח הראשונה שלכם.\nבמהלך ההכשרה תעברו:\n מעל 1,800 שעות Hands-On בסביבת R D המדמה את התעשייה.\n פיתוח מערכות תוכנה מורכבות ועבודה בצוותים.\n Code Reviews, Git, Linux ומתודולוגיות עבודה מקצועיות.\n מנטורים שהם מהנדסי תוכנה פעילים בתעשייה.\n שימוש ב-AI ככלי - לא כתחליף לחשיבה הנדסית.\nאנחנו לא מלמדים רק לכתוב קוד. אנחנו מכשירים מהנדסי תוכנה שמוכנים לקריירה ארוכת טווח בתעשייה.\nדרישות:\n -תואר ראשון בהנדסה / מדעים מדויקים / מדעי המחשב\n-אנגלית ברמה גבוהה\n-יכולת למידה עצמית גבוהה\n-אוריינטציה אנליטית\n-אין צורך בניסיון קודם\nהמשרה מיועדת לנשים ולגברים כאחד המשרה מיועדת לנשים ולגברים כאחד.\n לעוד משרות ומידע על Infinity Labs R&D >\r\nעוד...\r\nהגשת מועמדות\nעדכון קורות החיים לפני שליחה\n עדכון קורות החיים לפני שליחה\r\n8753749\nמחיקת משרה\nללקוח VIP בלבד\nבטל מחיקת משרה\nשירות זה פתוח ללקוחות VIP בלבד\n רכוש חבילת\nשמירת משרה\nביטול שמירה\nרכוש חבילת \r\n שתף משרה\n משרות חברה\nשלח משרה למייל\nדיווח על תוכן לא הולם או מפלה\nדיווח על תוכן לא הולם או מפלה\nשמך המלאמה השם שלך?\nמייל\nתיאור\nתיאור\nשליחה\nתודה על שיתוף הפעולה\nמודים לך שלקחת חלק בשיפור התוכן שלנו :)\nהמשרה נמחקה\n תוכל לצפות בה בדף המשרות שלי\nהמשרה הוחזרה לרשימת תוצאות החיפוש\nהאם תרצה להסיר את המשרה מרשימת\nהמשרות השמורות שלך?\nכן\r\n לא\nאירעה שגיאה בשליחת פרטיך למשרה",
-   "postedAt": "2026-10-07",
-   "jobType": "מספר סוגים",
    "source": "AllJobs"
   },
   {
@@ -1156,17 +1059,10 @@
    "description": "על התפקיד \nצוות הפרויקטים העסקיים באגף חיסכון ארוך טווח ופיננסים מוביל יוזמות ותהליכים חוצי ארגון, המשלבים בין רגולציה ויעדים עסקיים ומשפיעים משמעותית על פעילות החברה. מנהל/ת הפרויקטים אחראי/ת על ניהול פרויקטים עסקיים ורגולטוריים, ניתוח נתונים ותרגום הנחיות רגולטוריות למשמעויות עסקיות.\nתחומי אחריות \n ניהול פרויקטים עסקיים ורגולטוריים ניתוח נתונים, בניית דוחות וניטור מערכות תרגום הנחיות רגולטוריות למשמעויות עסקיות והנעת פיתוחים טכנולוגיים בהתאמה הכנת תכנים שיווקיים מקצועיים בתחום הפנסיה והגמל\nדרישות:\n תואר ראשון\nיתרון \n ניסיון בניהול פרויקטים ניסיון ב-SQL\nמיקום: רמת גן, על קו הרכבת \nמתאימה גם לאנשים עם מוגבלות.\n* המשרה מיועדת לנשים ולגברים כאחד.\n לעוד משרות ומידע על מנורה מבטחים פנסיה וגמל בע\"מ >\r\nעוד...\r\nהגשת מועמדות\nעדכון קורות החיים לפני שליחה\n עדכון קורות החיים לפני שליחה\r\n8840508\nמחיקת משרה\nללקוח VIP בלבד\nבטל מחיקת משרה\nשירות זה פתוח ללקוחות VIP בלבד\n רכוש חבילת\nשמירת משרה\nביטול שמירה\nרכוש חבילת \r\n שתף משרה\n משרות חברה\nשלח משרה למייל\nדיווח על תוכן לא הולם או מפלה\n //rotation between zone 201 and 216\r\n var cookie_Video_zone = getCookie('cookie_Video_zone');\r\n if (cookie_Video_zone == null) { cookie_Video_zone = 201; }\r\n else if (cookie_Video_zone == '201') {\r\n cookie_Video_zone = 216;\r\n }else {\r\n cookie_Video_zone = 201;\r\n }\r\n setCookie('cookie_Video_zone',cookie_Video_zone,'/');\r\n DisplayBnrOpenXScriptWithKeywordRealtime_InContainerID(cookie_Video_zone, 'divBannerVideoMitugSecond');\r\nדיווח על תוכן לא הולם או מפלה\nשמך המלאמה השם שלך?\nמייל\nתיאור\nתיאור\nשליחה\nתודה על שיתוף הפעולה\nמודים לך שלקחת חלק בשיפור התוכן שלנו :)\nהמשרה נמחקה\n תוכל לצפות בה בדף המשרות שלי\nהמשרה הוחזרה לרשימת תוצאות החיפוש\nהאם תרצה להסיר את המשרה מרשימת\nהמשרות השמורות שלך?\nכן\r\n לא\nאירעה שגיאה בשליחת פרטיך למשרה",
    "postedAt": "2026-10-08",
    "jobType": "משרה מלאה",
-   "source": "AllJobs"
-  },
-  {
-   "title": "מנהל /ת פרויקטים עסקיים ורגולטוריים | אגף חיסכון ארוך טווח ופיננסים",
-   "company": "חברה חסויה",
-   "location": "רמת גן",
-   "url": "https://www.alljobs.co.il/Search/UploadSingle.aspx?JobID=8844490",
-   "description": "על התפקיד \nצוות הפרויקטים העסקיים באגף חיסכון ארוך טווח ופיננסים מוביל יוזמות ותהליכים חוצי ארגון, המשלבים בין רגולציה ויעדים עסקיים ומשפיעים משמעותית על פעילות החברה. מנהל/ת הפרויקטים אחראי/ת על ניהול פרויקטים עסקיים ורגולטוריים, ניתוח נתונים ותרגום הנחיות רגולטוריות למשמעויות עסקיות.\nתחומי אחריות \n ניהול פרויקטים עסקיים ורגולטוריים ניתוח נתונים, בניית דוחות וניטור מערכות תרגום הנחיות רגולטוריות למשמעויות עסקיות והנעת פיתוחים טכנולוגיים בהתאמה הכנת תכנים שיווקיים מקצועיים בתחום הפנסיה והגמל\nדרישות:\n תואר ראשון\nיתרון \n ניסיון בניהול פרויקטים ניסיון ב-SQL\nמיקום: רמת גן, על קו הרכבת \nמתאימה גם לאנשים עם מוגבלות.\n* המשרה מיועדת לנשים ולגברים כאחד.\nעוד...\r\nהגשת מועמדות\nעדכון קורות החיים לפני שליחה\n עדכון קורות החיים לפני שליחה\r\n8844490\nמחיקת משרה\nללקוח VIP בלבד\nבטל מחיקת משרה\nשירות זה פתוח ללקוחות VIP בלבד\n רכוש חבילת\nשמירת משרה\nביטול שמירה\nרכוש חבילת \r\n שתף משרה\nשלח משרה למייל\nדיווח על תוכן לא הולם או מפלה\nדיווח על תוכן לא הולם או מפלה\nשמך המלאמה השם שלך?\nמייל\nתיאור\nתיאור\nשליחה\nתודה על שיתוף הפעולה\nמודים לך שלקחת חלק בשיפור התוכן שלנו :)\nהמשרה נמחקה\n תוכל לצפות בה בדף המשרות שלי\nהמשרה הוחזרה לרשימת תוצאות החיפוש\nהאם תרצה להסיר את המשרה מרשימת\nהמשרות השמורות שלך?\nכן\r\n לא\nאירעה שגיאה בשליחת פרטיך למשרה",
-   "postedAt": "2026-10-08",
-   "jobType": "משרה מלאה",
-   "source": "AllJobs"
+   "source": "AllJobs",
+   "alsoAt": [
+    "https://www.alljobs.co.il/Search/UploadSingle.aspx?JobID=8844490"
+   ]
   },
   {
    "title": "מנהל /ת פרויקטים של הרכבת מעליות",
@@ -1566,17 +1462,10 @@
    "description": "על התפקיד \nאגף מטה ואסטרטגיה מוביל תהליכים ארגוניים מרכזיים ברמת הקבוצה כולה. מנהל/ת מוצר דיגיטל אחראי/ת על ניהול והובלת מוצרים דיגיטליים חדשניים מקצה לקצה, החל משלב הייזום ועד ההשקה, תוך הגדרת אסטרטגיה, עבודה עם ספקים וניתוח ביצועים.\nתחומי אחריות \n הובלת מוצרי דיגיטל משלב הייזום ועד ההשקה הגדרת אסטרטגיה ופיתוח Roadmap המותאם ליעדים העסקיים עבודה שוטפת עם ספקים ו-UX/UI ניתוח ושיפור ביצועי המוצר באמצעות איסוף וניתוח דאטה\nדרישות:\n ניסיון בניהול מוצר דיגיטלי (Web/App) - לפחות 3 שנים ניסיון בקבלת החלטות מבוססות דאטה יכולת ביטוי גבוהה מאוד בכתב ובעל פה\nיתרון \n ניסיון מחברות ביטוח, פנסיה או פיננסים ניסיון בעבודה בתאגידים וארגונים גדולים\nרמת גן, על קו הרכבת \nהמשרה מתאימה גם לאנשים עם מוגבלות.\n* המשרה מיועדת לנשים ולגברים כאחד.\n לעוד משרות ומידע על מנורה מבטחים פנסיה וגמל בע\"מ >\r\nעוד...\r\nהגשת מועמדות\nעדכון קורות החיים לפני שליחה\n עדכון קורות החיים לפני שליחה\r\n8840385\nמחיקת משרה\nללקוח VIP בלבד\nבטל מחיקת משרה\nשירות זה פתוח ללקוחות VIP בלבד\n רכוש חבילת\nשמירת משרה\nביטול שמירה\nרכוש חבילת \r\n שתף משרה\n משרות חברה\nשלח משרה למייל\nדיווח על תוכן לא הולם או מפלה\n //rotation between zone 201 and 216\r\n var cookie_Video_zone = getCookie('cookie_Video_zone');\r\n if (cookie_Video_zone == null) { cookie_Video_zone = 201; }\r\n else if (cookie_Video_zone == '201') {\r\n cookie_Video_zone = 216;\r\n }else {\r\n cookie_Video_zone = 201;\r\n }\r\n setCookie('cookie_Video_zone',cookie_Video_zone,'/');\r\n DisplayBnrOpenXScriptWithKeywordRealtime_InContainerID(cookie_Video_zone, 'divBannerVideoMitugSecond');\r\nדיווח על תוכן לא הולם או מפלה\nשמך המלאמה השם שלך?\nמייל\nתיאור\nתיאור\nשליחה\nתודה על שיתוף הפעולה\nמודים לך שלקחת חלק בשיפור התוכן שלנו :)\nהמשרה נמחקה\n תוכל לצפות בה בדף המשרות שלי\nהמשרה הוחזרה לרשימת תוצאות החיפוש\nהאם תרצה להסיר את המשרה מרשימת\nהמשרות השמורות שלך?\nכן\r\n לא\nאירעה שגיאה בשליחת פרטיך למשרה",
    "postedAt": "2026-10-08",
    "jobType": "משרה מלאה",
-   "source": "AllJobs"
-  },
-  {
-   "title": "מנהל /ת מוצר דיגיטל | אגף מטה ואסטרטגיה",
-   "company": "חברה חסויה",
-   "location": "רמת גן",
-   "url": "https://www.alljobs.co.il/Search/UploadSingle.aspx?JobID=8844456",
-   "description": "על התפקיד \nאגף מטה ואסטרטגיה מוביל תהליכים ארגוניים מרכזיים ברמת הקבוצה כולה. מנהל/ת מוצר דיגיטל אחראי/ת על ניהול והובלת מוצרים דיגיטליים חדשניים מקצה לקצה, החל משלב הייזום ועד ההשקה, תוך הגדרת אסטרטגיה, עבודה עם ספקים וניתוח ביצועים.\nתחומי אחריות \n הובלת מוצרי דיגיטל משלב הייזום ועד ההשקה הגדרת אסטרטגיה ופיתוח Roadmap המותאם ליעדים העסקיים עבודה שוטפת עם ספקים ו-UX/UI ניתוח ושיפור ביצועי המוצר באמצעות איסוף וניתוח דאטה\nדרישות:\n ניסיון בניהול מוצר דיגיטלי (Web/App) - לפחות 3 שנים ניסיון בקבלת החלטות מבוססות דאטה יכולת ביטוי גבוהה מאוד בכתב ובעל פה\nיתרון \n ניסיון מחברות ביטוח, פנסיה או פיננסים ניסיון בעבודה בתאגידים וארגונים גדולים\nרמת גן, על קו הרכבת \nהמשרה מתאימה גם לאנשים עם מוגבלות.\n* המשרה מיועדת לנשים ולגברים כאחד.\nעוד...\r\nהגשת מועמדות\nעדכון קורות החיים לפני שליחה\n עדכון קורות החיים לפני שליחה\r\n8844456\nמחיקת משרה\nללקוח VIP בלבד\nבטל מחיקת משרה\nשירות זה פתוח ללקוחות VIP בלבד\n רכוש חבילת\nשמירת משרה\nביטול שמירה\nרכוש חבילת \r\n שתף משרה\nשלח משרה למייל\nדיווח על תוכן לא הולם או מפלה\nדיווח על תוכן לא הולם או מפלה\nשמך המלאמה השם שלך?\nמייל\nתיאור\nתיאור\nשליחה\nתודה על שיתוף הפעולה\nמודים לך שלקחת חלק בשיפור התוכן שלנו :)\nהמשרה נמחקה\n תוכל לצפות בה בדף המשרות שלי\nהמשרה הוחזרה לרשימת תוצאות החיפוש\nהאם תרצה להסיר את המשרה מרשימת\nהמשרות השמורות שלך?\nכן\r\n לא\nאירעה שגיאה בשליחת פרטיך למשרה",
-   "postedAt": "2026-10-08",
-   "jobType": "משרה מלאה",
-   "source": "AllJobs"
+   "source": "AllJobs",
+   "alsoAt": [
+    "https://www.alljobs.co.il/Search/UploadSingle.aspx?JobID=8844456"
+   ]
   },
   {
    "title": "ניהול ותפעול מותג",
@@ -1590,13 +1479,17 @@
   },
   {
    "title": "Product Manager",
-   "company": "חברה חסויה",
+   "company": "G-NESS",
    "location": "תל אביב יפו",
-   "url": "https://www.alljobs.co.il/Search/UploadSingle.aspx?JobID=8830229",
-   "description": "דרוש/ה Product Manager\nדרישות:\n * ניסיון בניהול מוצר * ניסיון בעבודה על מוצרי B2B2C * ניסיון בעולם האפליקציות (Mobile/Web) * יכולת עבודה מול צוותי פיתוח, עיצוב ולקוחות. המשרה מיועדת לנשים ולגברים כאחד.\nעוד...\r\nהגשת מועמדותהגש מועמדות\nעדכון קורות החיים לפני שליחה\n עדכון קורות החיים לפני שליחה\r\n8830229\nמחיקת משרה\nללקוח VIP בלבד\nבטל מחיקת משרה\nשירות זה פתוח ללקוחות VIP בלבד\nרכוש חבילת\nשמירת משרה\nביטול שמירה\nרכוש חבילת \n שתף משרה\nשלח משרה למייל\nדיווח על תוכן לא הולם או מפלה\r\nדיווח על תוכן לא הולם או מפלה\nשמך המלאמה השם שלך?\nמייל\nתיאור\nתיאור\nשליחה\nתודה על שיתוף הפעולה\nמודים לך שלקחת חלק בשיפור התוכן שלנו :)\nהמשרה נמחקה\n תוכל לצפות בה בדף המשרות שלי\nהמשרה הוחזרה לרשימת תוצאות החיפוש\nהאם תרצה להסיר את המשרה מרשימת\nהמשרות השמורות שלך?\nכן\r\n לא\nאירעה שגיאה בשליחת פרטיך למשרה",
-   "postedAt": "2026-10-08",
-   "jobType": "משרה מלאה",
-   "source": "AllJobs"
+   "url": "https://www.alljobs.co.il/Search/UploadSingle.aspx?JobID=8536973",
+   "description": "לארגון אנטרפרייז מוביל בת\"א (מודל עבודה היברידי גמיש) אנו מגייסים Product Manager \nהזדמנות לייצר אימפקט משמעותי ולהשפיע על חוויית המפתחים בארגון גדול\nהתפקיד כולל הובלת מוצר מרכזי שמאפשר לדלוור מהר, יעיל ובסטנדרט גבוה- פורטל המפתחים.\nזו הזדמנות נדירה להצטרף לCTO שמתפקד כמו סטרטאפ טכנולוגי לכל דבר ועניין. עבודה רוחבית עם גורמים עסקיים וטכנולוגיים רבים בארגון, בחינה מתמדת, הזרקה והטמעה של טכנולוגיות חדשות.\nמהות התפקיד:\nאחריות מקצה לקצה על פיתוח, דליברי וניהול מוצרים בפלטפורמת פורטל המפתחים.\nאיסוף וניתוח דרישות עסקיות וטכנולוגיות מכלל החטיבה והובלת פתרונות מוצריים.\nהובלת Roadmap וניהול Backlog תוך תעדוף יכולות לפי ערך עסקי, חוויית משתמש וTTM קצר.\nהובלת פרויקטים טכנולוגיים מורכבים מול צוותי פיתוח, תשתיות, DevOps ועוד.\nמחקר מתמשך של טרנדים ופתרונות בעולמות ה- Developer Experience.\nניטור ביצועים, ניתוח התנהגות משתמשים ושיפור מתמיד של ערך המוצר.\nדרישות:\n מביא/ה ניסיון משמעותי בניהול מוצרים טכנולוגיים ו/או ניהול פרויקטים מורכבים מרובי ממשקים - לפחות 5+ שנים.\nיודע/ת להחזיק ראייה אסטרטגית לצד יכולת דליברי וExecution.\nבעל/ת יכולת השפעה ללא סמכות וניהול ממשקים אפקטיבי מול גורמים מגוונים.\n,Ownership Mindsetיוזמה גבוהה ויכולת עבודה עצמאית מקצה לקצה.\nמחזיק/ה בהיכרות מעמיקה עם מתודולוגיות עבודה בסביבת Agile ו?.Scrum\nבעל/ת ניסיון עם כלי ניטור כגון Dynatrace ו?.Splunk\nמכיר/ה את עולם הפיתוח כמפתח/ת או תפקיד טכנולוגי דומה- יתרון. המשרה מיועדת לנשים ולגברים כאחד.\n לעוד משרות ומידע על G-NESS >\r\nעוד...\r\nהגשת מועמדות\nעדכון קורות החיים לפני שליחה\n עדכון קורות החיים לפני שליחה\r\n8536973\nמחיקת משרה\nללקוח VIP בלבד\nבטל מחיקת משרה\nשירות זה פתוח ללקוחות VIP בלבד\n רכוש חבילת\nשמירת משרה\nביטול שמירה\nרכוש חבילת \r\n שתף משרה\n משרות חברה\nשלח משרה למייל\nדיווח על תוכן לא הולם או מפלה\nדיווח על תוכן לא הולם או מפלה\nשמך המלאמה השם שלך?\nמייל\nתיאור\nתיאור\nשליחה\nתודה על שיתוף הפעולה\nמודים לך שלקחת חלק בשיפור התוכן שלנו :)\nהמשרה נמחקה\n תוכל לצפות בה בדף המשרות שלי\nהמשרה הוחזרה לרשימת תוצאות החיפוש\nהאם תרצה להסיר את המשרה מרשימת\nהמשרות השמורות שלך?\nכן\r\n לא\nאירעה שגיאה בשליחת פרטיך למשרה",
+   "postedAt": "2026-10-07",
+   "jobType": "משרה מלאה\r\n             ועבודה היברידית",
+   "source": "AllJobs",
+   "alsoAt": [
+    "https://www.alljobs.co.il/Search/UploadSingle.aspx?JobID=8830229",
+    "https://jobify360.co.il/jobs/4473264533-in"
+   ]
   },
   {
    "title": "Technical Product Manager",
@@ -1616,16 +1509,6 @@
    "description": "As an Associate Product Manager, you will work with Product Managers in making key product decisions, conducting market research and competitive analysis, delivering product demos, and knowledge transfer activities. \nThis is an opportunity to join entry level Product Management position \nKey Responsibilities \nConduct Market fit and competitive research in support of new product initiatives as well as ensuring a strong market position for existing offerings. \nPrepare & deliver clear, compelling presentations to customers, colleagues, and superiors \nCommunicating effectively with key stakeholders and other members of the organization. \nLead our demo environment, used to showcase the value of the company Orchestration Suite \nSeek out and interpret user feedback and market research data to guide product development. \nCollaborate closely with a diverse group of stakeholders and meet with clients to maintain an on-the-pulse knowledge of our users and the use cases that drive their successful outcomes. \nThe ideal candidate will have strong technical skills, strong network security background, leadership skills and passion to make an industry-wide impact\nRequirements: \n 2+ years proven experience in networking or network security products - Must \nHands-on experience with network/network security equipment such as Routers, Firewalls, SD-WAN, VPNs, SASE, etc- Must \nProven technical skills and self-learning ability, capable of thoroughly understanding the functional and technical aspects of a complex system \nExcellent communication, writing and verbal, and presentation skills in English \nEffective evangelist of product/technology to both internal and external audiences \nWillingness to travel (up to 2-3 times a year) \nAdvantage \nCCNA, CCNP or equivalent certifications. \nCustomer facing experience \nExperience with agile development (SCRUM). \nExperience in QA, tech support, or product development. \nBachelors degree in engineering (computer networking, industrial engineering) or an MBA in Information Technology or a related field.\nThis position is open to all candidates.\nShow more...\r\nהגשת מועמדותהגש מועמדות\nעדכון קורות החיים לפני שליחה\n עדכון קורות החיים לפני שליחה\r\n8803965\nמחיקת משרה\nללקוח VIP בלבד\nבטל מחיקת משרה\nשירות זה פתוח ללקוחות VIP בלבד\nרכוש חבילת\nשמירת משרה\nביטול שמירה\nרכוש חבילת \n שתף משרה\nשלח משרה למייל\nדיווח על תוכן לא הולם או מפלה\r\nדיווח על תוכן לא הולם או מפלה\nשמך המלאמה השם שלך?\nמייל\nתיאור\nתיאור\nשליחה\nתודה על שיתוף הפעולה\nמודים לך שלקחת חלק בשיפור התוכן שלנו :)\nהמשרה נמחקה\n תוכל לצפות בה בדף המשרות שלי\nהמשרה הוחזרה לרשימת תוצאות החיפוש\nהאם תרצה להסיר את המשרה מרשימת\nהמשרות השמורות שלך?\nכן\r\n לא\nאירעה שגיאה בשליחת פרטיך למשרה",
    "postedAt": "2026-10-08",
    "jobType": "",
-   "source": "AllJobs"
-  },
-  {
-   "title": "Product Manager",
-   "company": "G-NESS",
-   "location": "תל אביב יפו",
-   "url": "https://www.alljobs.co.il/Search/UploadSingle.aspx?JobID=8536973",
-   "description": "לארגון אנטרפרייז מוביל בת\"א (מודל עבודה היברידי גמיש) אנו מגייסים Product Manager \nהזדמנות לייצר אימפקט משמעותי ולהשפיע על חוויית המפתחים בארגון גדול\nהתפקיד כולל הובלת מוצר מרכזי שמאפשר לדלוור מהר, יעיל ובסטנדרט גבוה- פורטל המפתחים.\nזו הזדמנות נדירה להצטרף לCTO שמתפקד כמו סטרטאפ טכנולוגי לכל דבר ועניין. עבודה רוחבית עם גורמים עסקיים וטכנולוגיים רבים בארגון, בחינה מתמדת, הזרקה והטמעה של טכנולוגיות חדשות.\nמהות התפקיד:\nאחריות מקצה לקצה על פיתוח, דליברי וניהול מוצרים בפלטפורמת פורטל המפתחים.\nאיסוף וניתוח דרישות עסקיות וטכנולוגיות מכלל החטיבה והובלת פתרונות מוצריים.\nהובלת Roadmap וניהול Backlog תוך תעדוף יכולות לפי ערך עסקי, חוויית משתמש וTTM קצר.\nהובלת פרויקטים טכנולוגיים מורכבים מול צוותי פיתוח, תשתיות, DevOps ועוד.\nמחקר מתמשך של טרנדים ופתרונות בעולמות ה- Developer Experience.\nניטור ביצועים, ניתוח התנהגות משתמשים ושיפור מתמיד של ערך המוצר.\nדרישות:\n מביא/ה ניסיון משמעותי בניהול מוצרים טכנולוגיים ו/או ניהול פרויקטים מורכבים מרובי ממשקים - לפחות 5+ שנים.\nיודע/ת להחזיק ראייה אסטרטגית לצד יכולת דליברי וExecution.\nבעל/ת יכולת השפעה ללא סמכות וניהול ממשקים אפקטיבי מול גורמים מגוונים.\n,Ownership Mindsetיוזמה גבוהה ויכולת עבודה עצמאית מקצה לקצה.\nמחזיק/ה בהיכרות מעמיקה עם מתודולוגיות עבודה בסביבת Agile ו?.Scrum\nבעל/ת ניסיון עם כלי ניטור כגון Dynatrace ו?.Splunk\nמכיר/ה את עולם הפיתוח כמפתח/ת או תפקיד טכנולוגי דומה- יתרון. המשרה מיועדת לנשים ולגברים כאחד.\n לעוד משרות ומידע על G-NESS >\r\nעוד...\r\nהגשת מועמדות\nעדכון קורות החיים לפני שליחה\n עדכון קורות החיים לפני שליחה\r\n8536973\nמחיקת משרה\nללקוח VIP בלבד\nבטל מחיקת משרה\nשירות זה פתוח ללקוחות VIP בלבד\n רכוש חבילת\nשמירת משרה\nביטול שמירה\nרכוש חבילת \r\n שתף משרה\n משרות חברה\nשלח משרה למייל\nדיווח על תוכן לא הולם או מפלה\nדיווח על תוכן לא הולם או מפלה\nשמך המלאמה השם שלך?\nמייל\nתיאור\nתיאור\nשליחה\nתודה על שיתוף הפעולה\nמודים לך שלקחת חלק בשיפור התוכן שלנו :)\nהמשרה נמחקה\n תוכל לצפות בה בדף המשרות שלי\nהמשרה הוחזרה לרשימת תוצאות החיפוש\nהאם תרצה להסיר את המשרה מרשימת\nהמשרות השמורות שלך?\nכן\r\n לא\nאירעה שגיאה בשליחת פרטיך למשרה",
-   "postedAt": "2026-10-07",
-   "jobType": "משרה מלאה\r\n             ועבודה היברידית",
    "source": "AllJobs"
   },
   {
@@ -2186,17 +2069,10 @@
    "description": "אנחנו מחפשים אנליסט/ית ציות עם עין חדה לפרטים ויכולת אנליטית גבוהה.\n התפקיד כולל ניטור ובקרה של נתוני פעילות הלקוחות, עבודה עם מסדי נתונים גדולים, והפקת דיווחים ודוחות כחלק מהפעילות השוטפת של מחלקת הציות.\n מדובר בתפקיד טכני ומדויק, עם אפשרות מצוינת להיכנס לעולם הציות הפיננסי ולהתפתח בו לאורך זמן.\n*ניטור פעולות לקוחות לצורך זיהוי פעילות חשודה או לא מוצהרת.\n*ביצוע בקרות והפקת דיווחים שוטפים על פעילות הלקוחות.\n*ניהול פרויקטים וסיוע באפיון בקרות ממוכנות.\n*עבודה יומיומית עם Excel וכלי BI לניתוח נתונים.\n*שיתוף פעולה עם צוות הציות והמחלקות העסקיות בחברה.\nדרישות:\n *תואר ראשון בתחום פיננסי- חובה\n*שליטה טובה מאוד באקסל\n*ניסיון בעבודה עם מסדי נתונים גדולים\n*אנגלית ברמה גבוהה- כתיבה וקריאה\n*יכולת אנליטית חזקה, יסודיות ושימת לב לפרטים\n*יכולת למידה מהירה ורצון להתפתח בתחום הציות\n* המשרה מיועדת לנשים ולגברים כאחד.\n לעוד משרות ומידע על Alljobs Match >\r\nעוד...\r\nהגשת מועמדות\nעדכון קורות החיים לפני שליחה\n עדכון קורות החיים לפני שליחה\r\nפנייה ב-WhatsApp\n8842174\nמחיקת משרה\nללקוח VIP בלבד\nבטל מחיקת משרה\nשירות זה פתוח ללקוחות VIP בלבד\n רכוש חבילת\nשמירת משרה\nביטול שמירה\nרכוש חבילת \r\n שתף משרה\n משרות חברה\nשלח משרה למייל\nדיווח על תוכן לא הולם או מפלה\n //rotation between zone 200 and 215\r\n var cookie_Carousel_zone = getCookie('cookie_Carousel_zone');\r\n if (cookie_Carousel_zone == null) { cookie_Carousel_zone = 200; }\r\n else if(cookie_Carousel_zone == '200') {\r\n cookie_Carousel_zone = 215;\r\n }else {\r\n cookie_Carousel_zone = 200;\r\n }\r\n setCookie('cookie_Carousel_zone',cookie_Carousel_zone,'/');\r\n DisplayBnrOpenXScriptWithKeywordRealtime_InContainerID(cookie_Carousel_zone, 'divBannerCarouselMitugSecond');\r\nדיווח על תוכן לא הולם או מפלה\nשמך המלאמה השם שלך?\nמייל\nתיאור\nתיאור\nשליחה\nתודה על שיתוף הפעולה\nמודים לך שלקחת חלק בשיפור התוכן שלנו :)\nהמשרה נמחקה\n תוכל לצפות בה בדף המשרות שלי\nהמשרה הוחזרה לרשימת תוצאות החיפוש\nהאם תרצה להסיר את המשרה מרשימת\nהמשרות השמורות שלך?\nכן\r\n לא\nאירעה שגיאה בשליחת פרטיך למשרה",
    "postedAt": "2026-10-08",
    "jobType": "משרה מלאה",
-   "source": "AllJobs"
-  },
-  {
-   "title": "אנליסט /ית ציות לחברה מובילה בתל אביב!",
-   "company": "Alljobs Match",
-   "location": "בת ים, חולון, יהוד מונוסון, אור יהודה, קרית אונו, תל אביב יפו, רמת גן, גבעתיים",
-   "url": "https://www.alljobs.co.il/Search/UploadSingle.aspx?JobID=8840293",
-   "description": "אנחנו מחפשים אנליסט/ית ציות עם עין חדה לפרטים ויכולת אנליטית גבוהה.\n התפקיד כולל ניטור ובקרה של נתוני פעילות הלקוחות, עבודה עם מסדי נתונים גדולים, והפקת דיווחים ודוחות כחלק מהפעילות השוטפת של מחלקת הציות.\n מדובר בתפקיד טכני ומדויק, עם אפשרות מצוינת להיכנס לעולם הציות הפיננסי ולהתפתח בו לאורך זמן.\n*ניטור פעולות לקוחות לצורך זיהוי פעילות חשודה או לא מוצהרת.\n*ביצוע בקרות והפקת דיווחים שוטפים על פעילות הלקוחות.\n*ניהול פרויקטים וסיוע באפיון בקרות ממוכנות.\n*עבודה יומיומית עם Excel וכלי BI לניתוח נתונים.\n*שיתוף פעולה עם צוות הציות והמחלקות העסקיות בחברה.\nדרישות:\n *תואר ראשון בתחום פיננסי- חובה\n*שליטה טובה מאוד באקסל\n*ניסיון בעבודה עם מסדי נתונים גדולים\n*אנגלית ברמה גבוהה- כתיבה וקריאה\n*יכולת אנליטית חזקה, יסודיות ושימת לב לפרטים\n*יכולת למידה מהירה ורצון להתפתח בתחום הציות\n* המשרה מיועדת לנשים ולגברים כאחד.\n לעוד משרות ומידע על Alljobs Match >\r\nעוד...\r\nהגשת מועמדות\nעדכון קורות החיים לפני שליחה\n עדכון קורות החיים לפני שליחה\r\nפנייה ב-WhatsApp\n8840293\nמחיקת משרה\nללקוח VIP בלבד\nבטל מחיקת משרה\nשירות זה פתוח ללקוחות VIP בלבד\n רכוש חבילת\nשמירת משרה\nביטול שמירה\nרכוש חבילת \r\n שתף משרה\n משרות חברה\nשלח משרה למייל\nדיווח על תוכן לא הולם או מפלה\nדיווח על תוכן לא הולם או מפלה\nשמך המלאמה השם שלך?\nמייל\nתיאור\nתיאור\nשליחה\nתודה על שיתוף הפעולה\nמודים לך שלקחת חלק בשיפור התוכן שלנו :)\nהמשרה נמחקה\n תוכל לצפות בה בדף המשרות שלי\nהמשרה הוחזרה לרשימת תוצאות החיפוש\nהאם תרצה להסיר את המשרה מרשימת\nהמשרות השמורות שלך?\nכן\r\n לא\nאירעה שגיאה בשליחת פרטיך למשרה",
-   "postedAt": "2026-10-08",
-   "jobType": "משרה מלאה",
-   "source": "AllJobs"
+   "source": "AllJobs",
+   "alsoAt": [
+    "https://www.alljobs.co.il/Search/UploadSingle.aspx?JobID=8840293"
+   ]
   },
   {
    "title": "אנליסט ג'וניור או\"ש ובקרה | ארגון ביטחוני מוביל",
@@ -2240,13 +2116,16 @@
   },
   {
    "title": "אנליסט/ית תהליכים ומערכות מידע תפעוליות",
-   "company": "חברה חסויה",
+   "company": "Controp",
    "location": "כפר סבא",
-   "url": "https://www.alljobs.co.il/Search/UploadSingle.aspx?JobID=8778190",
-   "description": "לחברת קונטרופ דרוש/ה אנליסט/ית תהליכים ומערכות מידע תפעוליות \n התפקיד כולל: אחריות על שיפור, בקרה ותמיכה בתהליכים תפעוליים ועסקיים באמצעות ניתוח נתונים, טיוב מידע במערכות הארגון, אפיון פתרונות ודוחות במערכת Priority, וזיהוי הזדמנויות להתייעלות לאורך שרשרת האספקה. \n תחומי אחריות: • אפיון, פיתוח ושיפור דוחות ובקרות במערכת Priority בהתאם לצורכי הארגון. • ניתוח נתונים וזיהוי פערים, חוסרים ואי-התאמות במידע המנוהל במערכות. • אחריות על טיוב, תחזוקה ובקרת איכות הנתונים במערכות המידע הארגוניות. • ניהול ותמיכה בממשקים בין מערכת Priority לבין מערכת ניהול רצפת הייצור (MES), תוך הבטחת אמינות וסנכרון המידע בין המערכות. • זיהוי וטיפול בפערי מידע ותקלות בתהליכי הדיווח והבקרה בין מערכות הייצור למערכת הERP. • בחינה ושיפור תהליכים תפעוליים לאורך שרשרת האספקה משלב התכנון ועד הביצוע בייצור. • עבודה שוטפת מול מחלקות תפ\"י, רכש, ייצור, לוגיסטיקה, איכות ומערכות מידע. • הובלת פרויקטים לשיפור תהליכים עסקיים ויישום פתרונות מערכתיים.\nדרישות:\n • תואר ראשון בהנדסת תעשייה וניהול / מערכות מידע / לוגיסטיקה או תחום רלוונטי. • ניסיון של שנתיים לפחות בתפקיד בתחום תפ\"י, מערכות מידע, ארגון ושיטות או שרשרת אספקה. • היכרות עם תהליכי שרשרת אספקה, ייצור ותכנון חומר. • ניסיון בעבודה עם מערכת Priority, כולל אפיון דוחות וניתוח נתונים. • ניסיון בעבודה מול מערכות ניהול רצפת ייצור (MES) או ממשקים בין מערכות תפעוליות ומערכות ERP - יתרון משמעותי. • יכולת ניתוח נתונים, הסקת מסקנות והובלת שיפורים תהליכיים. המשרה מיועדת לנשים ולגברים כאחד.\nעוד...\r\nהגשת מועמדותהגש מועמדות\nעדכון קורות החיים לפני שליחה\n עדכון קורות החיים לפני שליחה\r\n8778190\nמחיקת משרה\nללקוח VIP בלבד\nבטל מחיקת משרה\nשירות זה פתוח ללקוחות VIP בלבד\nרכוש חבילת\nשמירת משרה\nביטול שמירה\nרכוש חבילת \n שתף משרה\nשלח משרה למייל\nדיווח על תוכן לא הולם או מפלה\r\nדיווח על תוכן לא הולם או מפלה\nשמך המלאמה השם שלך?\nמייל\nתיאור\nתיאור\nשליחה\nתודה על שיתוף הפעולה\nמודים לך שלקחת חלק בשיפור התוכן שלנו :)\nהמשרה נמחקה\n תוכל לצפות בה בדף המשרות שלי\nהמשרה הוחזרה לרשימת תוצאות החיפוש\nהאם תרצה להסיר את המשרה מרשימת\nהמשרות השמורות שלך?\nכן\r\n לא\nאירעה שגיאה בשליחת פרטיך למשרה",
-   "postedAt": "2026-10-08",
-   "jobType": "משרה מלאה",
-   "source": "AllJobs"
+   "url": "https://jobify360.co.il/jobs/2764812-jk",
+   "description": "אחריות על שיפור, בקרה ותמיכה בתהליכים תפעוליים ועסקיים באמצעות ניתוח נתונים, טיוב מידע במערכות הארגון, אפיון פתרונות ודוחות במערכת Priority, וזיהוי הזדמנויות להתייעלות לאורך שרשרת האספקה.תחומי אחריות:",
+   "postedAt": "2026-08-13",
+   "jobType": "FULL_TIME",
+   "source": "Jobify",
+   "alsoAt": [
+    "https://www.alljobs.co.il/Search/UploadSingle.aspx?JobID=8778190"
+   ]
   },
   {
    "title": "Analyst, Index Operations",
@@ -2269,14 +2148,17 @@
    "source": "AllJobs"
   },
   {
-   "title": "MARKETING  data ANALYST",
-   "company": "חברה חסויה",
-   "location": "תל אביב יפו",
-   "url": "https://www.alljobs.co.il/Search/UploadSingle.aspx?JobID=8840605",
-   "description": "לגוף פיננסי גדול דרוש.ה Marketing data Analyst! אם אתם אוהבים דאטה, מספרים, חשיבה אנליטית ורוצים להתפתח בעולם הData Analytics - זו יכולה להיות ההזדמנות שלכם\n תל אביב - סמוך לרכבת הקלה \nמה עושים בתפקיד? \nבתפקיד תהיו חלק מצוות אנליסטים מנוסה ותיקחו חלק בפרויקטים אנליטיים מקצה לקצה: איסוף ואפיון דרישות. הגדרת הנתונים הנדרשים לביצוע הניתוח. תחקור ושליפת נתונים ממקורות מידע מגוונים. הצלבת נתונים ובדיקת איכותם. ביצוע ניתוחים אנליטיים וסטטיסטיים. הפיכת נתונים לתובנות עסקיות והצגתן לגורמים הרלוונטיים. עבודה בצוות ובהובלת ראש צוות מקצועי\nדרישות:\n מה אנחנו מחפשים?\n תואר ראשון רלוונטי (בכלכלה, סטטיסטיקה, הנדסת תעשיה וניהול) - חובה\n עד שנה ניסיון רלוונטי- מתאים גם לבוגרים/ות בתחילת הדרך\n ניסיון בעבודה עם SQL - יתרון\n רצון ללמוד, להתפתח ולבנות קריירה בעולם הדאטה\n יכולת עבודה בצוות המשרה מיועדת לנשים ולגברים כאחד.\nעוד...\r\nהגשת מועמדותהגש מועמדות\nעדכון קורות החיים לפני שליחה\n עדכון קורות החיים לפני שליחה\r\n8840605\nמחיקת משרה\nללקוח VIP בלבד\nבטל מחיקת משרה\nשירות זה פתוח ללקוחות VIP בלבד\nרכוש חבילת\nשמירת משרה\nביטול שמירה\nרכוש חבילת \n שתף משרה\nשלח משרה למייל\nדיווח על תוכן לא הולם או מפלה\r\nדיווח על תוכן לא הולם או מפלה\nשמך המלאמה השם שלך?\nמייל\nתיאור\nתיאור\nשליחה\nתודה על שיתוף הפעולה\nמודים לך שלקחת חלק בשיפור התוכן שלנו :)\nהמשרה נמחקה\n תוכל לצפות בה בדף המשרות שלי\nהמשרה הוחזרה לרשימת תוצאות החיפוש\nהאם תרצה להסיר את המשרה מרשימת\nהמשרות השמורות שלך?\nכן\r\n לא\nאירעה שגיאה בשליחת פרטיך למשרה",
-   "postedAt": "2026-10-05",
-   "jobType": "משרה מלאה",
-   "source": "AllJobs"
+   "title": "Marketing Data Analyst",
+   "company": "SuperPlay",
+   "location": "תל אביב - יפו",
+   "url": "https://jobify360.co.il/jobs/4475394851-in",
+   "description": "Come and join a rapidly expanding mobile games company!Who are we?:SuperPlay is a leading gaming company dedicated to creating unforgettable mobile gaming experiences. Founded in 2019 by in",
+   "postedAt": "2026-10-04",
+   "jobType": "FULL_TIME",
+   "source": "לינקדאין (דרך Jobify)",
+   "alsoAt": [
+    "https://www.alljobs.co.il/Search/UploadSingle.aspx?JobID=8840605"
+   ]
   },
   {
    "title": "מיישם /ת  BI",
@@ -2296,7 +2178,10 @@
    "description": "CBC ISRAEL - הבית של המותגים קוקה-קולה, קרלסברג, נביעות וטרה - מגייסת מיישם /ת BI לפריגת\nטעימה מהתפקיד:\n אפיון, פיתוח ותחזוקה של תהליכי ETL בכלי SSIS ובסביבות ON-PREM ו?CLOUD ( data Factory, Databricks)\n בנייה ותחזוקת מודלי BI מקצה לקצה: דוחות, Dashboards, מודלים סמנטיים והרשאות\n פיתוח תהליכים אוטומטיים ומתן פתרונות דיגיטליים באמצעות Microsoft Power Platform (Power Automate, Power Apps, Power BI )\n כתיבת שאילתות SQL מורכבות ושיפורי ביצועים\n עבודה שוטפת מול משתמשים עסקיים, הבנת צרכים ומתן פתרונות פרואקטיביים\n ניתוח מערכות ותהליכים עסקיים תוך עבודה עם מגוון רחב של סוגי data \n אחריות על תהליכי data מרכזיים בארגון, חשיבה יצירתית ומתן שירות איכותי\n* משרה מלאה במפעל פריגת בגבעת חיים מאוחד\nהטעם המיוחד שמחכה לך כאן:\n קרן השתלמות\n בונוס שנתי\n ארוחות\nדרישות:\n השכלה רלוונטית במערכות מידע / תוכנה - חובה\n לפחות שנתיים ניסיון באפיון / פיתוח ואופטימיזציית תהליכי ETL ו? DWH - חובה\n ניסיון מוכח ב?SSIS ובכלי CLOUD ( data Factory / Databricks) - חובה\n ניסיון בבניית דוחות, Dashboards, ניתוח נתונים ובניית מודלים ב?Power BI כולל DAX - חובה\n ניסיון ב?SQL ו?Excel ברמה גבוהה - חובה\n ניסיון בעבודה עם Power Automate / Power Apps - יתרון משמעותי\n ניסיון בתחזוקת שרתי MSSQL - יתרון\nזו ההזדמנות שלך להצטרף לצוות מקצועי, בסביבה דינאמית, ולהיות חלק מהעשייה שמניעה את התעשייה הגדולה בישראל!\nנשמע מתאים? זה הזמן להגיש מועמדות ולהיות חלק מהא.נשים שיוצרים את הטעם!\nCBC ישראל מעודדת העסקה מגוונת. המשרה מיועדת לכל המינים והמגדרים המשרה מיועדת לנשים ולגברים כאחד.\n לעוד משרות ומידע על CBC ISRAEL >\r\nעוד...\r\nהגשת מועמדות\nעדכון קורות החיים לפני שליחה\n עדכון קורות החיים לפני שליחה\r\n8597498\nמחיקת משרה\nללקוח VIP בלבד\nבטל מחיקת משרה\nשירות זה פתוח ללקוחות VIP בלבד\n רכוש חבילת\nשמירת משרה\nביטול שמירה\nרכוש חבילת \r\n שתף משרה\n משרות חברה\nשלח משרה למייל\nדיווח על תוכן לא הולם או מפלה\nדיווח על תוכן לא הולם או מפלה\nשמך המלאמה השם שלך?\nמייל\nתיאור\nתיאור\nשליחה\nתודה על שיתוף הפעולה\nמודים לך שלקחת חלק בשיפור התוכן שלנו :)\nהמשרה נמחקה\n תוכל לצפות בה בדף המשרות שלי\nהמשרה הוחזרה לרשימת תוצאות החיפוש\nהאם תרצה להסיר את המשרה מרשימת\nהמשרות השמורות שלך?\nכן\r\n לא\nאירעה שגיאה בשליחת פרטיך למשרה",
    "postedAt": "2026-10-07",
    "jobType": "משרה מלאה",
-   "source": "AllJobs"
+   "source": "AllJobs",
+   "alsoAt": [
+    "https://www.jobmaster.co.il/jobs/checknum.asp?key=9717002"
+   ]
   },
   {
    "title": "ר\"צ בקרת עמלות",
@@ -2386,7 +2271,10 @@
    "description": "*ניתוח נתונים כלכליים וכמותיים, הכנת תחשיבים כספיים ותחזיות כלכליות, תפעול ושימוש במערכות מידע מתקדמות ובמסדי נתונים, הכנת דו\"חות לדרגי הנהלה בכירה.\n*שותפות בתכנון ובהנעת תהליכי עבודה.\n*תכלול ותיאום בין גורמים מקצועיים שונים.\nדרישות:\n *תואר ראשון בכלכלה/ מנהל עסקים- חובה\n*יכולת ניתוח נתונים ודו\"חות, והסקת מסקנות- חובה\n*אקסל ברמה גבוהה- חובה\n*שליטה בשפה העברית, כושר הבעה גבוה בכתב ובע\"פ\n*ראייה מערכתית וחשיבה יצירתית\n*יוזמה ויכולת הנעת תהליכים\n*יחסי אנוש טובים\n*יכולת השפעה ויכולת עבודה בצוות\n* המשרה מיועדת לנשים ולגברים כאחד.\n לעוד משרות ומידע על Alljobs Match >\r\nעוד...\r\nהגשת מועמדות\nעדכון קורות החיים לפני שליחה\n עדכון קורות החיים לפני שליחה\r\nפנייה ב-WhatsApp\n8846519\nמחיקת משרה\nללקוח VIP בלבד\nבטל מחיקת משרה\nשירות זה פתוח ללקוחות VIP בלבד\n רכוש חבילת\nשמירת משרה\nביטול שמירה\nרכוש חבילת \r\n שתף משרה\n משרות חברה\nשלח משרה למייל\nדיווח על תוכן לא הולם או מפלה\nדיווח על תוכן לא הולם או מפלה\nשמך המלאמה השם שלך?\nמייל\nתיאור\nתיאור\nשליחה\nתודה על שיתוף הפעולה\nמודים לך שלקחת חלק בשיפור התוכן שלנו :)\nהמשרה נמחקה\n תוכל לצפות בה בדף המשרות שלי\nהמשרה הוחזרה לרשימת תוצאות החיפוש\nהאם תרצה להסיר את המשרה מרשימת\nהמשרות השמורות שלך?\nכן\r\n לא\nאירעה שגיאה בשליחת פרטיך למשרה",
    "postedAt": "2026-10-08",
    "jobType": "משרה מלאה",
-   "source": "AllJobs"
+   "source": "AllJobs",
+   "alsoAt": [
+    "https://www.alljobs.co.il/Search/UploadSingle.aspx?JobID=8830306"
+   ]
   },
   {
    "title": "אנליסט.ית שיווק",
@@ -2416,7 +2304,10 @@
    "description": "אנליסט/ית המלאי אחראי/ת על אופטימיזציה של המלאי, מניעת חוסרים ומקסום רווחיות באמצעות חשיבה עסקית, אנליטית ותפעולית. התפקיד כולל תחקור נתוני מכירות ומלאי, ניתוחי אד-הוק, בניית כלי עבודה יישומיים, ופתרון חוסרים מול המוסכים בשטח.\nתחומי אחריות-\n- תמיכה בקבלת החלטות דאטה -דריבן: הפקת דוחות, ניתוח מלאי מול תקציב והצפת סיכונים להנהלה ולממשקים.\n- ניהול זמינות וחוסרים: זיהוי פערים בחלפים, תכלול בקשות המוסכים, ניתוח סיבות שורש ומתן פתרונות מיידיים.\n- ניתוח מלאי מת ואיטי: בקרת עלויות החזקה, איתור פריטים עודפים וגיבוש המלצות אקטיביות לצמצומם.\n- ניתוח מכירות ותובנות אופרטיביות: מעקב אחר מגמות, קצבי מכירה ועונתיות ותרגומם להמלצות לרכש ולתכנון.\n- פיתוח כלים וטיוב דאטה : אפיון דוחות ומחשבונים ב-Excel וב- BI, בקרת איכות הנתונים ותחזוקתם.\n- הטמעת כלי AI: זיהוי הזדמנויות לייעול תהליכים, אוטומציה, ניתוח נתונים ותמיכה בקבלת החלטות.\nדרישות:\n - ניסיון של שנתיים לפחות בעבודה עם בסיסי נתונים גדולים ומורכבים, ויכולת ניתוח והסקת מסקנות- חובה.\n- תואר ראשון בכלכלה / הנדסת תעשייה וניהול / לוגיסטיקה / מערכות מידע וכדומה- חובה.\n- ניסיון קודם בתפקיד דומה בעולמות שרשרת אספקה, מלאי, רכש- יתרון משמעותי מאוד\n- רקע מענף הרכב (היכרות עם עולם החלפים, המוסכים או יבואני הרכב)- יתרון משמעותי\n- שליטה ב-Excel ברמת מומחה (פונקציות מתקדמות, דאטה רחב ומורכב, אוטומציה)- חובה.\n- ניסיון בעבודה עם מערכות ERP ו- BI (יתרון ל- SAP )- חובה.\n- ניסיון מעשי בשימוש בכלי AI לניתוח נתונים, ייעול תהליכים, פיתוח פתרונות ואוטומציה- יתרון משמעותי.\n- הבנה תפעולית ויכולת תרגום נתונים לפעולה, שירותיות גבוהה, חשיבה אנליטית חריפה, רב-משימתיות, עבודה תחת לחץ, יוזמה ועצמאות. המשרה מיועדת לנשים ולגברים כאחד.\n לעוד משרות ומידע על G-NESS >\r\nעוד...\r\nהגשת מועמדות\nעדכון קורות החיים לפני שליחה\n עדכון קורות החיים לפני שליחה\r\n8778892\nמחיקת משרה\nללקוח VIP בלבד\nבטל מחיקת משרה\nשירות זה פתוח ללקוחות VIP בלבד\n רכוש חבילת\nשמירת משרה\nביטול שמירה\nרכוש חבילת \r\n שתף משרה\n משרות חברה\nשלח משרה למייל\nדיווח על תוכן לא הולם או מפלה\n10\n9\n8\n7\n6\n5\n4\n3\n2\n1\n לוח ללקוחות בלבד\r\n DisplayBnrOpenXScriptWithKeyword('60', RequestQueryString('position'))\r\n $(window).load(function(){try{if(FirstName!='')$('#spnTextLinkFirstName').html(FirstName+': ').addClass('Orange').addClass('U').addClass('T13');}catch(err){}})\r\nדיווח על תוכן לא הולם או מפלה\nשמך המלאמה השם שלך?\nמייל\nתיאור\nתיאור\nשליחה\nתודה על שיתוף הפעולה\nמודים לך שלקחת חלק בשיפור התוכן שלנו :)\nהמשרה נמחקה\n תוכל לצפות בה בדף המשרות שלי\nהמשרה הוחזרה לרשימת תוצאות החיפוש\nהאם תרצה להסיר את המשרה מרשימת\nהמשרות השמורות שלך?\nכן\r\n לא\nאירעה שגיאה בשליחת פרטיך למשרה",
    "postedAt": "2026-10-07",
    "jobType": "משרה מלאה",
-   "source": "AllJobs"
+   "source": "AllJobs",
+   "alsoAt": [
+    "https://www.jobmaster.co.il/jobs/checknum.asp?key=9846448"
+   ]
   },
   {
    "title": "אנליסט.ית Data",
@@ -2526,17 +2417,10 @@
    "description": "על התפקיד \nאגף השקעות מנהל תיקי השקעות מגוונים בשוק הסחיר בישראל ובחו\"ל. אנליסט/ית מחקר סחיר אחראי/ת על ניתוח והערכת שווי מניות, בחינת יכולת שירות חוב של חברות והצגת המלצות השקעה בפני מנהלי השקעות בכירים.\nתחומי אחריות \n ניתוח והערכת שווי מניות בישראל ודואליות בחינת יכולת שירות חוב של חברות וניתוח השקעה באג\"ח קונצרני הצגת המלצות השקעה בפורומים שונים למנהלי השקעות\nדרישות:\n תואר ראשון בכלכלה או ראיית חשבון ממוסדות אקדמיים מובילים ניסיון של שנתיים לפחות בתפקיד דומה בארגון פיננסי או גוף מוסדי שליטה מעולה בתוכנות Office ואקסל אנגלית ברמה גבוהה\nיתרון \n סיום תואר בהצטיינות בוגר/ת מחלקות הייעוץ העסקי של משרדי רו\"ח (BIG 4) או חברות ייעוץ כלכלי מובילות הכרת מערכות נתונים כגון מגמה וביזפורטל\nפרטי המשרה \nמיקום: רמת גן, על קו הרכבת \nהיקף: משרה מלאה \nמספר משרה: 27310206\nהמשרה פונה לנשים ולגברים כאחד ומתאימה גם לאנשים עם מוגבלות. המשרה מיועדת לנשים ולגברים כאחד.\n לעוד משרות ומידע על מנורה מבטחים פנסיה וגמל בע\"מ >\r\nעוד...\r\nהגשת מועמדות\nעדכון קורות החיים לפני שליחה\n עדכון קורות החיים לפני שליחה\r\n8839235\nמחיקת משרה\nללקוח VIP בלבד\nבטל מחיקת משרה\nשירות זה פתוח ללקוחות VIP בלבד\n רכוש חבילת\nשמירת משרה\nביטול שמירה\nרכוש חבילת \r\n שתף משרה\n משרות חברה\nשלח משרה למייל\nדיווח על תוכן לא הולם או מפלה\n //rotation between zone 201 and 216\r\n var cookie_Video_zone = getCookie('cookie_Video_zone');\r\n if (cookie_Video_zone == null) { cookie_Video_zone = 201; }\r\n else if (cookie_Video_zone == '201') {\r\n cookie_Video_zone = 216;\r\n }else {\r\n cookie_Video_zone = 201;\r\n }\r\n setCookie('cookie_Video_zone',cookie_Video_zone,'/');\r\n DisplayBnrOpenXScriptWithKeywordRealtime_InContainerID(cookie_Video_zone, 'divBannerVideoMitugSecond');\r\nדיווח על תוכן לא הולם או מפלה\nשמך המלאמה השם שלך?\nמייל\nתיאור\nתיאור\nשליחה\nתודה על שיתוף הפעולה\nמודים לך שלקחת חלק בשיפור התוכן שלנו :)\nהמשרה נמחקה\n תוכל לצפות בה בדף המשרות שלי\nהמשרה הוחזרה לרשימת תוצאות החיפוש\nהאם תרצה להסיר את המשרה מרשימת\nהמשרות השמורות שלך?\nכן\r\n לא\nאירעה שגיאה בשליחת פרטיך למשרה",
    "postedAt": "2026-10-08",
    "jobType": "משרה מלאה",
-   "source": "AllJobs"
-  },
-  {
-   "title": "אנליסט.ית מחקר סחיר",
-   "company": "חברה חסויה",
-   "location": "רמת גן",
-   "url": "https://www.alljobs.co.il/Search/UploadSingle.aspx?JobID=8844563",
-   "description": "על התפקיד \nאגף השקעות מנהל תיקי השקעות מגוונים בשוק הסחיר בישראל ובחו\"ל. אנליסט/ית מחקר סחיר אחראי/ת על ניתוח והערכת שווי מניות, בחינת יכולת שירות חוב של חברות והצגת המלצות השקעה בפני מנהלי השקעות בכירים.\nתחומי אחריות \n ניתוח והערכת שווי מניות בישראל ודואליות בחינת יכולת שירות חוב של חברות וניתוח השקעה באג\"ח קונצרני הצגת המלצות השקעה בפורומים שונים למנהלי השקעות\nדרישות:\n תואר ראשון בכלכלה או ראיית חשבון ממוסדות אקדמיים מובילים ניסיון של שנתיים לפחות בתפקיד דומה בארגון פיננסי או גוף מוסדי שליטה מעולה בתוכנות Office ואקסל אנגלית ברמה גבוהה\nיתרון \n סיום תואר בהצטיינות בוגר/ת מחלקות הייעוץ העסקי של משרדי רו\"ח (BIG 4) או חברות ייעוץ כלכלי מובילות הכרת מערכות נתונים כגון מגמה וביזפורטל\nמיקום: רמת גן, על קו הרכבת \nהמשרה מתאימה גם לאנשים עם מוגבלות.\n* המשרה מיועדת לנשים ולגברים כאחד.\nעוד...\r\nהגשת מועמדות\nעדכון קורות החיים לפני שליחה\n עדכון קורות החיים לפני שליחה\r\n8844563\nמחיקת משרה\nללקוח VIP בלבד\nבטל מחיקת משרה\nשירות זה פתוח ללקוחות VIP בלבד\n רכוש חבילת\nשמירת משרה\nביטול שמירה\nרכוש חבילת \r\n שתף משרה\nשלח משרה למייל\nדיווח על תוכן לא הולם או מפלה\nדיווח על תוכן לא הולם או מפלה\nשמך המלאמה השם שלך?\nמייל\nתיאור\nתיאור\nשליחה\nתודה על שיתוף הפעולה\nמודים לך שלקחת חלק בשיפור התוכן שלנו :)\nהמשרה נמחקה\n תוכל לצפות בה בדף המשרות שלי\nהמשרה הוחזרה לרשימת תוצאות החיפוש\nהאם תרצה להסיר את המשרה מרשימת\nהמשרות השמורות שלך?\nכן\r\n לא\nאירעה שגיאה בשליחת פרטיך למשרה",
-   "postedAt": "2026-10-08",
-   "jobType": "משרה מלאה",
-   "source": "AllJobs"
+   "source": "AllJobs",
+   "alsoAt": [
+    "https://www.alljobs.co.il/Search/UploadSingle.aspx?JobID=8844563"
+   ]
   },
   {
    "title": "אנליסט /ית להשקעות הלא סחירות | אגף השקעות",
@@ -2546,17 +2430,10 @@
    "description": "על התפקיד \nאגף השקעות מנהל תיקי השקעות מגוונים בשוק הסחיר והלא סחיר. אנליסט/ית להשקעות הלא סחירות אחראי/ת על ניתוח עסקאות השקעה בתחום ה-Private Equity, ביצוע הערכות שווי, בניית מודלים פיננסיים ומעקב שוטף אחר ביצועי הקרנות בתיק.\nתחומי אחריות \n ניתוח עסקאות השקעה בתחום ה-Private Equity - השקעות ישירות בחברות פרטיות והשקעות בקרנות בארץ ובחו\"\"ל ביצוע הערכות שווי, בניית מודלים פיננסיים, ניתוח דוחות כספיים ובדיקות נאותות מעקב שוטף אחר ביצועי הקרנות בתיק ובחינת הזדמנויות השקעה חדשות הכנת חומרים והצגת המלצות השקעה בפני ועדות השקעה והנהלה עבודה שוטפת מול גופים בינלאומיים, שותפים פיננסיים, יועצים מקצועיים ובנקי השקעות\nדרישות:\n תואר ראשון בכלכלה, חשבונאות או מנהל עסקים ממוסד אקדמי מוביל שליטה גבוהה מאוד בבניית מודלים פיננסיים וניתוח עסקאות שליטה גבוהה מאוד באקסל ובשאר יישומי Office אנגלית ברמה גבוהה מאוד\nיתרון \n ניסיון של 1-2 שנים במחלקות ייעוץ כלכלי (Corporate Finance / Transaction Services) באחד ממשרדי ה-Big 4 או בחברות ייעוץ מובילות ניסיון רלוונטי בגוף מוסדי או פיננסי היכרות עם תחום ההשקעות בחברות פרטיות וקרנות השקעה היכרות עם מערכות מידע פיננסיות כגון PitchBook, Preqin, מגמה, ביזפורטל או Bloomberg\nמיקום: רמת גן, על קו הרכבת \nהמשרה מתאימה גם לאנשים עם מוגבלות.\n* המשרה מיועדת לנשים ולגברים כאחד.\n לעוד משרות ומידע על מנורה מבטחים פנסיה וגמל בע\"מ >\r\nעוד...\r\nהגשת מועמדות\nעדכון קורות החיים לפני שליחה\n עדכון קורות החיים לפני שליחה\r\n8840548\nמחיקת משרה\nללקוח VIP בלבד\nבטל מחיקת משרה\nשירות זה פתוח ללקוחות VIP בלבד\n רכוש חבילת\nשמירת משרה\nביטול שמירה\nרכוש חבילת \r\n שתף משרה\n משרות חברה\nשלח משרה למייל\nדיווח על תוכן לא הולם או מפלה\nדיווח על תוכן לא הולם או מפלה\nשמך המלאמה השם שלך?\nמייל\nתיאור\nתיאור\nשליחה\nתודה על שיתוף הפעולה\nמודים לך שלקחת חלק בשיפור התוכן שלנו :)\nהמשרה נמחקה\n תוכל לצפות בה בדף המשרות שלי\nהמשרה הוחזרה לרשימת תוצאות החיפוש\nהאם תרצה להסיר את המשרה מרשימת\nהמשרות השמורות שלך?\nכן\r\n לא\nאירעה שגיאה בשליחת פרטיך למשרה",
    "postedAt": "2026-10-08",
    "jobType": "משרה מלאה",
-   "source": "AllJobs"
-  },
-  {
-   "title": "אנליסט /ית להשקעות הלא סחירות | אגף השקעות",
-   "company": "חברה חסויה",
-   "location": "רמת גן",
-   "url": "https://www.alljobs.co.il/Search/UploadSingle.aspx?JobID=8844497",
-   "description": "על התפקיד \nאגף השקעות מנהל תיקי השקעות מגוונים בשוק הסחיר והלא סחיר. אנליסט/ית להשקעות הלא סחירות אחראי/ת על ניתוח עסקאות השקעה בתחום ה-Private Equity, ביצוע הערכות שווי, בניית מודלים פיננסיים ומעקב שוטף אחר ביצועי הקרנות בתיק.\nתחומי אחריות \n ניתוח עסקאות השקעה בתחום ה-Private Equity - השקעות ישירות בחברות פרטיות והשקעות בקרנות בארץ ובחו\"\"ל ביצוע הערכות שווי, בניית מודלים פיננסיים, ניתוח דוחות כספיים ובדיקות נאותות מעקב שוטף אחר ביצועי הקרנות בתיק ובחינת הזדמנויות השקעה חדשות הכנת חומרים והצגת המלצות השקעה בפני ועדות השקעה והנהלה עבודה שוטפת מול גופים בינלאומיים, שותפים פיננסיים, יועצים מקצועיים ובנקי השקעות\nדרישות:\n תואר ראשון בכלכלה, חשבונאות או מנהל עסקים ממוסד אקדמי מוביל שליטה גבוהה מאוד בבניית מודלים פיננסיים וניתוח עסקאות שליטה גבוהה מאוד באקסל ובשאר יישומי Office אנגלית ברמה גבוהה מאוד\nיתרון \n ניסיון של 1-2 שנים במחלקות ייעוץ כלכלי (Corporate Finance / Transaction Services) באחד ממשרדי ה-Big 4 או בחברות ייעוץ מובילות ניסיון רלוונטי בגוף מוסדי או פיננסי היכרות עם תחום ההשקעות בחברות פרטיות וקרנות השקעה היכרות עם מערכות מידע פיננסיות כגון PitchBook, Preqin, מגמה, ביזפורטל או Bloomberg\nמיקום: רמת גן, על קו הרכבת \nהמשרה מתאימה גם לאנשים עם מוגבלות.\n* המשרה מיועדת לנשים ולגברים כאחד.\nעוד...\r\nהגשת מועמדות\nעדכון קורות החיים לפני שליחה\n עדכון קורות החיים לפני שליחה\r\n8844497\nמחיקת משרה\nללקוח VIP בלבד\nבטל מחיקת משרה\nשירות זה פתוח ללקוחות VIP בלבד\n רכוש חבילת\nשמירת משרה\nביטול שמירה\nרכוש חבילת \r\n שתף משרה\nשלח משרה למייל\nדיווח על תוכן לא הולם או מפלה\nדיווח על תוכן לא הולם או מפלה\nשמך המלאמה השם שלך?\nמייל\nתיאור\nתיאור\nשליחה\nתודה על שיתוף הפעולה\nמודים לך שלקחת חלק בשיפור התוכן שלנו :)\nהמשרה נמחקה\n תוכל לצפות בה בדף המשרות שלי\nהמשרה הוחזרה לרשימת תוצאות החיפוש\nהאם תרצה להסיר את המשרה מרשימת\nהמשרות השמורות שלך?\nכן\r\n לא\nאירעה שגיאה בשליחת פרטיך למשרה",
-   "postedAt": "2026-10-08",
-   "jobType": "משרה מלאה",
-   "source": "AllJobs"
+   "source": "AllJobs",
+   "alsoAt": [
+    "https://www.alljobs.co.il/Search/UploadSingle.aspx?JobID=8844497"
+   ]
   },
   {
    "title": "אנליסט/ית פיננסי/ת / עוזר/ת חשב",
@@ -2610,23 +2487,16 @@
   },
   {
    "title": "אנליסט /ית מחקר אשראי לא סחיר | אגף השקעות",
-   "company": "חברה חסויה",
-   "location": "רמת גן",
-   "url": "https://www.alljobs.co.il/Search/UploadSingle.aspx?JobID=8844465",
-   "description": "על התפקיד \nאגף השקעות מנהל תיקי השקעות מגוונים בשוק הסחיר והלא סחיר. אנליסט/ית מחקר אשראי לא סחיר אחראי/ת על ניתוח עסקאות אשראי מורכבות, ביצוע בדיקות נאותות, כתיבת עבודות אנליזה והצגתן בפני ועדות השקעה, תוך ניהול ובקרת סיכון האשראי של התיק הקיים.\nתחומי אחריות \n חיתום ואנליזה - ניתוח עסקאות אשראי לא סחיר מורכבות, בין היתר מימון פרויקטים בנדל\"\"ן, ליווי בנייה, תשתיות ומימון קורפורייט ליווי צוות הייזום לאורך כל התהליך - מייזום ראשוני ועד אישור סופי בוועדות ההשקעה בדיקת נאותות - בחינה מעמיקה של מודלים כלכליים, תוכניות עסקיות ודוחות שמאות כתיבת עבודות אנליזה ודירוג פנימי לצורך קבלת החלטה בוועדות ההשקעה והצגתן ניהול ובקרת סיכון האשראי של התיק הקיים באופן שוטף\nדרישות:\n תואר ראשון בכלכלה, חשבונאות או מנהל עסקים ממוסד אקדמי מוביל שליטה ברמה גבוהה מאוד ב-Excel יכולת אנליטית גבוהה וירידה לפרטים רמת התנסחות רהוטה וגבוהה בכתב ובעל פה\nיתרון \n תואר שני או הסמכה כרואה/ת חשבון ניסיון באנליזה אשראי עסקי/תאגידי, חיתום אשראי או מימון פרויקטים רקע ממחלקות כלכליות או מחקר בגופים מוסדיים או ממשרדי רו\"\"ח (BIG 4) ניסיון עם ניתוח ו/או מודלים פיננסיים מורכבים\nרמת גן, על קו הרכבת \nהמשרה מתאימה גם לאנשים עם מוגבלות.\n* המשרה מיועדת לנשים ולגברים כאחד.\nעוד...\r\nהגשת מועמדות\nעדכון קורות החיים לפני שליחה\n עדכון קורות החיים לפני שליחה\r\n8844465\nמחיקת משרה\nללקוח VIP בלבד\nבטל מחיקת משרה\nשירות זה פתוח ללקוחות VIP בלבד\n רכוש חבילת\nשמירת משרה\nביטול שמירה\nרכוש חבילת \r\n שתף משרה\nשלח משרה למייל\nדיווח על תוכן לא הולם או מפלה\n //rotation between zone 201 and 216\r\n var cookie_Video_zone = getCookie('cookie_Video_zone');\r\n if (cookie_Video_zone == null) { cookie_Video_zone = 201; }\r\n else if (cookie_Video_zone == '201') {\r\n cookie_Video_zone = 216;\r\n }else {\r\n cookie_Video_zone = 201;\r\n }\r\n setCookie('cookie_Video_zone',cookie_Video_zone,'/');\r\n DisplayBnrOpenXScriptWithKeywordRealtime_InContainerID(cookie_Video_zone, 'divBannerVideoMitugSecond');\r\nדיווח על תוכן לא הולם או מפלה\nשמך המלאמה השם שלך?\nמייל\nתיאור\nתיאור\nשליחה\nתודה על שיתוף הפעולה\nמודים לך שלקחת חלק בשיפור התוכן שלנו :)\nהמשרה נמחקה\n תוכל לצפות בה בדף המשרות שלי\nהמשרה הוחזרה לרשימת תוצאות החיפוש\nהאם תרצה להסיר את המשרה מרשימת\nהמשרות השמורות שלך?\nכן\r\n לא\nאירעה שגיאה בשליחת פרטיך למשרה",
-   "postedAt": "2026-10-08",
-   "jobType": "משרה מלאה",
-   "source": "AllJobs"
-  },
-  {
-   "title": "אנליסט /ית מחקר אשראי לא סחיר | אגף השקעות",
    "company": "מנורה מבטחים פנסיה וגמל בע\"מ",
    "location": "רמת גן",
    "url": "https://www.alljobs.co.il/Search/UploadSingle.aspx?JobID=8840460",
    "description": "על התפקיד \nאגף השקעות מנהל תיקי השקעות מגוונים בשוק הסחיר והלא סחיר. אנליסט/ית מחקר אשראי לא סחיר אחראי/ת על ניתוח עסקאות אשראי מורכבות, ביצוע בדיקות נאותות, כתיבת עבודות אנליזה והצגתן בפני ועדות השקעה, תוך ניהול ובקרת סיכון האשראי של התיק הקיים.\nתחומי אחריות \n חיתום ואנליזה - ניתוח עסקאות אשראי לא סחיר מורכבות, בין היתר מימון פרויקטים בנדל\"\"ן, ליווי בנייה, תשתיות ומימון קורפורייט ליווי צוות הייזום לאורך כל התהליך - מייזום ראשוני ועד אישור סופי בוועדות ההשקעה בדיקת נאותות - בחינה מעמיקה של מודלים כלכליים, תוכניות עסקיות ודוחות שמאות כתיבת עבודות אנליזה ודירוג פנימי לצורך קבלת החלטה בוועדות ההשקעה והצגתן ניהול ובקרת סיכון האשראי של התיק הקיים באופן שוטף\nדרישות:\n תואר ראשון בכלכלה, חשבונאות או מנהל עסקים ממוסד אקדמי מוביל שליטה ברמה גבוהה מאוד ב-Excel יכולת אנליטית גבוהה וירידה לפרטים רמת התנסחות רהוטה וגבוהה בכתב ובעל פה\nיתרון \n תואר שני או הסמכה כרואה/ת חשבון ניסיון באנליזה אשראי עסקי/תאגידי, חיתום אשראי או מימון פרויקטים רקע ממחלקות כלכליות או מחקר בגופים מוסדיים או ממשרדי רו\"\"ח (BIG 4) ניסיון עם ניתוח ו/או מודלים פיננסיים מורכבים\nרמת גן, על קו הרכבת \nהמשרה מתאימה גם לאנשים עם מוגבלות.\n* המשרה מיועדת לנשים ולגברים כאחד.\n לעוד משרות ומידע על מנורה מבטחים פנסיה וגמל בע\"מ >\r\nעוד...\r\nהגשת מועמדות\nעדכון קורות החיים לפני שליחה\n עדכון קורות החיים לפני שליחה\r\n8840460\nמחיקת משרה\nללקוח VIP בלבד\nבטל מחיקת משרה\nשירות זה פתוח ללקוחות VIP בלבד\n רכוש חבילת\nשמירת משרה\nביטול שמירה\nרכוש חבילת \r\n שתף משרה\n משרות חברה\nשלח משרה למייל\nדיווח על תוכן לא הולם או מפלה\nדיווח על תוכן לא הולם או מפלה\nשמך המלאמה השם שלך?\nמייל\nתיאור\nתיאור\nשליחה\nתודה על שיתוף הפעולה\nמודים לך שלקחת חלק בשיפור התוכן שלנו :)\nהמשרה נמחקה\n תוכל לצפות בה בדף המשרות שלי\nהמשרה הוחזרה לרשימת תוצאות החיפוש\nהאם תרצה להסיר את המשרה מרשימת\nהמשרות השמורות שלך?\nכן\r\n לא\nאירעה שגיאה בשליחת פרטיך למשרה",
    "postedAt": "2026-10-08",
    "jobType": "משרה מלאה",
-   "source": "AllJobs"
+   "source": "AllJobs",
+   "alsoAt": [
+    "https://www.alljobs.co.il/Search/UploadSingle.aspx?JobID=8844465"
+   ]
   },
   {
    "title": "אנליסט /ית אשראי",
@@ -3486,7 +3356,10 @@
    "description": "צוות הגיוס של Malam Team מתרחב ואת/ה יכול/ה להיות חלק ממנו!\nאנחנו מחפשים Junior Technical Recruiter עם נשמה של מגייס/ת אמיתי/ת.\nמה בתפקיד?\n- גיוס מקצה לקצה כולל החתמות חוזים\n- סורסינג, פרסום משרות, ראיונות טלפוניים ופרונטליים, שיחות ממליצים\n- עבודה צמודה עם מנהלים מגייסים וליווי מועמדים עד החתימה\nוהכי חשוב? הרבה אנרגיות!\n מיקום: פתח תקווה\n שעות: א-ה 09:00-18:00\nדרישות:\n - נייסיון של שנה ומעלה בגיוס\n- ניסיון בעבודה מול מנהלים מגייסים ויכולת ניהול ממשקים \n- יכולת עבודה תחת לחץ וריבוי משימות\n- אוריינטציה טכנולוגית ויכולת למידה מהירה המשרה מיועדת לנשים ולגברים כאחד.\n לעוד משרות ומידע על מלם תים >\r\nעוד...\r\nהגשת מועמדות\nעדכון קורות החיים לפני שליחה\n עדכון קורות החיים לפני שליחה\r\n8150708\nמחיקת משרה\nללקוח VIP בלבד\nבטל מחיקת משרה\nשירות זה פתוח ללקוחות VIP בלבד\n רכוש חבילת\nשמירת משרה\nביטול שמירה\nרכוש חבילת \r\n שתף משרה\n משרות חברה\nשלח משרה למייל\nדיווח על תוכן לא הולם או מפלה\nדיווח על תוכן לא הולם או מפלה\nשמך המלאמה השם שלך?\nמייל\nתיאור\nתיאור\nשליחה\nתודה על שיתוף הפעולה\nמודים לך שלקחת חלק בשיפור התוכן שלנו :)\nהמשרה נמחקה\n תוכל לצפות בה בדף המשרות שלי\nהמשרה הוחזרה לרשימת תוצאות החיפוש\nהאם תרצה להסיר את המשרה מרשימת\nהמשרות השמורות שלך?\nכן\r\n לא\nאירעה שגיאה בשליחת פרטיך למשרה",
    "postedAt": "2026-10-08",
    "jobType": "משרה מלאה\r\n             ועבודה היברידית",
-   "source": "AllJobs"
+   "source": "AllJobs",
+   "alsoAt": [
+    "https://www.jobmaster.co.il/jobs/checknum.asp?key=9385678"
+   ]
   },
   {
    "title": "Junior Business Operations Manager",
@@ -3696,7 +3569,10 @@
    "description": "חברת Nextage, המובילה בייעוץ פיננסי לחברות סטארט-אפ, מגייסת Business Operations \nבמשרדי החברה שברעננה.\nזו הזדמנות מעולה להיכנס לעולם הסטארטאפים והפיננסים, ללמוד לעומק את האקוסיסטם ולהיות חלק מצוות עסקי וצומח, בסביבה דינמית ותומכת.\nמה כולל התפקיד:\n-ביצוע מחקרי שוק לזיהוי מגמות והזדמנויות חדשות לפיתוח עסקי\n- ניהול הנכסים הדיגיטליים של החברה (אתר, מדיה חברתית ועוד)\n-כתיבה והפצה של הצעות, הערכות עלויות ומסמכים ללקוחות ולפגישות עסקיות\n-סיוע בהכנת מצגות ופגישות הנהלה\n-תיאום וארגון אירועים, ישיבות וכנסים עסקיים\n- ניהול ועדכון מערכת CRM ( salesforce )\n-תמיכה בתהליכי שימור לקוחות\nדרישות:\n -תואר ראשון - חובה\n-ניסיון של 1-2 שנים בפיתוח עסקי ו/או שיווק עסקי - חובה\n-היכרות עם עולם הסטארטאפים, המשקיעים והאקוסיסטם הישראלי - יתרון\n-ניסיון בניהול מדיה חברתית ויצירת תוכן - חובה\n-אנגלית ברמה גבוהה מאוד - חובה\nאנחנו מציעים סביבת עבודה עם אנשים מעולים, מקום להתפתח בו מקצועית וחשיפה מרתקת לעולם הסטארטאפים מבפנים.\n* משרה זו פונה לנשים וגברים כאחד. המשרה מיועדת לנשים ולגברים כאחד.\n לעוד משרות ומידע על Nextage >\r\nעוד...\r\nהגשת מועמדות\nעדכון קורות החיים לפני שליחה\n עדכון קורות החיים לפני שליחה\r\n8825637\nמחיקת משרה\nללקוח VIP בלבד\nבטל מחיקת משרה\nשירות זה פתוח ללקוחות VIP בלבד\n רכוש חבילת\nשמירת משרה\nביטול שמירה\nרכוש חבילת \r\n שתף משרה\n משרות חברה\nשלח משרה למייל\nדיווח על תוכן לא הולם או מפלה\n //rotation between zone 200 and 215\r\n var cookie_Carousel_zone = getCookie('cookie_Carousel_zone');\r\n if (cookie_Carousel_zone == null) { cookie_Carousel_zone = 200; }\r\n else if(cookie_Carousel_zone == '200') {\r\n cookie_Carousel_zone = 215;\r\n }else {\r\n cookie_Carousel_zone = 200;\r\n }\r\n setCookie('cookie_Carousel_zone',cookie_Carousel_zone,'/');\r\n DisplayBnrOpenXScriptWithKeywordRealtime_InContainerID(cookie_Carousel_zone, 'divBannerCarouselMitugFirst');\r\nדיווח על תוכן לא הולם או מפלה\nשמך המלאמה השם שלך?\nמייל\nתיאור\nתיאור\nשליחה\nתודה על שיתוף הפעולה\nמודים לך שלקחת חלק בשיפור התוכן שלנו :)\nהמשרה נמחקה\n תוכל לצפות בה בדף המשרות שלי\nהמשרה הוחזרה לרשימת תוצאות החיפוש\nהאם תרצה להסיר את המשרה מרשימת\nהמשרות השמורות שלך?\nכן\r\n לא\nאירעה שגיאה בשליחת פרטיך למשרה",
    "postedAt": "2026-10-07",
    "jobType": "משרה מלאה\r\n             ועבודה היברידית",
-   "source": "AllJobs"
+   "source": "AllJobs",
+   "alsoAt": [
+    "https://www.drushim.co.il/job/38474756/f38dd8f0/"
+   ]
   },
   {
    "title": "Sales Operations",
@@ -3866,7 +3742,10 @@
    "description": "We Are more than a Professional Services firm, we are a community of people driven by impact. As a leading firm providing Audit, Tax, and Advisory services, and part of one of the worlds largest global networks, we work with the most influential organizations in the market, combining deep expertise, innovation, and advanced technology. We are guided by integrity, responsibility, and forward thinking in everything we do. Our people are at the center, with space to lead, grow, and build meaningful careers in a collaborative environment that connects personal success with real value for business and society. We are currently seeking an Engagement Operations Specialist If you would like to join a young and high quality team that leads a central operational function within the organization, be part of a broad and professional international network, and gain professional knowledge and experience in the worlds of risk management, finance, and client engagement, We are looking for you. \nThe role includes: \n* Conducting initial research on companies, completing questionnaires, and preparing various documents for engagement risk analysis and presenting them to firm management \n* Preparing engagement letters with firm clients \n* Full responsibility for completing engagement processes with firm partners \n* Issuing invoices, distributing them to clients, and managing collections \n* Monitoring and controlling payments to suppliers \n* Preparing various financial reports \n* Ongoing communication with our teams abroad \n* Building annual service forecasts and budget planning \n* Documenting information in the CRM system\nRequirements: \n * Excellent interpersonal skills, our center is first and foremost a service oriented unit \n* High motivation for research, learning, and attention to detail \n* Ability to learn quickly, professionalism, and initiative \n* High level verbal and written communication skills in Hebrew and English- required \n* Excellent ability to manage and prioritize tasks while working across multiple interfaces \n* Strong commercial orientation, with understanding and familiarity with the worlds of finance, economics, capital markets, and regulation- an advantage \n* Preference for candidates with a Bachelors degree in Business Administration, Economics, Marketing, Accounting, or Law \nAn equal opportunity employer. We are committed to diversity and inclusion and believe they are a source of strength, growth, and continuous learning. We foster an inclusive environment and empower women and men alike.\nThis position is open to all candidates.\nShow more...\r\nהגשת מועמדותהגש מועמדות\nעדכון קורות החיים לפני שליחה\n עדכון קורות החיים לפני שליחה\r\n8789801\nמחיקת משרה\nללקוח VIP בלבד\nבטל מחיקת משרה\nשירות זה פתוח ללקוחות VIP בלבד\nרכוש חבילת\nשמירת משרה\nביטול שמירה\nרכוש חבילת \n שתף משרה\nשלח משרה למייל\nדיווח על תוכן לא הולם או מפלה\r\nדיווח על תוכן לא הולם או מפלה\nשמך המלאמה השם שלך?\nמייל\nתיאור\nתיאור\nשליחה\nתודה על שיתוף הפעולה\nמודים לך שלקחת חלק בשיפור התוכן שלנו :)\nהמשרה נמחקה\n תוכל לצפות בה בדף המשרות שלי\nהמשרה הוחזרה לרשימת תוצאות החיפוש\nהאם תרצה להסיר את המשרה מרשימת\nהמשרות השמורות שלך?\nכן\r\n לא\nאירעה שגיאה בשליחת פרטיך למשרה",
    "postedAt": "2026-10-05",
    "jobType": "",
-   "source": "AllJobs"
+   "source": "AllJobs",
+   "alsoAt": [
+    "https://www.alljobs.co.il/Search/UploadSingle.aspx?JobID=8481491"
+   ]
   },
   {
    "title": "Revenue Operations Manager",
@@ -4346,7 +4225,10 @@
    "description": "לחברת סולל בונה מקבוצת שיכון ובינוי דרוש/ה מתאמ/ת שינויי דיירים!\nהתפקיד כולל:\n ניהול וליווי תהליך הערכות למסירת דירות ושטחים בדגש על תפיסת שירות וחווית לקוח.\nקשר מול ממשקים מרובים, תמחורים, כתבי כמויות.\nעבודה דינמית ומעניינת.\nמשרה מלאה א'-ה' 08:00-16:30\nרמת גן וירושלים.\nדרישות:\n דרישות התפקיד:\nהנדסאי/ת אדריכלות/ תואר ראשון בעיצוב פנים- חובה\nידע בתוכנת Revit- חובה\nנסיון- יתרון!\nתנאים טובים למתאימים/ות! המשרה מיועדת לנשים ולגברים כאחד.\n לעוד משרות ומידע על שיכון בינוי-סולל בונה >\r\nעוד...\r\nהגשת מועמדות\nעדכון קורות החיים לפני שליחה\n עדכון קורות החיים לפני שליחה\r\n8797339\nמחיקת משרה\nללקוח VIP בלבד\nבטל מחיקת משרה\nשירות זה פתוח ללקוחות VIP בלבד\n רכוש חבילת\nשמירת משרה\nביטול שמירה\nרכוש חבילת \r\n שתף משרה\n משרות חברה\nשלח משרה למייל\nדיווח על תוכן לא הולם או מפלה\nדיווח על תוכן לא הולם או מפלה\nשמך המלאמה השם שלך?\nמייל\nתיאור\nתיאור\nשליחה\nתודה על שיתוף הפעולה\nמודים לך שלקחת חלק בשיפור התוכן שלנו :)\nהמשרה נמחקה\n תוכל לצפות בה בדף המשרות שלי\nהמשרה הוחזרה לרשימת תוצאות החיפוש\nהאם תרצה להסיר את המשרה מרשימת\nהמשרות השמורות שלך?\nכן\r\n לא\nאירעה שגיאה בשליחת פרטיך למשרה",
    "postedAt": "2026-10-07",
    "jobType": "משרה מלאה",
-   "source": "AllJobs"
+   "source": "AllJobs",
+   "alsoAt": [
+    "https://www.jobmaster.co.il/jobs/checknum.asp?key=9891527"
+   ]
   },
   {
    "title": "איש מכירות שטח ומנהל /ת פרויקטים - תחום הבנייה ומגורי היוקרה",
@@ -4699,16 +4581,6 @@
    "source": "AllJobs"
   },
   {
-   "title": "Financial Modeling Analyst",
-   "company": "חברה חסויה",
-   "location": "",
-   "url": "https://www.alljobs.co.il/Search/UploadSingle.aspx?JobID=8456994",
-   "description": "We Are KPMG Israel KPMG Israel is more than a professional services firm, we are a community of people driven by impact. As a leading firm providing Audit, Tax, and Advisory services, and part of one of the world’s largest global networks, we work with the most influential organizations in the market, combining deep expertise, innovation, and advanced technology. We are guided by integrity, responsibility, and forward thinking in everything we do. Our people are at the center, with space to lead, grow, and build meaningful careers in a collaborative environment that connects personal success with real value for business and society. The Actuarial Department at KPMG Israel is seeking a Financial Modeling Analyst to join a professional team that provides actuarial audit and advisory services to leading financial institutions in the market. Our department works closely with public companies, banks, credit card companies, pension funds, and insurance firms, operating at the core of their economic and regulatory decision-making processes. \n Key Responsibilities \n* Build, run, and analyze financial and actuarial models \n* Work with diverse databases, including developing and executing data controls \n* Create and maintain KPI reports and analytical deliverables \n* Collaborate with internal data servers and organizational information systems \n* Manage analytical tasks end-to-end while meeting deadlines \n* Work independently as well as in a team within a dynamic, challenging environment \nתת מחלקה: \nאקטואריה\nRequirements: \n Bachelor’s or Master’s degree in Actuarial Science, Mathematics, or Statistics – mandatory \n* Full proficiency in Excel – mandatory \n* Proven experience in SQL and/or SAS programming at an advanced level – mandatory \n* Two years of experience in the financial and/or insurance sector – strong advantage \n* Experience working with financial or actuarial models – strong advantage \n* Knowledge and experience in VBA – advantage \n* Ability to work independently as well as collaboratively in a team \n* Accuracy, thoroughness, strong analytical thinking, and excellent problem-solving skills \n* Ability to learn independently, manage multiple tasks, and apply creative thinking to problem-solving \n* Suitable candidates will be required to pass a professional knowledge assessment The position is intended for all candidates. We support diversity and see it as a strength and as an opportunity to grow, learn, and innovate. We are committed to fostering an inclusive workplace and empowering all employees. KPMG Israel is committed to diversity and inclusion. We believe that embracing differences strengthens our ability to learn, grow, and succeed together. \nThis position is open to all candidates.\nShow more...\r\nהגשת מועמדותהגש מועמדות\nעדכון קורות החיים לפני שליחה\n עדכון קורות החיים לפני שליחה\r\n8456994\nמחיקת משרה\nללקוח VIP בלבד\nבטל מחיקת משרה\nשירות זה פתוח ללקוחות VIP בלבד\nרכוש חבילת\nשמירת משרה\nביטול שמירה\nרכוש חבילת \n שתף משרה\nשלח משרה למייל\nדיווח על תוכן לא הולם או מפלה\r\nדיווח על תוכן לא הולם או מפלה\nשמך המלאמה השם שלך?\nמייל\nתיאור\nתיאור\nשליחה\nתודה על שיתוף הפעולה\nמודים לך שלקחת חלק בשיפור התוכן שלנו :)\nהמשרה נמחקה\n תוכל לצפות בה בדף המשרות שלי\nהמשרה הוחזרה לרשימת תוצאות החיפוש\nהאם תרצה להסיר את המשרה מרשימת\nהמשרות השמורות שלך?\nכן\r\n לא\nאירעה שגיאה בשליחת פרטיך למשרה",
-   "postedAt": "2026-10-08",
-   "jobType": "",
-   "source": "AllJobs"
-  },
-  {
    "title": "Compliance & Anti-Money Laundering Consultant",
    "company": "חברה חסויה",
    "location": "",
@@ -4716,17 +4588,10 @@
    "description": "We Are KPMG Israel KPMG Israel is more than a professional services firm, we are a community of people driven by impact. As a leading firm providing Audit, Tax, and Advisory services, and part of one of the world’s largest global networks, we work with the most influential organizations in the market, combining deep expertise, innovation, and advanced technology. We are guided by integrity, responsibility, and forward thinking in everything we do. Our people are at the center, with space to lead, grow, and build meaningful careers in a collaborative environment that connects personal success with real value for business and society. About the Role We're looking for a Compliance & Anti-Money Laundering Consultant to join our financial Compliance team This role offers an excellent opportunity for recent graduates and professionals with initial experience who are looking to develop a career in Anti-Money Laundering (AML), Compliance, and Regulatory Affairs within a professional, dynamic, and multi-disciplinary environment. Key Responsibilities \n* Perform ongoing AML controls and monitoring activities in accordance with the organization's annual work plan. \n* Analyze data and dedicated reports to identify unusual activity, trends, and potential risks. \n* Conduct investigations and in-depth reviews to identify suspicious activity patterns and AML typologies. \n* Prepare reports, document findings, and present conclusions and recommendations. \n* Monitor exceptions and deficiencies and support the implementation of corrective actions. \n* Assist in the preparation of reports and reviews for internal and external stakeholders. \n* Implement, maintain, and monitor AML policies, procedures, and work processes. \n* Provide professional guidance to employees and business units on AML matters. \n* Participate in training activities and support the implementation of regulatory requirements across the organization. \n* Work closely with internal stakeholders and external parties as required. \n* Perform additional compliance and AML-related tasks as directed by the supervisor.\nRequirements: \n * Bachelor's degree from a recognized academic institution in Law or Accounting or any relevant field – mandatory. \n* Proven experience in Compliance, Anti-Money Laundering, Regulation, Audit, Risk Management, or Business Analytics – an advantage. \n* Proficiency in Microsoft Office applications, particularly Excel. \n* Strong analytical skills and ability to draw insights from data. \n* Critical thinking skills and strong attention to detail. \n* Ability to learn independently and work autonomously. \n* Excellent written and verbal communication skills in Hebrew and/or English. \n* Strong organizational skills, accountability, and attention to detail. \n* Excellent interpersonal skills and ability to collaborate with multiple stakeholders. This position is open to all qualified candidates. We are committed to diversity, inclusion, and equal opportunity, and believe that diverse perspectives contribute to innovation, growth, and learning. We encourage applications from all individuals regardless of gender, background, or identity. \nThis position is open to all candidates.\nShow more...\r\nהגשת מועמדותהגש מועמדות\nעדכון קורות החיים לפני שליחה\n עדכון קורות החיים לפני שליחה\r\n8782568\nמחיקת משרה\nללקוח VIP בלבד\nבטל מחיקת משרה\nשירות זה פתוח ללקוחות VIP בלבד\nרכוש חבילת\nשמירת משרה\nביטול שמירה\nרכוש חבילת \n שתף משרה\nשלח משרה למייל\nדיווח על תוכן לא הולם או מפלה\r\nדיווח על תוכן לא הולם או מפלה\nשמך המלאמה השם שלך?\nמייל\nתיאור\nתיאור\nשליחה\nתודה על שיתוף הפעולה\nמודים לך שלקחת חלק בשיפור התוכן שלנו :)\nהמשרה נמחקה\n תוכל לצפות בה בדף המשרות שלי\nהמשרה הוחזרה לרשימת תוצאות החיפוש\nהאם תרצה להסיר את המשרה מרשימת\nהמשרות השמורות שלך?\nכן\r\n לא\nאירעה שגיאה בשליחת פרטיך למשרה",
    "postedAt": "2026-10-01",
    "jobType": "",
-   "source": "AllJobs"
-  },
-  {
-   "title": "Regulatory Compliance Consultant",
-   "company": "חברה חסויה",
-   "location": "",
-   "url": "https://www.alljobs.co.il/Search/UploadSingle.aspx?JobID=8481491",
-   "description": "We Are more than a Professional Services firm, we are a community of people driven by impact. As a leading firm providing Audit, Tax, and Advisory services, and part of one of the worlds largest global networks, we work with the most influential organizations in the market, combining deep expertise, innovation, and advanced technology. We are guided by integrity, responsibility, and forward thinking in everything we do. Our people are at the center, with space to lead, grow, and build meaningful careers in a collaborative environment that connects personal success with real value for business and society. About the Role Our Cross Border Risk Department provides regulatory advisory services to leading financial institutions in Israel and globally - including banks, investment funds, institutional entities, insurance companies, and FinTech firms. We are looking for a Regulatory Consultant to join our team specializing in implementing international financial regulations for major financial institutions. If you aspire to build a career in compliance and advisory - this is your chance! Key Responsibilities \n* Provide ongoing advisory and support to financial institutions in implementing FATCA, CRS, and QI regulations \n* Liaise with clients in Israel and abroad to collect information, conduct surveys, and perform controls \n* Draft procedures, design workflows, and define control mechanisms in line with regulatory requirements \n* Assist in adapting IT systems and technological solutions to meet compliance standards \n* Analyze data and reports in Excel, identify anomalies, and draw conclusions \n* Prepare reports for tax authorities, draft opinions, and deliver client-ready outputs \n* Participate in client training sessions and deliver professional explanations\nRequirements: \n Requirements \n* Bachelors degree in Law, Economics, Accounting, Business Administration, or Tax Advisory - mandatory \n* Advanced Excel skills - mandatory \n* Excellent command of English (professional writing and communication) - mandatory \n* Previous operational or consulting experience - advantage \n* Strong communication skills, self-motivation, and ability to work in a team The position is intended for everyone. We support diversity and see it as a strength and as the ability to develop and learn. We advocate for inclusion and empower both women and men. KPMG Israel is committed to diversity and inclusion. We believe that embracing differences strengthens our ability to learn, grow, and succeed together.\nThis position is open to all candidates.\nShow more...\r\nהגשת מועמדותהגש מועמדות\nעדכון קורות החיים לפני שליחה\n עדכון קורות החיים לפני שליחה\r\n8481491\nמחיקת משרה\nללקוח VIP בלבד\nבטל מחיקת משרה\nשירות זה פתוח ללקוחות VIP בלבד\nרכוש חבילת\nשמירת משרה\nביטול שמירה\nרכוש חבילת \n שתף משרה\nשלח משרה למייל\nדיווח על תוכן לא הולם או מפלה\r\nדיווח על תוכן לא הולם או מפלה\nשמך המלאמה השם שלך?\nמייל\nתיאור\nתיאור\nשליחה\nתודה על שיתוף הפעולה\nמודים לך שלקחת חלק בשיפור התוכן שלנו :)\nהמשרה נמחקה\n תוכל לצפות בה בדף המשרות שלי\nהמשרה הוחזרה לרשימת תוצאות החיפוש\nהאם תרצה להסיר את המשרה מרשימת\nהמשרות השמורות שלך?\nכן\r\n לא\nאירעה שגיאה בשליחת פרטיך למשרה",
-   "postedAt": "2026-10-08",
-   "jobType": "",
-   "source": "AllJobs"
+   "source": "AllJobs",
+   "alsoAt": [
+    "https://www.alljobs.co.il/Search/UploadSingle.aspx?JobID=8456994"
+   ]
   },
   {
    "title": "BDO מגייסת  SOC Analyst",
@@ -4866,17 +4731,10 @@
    "description": "מחפש להוביל, לשלוט בשטח ואחריות על ביצועים -התפקיד הבא שלך נמצא אצלנו!\nאנחנו מחפשים אחראי/ת משמרת עם חשיבה תפעולית חדה, יכולות הובלה ואנרגיה לניהול שוטף במוקד.\nמה כולל התפקיד?\n ניהול והובלה של המשמרת בזמן אמת תוך חתירה לעמידה ביעדי ביצוע.\nאחריות מלאה על תפוקת המוקד ובקרה שוטפת על מדדי השירות והמכירה.\nחלוקת עבודה לנציגים בהתאם לצרכים העסקיים והעומסים.\n ניהול זמינות הכוח האנושי והתאמתו ליעדי הפעילות.\nטיפול בתקלות בזמן אמת ומתן פתרונות מהירים ואפקטיביים.\nהפקת דוחות זמינות ותובנות לשיפור ביצועים.\nליווי מקצועי, הכוונה ומתן מענה לנציגים במהלך המשמרת.\nעבודה שוטפת מול ממשקים ארגוניים שונים ליצירת רצף תפעולי חלק.\nדרישות:\n דרישות חובה:\n12 שנות לימוד\nיכולת עמידה בתנאי לחץ\nכישורים אנליטיים - ניתוח נתונים תהליכים ומגמות\nנכונות לשעות נוספות\nיכולת ניהול והובלה של עובדים\nבעל מוטיבציה גבוהה\nעבודת ממשקים טובה, יחסי אנוש ותודעת שירות גבוהה.\nתקשורת בין אישית טובה\nיכולת עבודה בצוות\nיסודיות, סדר וארגון, אחריות ויוזמה\nראייה מרחבית\nדרישות המהוות יתרון לתפקיד:\nהכרות עם מערכות אמדוקס, SAP, PS וJET\nשליטה ביישומי Office\nניסיון כמומחה/ אחמ\"ש של שנה לפחות\nהמשרה מיועדת לכל המינים והמגדרים.\nסלקום מעודדת ותומכת בהעסקת עובדים עם מוגבלויות. המשרה מיועדת לנשים ולגברים כאחד.\n המידע שיימסר על ידך ישמש את קבוצת סלקום ו/או מי מטעמה כדי לבחון את מועמדותך למשרה וכן למשרות נוספות, לפעולות תפעוליות ולמטרות נוספות. לא חלה עליך חובה למסור את המידע, אך אם תבחר שלא למסרו, לא ניתן יהיה לבחון את התאמתך.\r\n למידע נוסף, כולל אודות המידע שנאסף והשימושים בו, למי המידע עשוי להימסר וזכויותיך לעיון ותיקון מידע אישי, ראה מדיניות הפרטיות של סלקום באתר קריירה.\r\n לעוד משרות ומידע על סלקום >\r\nעוד...\r\nהגשת מועמדות\nעדכון קורות החיים לפני שליחה\n עדכון קורות החיים לפני שליחה\r\n8737851\nמחיקת משרה\nללקוח VIP בלבד\nבטל מחיקת משרה\nשירות זה פתוח ללקוחות VIP בלבד\n רכוש חבילת\nשמירת משרה\nביטול שמירה\nרכוש חבילת \r\n שתף משרה\n משרות חברה\nשלח משרה למייל\nדיווח על תוכן לא הולם או מפלה\nדיווח על תוכן לא הולם או מפלה\nשמך המלאמה השם שלך?\nמייל\nתיאור\nתיאור\nשליחה\nתודה על שיתוף הפעולה\nמודים לך שלקחת חלק בשיפור התוכן שלנו :)\nהמשרה נמחקה\n תוכל לצפות בה בדף המשרות שלי\nהמשרה הוחזרה לרשימת תוצאות החיפוש\nהאם תרצה להסיר את המשרה מרשימת\nהמשרות השמורות שלך?\nכן\r\n לא\nאירעה שגיאה בשליחת פרטיך למשרה",
    "postedAt": "2026-10-08",
    "jobType": "מספר סוגים",
-   "source": "AllJobs"
-  },
-  {
-   "title": "סלקום מחפשת אחראי /ת משמרת תפעול ערוצי הפצה ומכר",
-   "company": "סלקום",
-   "location": "כפר יונה, נתניה, חדרה",
-   "url": "https://www.alljobs.co.il/Search/UploadSingle.aspx?JobID=8747100",
-   "description": "מחפש להוביל, לשלוט בשטח ואחריות על ביצועים -התפקיד הבא שלך נמצא אצלנו!\nאנחנו מחפשים אחראי/ת משמרת עם חשיבה תפעולית חדה, יכולות הובלה ואנרגיה לניהול שוטף במוקד.\nמה כולל התפקיד?\n ניהול והובלה של המשמרת בזמן אמת תוך חתירה לעמידה ביעדי ביצוע.\nאחריות מלאה על תפוקת המוקד ובקרה שוטפת על מדדי השירות והמכירה.\nחלוקת עבודה לנציגים בהתאם לצרכים העסקיים והעומסים.\n ניהול זמינות הכוח האנושי והתאמתו ליעדי הפעילות.\nטיפול בתקלות בזמן אמת ומתן פתרונות מהירים ואפקטיביים.\nהפקת דוחות זמינות ותובנות לשיפור ביצועים.\nליווי מקצועי, הכוונה ומתן מענה לנציגים במהלך המשמרת.\nעבודה שוטפת מול ממשקים ארגוניים שונים ליצירת רצף תפעולי חלק.\nדרישות:\n דרישות חובה:\n12 שנות לימוד\nיכולת עמידה בתנאי לחץ\nכישורים אנליטיים - ניתוח נתונים תהליכים ומגמות\nנכונות לשעות נוספות\nיכולת ניהול והובלה של עובדים\nבעל מוטיבציה גבוהה\nעבודת ממשקים טובה, יחסי אנוש ותודעת שירות גבוהה.\nתקשורת בין אישית טובה\nיכולת עבודה בצוות\nיסודיות, סדר וארגון, אחריות ויוזמה\nראייה מרחבית\nדרישות המהוות יתרון לתפקיד:\nהכרות עם מערכות אמדוקס, SAP, PS וJET\nשליטה ביישומי Office\nניסיון כמומחה/ אחמ\"ש של שנה לפחות\nהמשרה מיועדת לכל המינים והמגדרים.\nסלקום מעודדת ותומכת בהעסקת עובדים עם מוגבלויות. המשרה מיועדת לנשים ולגברים כאחד.\n המידע שיימסר על ידך ישמש את קבוצת סלקום ו/או מי מטעמה כדי לבחון את מועמדותך למשרה וכן למשרות נוספות, לפעולות תפעוליות ולמטרות נוספות. לא חלה עליך חובה למסור את המידע, אך אם תבחר שלא למסרו, לא ניתן יהיה לבחון את התאמתך.\r\n למידע נוסף, כולל אודות המידע שנאסף והשימושים בו, למי המידע עשוי להימסר וזכויותיך לעיון ותיקון מידע אישי, ראה מדיניות הפרטיות של סלקום באתר קריירה.\r\n לעוד משרות ומידע על סלקום >\r\nעוד...\r\nהגשת מועמדות\nעדכון קורות החיים לפני שליחה\n עדכון קורות החיים לפני שליחה\r\n8747100\nמחיקת משרה\nללקוח VIP בלבד\nבטל מחיקת משרה\nשירות זה פתוח ללקוחות VIP בלבד\n רכוש חבילת\nשמירת משרה\nביטול שמירה\nרכוש חבילת \r\n שתף משרה\n משרות חברה\nשלח משרה למייל\nדיווח על תוכן לא הולם או מפלה\nדיווח על תוכן לא הולם או מפלה\nשמך המלאמה השם שלך?\nמייל\nתיאור\nתיאור\nשליחה\nתודה על שיתוף הפעולה\nמודים לך שלקחת חלק בשיפור התוכן שלנו :)\nהמשרה נמחקה\n תוכל לצפות בה בדף המשרות שלי\nהמשרה הוחזרה לרשימת תוצאות החיפוש\nהאם תרצה להסיר את המשרה מרשימת\nהמשרות השמורות שלך?\nכן\r\n לא\nאירעה שגיאה בשליחת פרטיך למשרה",
-   "postedAt": "2026-10-08",
-   "jobType": "מספר סוגים",
-   "source": "AllJobs"
+   "source": "AllJobs",
+   "alsoAt": [
+    "https://www.alljobs.co.il/Search/UploadSingle.aspx?JobID=8747100"
+   ]
   },
   {
    "title": "רפרנט /ית תפעול לחברה פיננסית מובילה באזור המרכז",
@@ -5074,16 +4932,10 @@
    "url": "https://www.drushim.co.il/job/38340312/964333f8/",
    "description": "ללא ניסיון\nתיאור משרה\nמחפשים לנהל כבר בתפקיד ראשון? מוזמנים ליצור איתנו קשר.\nניסטק - חברת האלקטרוניקה הגדולה בפתח תקווה מזמינה אתכם לקחת חלק בצוות ההנדסה שלנו וללוות את לקוחותינו בתחום הפיתוח, תעשיה בטחונית, רפואית מהמתקדמות בארץ.\nבמסגרת התפקיד נדרש לנהל פרוייקטים, ללוות את הלקוח מרגע הגעתו לחברה, לתמחר את הפרוייקטים, לקבוע לו\"ז, הכנת תיקי ייצור, ליווי תהליך היצור דרך תחנות העבודה השונות עד לסיומו.\nדרישות התפקיד\nרקע / סיום לימודים בשנתיים האחרונות בתחום רלוונטי / תעשיה וניהול.\nהכרת תכנות האופיס ברמה טובה, במיוחד אקסל, הכרת תכנת ERP - יתרון.\nנכונות לעבודה במשרה מלאה.\nיכולת עבודה בצוות וכסוליסט.\nלמתאימים/ות,\nארוחות, הסעות, חניה לעובדים!\nדיוני שכר פעם בשנה.\nאירועים וטיולים.\nקרן השתלמות.\nצוות משפחתי ומגובש.\nיציבות לטווח ארוך.\n* משרה זו פונה לנשים וגברים כאחד.",
    "postedAt": "2026-10-08",
-   "source": "דרושים"
-  },
-  {
-   "title": "בוגרי הנדסאות תעו\"נ ואלקטרוניקה לניהול פרוייקטים",
-   "company": "Nistec",
-   "location": "פתח תקווה",
-   "url": "https://www.drushim.co.il/job/38467555/56e68911/",
-   "description": "ללא ניסיון\nתיאור משרה\nמחפשים לנהל כבר בתפקיד ראשון? מוזמנים ליצור איתנו קשר.\nניסטק - חברת האלקטרוניקה הגדולה בפתח תקווה מזמינה אתכם לקחת חלק בצוות ההנדסה שלנו וללוות את לקוחותינו בתחום הפיתוח, תעשיה בטחונית, רפואית מהמתקדמות בארץ.\nבמסגרת התפקיד נדרש לנהל פרוייקטים, ללוות את הלקוח מרגע הגעתו לחברה, לתמחר את הפרוייקטים, לקבוע לו\"ז, הכנת תיקי ייצור, ליווי תהליך היצור דרך תחנות העבודה השונות עד לסיומו.\nדרישות התפקיד\nרקע / סיום לימודים כהנדסאי/ת אלקטרוניקה או תעשיה וניהול.\nיכולת עבודה והובלת תהליכים באופן עצמאי.\nיכולת קבלת החלטות.\nנכונות לעבודה במשרה מלאה.\nיכולת עבודה בצוות וכסוליסט.\nלמתאימים/ות,\nארוחות, הסעות, חניה לעובדים!\nדיוני שכר פעם בשנה.\nאירועים וטיולים.\nקרן השתלמות.\nצוות משפחתי ומגובש.\nיציבות לטווח ארוך.\n* משרה זו פונה לנשים וגברים כאחד.",
-   "postedAt": "2026-10-08",
-   "source": "דרושים"
+   "source": "דרושים",
+   "alsoAt": [
+    "https://www.drushim.co.il/job/38467555/56e68911/"
+   ]
   },
   {
    "title": "איש תפ\"י - קדם ייצור",
@@ -6049,20 +5901,29 @@
    "source": "דרושים"
   },
   {
-   "title": "Business Operations",
-   "company": "נקסטאייג'",
-   "location": "רעננה",
-   "url": "https://www.drushim.co.il/job/38474756/f38dd8f0/",
-   "description": "1 שנות ניסיון\nתיאור משרה\nחברת Nextage, המובילה בייעוץ פיננסי לחברות סטארט-אפ, מגייסת Operations Business\nבמשרדי החברה שברעננה.\nזו הזדמנות מעולה להיכנס לעולם הסטארטאפים והפיננסים, ללמוד לעומק את האקוסיסטם ולהיות חלק מצוות עסקי וצומח, בסביבה דינמית ותומכת.\nמה כולל התפקיד:\n-ביצוע מחקרי שוק לזיהוי מגמות והזדמנויות חדשות לפיתוח עסקי\n-ניהול הנכסים הדיגיטליים של החברה (אתר, מדיה חברתית ועוד)\n-כתיבה והפצה של הצעות, הערכות עלויות ומסמכים ללקוחות ולפגישות עסקיות\n-סיוע בהכנת מצגות ופגישות הנהלה\n-תיאום וארגון אירועים, ישיבות וכנסים עסקיים\n-ניהול ועדכון מערכת CRM (Salesforce)\n-תמיכה בתהליכי שימור לקוחות\nדרישות התפקיד\n-תואר ראשון – חובה\n-ניסיון של 1–2 שנים בפיתוח עסקי ו/או שיווק עסקי – חובה\n-היכרות עם עולם הסטארטאפים, המשקיעים והאקוסיסטם הישראלי – יתרון\n-ניסיון בניהול מדיה חברתית ויצירת תוכן – חובה\n-אנגלית ברמה גבוהה מאוד – חובה\nאנחנו מציעים סביבת עבודה עם אנשים מעולים, מקום להתפתח בו מקצועית וחשיפה מרתקת לעולם הסטארטאפים מבפנים.\n* משרה זו פונה לנשים וגברים כאחד.",
+   "title": "Operations Coordinator",
+   "company": "בינת תקשורת מחשבים",
+   "location": "רמת החייל",
+   "url": "https://www.drushim.co.il/job/38533371/5bd7f5d0/",
+   "description": "1 שנות ניסיון\nתיאור משרה\nאנחנו בבינת תקשורת מחשבים מגייסים Operations Coordinator לתפקיד תפעולי משמעותי הכולל ניהול הזמנות לקוח מקצה לקצה.\nאיך ייראה היום שלך?\n- ניהול הזמנות לקוח מקצה לקצה.\n- הזנת הזמנות למערכת, כולל ביצוע זיכויים, מעקב, בדיקת תקינות והשלמות נתונים\n- מתן שירות לממשקים פנים-ארגוניים – מכירות, שירות, הנדסה, תפעול, מחסן ועוד\n- עבודה עם מערכת ERP וניהול תהליכים מול יחידות שונות בחברה\nדרישות התפקיד\n- ניסיון קודם בתפקיד דומה או בתפקיד תפעולי בארגון גדול – חובה\n- ניסיון בעבודה מול ממשקים מרובים – חובה\n- היכרות עם מערכת ERP – יתרון משמעותי\n- תודעת שירות גבוהה, עצמאות, יכולת ירידה לפרטים.\n- יכולת עבודה בצוות ויחסי אנוש מצוינים.\nהיקף משרה: מלאה\nמיקום: רמת החייל\n* משרה זו פונה לנשים וגברים כאחד.",
    "postedAt": "2026-10-08",
    "source": "דרושים"
   },
   {
-   "title": "מתאם/ת אדמיניסטרציה ותפעול לחברה גדולה במרכז!",
-   "company": "קבוצת מיקוד",
-   "location": "אזור",
-   "url": "https://www.drushim.co.il/job/38683148/755866b6/",
-   "description": "1 שנות ניסיון\nתיאור משרה\nלחברה באזור המרכז דרוש/ה מתאם/ת אדמיניסטרציה ותפעול לעבודה סוטפת לצד סמנכ\"ל תפעול.\nבמסגרת התפקיד:\n- ניהול יומן, תיאום פגישות ומעקב אחר משימות\n- ניהול תכתובות במייל, סינון ותיעדוף משימות בהתאם לדחיפות\n- הכנת מסמכים, מצגות ודוחות בהתאם לצורך\n- יצירה, עדכון ומעקב אחר טבלאות אקסל ונתונים שוטפים\n- עבודה מול ממשקים פנים וחוץ ארגוניים, לרבות הנהלה בכירה, גורמי מטה, סניפים ולקוחות\n- השתתפות בישיבות, כתיבת פרוטוקולים ומעקב אחר ביצוע החלטות\n- התלוות לסמנכ\"ל התפעול לביקורים בסניפים ואצל לקוחות בהתאם לצורך\n*המשרה הינה ממשרדי הנהלת החברה הממוקמים בישוב אזור, בימים א-ה, משרה מלאה (יש גמישות בשעות)\nדרישות התפקיד\n- ניסיון קודם בתפקיד אדמיניסטרטיבי - חובה\n- שליטה טובה ביישומי OFFICE, בדגש על אקסל ופאוורפוינט\n- היכרות עם CANVA וכלים להכנת מצגות- יתרון\n- יכולת ארגון, סדר ותיעדוף משימות ברמה גבוהה\n- אחריות, ראש גדול, שירותיות לצד אסרטיביות ויחסי אנוש טובים\n- נכונות לעבודה משרדית לצד יציאה לשטח בהתאם לצורך\n- זמינות טלפונית ובמייל גם מעבר לשעות העבודה במקרים דחופים\n* משרה זו פונה לנשים וגברים כאחד.",
+   "title": "רפרנט/ית תפעול גמל - צוות פידיונות!",
+   "company": "אנליסט בית השקעות",
+   "location": "תל אביב",
+   "url": "https://www.drushim.co.il/job/38548590/83a2e20e/",
+   "description": "ללא ניסיון\nתיאור משרה\nהצטרפ/י לצוות צעיר ומשפחתי !\nטיפול בתהליכי בק אופיס במחלקת התפעול של החברה:\n- קבלת מסמכים לצורך ביצוע משיכת כספים מקופות גמל וקרנות השתלמות\n- בדיקת תקינות והזרמת משיכה או הוצאת לקוי בהתאם לרגולציה ותקנות\n- הקמת בקשות במערכות ייעודיות\n- טיפול בלקוחות החברה המעוניינים למשוך כספם\n- טיפול בהשלמת ליקויים במסמכים\nדרישות התפקיד\nללא ניסיון קודם!!\nתוכנות אופיס - יתרון\nיכולת ירידה לפרטים , יסודיות וקפדנות\nיכולת עבודה בסביבה ממוחשבת וריבוי מערכות\nשירותיות, וורבליות - חובה!\n*היברידיות\n*משרה מלאה בימים א'-ה' 08:30-17:00\n*מיקום- שדרות רוטשילד , תל אביב\nרווחת עובד מעולה , נופשי חברה בארץ ובחו\"ל , מתנות בחגים ובימי הולדת, מטבחונים מאובזרים ברמה גבוהה!\n* משרה זו פונה לנשים וגברים כאחד.",
+   "postedAt": "2026-10-08",
+   "source": "דרושים"
+  },
+  {
+   "title": "רפרנט או רפרנטית תפעול-ללא ניסיון! עבודה היברידית!",
+   "company": "קבוצת כלל ביטוח",
+   "location": "בת ים בני ברק רמת גן גבעתיים קריית אונו תל אביב הרצליה פתח תקווה רמת החייל",
+   "url": "https://www.drushim.co.il/job/38579104/f15f7599/",
+   "description": "ללא ניסיון\nתיאור משרה\nבואו להיות חלק ממשהו גדול, להיות חלק מכלל !\nאנחנו מגייסים רפרנט או רפרנטית תפעול\nבואו לגדול אצלינו! להנות מסביבת עבודה הכי כיפית ואנרגטית! אצלינו יש סיבוס, נופשי חברה בארץ ובחו\"ל, אירועי גיבוש, אופציות קידום אישי ומקצועי ועוד המון...\nמה תעשו?\nתבצעו בדיקות ותטפלו בבקשות במערכות הליבה\nתתנהלו מול גורמים פנימיים במחלקות ויחידות שונות\nשיוך וטיוב כספים במערכות\nכלל היא מעסיקה שתומכת בגיוון והכלה ומגייסת מועמדים ומועמדות מרקע שונה.\nמיותר להגיד שהמשרה מיועדת לנשים, גברים וכל מי שביניהם:)\nדרישות התפקיד\nמה אנחנו מחפשים?\nרקע וניסיון בתחום תפעול/ גבייה/ ביטוח/ שירות לקוחות - חובה\nהכרות עם מערכות OFFICE\n**המידע נמסר בהסכמתך ומרצונך ובין היתר לצורך בחינת התאמתך למשרה, וללא המידע לא נוכל להעריך את התאמתך לתפקיד. למידע נוסף אודות המידע שנאסף, השימוש בו ולמי נמסר המידע, וכן למידע אודות זכויותיך לעיון ותיקון המידע ולפרטי הממונה על הגנת הפרטיות, ראה מדיניות הפרטיות למועמדים באתר כלל ביטוח\n* משרה זו פונה לנשים וגברים כאחד.",
    "postedAt": "2026-10-08",
    "source": "דרושים"
   },
@@ -6185,12 +6046,16 @@
   },
   {
    "title": "רפרנט/ית תפעול גמל ופנסיה",
-   "company": "מור בית השקעות",
+   "company": "י.ד. מור השקעות בע\"מ",
    "location": "רמת גן",
-   "url": "https://www.drushim.co.il/job/38675130/dcf79c3a/",
-   "description": "1 שנות ניסיון\nתיאור משרה\nלחברת MORE השקעות דרושה/ה למחלקת תפעול גמל ופנסיה דרוש/ה רפרנט/ית\nהתפקיד כולל טיפול בתהליכי בק אופיס במערך התפעול של החברה,\nפתיחת החשבון לעמיתים, שיוכי כספים, ניהול תהליכי ניוד הכספים וטיפול במשיכות כספים.\nהתמחות בכל הקשור לרגולציה בעולמות החיסכון לטווח ארוך.\nדרישות התפקיד\nניסיון קודם מבית השקעות / חברת ביטוח - חובה\nניסיון בתפעול וההיכרות עם עולם קופות הגמל - יתרון\nהיכרות טובה עם EXCEL\nאחריות ויכולת עבודה תחת לחץ\nזריזות יחד עם הקפדה על פרטים\n* משרה זו פונה לנשים וגברים כאחד.",
+   "jobType": "משרה מלאה",
+   "url": "https://www.jobmaster.co.il/jobs/checknum.asp?key=9886536",
+   "description": "מה התפקיד כולל?\nמחפש/ת מקום עבודה צעיר, משפחתי ואווירה טובה?\nרוצה ללמוד מקצוע חדש ולהתפתח בתחום הפיננסי והפנסיוני? 💰📈\nאנחנו מחפשים נציגי/ות שירות להצטרף למוקד שלנו בחברת הגמל והפנסיה!\n💼 מה התפקיד כולל?\n☎️ מענה לשיחות נכנסות ויוצאות\n🤝 מתן שירות מקצועי ואדיב לעמיתי החברה\n📋 טיפול בהצטרפות, משיכת כספים ומילוי טפסים\n💻 סיוע ללקוחות בשימוש באתר\n📚 מתן מידע ובירורים בנושאי גמל, פנסיה וקרנות השתלמות\n👥 סביבת עבודה צעירה, משפחתית וחמה\n🎁 תנאים סוציאליים מעולים\n📈 אפשרויות קידום והתפתחות\n💡 הזדמנות אמיתית לרכוש מקצוע ולהיכנס לעולם הפיננסי\n🔎 מה אנחנו מחפשים?\nניסיון בשירות לקוחות – יתרון\nניסיון בגמל, פנסיה או קרנות השתלמות – יתרון\nשליטה טובה במחשב ובתוכנות Office\nשירותיות, אדיבות ויחסי אנוש מצוינים\nרצון ללמוד, להתפתח ולהצליח\nאין לך ניסיון בתחום? זה בסדר!\nאנחנו כבר נדאג להכשרה — את/ה מביא/ה את השירותיות, המוטיבציה והרצון להצליח. 🚀",
    "postedAt": "2026-10-08",
-   "source": "דרושים"
+   "source": "JobMaster",
+   "alsoAt": [
+    "https://www.drushim.co.il/job/38675130/dcf79c3a/"
+   ]
   },
   {
    "title": "לחברה מובילה דרוש /ה מחווט /ת ארונות חשמל ובקרה",
@@ -6531,17 +6396,10 @@
    "url": "https://www.jobmaster.co.il/jobs/checknum.asp?key=9823797",
    "description": "חולמים להשתלב בעולם הדאטה והאנליטיקה העסקית? אנחנו מחפשים בוגרי/ות תואר מצטיינים עם חשיבה אנליטית חדה, שמכוונים לקריירה בעולם הData & BI.\nההכשרה שלנו קצרה, ייחודית, ללא עלות ומסתיימת בהשמה בתפקידים בחברות מובילות.\nבמה תתמקצעו?\nעבודה , SQL, Power BI בינה מלאכותית ואפיון פרויקטים בתחום ה-BI/\nניתוח נתונים, יצירת דוחות, הפקת תובנות עסקיות ואוטומציה של תהליכים.\nבניית בסיס איתן לקריירה מצליחה כולל ניסיון מעשי אמיתי.\nבוגר/ת תואר ראשון בתחום רלוונטי בממוצע ציונים 80+\nיכולת חשיבה לוגית ואנליטית גבוהה ורקע טכנולוגי בסיסי.\nאין צורך בניסיון קודם אנו נספק לכם את כל הכלים להצלחה.\n* לא מתאים לסטודנטים/ות עם יתרת לימודים של יותר מסמסטר.\nהמשרה מיועדת לנשים ולגברים כאחד.",
    "postedAt": "2026-10-08",
-   "source": "JobMaster"
-  },
-  {
-   "title": "דרושים אקדמאים/יות מצטיינים/ות למשרת Data & BI Analyst",
-   "company": "Experis",
-   "location": "תל אביב יפו",
-   "jobType": "משרה מלאה",
-   "url": "https://www.jobmaster.co.il/jobs/checknum.asp?key=9823793",
-   "description": "חולמים להשתלב בעולם הדאטה והאנליטיקה העסקית? אנחנו מחפשים בוגרי/ות תואר מצטיינים עם חשיבה אנליטית חדה, שמכוונים לקריירה בעולם הData & BI.\nההכשרה שלנו קצרה, ייחודית, ללא עלות ומסתיימת בהשמה בתפקידים בחברות מובילות.\nבמה תתמקצעו?\nעבודה , SQL, Power BI בינה מלאכותית ואפיון פרויקטים בתחום ה-BI/\nניתוח נתונים, יצירת דוחות, הפקת תובנות עסקיות ואוטומציה של תהליכים.\nבניית בסיס איתן לקריירה מצליחה כולל ניסיון מעשי אמיתי.\nבוגר/ת תואר ראשון בתחום רלוונטי בממוצע ציונים 80+\nיכולת חשיבה לוגית ואנליטית גבוהה ורקע טכנולוגי בסיסי.\nאין צורך בניסיון קודם אנו נספק לכם את כל הכלים להצלחה.\n* לא מתאים לסטודנטים/ות עם יתרת לימודים של יותר מסמסטר.\nהמשרה מיועדת לנשים ולגברים כאחד.",
-   "postedAt": "2026-10-08",
-   "source": "JobMaster"
+   "source": "JobMaster",
+   "alsoAt": [
+    "https://www.jobmaster.co.il/jobs/checknum.asp?key=9823793"
+   ]
   },
   {
    "title": "איש/אשת PMO",
@@ -6724,16 +6582,6 @@
    "source": "JobMaster"
   },
   {
-   "title": "אנליסט/ית מלאי ובקרה",
-   "company": "G-Ness",
-   "location": "חולון",
-   "jobType": "משרה מלאה",
-   "url": "https://www.jobmaster.co.il/jobs/checknum.asp?key=9846448",
-   "description": "אנליסט/ית המלאי משלב/ת חשיבה עסקית, אנליטית ותפעולית, ואחראי/ת על אופטימיזציה של רמות המלאי, מניעת חוסרים ומקסום רווחיות. התפקיד מהווה גורם מרכזי לתחקור נתוני מכירות ומלאי, ניתוחי אד-הוק, בניית כלי עבודה יישומיים, ומשמש כתובת תפעולית לריכוז ופתרון חוסרים מול המוסכים בשטח.\nתחומי אחריות\n- תמיכה בקבלת החלטות אסטרטגיות מבוססות דאטה: הפקת דוחות ביצועים, ניתוח ערכי מלאי מול תקציב, והצפת סיכונים ופערים להנהלה ולממשקים.\n- איתור פערים בזמינות מוצרים: זיהוי חוסרים מתהווים או פערים בזמינות חלפים במוסכים, ומתן פתרונות מיידיים.\n- ניהול וריכוז חוסרים מול המוסכים: כתובת מרכזית בשטח; תכלול בקשות, ניתוח סיבות שורש וקידום פתרונות.\n- ניתוח חודשי מלאי, מלאי מת ואיטי: בקרת עלויות החזקת מלאי, איתור פריטים עודפים וגיבוש המלצות לצמצומם.\n- ניתוח נתוני מכירות והפקת תובנות אופרטיביות: מעקב אחר מגמות צריכה, קצבי מכירה ועונתיות, ותרגומם להמלצות תפעוליות לרכש ולתכנון.\n- בניית כלי עבודה ודוחות בקרה: אפיון ופיתוח כלים, מחשבונים ודוחות באקסל ובמערכות BI לייעול העבודה.\n- טיוב דאטה: בקרת איכות הנתונים ועבודה מול ממשקים לעדכון ותחזוקה.\n- הטמעת כלי AI לניתוח נתונים: זיהוי הזדמנויות לייעול תהליכים, ניתוח נתונים, אוטומציה, יצירת דוחות ותמיכה בקבלת החלטות.\n- ניסיון של שנתיים לפחות בעבודה עם בסיסי נתונים גדולים ומורכבים, ויכולת ניתוח והסקת מסקנות- חובה.\n- תואר ראשון בכלכלה / הנדסת תעשייה וניהול / לוגיסטיקה / מערכות מידע וכדומה- חובה.\n- ניסיון קודם בתפקיד דומה בעולמות שרשרת אספקה, מלאי, רכש- יתרון משמעותי מאוד\n- רקע מענף הרכב (היכרות עם עולם החלפים, המוסכים או יבואני הרכב)- יתרון משמעותי\n- שליטה ב-Excel ברמת מומחה (פונקציות מתקדמות, דאטה רחב ומורכב, אוטומציה)- חובה.\n- ניסיון בעבודה עם מערכות ERP ו-BI (יתרון ל-SAP)- חובה.\n- ניסיון מעשי בשימוש בכלי AI לניתוח נתונים, ייעול תהליכים, פיתוח פתרונות ואוטומציה- יתרון משמעותי.\n- הבנה תפעולית ויכולת תרגום נתונים לפעולה, שירותיות גבוהה, חשיבה אנליטית חריפה, רב-משימתיות, עבודה תחת לחץ, יוזמה ועצמאות.",
-   "postedAt": "2026-10-08",
-   "source": "JobMaster"
-  },
-  {
    "title": "דאטה אנליסט.ית",
    "company": "מנורה מבטחים ביטוח",
    "location": "רמת גן",
@@ -6764,16 +6612,6 @@
    "source": "JobMaster"
   },
   {
-   "title": "מיישם BI",
-   "company": "CBC ISREAL",
-   "location": "גבעת חיים (איחוד) , גבעת חיים (מאוחד)",
-   "jobType": "משרה מלאה",
-   "url": "https://www.jobmaster.co.il/jobs/checknum.asp?key=9717002",
-   "description": "CBC ISRAEL – הבית של המותגים קוקה-קולה, קרלסברג, נביעות וטרה – מגייסת מיישם/ת BI לפריגת\nטעימה מהתפקיד:\n• אפיון, פיתוח ותחזוקה של תהליכי ETL בכלי SSIS ובסביבות ON-PREM ו‑CLOUD (Data Factory, Databricks)\n• בנייה ותחזוקת מודלי BI מקצה לקצה: דוחות, Dashboards, מודלים סמנטיים והרשאות\n• פיתוח תהליכים אוטומטיים ומתן פתרונות דיגיטליים באמצעות Microsoft Power Platform (Power Automate, Power Apps, Power BI)\n• כתיבת שאילתות SQL מורכבות ושיפורי ביצועים\n• עבודה שוטפת מול משתמשים עסקיים, הבנת צרכים ומתן פתרונות פרואקטיביים\n• ניתוח מערכות ותהליכים עסקיים תוך עבודה עם מגוון רחב של סוגי DATA\n• אחריות על תהליכי DATA מרכזיים בארגון, חשיבה יצירתית ומתן שירות איכותי\n* משרה מלאה במפעל פריגת בגבעת חיים מאוחד\n• השכלה רלוונטית במערכות מידע / תוכנה – חובה\n• לפחות שנתיים ניסיון באפיון / פיתוח ואופטימיזציית תהליכי ETL ו‑DWH – חובה\n• ניסיון מוכח ב‑SSIS ובכלי CLOUD (Data Factory / Databricks) – חובה\n• ניסיון בבניית דוחות, Dashboards, ניתוח נתונים ובניית מודלים ב‑Power BI כולל DAX – חובה\n• ניסיון ב‑SQL ו‑Excel ברמה גבוהה – חובה\n• ניסיון בעבודה עם Power Automate / Power Apps – יתרון משמעותי\n• ניסיון בתחזוקת שרתי MSSQL – יתרון\nזו ההזדמנות שלך להצטרף לצוות מקצועי, בסביבה דינאמית, ולהיות חלק מהעשייה שמניעה את התעשייה הגדולה בישראל!\nנשמע מתאים? זה הזמן להגיש מועמדות ולהיות חלק מהא.נשים שיוצרים את הטעם!\nCBC ישראל מעודדת העסקה מגוונת. המשרה מיועדת לכל המינים והמגדרים",
-   "postedAt": "2026-10-08",
-   "source": "JobMaster"
-  },
-  {
    "title": "אנליסט/ית נתונים",
    "company": "G-Ness",
    "location": "איירפורט סיטי",
@@ -6800,26 +6638,6 @@
    "jobType": "משרה מלאה",
    "url": "https://www.jobmaster.co.il/jobs/checknum.asp?key=9890508",
    "description": "ליחידת מחקר של בנק מוביל\nדרוש/ה אנליסט/ית צעיר/ה\nהתפקיד כולל:\nביצוע מחקר וניתוח של חברות, ענפים ושווקים בארץ ובחו\"ל\nאיסוף וניתוח נתונים פיננסיים וכלכליים\nהכנת סקירות, מצגות וחומרים מקצועיים\nהעבודה בכפיפות למנהל מחלקת מחקר\nהתפקיד מתאים לבעל/ת ניסיון עבודה בשוק ההון שמחפשים תפקידי אנליסט/ית\nניסיון עד שנתיים בשוק ההון\nכלכלה",
-   "postedAt": "2026-10-08",
-   "source": "JobMaster"
-  },
-  {
-   "title": "Junior Data Analyst לאקדמאים עם ראש אנליטי",
-   "company": "Experis",
-   "location": "תל אביב יפו",
-   "jobType": "משרה מלאה",
-   "url": "https://www.jobmaster.co.il/jobs/checknum.asp?key=9801980",
-   "description": "רוצה להתחיל קריירה בעולם הדאטה – גם בלי ניסיון? זו ההזדמנות שלך!\nתחום ה-Data & BI הוא אחד התחומים המבוקשים ביותר היום – ואנחנו מחפשים אותך: בוגר/ת תואר עם חשיבה אנליטית חדה ורצון להיכנס לעולם שמניע החלטות עסקיות.\nאנחנו מציעים תוכנית הכשרה ייחודית, קצרה וללא עלות – שבסופה תשתלבו בתפקידי דאטה בחברות מובילות.\nמה מחכה לך בתוכנית?\nעבודה עם SQL וPower BI\nהיכרות עם כלי AI ואפיון פרויקטי BI.\nניתוח נתונים והפקת תובנות עסקיות אמיתיות.\nבניית דוחות ואוטומציה של תהליכים.\nניסיון מעשי שייתן לך יתרון משמעותי בכניסה לשוק העבודה.\nבוגר/ת תואר ראשון בתחום רלוונטי (ממוצע 80+)\nחשיבה אנליטית גבוהה ורקע טכנולוגי בסיסי.\nמוטיבציה להיכנס לעולם הדאטה.\nלא נדרש ניסיון קודם – אנחנו מלווים אותך מהשלב הראשון ועד ההשמה.\nלא מתאים לסטודנטים/ות עם יתרת לימודים של יותר מסמסטר.\nהמשרה מיועדת לנשים ולגברים כאחד.",
-   "postedAt": "2026-10-08",
-   "source": "JobMaster"
-  },
-  {
-   "title": "Data Analyst ללא ניסיון!",
-   "company": "Experis",
-   "location": "תל אביב יפו",
-   "jobType": "משרה מלאה",
-   "url": "https://www.jobmaster.co.il/jobs/checknum.asp?key=9801978",
-   "description": "רוצה להתחיל קריירה בעולם הדאטה – גם בלי ניסיון? זו ההזדמנות שלך!\nתחום ה-Data & BI הוא אחד התחומים המבוקשים ביותר היום – ואנחנו מחפשים אותך: בוגר/ת תואר עם חשיבה אנליטית חדה ורצון להיכנס לעולם שמניע החלטות עסקיות.\nאנחנו מציעים תוכנית הכשרה ייחודית, קצרה וללא עלות – שבסופה תשתלבו בתפקידי דאטה בחברות מובילות.\nמה מחכה לך בתוכנית?\nעבודה עם SQL וPower BI\nהיכרות עם כלי AI ואפיון פרויקטי BI.\nניתוח נתונים והפקת תובנות עסקיות אמיתיות.\nבניית דוחות ואוטומציה של תהליכים.\nניסיון מעשי שייתן לך יתרון משמעותי בכניסה לשוק העבודה.\nבוגר/ת תואר ראשון בתחום רלוונטי (ממוצע 80+)\nחשיבה אנליטית גבוהה ורקע טכנולוגי בסיסי.\nמוטיבציה להיכנס לעולם הדאטה.\nלא נדרש ניסיון קודם – אנחנו מלווים אותך מהשלב הראשון ועד ההשמה.\nלא מתאים לסטודנטים/ות עם יתרת לימודים של יותר מסמסטר.\nהמשרה מיועדת לנשים ולגברים כאחד.",
    "postedAt": "2026-10-08",
    "source": "JobMaster"
   },
@@ -6900,16 +6718,6 @@
    "jobType": "משרה מלאה",
    "url": "https://www.jobmaster.co.il/jobs/checknum.asp?key=9879769",
    "description": "ל. אפרים בע\"מ, מהמשרדים המובילים בישראל בתחום תכנון מעטפות מבנה ואלומיניום, ממשיכה להתרחב ומחפשת מתכנן/ת נוסף/ת לצוות שלנו.\nאנחנו מתמחים בתכנון מערכות אלומיניום, קירות מסך, חיפויי מבנים ומעטפות אדריכליות, ועובדים על פרויקטים גדולים ומורכבים ברחבי הארץ.\nהמשרה מוצעת בשני אזורים:\nהמשרד הראשי שלנו בראשון לציון.\nשלוחת המשרד באזור הקריות חיפה, בסביבת עבודה מודרנית, נעימה ומקצועית במתחם עבודה משותף.\nמה כולל התפקיד?\nתכנון ושרטוט מערכות אלומיניום, קירות מסך וחיפויי מבנים.\nעבודה על פרויקטים אדריכליים והנדסיים מורכבים.\nהכנת תוכניות עבודה, פרטי ביצוע, תוכניות ייצור והרכבה.\nעבודה מול אדריכלים, מהנדסים וגורמים מקצועיים בפרויקט.\nפתרון בעיות תכנון ופיתוח פרטים הנדסיים.\nליווי תהליך התכנון משלב התוכניות ועד לייצור ולהרכבה בשטח.\nזו הזדמנות להשתלב בתחום מקצועי ומאתגר, ללמוד ולהתפתח בעולם תכנון מעטפות המבנה ולעבוד על פרויקטים מהבולטים בישראל.\nמיקום: ראשון לציון / אזור הקריות\nהיקף המשרה: משרה מלאה\nניסיון ושליטה טובה ב-AutoCAD - חובה.\nרקע באדריכלות, הנדסאות אדריכלות, הנדסת מכונות או תחום טכני רלוונטי.\nניסיון בתכנון אלומיניום, קירות מסך או מעטפות מבנה - יתרון משמעותי.\nידע ב-Rhino ו/או בתכנון פרמטרי - יתרון משמעותי.\nניסיון בתוכנות תלת-ממד נוספות - יתרון.\nיכולת קריאה והבנה של תוכניות אדריכליות ופרטים טכניים.\nיכולת עבודה מדויקת, ירידה לפרטים וחשיבה הנדסית.\nיכולת למידה גבוהה ורצון להתפתח מקצועית לאורך זמן.\nיכולת עבודה עצמאית ובצוות.\nיחסי אנוש טובים ואחריות אישית.",
-   "postedAt": "2026-10-08",
-   "source": "JobMaster"
-  },
-  {
-   "title": "Junior Technical Recruiter",
-   "company": "MalamTeam",
-   "location": "פתח תקווה",
-   "jobType": "משרה מלאה",
-   "url": "https://www.jobmaster.co.il/jobs/checknum.asp?key=9385678",
-   "description": "צוות הגיוס של Malam Team מתרחב– ואת/ה יכול/ה להיות חלק ממנו!\nאנחנו מחפשים Junior Technical Recruiter עם נשמה של מגייס/ת אמיתי/ת.\nמה בתפקיד?\n- גיוס מקצה לקצה כולל החתמות חוזים\n- סורסינג, פרסום משרות, ראיונות טלפוניים ופרונטליים, שיחות ממליצים\n- עבודה צמודה עם מנהלים מגייסים וליווי מועמדים עד החתימה\nוהכי חשוב? הרבה אנרגיות!\n מיקום: פתח תקווה\n שעות: א’-ה’ 09:00-18:00\n- ניסיון של שנה ומעלה בגיוסי מסות\n- יכולת עבודה תחת לחץ וריבוי משימות\n- הבנה בעולם הטכנולוגי – יתרון משמעותי",
    "postedAt": "2026-10-08",
    "source": "JobMaster"
   },
@@ -7014,12 +6822,12 @@
    "source": "JobMaster"
   },
   {
-   "title": "רפרנט/ית תפעול גמל ופנסיה",
-   "company": "י.ד. מור השקעות בע\"מ",
-   "location": "רמת גן",
+   "title": "מנהל/ת חשבונות לחברה תעשייתית בינלאומית מהמובילות בישראל באזור האיירפורט סיטי",
+   "company": "תיגבור חברה ארצית לשרותי כח אדם",
+   "location": "איירפורט סיטי",
    "jobType": "משרה מלאה",
-   "url": "https://www.jobmaster.co.il/jobs/checknum.asp?key=9886536",
-   "description": "מה התפקיד כולל?\nמחפש/ת מקום עבודה צעיר, משפחתי ואווירה טובה?\nרוצה ללמוד מקצוע חדש ולהתפתח בתחום הפיננסי והפנסיוני? 💰📈\nאנחנו מחפשים נציגי/ות שירות להצטרף למוקד שלנו בחברת הגמל והפנסיה!\n💼 מה התפקיד כולל?\n☎️ מענה לשיחות נכנסות ויוצאות\n🤝 מתן שירות מקצועי ואדיב לעמיתי החברה\n📋 טיפול בהצטרפות, משיכת כספים ומילוי טפסים\n💻 סיוע ללקוחות בשימוש באתר\n📚 מתן מידע ובירורים בנושאי גמל, פנסיה וקרנות השתלמות\n👥 סביבת עבודה צעירה, משפחתית וחמה\n🎁 תנאים סוציאליים מעולים\n📈 אפשרויות קידום והתפתחות\n💡 הזדמנות אמיתית לרכוש מקצוע ולהיכנס לעולם הפיננסי\n🔎 מה אנחנו מחפשים?\nניסיון בשירות לקוחות – יתרון\nניסיון בגמל, פנסיה או קרנות השתלמות – יתרון\nשליטה טובה במחשב ובתוכנות Office\nשירותיות, אדיבות ויחסי אנוש מצוינים\nרצון ללמוד, להתפתח ולהצליח\nאין לך ניסיון בתחום? זה בסדר!\nאנחנו כבר נדאג להכשרה — את/ה מביא/ה את השירותיות, המוטיבציה והרצון להצליח. 🚀",
+   "url": "https://www.jobmaster.co.il/jobs/checknum.asp?key=9891797",
+   "description": "לחברה תעשייתית בינלאומית מהמובילות בישראל באזור האיירפורט סיטי דרוש/ה מנהל/ת חשבונות\nסוג 2 ומעלה!\nהתפקיד כולל:\nהפקת חשבוניות, קבלות,\nהתאמות בנקים,\nעבודה בפורטל B2B\nגבייה.\nמשרה מלאה.\nידע וניסיון באקסל , OFFICE\nהכרה עם מערכת SAP R3 -\nניסיון בתחום חובה לפחות 5 שנים\nאנגלית ברמה גבוהה",
    "postedAt": "2026-10-08",
    "source": "JobMaster"
   },
@@ -7050,26 +6858,6 @@
    "jobType": "משרה מלאה",
    "url": "https://www.jobmaster.co.il/jobs/checknum.asp?key=9891540",
    "description": "מחלקת הליווי הפיננסי שלנו מחפשת כלכלנים מתחילים להצטרף לצוות מקצועי ומוביל בתחום הנדל\"ן\nהתפקיד כולל ניתוח כלכלי שוטף של פרויקטים, עריכת דוחות, ליווי ובקרה\nתיקוף נתונים על בסיס מגמות השוק במהלך ליווי הפרויקט\nהתנהלות מול גורמים בכירים בעולמות המימון ויזמות נדל\"ן\nממשק עבודה עם מהנדסי ושמאי החברה\nהשכלה אקדמית בתחום הכלכלה / מנהל עסקים\nאוריינטציה מחשובית ונכונות לעבודה מול מערכת AI\nניסיון תעסוקתי בתחום הנדל\"ן – יתרון\nשירותיות ותקשורתיות\nאוטודידקטיות\nיכולת תיעדוף יעילה וניהול ריבוי משימות\nיכולת עבודה טובה עם ממשקים חוץ ופנים ארגוניים",
-   "postedAt": "2026-10-08",
-   "source": "JobMaster"
-  },
-  {
-   "title": "אלקטרה מגייסת יועץ/ת תפעול ואחזקה לנכסי אריאל 21553",
-   "company": "אלקטרה בע\"מ",
-   "location": "פתח תקווה",
-   "jobType": "משרה מלאה",
-   "url": "https://www.jobmaster.co.il/jobs/checknum.asp?key=9890361",
-   "description": "קריירה משמעותית ומאתגרת מחכה לכם/ן אצלנו; - בואו לצמוח איתנו!\nקבוצת אלקטרה מגייסת יועץ/ת תפעול ואחזקה לנכסי אריאל.\nתיאור התפקיד :\nליווי פרויקטים בשלבי התכנון תוך הטמעת חשיבה תפעולית ואחזקתית.\nייעוץ מקצועי בנושאי מערכות מבנה, חומרי גמר, שטחים ציבוריים ומערכים לוגיסטיים.\nגיבוש תפיסה תפעולית והקמת מערכי ניהול ושירות לפרויקטים חדשים.\nניהול פרויקטים הנדסיים – משלב התכנון, דרך מכרזים וניהול קבלנים ועד לפיקוח, מסירה ואכלוס.\nהשתתפות בישיבות עם יזמים, אדריכלים, יועצים וקבלנים וניהול ממשקי עבודה מרובים.\nליווי מסירות של מבנים חדשים ובקרת איכות על עבודות הגמר והמערכות.\nמשרה מלאה: ימים א’-ה’ בין השעות 8:00-17:00, ממטה החברה בקריית אריה, פתח תקווה.\nתואר בהנדסה/ אדריכלות- חובה\nנסיון בעבודה ממשרדי תכנון/ פיקוח/ ניהול פרויקטים- חובה\n בקיאות במערכות אלקטורמכניות - חובה\nידע בקריאת תוכניות אדריכליות ואלקטרומכניות\nיכולת לנהל דיונים והתנהלות מול יזמים/משרדי פיקוח/ מתכננים\nיכולת ניהול פרוייקט לרבות : בחירת צוות מתכננים, ניהול תכנון , הכנת תקציב וביצוע מעקב תקציבי,\nניהול סיור קבלנים והפצת מכרז / מפרט וכתב כמויות, ניהול ופיקוח על הבנייה, אישור חשבונות ומסירת העבודה למזמין\nיכולת עבודה עצמאית, יכולת ראייה מרחבית, \nמה אנחנו מציעים :\nעובד/ת חברה מהיום הראשון\nקרן השתלמות\nאופק התפתחות \nהמשרה כוללת רכב\nלידיעתך, בהגשת המועמדות למשרה, קו\"ח והמידע האישי אודותייך יועברו לחברת אלקטרה בע\"מ, אשר תנהל אותם בהתאם ובכפוף למדיניות הפרטיות שלה הזמינה באתר הקריירה של קבוצת אלקטרה",
-   "postedAt": "2026-10-08",
-   "source": "JobMaster"
-  },
-  {
-   "title": "לחברת סולל בונה מקבוצת שיכון ובינוי דרוש/ה מתאמ/ת שינויי דיירים!",
-   "company": "שיכון ובינוי - סולל בונה תשתיות בע\"מ",
-   "location": "ירושלים , רמת גן",
-   "jobType": "משרה מלאה",
-   "url": "https://www.jobmaster.co.il/jobs/checknum.asp?key=9891527",
-   "description": "לחברת סולל בונה מקבוצת שיכון ובינוי דרוש/ה מתאמ/ת שינויי דיירים!\nהתפקיד כולל:\nניהול וליווי תהליך הערכות למסירת דירות ושטחים בדגש על תפיסת שירות וחווית לקוח.\nקשר מול ממשקים מרובים, תמחורים, כתבי כמויות.\nעבודה דינמית ומעניינת.\nמשרה מלאה א’-ה’ 08:00-16:30\nרמת גן וירושלים.\nדרישות התפקיד:\nהנדסאי/ת אדריכלות/ תואר ראשון בעיצוב פנים- חובה\nידע בתוכנת Revit- חובה\nנסיון- יתרון!\nתנאים טובים למתאימים/ות!",
    "postedAt": "2026-10-08",
    "source": "JobMaster"
   },
@@ -7264,16 +7052,6 @@
    "source": "Jobify"
   },
   {
-   "title": "אנליסט/ית תהליכים ומערכות מידע תפעוליות",
-   "company": "Controp",
-   "location": "כפר סבא",
-   "url": "https://jobify360.co.il/jobs/2764812-jk",
-   "description": "אחריות על שיפור, בקרה ותמיכה בתהליכים תפעוליים ועסקיים באמצעות ניתוח נתונים, טיוב מידע במערכות הארגון, אפיון פתרונות ודוחות במערכת Priority, וזיהוי הזדמנויות להתייעלות לאורך שרשרת האספקה.תחומי אחריות:",
-   "postedAt": "2026-08-13",
-   "jobType": "FULL_TIME",
-   "source": "Jobify"
-  },
-  {
    "title": "MARKETIND  data ANALYST",
    "company": "G-Stat",
    "location": "פתח תקווה",
@@ -7361,7 +7139,10 @@
    "description": "קצת על התפקיד\nלמפעל מערכות הגנה בחטיבת מט\"ח דרוש/ה מנהל/ת תוכניות ימיות אסטרטגיות למגה פרויקטים.\nהתפקיד כולל:\n• הובלה עסקית ושיווק מערכות הגנה אווירית מורכבות (system of systems) ,עתירות חומרה, תקשור",
    "postedAt": "2026-10-07",
    "jobType": "FULL_TIME",
-   "source": "אתר החברה (דרך Jobify)"
+   "source": "אתר החברה (דרך Jobify)",
+   "alsoAt": [
+    "https://jobify360.co.il/jobs/4475410295-in"
+   ]
   },
   {
    "title": "פלנר/ית תפ\"י למפעל מעדנות",
@@ -7400,16 +7181,6 @@
    "url": "https://jobify360.co.il/jobs/4472425844-in",
    "description": "We are looking for a Marketing & Customer Success Analyst to join our team and work closely with Israeli customers in a role that combines data analysis, marketing performance, and customer",
    "postedAt": "2026-09-27",
-   "jobType": "FULL_TIME",
-   "source": "לינקדאין (דרך Jobify)"
-  },
-  {
-   "title": "Product Manager",
-   "company": "Solitics",
-   "location": "תל אביב - יפו",
-   "url": "https://jobify360.co.il/jobs/4473264533-in",
-   "description": "We are looking for an experienced Technical Product Manager with strong hands-on experience writing engineering-grade specifications, to work deeply on a complex B2B SaaS platform. In this",
-   "postedAt": "2026-09-29",
    "jobType": "FULL_TIME",
    "source": "לינקדאין (דרך Jobify)"
   },
@@ -7510,26 +7281,6 @@
    "url": "https://jobify360.co.il/jobs/4475383668-in",
    "description": "Who We AreFaye is the fastest-growing travel protection company in the U.S., and the highest-rated by travelers who use it trip after trip.We’ve raised $100M to build the autonomous platfor",
    "postedAt": "2026-10-04",
-   "jobType": "FULL_TIME",
-   "source": "לינקדאין (דרך Jobify)"
-  },
-  {
-   "title": "Marketing Data Analyst",
-   "company": "SuperPlay",
-   "location": "תל אביב - יפו",
-   "url": "https://jobify360.co.il/jobs/4475394851-in",
-   "description": "Come and join a rapidly expanding mobile games company!Who are we?:SuperPlay is a leading gaming company dedicated to creating unforgettable mobile gaming experiences. Founded in 2019 by in",
-   "postedAt": "2026-10-04",
-   "jobType": "FULL_TIME",
-   "source": "לינקדאין (דרך Jobify)"
-  },
-  {
-   "title": "מנהל/ת תוכניות ימיות אסטרטגיות",
-   "company": "IAI - Israel Aerospace Industries",
-   "location": "יהוד-מונוסון",
-   "url": "https://jobify360.co.il/jobs/4475410295-in",
-   "description": "קצת על התפקיד למפעל מערכות הגנה בחטיבת מט\"ח דרוש/ה מנהל/ת תוכניות ימיות אסטרטגיות למגה פרויקטים. התפקיד כולל:הובלה עסקית ושיווק מערכות הגנה אווירית מורכבות (system of systems) ,עתירות חומרה",
-   "postedAt": "2026-10-07",
    "jobType": "FULL_TIME",
    "source": "לינקדאין (דרך Jobify)"
   },
