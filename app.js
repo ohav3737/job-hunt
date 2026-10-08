@@ -93,7 +93,7 @@ const SUBS = ['BI', 'דאטה', 'מוצר', 'שיווק', 'עסקי', 'פיננ�
 const REGIONS = [['ta', 'ת"א + רמת גן'], ['core', 'ת"א והסביבה'], ['center', 'כל המרכז'], ['all', 'כל הארץ']];
 const AGES = [['day', '24 שעות'], ['3days', '3 ימים'], ['week', 'שבוע'], ['month', 'חודש'], ['any', 'הכל']];
 const ORDERS = [['rec', 'מומלץ'], ['match', 'התאמה גבוהה'], ['date', 'הכי חדשות']];
-const DEFAULTS = { cat: 'all', sub: 'all', region: 'core', city: '', age: 'week', noexp: false, source: 'all', order: 'rec' };
+const DEFAULTS = { cat: 'all', sub: 'all', region: 'core', city: '', age: 'week', noexp: false, juniorTitle: false, source: 'all', order: 'rec' };
 const label = (list, id) => (list.find(x => x[0] === id) || [])[1] || id;
 
 // הסינון עצמו: מחזיר את המשרות שעוברות את כל הסינונים, ממוינות
@@ -107,8 +107,9 @@ function filteredJobs(f = ui) {
     if (terms.length && !matchesSearch(j, terms)) return false;
     if (bypass) return true;
     if (j.status === 'skip' || j.status === 'rejected') return false;
-    if (f.list === 'best' && a.verdict.level !== 'yes') return false;
-    if (f.list === 'fit' && a.verdict.level === 'no') return false;
+    if (f.list === 'best' && (a.verdict.level !== 'yes' || !entryLevel(j, a))) return false;
+    if (f.list === 'fit' && (a.verdict.level === 'no' || !entryLevel(j, a))) return false;
+    if (f.juniorTitle && !juniorTitle(j)) return false;
     if (f.cat !== 'all' && a.category.id !== f.cat) return false;
     if (f.cat === 'analyst' && f.sub && f.sub !== 'all' && !a.category.label.endsWith('· ' + f.sub)) return false;
     if (f.city) { if (!Engine.jobCities(j.location || j.description || '').includes(f.city)) return false; }
@@ -135,6 +136,7 @@ function activeFilters() {
   else if (ui.region !== DEFAULTS.region) out.push(['region', '📍 ' + label(REGIONS, ui.region)]);
   if (ui.age !== DEFAULTS.age) out.push(['age', '🕒 ' + label(AGES, ui.age)]);
   if (ui.noexp) out.push(['noexp', '🎓 ללא ניסיון']);
+  if (ui.juniorTitle) out.push(['juniorTitle', '🌱 ג׳וניור בכותרת']);
   if (ui.source !== 'all') out.push(['source', ui.source]);
   if (ui.order !== 'rec') out.push(['order', '↕ ' + label(ORDERS, ui.order)]);
   return out;
@@ -152,6 +154,9 @@ function renderJobs() {
   $('listSeg').onclick = e => { const b = e.target.closest('button'); if (b) { ui.list = b.dataset.id; renderJobs(); } };
   $('listSeg').style.display = segs.length > 1 ? '' : 'none';
 
+  const jtCount = filteredJobs({ ...ui, juniorTitle: true }).list.length;
+  $('juniorBtn').innerHTML = `🌱 ג׳וניור בכותרת <b>${jtCount}</b>`;
+  $('juniorBtn').classList.toggle('on', !!ui.juniorTitle);
   const act = activeFilters();
   $('filterCount').textContent = act.length || '';
   $('filterBtn').classList.toggle('has', act.length > 0);
@@ -204,7 +209,8 @@ function openFilters() {
       </div>
       ${group('פורסמו ב…', 'age', AGES, ui.age)}
       <div class="f-group"><div class="f-title">ניסיון</div>
-        <label class="toggle"><input type="checkbox" id="fNoexp" ${ui.noexp ? 'checked' : ''}><span>רק משרות ללא ניסיון</span></label></div>
+        <label class="toggle"><input type="checkbox" id="fNoexp" ${ui.noexp ? 'checked' : ''}><span>רק משרות ללא ניסיון</span></label>
+        <label class="toggle" style="margin-top:10px"><input type="checkbox" id="fJunior" ${ui.juniorTitle ? 'checked' : ''}><span>רק "ג׳וניור" בשם התפקיד</span></label></div>
       ${group('מיון', 'order', ORDERS, ui.order)}
       ${group('מקור', 'source', [['all', 'כל המקורות'], ...sources.map(x => [x, x])], ui.source)}
       <div class="f-footer">
@@ -220,6 +226,7 @@ function openFilters() {
     });
     $('fCity').onchange = e => { ui.city = e.target.value; draw(); };
     $('fNoexp').onchange = e => { ui.noexp = e.target.checked; draw(); };
+    $('fJunior').onchange = e => { ui.juniorTitle = e.target.checked; draw(); };
     $('fReset').onclick = () => { Object.assign(ui, DEFAULTS); draw(); };
     $('fApply').onclick = () => { closeSheet(); renderJobs(); };
   };
@@ -227,6 +234,7 @@ function openFilters() {
   draw();
 }
 $('filterBtn').onclick = openFilters;
+$('juniorBtn').onclick = () => { ui.juniorTitle = !ui.juniorTitle; renderJobs(); };
 
 // ---------- חיפוש חופשי ----------
 // מחפש בכל הטקסט של המשרה. כמה מילים = כולן צריכות להופיע. "בגרשיים" = ביטוי מדויק.
@@ -252,6 +260,15 @@ function worth(j, a) {
   const field = a.category.priority <= 2 ? 3 : 0;
   return 0.55 * a.match + 0.45 * a.screenPct + fresh + field;
 }
+// משרת כניסה: נאמר במפורש ג׳וניור / ללא ניסיון / בוגרים, או עד שנתיים ניסיון
+function entryLevel(j, a) {
+  if (a.experience.isSenior) return false;
+  if (a.experience.years !== null && a.experience.years <= 2) return true;
+  return a.experience.isJunior || noExperience(j, a);
+}
+const JUNIOR_TITLE = /junior|jr\.?\b|ג['׳]?וניור|entry[- ]?level|graduate|grad\b|בוגר|ללא ניסיון|ללא נסיון|associate|trainee|מתלמד|הכשרה|first job|משרה ראשונה|סטאז/i;
+const juniorTitle = j => JUNIOR_TITLE.test(j.title || '');
+
 function noExperience(j, a) {
   if (a.experience.isSenior || a.experience.years > 0) return false;
   return a.experience.years === 0 || a.experience.isJunior || /ללא ניסיון|ללא נסיון|no experience|entry[- ]level|graduate|בוגר/i.test(j.title + ' ' + (j.description || ''));

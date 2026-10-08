@@ -314,3 +314,12 @@ details.card summary::after { content: " ▾"; color: var(--muted); }
 }
 .ask-bar.show { display: block; animation: up .2s ease-out; }
 .ask-bar .btn { flex: 1; }
+
+.junior-btn {
+  display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; margin-bottom: 8px;
+  border: 1.5px dashed var(--good); background: var(--good-soft); color: var(--good); border-radius: 12px;
+  padding: 9px; font-size: 14px; font-weight: 600; cursor: pointer;
+}
+.junior-btn b { background: var(--good); color: #fff; border-radius: 999px; padding: 0 7px; font-size: 12px; }
+.junior-btn.on { border-style: solid; background: var(--good); color: #fff; }
+.junior-btn.on b { background: #fff; color: var(--good); }
