@@ -13,7 +13,7 @@ const STATUSES = [
 const STATUS_LABEL = Object.fromEntries(STATUSES.map(s => [s.id, s.label]));
 
 let state = load();
-const ui = { view: 'jobs', cat: 'all', region: 'center', sort: 'smart', q: '', trackSort: 'date', trackFilter: 'active' };
+const ui = { view: 'jobs', cat: 'all', region: 'core', sort: state.profile.cv.trim() ? 'fit' : 'smart', q: '', trackSort: 'date', trackFilter: 'active', source: 'all' };
 
 function load() {
   try {
@@ -71,9 +71,12 @@ function chips(el, items, current, onPick) {
 // ---------- מסך משרות ----------
 function renderJobs() {
   chips($('catChips'), [['all', 'כל התחומים'], ['pm', 'ניהול פרויקטים'], ['product', 'מוצר'], ['analyst', 'אנליסט'], ['ops', 'תפעול / תעשייה'], ['other', 'אחר']], ui.cat, v => { ui.cat = v; renderJobs(); });
-  chips($('regionChips'), [['ta', 'תל אביב'], ['core', 'ת"א + סובב'], ['center', 'כל המרכז'], ['all', 'כל הארץ']], ui.region, v => { ui.region = v; renderJobs(); });
-  chips($('sortChips'), [['smart', 'מיון חכם'], ['match', 'לפי התאמה'], ['date', 'החדשות קודם'], ['fresh', 'רק חדשות'], ['junior', 'רק ג׳וניור'], ['hide', 'בלי לא רלוונטיות']], ui.sort, v => { ui.sort = v; renderJobs(); });
+  chips($('regionChips'), [['ta', 'ת"א + רמת גן'], ['core', 'ת"א + סובב'], ['center', 'כל המרכז'], ['all', 'כל הארץ']], ui.region, v => { ui.region = v; renderJobs(); });
+  const sources = [...new Set(state.jobs.map(j => j.source).filter(Boolean))].sort();
+  chips($('sourceChips'), [['all', 'כל המקורות'], ...sources.map(x => [x, x])], ui.source, v => { ui.source = v; renderJobs(); });
+  chips($('sortChips'), [['fit', 'מתאימות לי'], ['smart', 'הכל, מיון חכם'], ['match', 'לפי התאמה'], ['date', 'החדשות קודם'], ['fresh', 'רק חדשות'], ['junior', 'רק ג׳וניור'], ['hide', 'בלי לא רלוונטיות']], ui.sort, v => { ui.sort = v; renderJobs(); });
 
+  $('cvNudge').style.display = state.profile.cv.trim() ? 'none' : 'block';
   const freshCount = state.jobs.filter(j => j.fresh).length;
   $('feedInfo').textContent = state.feedUpdated ? 'משרות נאספו לאחרונה: ' + fmtDate(state.feedUpdated) + (freshCount ? ' · ' + freshCount + ' חדשות' : '') : '';
   const allowed = { ta: ['ta', 'remote', 'unknown'], core: ['ta', 'core', 'remote', 'unknown'], center: ['ta', 'core', 'center', 'remote', 'unknown'], all: null }[ui.region];
@@ -83,14 +86,16 @@ function renderJobs() {
     if (allowed && !allowed.includes(a.region)) return false;
     if (ui.sort === 'junior' && a.experience.isSenior) return false;
     if (ui.sort === 'junior' && a.experience.years >= 2) return false;
+    if (ui.sort === 'fit' && a.verdict.level === 'no') return false;
     if (ui.sort === 'fresh' && !j.fresh) return false;
+    if (ui.source !== 'all' && j.source !== ui.source) return false;
     if (ui.sort === 'hide' && (j.status === 'skip' || j.status === 'rejected')) return false;
     if (q && ![j.title, j.company, j.location, a.city].join(' ').toLowerCase().includes(q)) return false;
     return true;
   });
   if (ui.sort === 'match') list.sort((x, y) => y.a.match - x.a.match);
   else if (ui.sort === 'date') list.sort((x, y) => (y.j.dateAdded || '').localeCompare(x.j.dateAdded || ''));
-  else list.sort((x, y) => x.a.sortKey - y.a.sortKey);
+  else list.sort((x, y) => x.a.sortKey - y.a.sortKey); // 'fit' + 'smart'
 
   if (!state.jobs.length) {
     $('jobList').innerHTML = `<div class="empty"><div class="big">🔎</div>
@@ -153,7 +158,7 @@ function openJob(id) {
   const a = analysis(j);
   const noCv = !state.profile.cv.trim();
   openSheet(j.title || 'משרה', `
-    <div class="muted" style="margin-bottom:10px">${esc(j.company)}${j.company ? ' · ' : ''}${esc(j.location || a.city || 'מיקום לא ידוע')} · ${esc(a.regionLabel)}</div>
+    <div class="muted" style="margin-bottom:10px">${esc(j.company)}${j.company ? ' · ' : ''}${esc(j.location || a.city || 'מיקום לא ידוע')} · ${esc(a.regionLabel)}${j.source ? ' · מקור: ' + esc(j.source) : ''}${j.postedAt ? ' · פורסמה ' + fmtDate(j.postedAt) : ''}</div>
     ${noCv ? '<div class="notice">⚠️ עוד לא הדבקת קורות חיים, אז הציון לא מדויק. הדביקי אותם בלשונית קו״ח.</div>' : ''}
     <div class="verdict ${a.verdict.level}">${esc(a.verdict.text)}</div>
     <div class="stats">
@@ -364,8 +369,71 @@ function toggleSkill(id) {
 
 $('saveCv').onclick = () => {
   state.profile.cv = $('cvText').value;
+  if (state.profile.cv.trim()) ui.sort = 'fit';
   save(); profileChanged(); renderCv();
   toast('נשמר. זוהו ' + Engine.extractSkills(state.profile.cv).size + ' כישורים');
+};
+
+// ---------- העלאת קובץ קו"ח ----------
+function loadScript(src) {
+  return new Promise((ok, fail) => { const el = document.createElement('script'); el.src = src; el.onload = ok; el.onerror = fail; document.head.appendChild(el); });
+}
+async function pdfText(buf) {
+  if (!window.pdfjsLib) {
+    await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js');
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  }
+  const pdf = await pdfjsLib.getDocument({ data: buf }).promise;
+  const pages = [];
+  for (let i = 1; i <= pdf.numPages; i++) {
+    const c = await (await pdf.getPage(i)).getTextContent();
+    // מקבצים פריטים לשורות לפי הגובה בעמוד, ומסדרים כל שורה לפי כיוון הכתיבה שלה
+    const rows = [];
+    for (const it of c.items) {
+      if (!it.str.trim()) continue;
+      const y = it.transform[5], x = it.transform[4];
+      let row = rows.find(r => Math.abs(r.y - y) < 3);
+      if (!row) rows.push(row = { y, items: [] });
+      row.items.push({ x, s: it.str.trim() });
+    }
+    rows.sort((a, b) => b.y - a.y);
+    const heb = t => /[\u0590-\u05FF]/.test(t);
+    const lines = rows.map(r => {
+      const rtl = r.items.filter(i => heb(i.s)).length >= r.items.length / 2;
+      const items = r.items.sort((a, b) => rtl ? b.x - a.x : a.x - b.x).map(i => i.s);
+      if (!rtl) return items.join(' ');
+      // בשורה עברית, רצפים באנגלית/מספרים נשארים משמאל לימין
+      const out = []; let run = [];
+      for (const t of items) { if (heb(t)) { out.push(...run.reverse(), t); run = []; } else run.push(t); }
+      out.push(...run.reverse());
+      return out.join(' ').replace(/\s+([:,.])/g, '$1');
+    });
+    pages.push(lines.filter(Boolean).join('\n'));
+  }
+  return pages.join('\n');
+}
+async function docxText(buf) {
+  if (!window.mammoth) await loadScript('https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js');
+  return (await mammoth.extractRawText({ arrayBuffer: buf })).value;
+}
+$('cvFile').onchange = async e => {
+  const f = e.target.files[0];
+  if (!f) return;
+  toast('קורא את הקובץ…');
+  try {
+    const buf = await f.arrayBuffer();
+    const name = f.name.toLowerCase();
+    const text = name.endsWith('.pdf') ? await pdfText(buf) : name.endsWith('.docx') ? await docxText(buf) : new TextDecoder().decode(buf);
+    if (!text.trim()) throw new Error('empty');
+    state.profile.cv = text.replace(/\n{3,}/g, '\n\n').trim();
+    state.profile.cvFile = f.name;
+    ui.sort = 'fit';
+    save(); profileChanged(); renderCv();
+    toast('קורות החיים נטענו. זוהו ' + Engine.extractSkills(state.profile.cv).size + ' כישורים');
+  } catch (err) {
+    toast('לא הצלחתי לקרוא את הקובץ. אפשר להעתיק ולהדביק את הטקסט');
+  }
+  e.target.value = '';
 };
 
 function highlight(line, words) {
@@ -464,6 +532,9 @@ async function loadFeed(manual) {
   }
 }
 $('refreshBtn').onclick = () => loadFeed(true);
+// בדיקה אוטומטית למשרות חדשות כל 5 דקות, ובכל פעם שחוזרים לאפליקציה
+setInterval(() => loadFeed(false), 5 * 60 * 1000);
+document.addEventListener('visibilitychange', () => { if (!document.hidden) loadFeed(false); });
 
 // ---------- כללי ----------
 let toastTimer;

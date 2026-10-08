@@ -83,7 +83,10 @@ const GROUP_LABEL = {
 const GROUP_WEIGHT = { soft: 0.4, lang: 0.6 };
 
 function norm(text) {
-  return ' ' + String(text || '').toLowerCase().replace(/[’`]/g, "'").replace(/\s+/g, ' ') + ' ';
+  return ' ' + String(text || '').toLowerCase().replace(/[’`]/g, "'")
+    // צורות מגדר: "מנהל /ת", "אנליסט.ית", "רכז/ת" → "מנהל", "אנליסט", "רכז"
+    .replace(/\s*[\/.]\s*(ית|ת|ה)(?=[\s,.)\-|]|$)/g, '')
+    .replace(/\s+/g, ' ') + ' ';
 }
 
 function hasAlias(t, alias) {
@@ -227,8 +230,8 @@ function degreeFit(text) {
 // ---------- מיקום ----------
 const CITIES = [
   { name: 'תל אביב', region: 'ta', words: ['תל אביב', 'תל-אביב', 'ת"א', 'ת״א', 'tel aviv', 'tel-aviv', 'רמת החייל', 'יפו'] },
-  { name: 'רמת גן', region: 'core', words: ['רמת גן', 'רמת-גן', 'ramat gan', 'בורסה', 'הבורסה'] },
-  { name: 'גבעתיים', region: 'core', words: ['גבעתיים', 'givatayim'] },
+  { name: 'רמת גן', region: 'ta', words: ['רמת גן', 'רמת-גן', 'ramat gan', 'בורסה', 'הבורסה'] },
+  { name: 'גבעתיים', region: 'ta', words: ['גבעתיים', 'givatayim'] },
   { name: 'בני ברק', region: 'core', words: ['בני ברק', 'bnei brak'] },
   { name: 'הרצליה', region: 'core', words: ['הרצליה', 'herzliya', 'herzlia'] },
   { name: 'פתח תקווה', region: 'core', words: ['פתח תקווה', 'פתח תקוה', 'פ"ת', 'petah tikva', 'petach tikva', 'petah tikva'] },
@@ -257,7 +260,7 @@ const CITIES = [
   { name: 'אשדוד', region: 'far', words: ['אשדוד', 'ashdod'] },
 ];
 const REGION = {
-  ta: { label: 'תל אביב', fit: 1 },
+  ta: { label: 'תל אביב / רמת גן', fit: 1 },
   core: { label: 'סובב ת"א', fit: 0.92 },
   center: { label: 'מרכז', fit: 0.78 },
   far: { label: 'מחוץ למרכז', fit: 0.3 },

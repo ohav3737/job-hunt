@@ -30,10 +30,12 @@
         <b>להתקנה כאפליקציה באייפון/אייפד:</b>
         <div class="small">ב-Safari לחצי על כפתור השיתוף <b>⎙</b> ואז <b>"הוספה למסך הבית"</b>.</div>
       </div>
+      <div class="notice" id="cvNudge" style="display:none">📄 כדי לקבל אחוזי התאמה אמיתיים, העלי את קורות החיים שלך. <a href="#" onclick="go('cv');return false">להעלאה</a></div>
       <div class="small muted" id="feedInfo" style="margin:0 4px 6px"></div>
       <input class="search" id="jobSearch" type="search" placeholder="חיפוש לפי תפקיד, חברה, עיר…">
       <div class="chips" id="catChips"></div>
       <div class="chips" id="regionChips"></div>
+      <div class="chips" id="sourceChips"></div>
       <div class="chips" id="sortChips"></div>
       <div id="jobList"></div>
     </section>
@@ -63,8 +65,12 @@
     <section class="view" id="view-cv">
       <div class="section-title">קורות החיים שלך</div>
       <div class="card">
+        <label class="btn block" style="display:block;text-align:center;margin-bottom:12px">
+          📄 העלאת קובץ קורות חיים (PDF / Word)
+          <input type="file" id="cvFile" accept=".pdf,.docx,.txt,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/plain" hidden>
+        </label>
         <label class="field">
-          <span>הדביקי כאן את כל הטקסט של קורות החיים (עברית או אנגלית)</span>
+          <span>או הדביקי כאן את הטקסט. אחרי העלאה כדאי לעבור על הטקסט ולוודא שהוא נקרא נכון</span>
           <textarea class="input" id="cvText" placeholder="השכלה, ניסיון, פרויקטים, כישורים…"></textarea>
         </label>
         <button class="btn block" id="saveCv">שמירה וזיהוי כישורים</button>
