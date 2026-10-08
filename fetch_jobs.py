@@ -232,7 +232,7 @@ ALLJOBS_EXCLUDE = re.compile(
     r'בכיר|ראש צוות|ראש תחום|ראש מחלקה|סמנכ|מנהל.?ת? אגף|דירקטור|\bVP\b|senior|team lead|'
     r'נהג|מלגז|מחסנא|עובד.? ייצור|עובדי ייצור|טכנאי|חשמלאי|מתכנת|מפתח|developer|אחות|אחיות|רופא|מורה|סייע|'
     r'שומר|מאבטח|ניקיון|טבח|מלצר|קופאי|מוקדנ|נציג|טלר|בנקאי|סוכנ|יועצ.? משכנתא|מתכנן.? פנסיוני|'
-    r'סטודנט|משמרות|חלקית|מנהל.?ת? סניף|מנהל.?ת? חנות|מוכר|ספק', re.I)
+    r'סטודנט|משמרות|חלקית|מנהל.?ת? סניף|מנהל.?ת? חנות|מוכר|ספק|גיוס|גבי[יה]|חתמ|טלמרקט|שירות לקוחות|חמשל|קבלן|מפקח|בטיחות|מטפל|אח.?/.?ות|אחות|מכינ|מלקט|משרת ערב|יועצ.{0,3} מכיר|קוסמטיק|מתקין|שליח', re.I)
 
 
 class AllJobsBlocked(Exception):
@@ -554,8 +554,8 @@ FIELDS = re.compile(
     r'project|program|pmo|coordinator|implementation|product|analyst|analytics|\bbi\b|business intelligence|\bdata\b|insights|'
     r'operations|\bops\b|supply chain|logistics|procurement|planning|planner|process|efficiency|industrial|quality|'
     r'consult|strategy|pricing|revenue|fp&a|business partner|customer success|onboarding|junior|graduate|associate|'
-    r'פרויקט|פרוייקט|רכז|מתאמ|הטמע|מוצר|אנליסט|אנליז|נתונים|דאטה|תפעול|תפ"י|שרשרת|לוגיסט|רכש|תכנון|מתכנ|בקר|'
-    r'תהליכ|ייעול|התייעלות|תעשי|איכות|ייעוץ|יועצ|אסטרטג|תמחיר|כלכלנ|מטה|ג\'וניור|ג׳וניור|בוגר', re.I)
+    r'פרויקט|פרוייקט|רכז.{0,4}(?:תפעול|לוגיסט|רכש|תכנון|מערכות|נתונים|בקרה|תהליכ|הטמע|מוצר)|מתאמ.{0,4}(?:פרויקט|תפעול|לוגיסט|שינויי|הטמע)|הטמע|ניהול מוצר|מנהל.{0,3} מוצר|אנליסט|אנליז|נתונים|דאטה|תפעול|תפ"י|שרשרת|לוגיסט|רכש|תכנון|מתכנ|בקר|'
+    r'תהליכ|ייעול|התייעלות|תעשי|מהנדס.{0,3} איכות|הבטחת איכות|ייעוץ (?:עסקי|ארגוני|ניהולי|אסטרטגי)|יועצ.{0,3} (?:ארגוני|עסקי|כלכלי|ניהולי|אסטרטג|תפעול)|אסטרטג|תמחיר|כלכלנ|מטה|ג\'וניור|ג׳וניור|בוגר', re.I)
 DEGREE = re.compile(r'הנדסת תעשי|תעשייה וניהול|תעשיה וניהול|industrial engineering|industrial & management', re.I)
 YEARS = re.compile(r'(\d+)\s*\+?\s*(?:-\s*\d+\s*)?(?:years|yrs|שנות ניסיון|שנים לפחות|שנות עבודה)|ניסיון\s*(?:של\s*)?(?:לפחות\s*)?(?:מוכח\s*)?(?:של\s*)?(\d+)\s*\+?\s*שנ', re.I)
 
@@ -569,6 +569,8 @@ def min_years(text):
 
 
 def fits_me(j):
+    if EXCLUDE.search(j['title']) or ALLJOBS_EXCLUDE.search(j['title']):
+        return False
     text = j['title'] + '\n' + j['description']
     if not (FIELDS.search(j['title']) or DEGREE.search(text)):
         return False
@@ -606,5 +608,16 @@ def main():
     print(f'\nנשמרו {len(unique)} משרות ב-{out.name}')
 
 
+def refilter():
+    """מפעיל מחדש את הסינון האישי על jobs.json הקיים, בלי לסרוק את האתרים."""
+    out = Path(__file__).with_name('jobs.json')
+    data = json.loads(out.read_text())
+    before = len(data['jobs'])
+    data['jobs'] = [j for j in data['jobs'] if fits_me(j) and in_center(j['location'])]
+    out.write_text(json.dumps(data, ensure_ascii=False, indent=1))
+    print(f'נשארו {len(data["jobs"])} מתוך {before}')
+
+
 if __name__ == '__main__':
-    main()
+    import sys
+    refilter() if '--refilter' in sys.argv else main()
