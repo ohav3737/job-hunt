@@ -759,28 +759,70 @@ function renderTailor() {
   if (!state.profile.cv.trim()) { $('tailorOut').innerHTML = '<div class="notice">קודם צריך להעלות קורות חיים למעלה.</div>'; return; }
   const t = Engine.tailorCV(state.profile.cv, j, profile());
   const words = t.keywords.flatMap(k => Engine.SKILL_BY_ID[k.id].aliases).map(a => a.trim()).filter(a => a.length > 2);
-  const order = { reword: 0, confirm: 1, similar: 2, missing: 3, exact: 4 };
+  const by = st => t.keywords.filter(k => k.status === st);
+  const why = k => [k.inTitle ? 'בשם התפקיד' : '', k.must ? 'דרישת חובה' : 'יתרון', k.count > 1 ? `מוזכר ${k.count} פעמים` : ''].filter(Boolean).join(' · ');
+  const copyBtn = (txt, label = 'העתקה') => `<button class="chip" onclick="navigator.clipboard.writeText(${esc(JSON.stringify(txt))}).then(()=>toast('הועתק'))">${label}</button>`;
+  const toAdd = by('reword'), toConfirm = by('confirm'), similar = by('similar'), have = by('exact'), missing = by('missing');
+  const extraMissing = t.extraTerms.filter(x => !x.inCv);
+
   $('tailorOut').innerHTML = `
-    <div class="notice small">🔒 ההמלצות מבוססות רק על מה שכתוב בקורות החיים שלך. שום דבר לא מומצא. מה שחסר מסומן כחסר.</div>
-    <div class="stats" style="margin-bottom:8px">
-      <div class="stat"><div class="k">מילות מפתח שמופיעות היום</div><div class="v">${t.atsNow}%</div></div>
-      <div class="stat"><div class="k">אחרי ניסוח מחדש (בלי להמציא)</div><div class="v" style="color:var(--good)">${t.atsPotential}%</div></div>
+    <div class="ats-score">
+      <div><div class="k">הקורא האוטומטי ימצא היום</div><div class="v">${t.atsNow}%</div></div>
+      <div class="arrow">←</div>
+      <div><div class="k">אחרי התיקונים (בלי להמציא)</div><div class="v" style="color:var(--good)">${t.atsPotential}%</div></div>
     </div>
-    <div class="section-title">מילות מפתח למערכות הסינון האוטומטיות</div>
-    <ul class="skill-list">${[...t.keywords].sort((a, b) => order[a.status] - order[b.status]).map(k => {
-      const [m, cls, label] = ATS_LABEL[k.status];
-      return `<li><span class="mark ${cls}">${m}</span><div style="flex:1"><b dir="auto">${esc(k.term)}</b> <span class="small muted">${label}</span>
-        <div class="small muted">${esc(k.tip)}</div>
-        ${k.status === 'confirm' ? `<button class="chip" style="margin-top:6px" onclick="confirmSkill('${k.id}')">יש לי את זה</button>` : ''}</div></li>`;
-    }).join('') || '<li class="muted">לא זוהו מילות מפתח במשרה</li>'}</ul>
+    <div class="small muted" style="margin:6px 2px 12px">מערכות סינון אוטומטיות מחפשות את <b>המילים המדויקות</b> מהמשרה. אם הכישור כתוב אצלך במילים אחרות, הן לא תמיד מזהות אותו.</div>
 
-    <div class="section-title">שורת כישורים מומלצת (לפי סדר רלוונטיות)</div>
-    <div class="card small" style="user-select:all">${esc(t.skillsLine.join(' · ') || '—')}</div>
+    ${toAdd.length ? `<div class="section-title">✍️ להוסיף לקו״ח, יש לך את זה (${toAdd.length})</div>
+    <div class="card">${toAdd.map(k => `<div class="ats-item">
+      <div class="row"><b class="ats-term" dir="auto">${esc(k.term)}</b>${copyBtn(k.term)}<span class="spacer"></span><span class="small muted">${why(k)}</span></div>
+      <div class="small">כתבי בדיוק "<b dir="auto">${esc(k.term)}</b>" פעמיים: בשורת הכישורים, וגם בתוך תיאור הניסיון.</div>
+      ${k.where ? `<div class="small muted">💡 מתאים להוסיף לשורה: "<span dir="auto">${esc(k.where.slice(0, 90))}${k.where.length > 90 ? '…' : ''}</span>"</div>` : ''}
+    </div>`).join('')}</div>` : ''}
 
-    <div class="section-title">בולטים מקו״ח, הרלוונטיים ביותר קודם</div>
+    ${toConfirm.length ? `<div class="section-title">❓ יש לך? אם כן, הוסיפי (${toConfirm.length})</div>
+    <div class="card">${toConfirm.map(k => `<div class="ats-item">
+      <div class="row"><b class="ats-term" dir="auto">${esc(k.term)}</b><span class="spacer"></span><span class="small muted">${why(k)}</span></div>
+      <div class="small muted">לא מופיע בקו״ח. אם זה נכון לגבייך (מהתואר, מפרויקט או מעבודה), הוסיפי את המונח עם דוגמה אמיתית.</div>
+      <div class="row" style="margin-top:6px"><button class="chip" onclick="confirmSkill('${k.id}')">✓ יש לי את זה</button>${copyBtn(k.term, 'העתקת המונח')}</div>
+    </div>`).join('')}</div>` : ''}
+
+    ${similar.length ? `<div class="section-title">≈ יש לך כלי דומה (${similar.length})</div>
+    <div class="card">${similar.map(k => `<div class="ats-item"><b dir="auto">${esc(k.term)}</b> <span class="small muted">· יש לך ${esc((k.via || []).join(', '))}</span>
+      <div class="small muted">אל תכתבי "${esc(k.term)}" אם לא עבדת איתו. הבליטי את ${esc((k.via || []).join(', '))}, ואפשר לציין במכתב פנייה שזה כלי מקביל.</div></div>`).join('')}</div>` : ''}
+
+    <div class="section-title">📋 שורת כישורים מוכנה להעתקה</div>
+    <div class="card"><div dir="auto" style="user-select:all">${esc(t.atsSkillsLine.join(' | ') || '—')}</div>
+      <div class="row small muted" style="margin-top:8px"><span>בניסוח של המשרה, רק מה שיש לך. הדביקי תחת "כישורים".</span><span class="spacer"></span>${t.atsSkillsLine.length ? copyBtn(t.atsSkillsLine.join(' | ')) : ''}</div></div>
+
+    <div class="section-title">🏷️ כותרת לראש הקו״ח</div>
+    <div class="card"><div dir="auto" style="user-select:all"><b>${esc(t.headline)}</b></div>
+      <div class="row small muted" style="margin-top:8px"><span>הקורא האוטומטי מחפש התאמה לשם התפקיד. שימי שורה כזו מתחת לשם שלך.</span><span class="spacer"></span>${copyBtn(t.headline)}</div></div>
+
+    ${extraMissing.length ? `<div class="section-title">🔎 מונחים נוספים מהמשרה שלא מופיעים אצלך</div>
+    <div class="card"><div class="f-chips">${extraMissing.map(x => `<span class="badge" dir="auto">${esc(x.term)}${x.count > 1 ? ' ×' + x.count : ''}</span>`).join('')}</div>
+      <div class="small muted" style="margin-top:8px">אם אחד מהם נכון לגבייך (כלי, תחום, מתודולוגיה), כדאי להוסיף אותו בדיוק כך.</div></div>` : ''}
+
+    <details class="card" style="margin-top:10px"><summary><b>✓ כבר מופיע אצלך (${have.length}) · ✕ חסר (${missing.length})</b></summary>
+      ${have.length ? `<div class="small" style="margin-top:8px">✓ ${have.map(k => esc(k.term)).join(' · ')}</div>` : ''}
+      ${missing.length ? `<div class="small muted" style="margin-top:6px">✕ חסר, לא להוסיף: ${missing.map(k => esc(k.term)).join(' · ')}</div>` : ''}
+    </details>
+
+    <details class="card"><summary><b>📄 טיפים לקובץ שהקורא האוטומטי יצליח לקרוא</b></summary>
+      <ul class="reasons small" style="margin-top:8px">
+        <li>שלחי Word או PDF שנוצר מ-Word, לא סריקה או תמונה.</li>
+        <li>בלי טבלאות, עמודות, תיבות טקסט או אייקונים. הקורא האוטומטי מערבב אותם.</li>
+        <li>כותרות סטנדרטיות: "השכלה", "ניסיון", "פרויקטים", "כישורים".</li>
+        <li>שם קובץ ברור, למשל "קורות חיים - השם שלך.pdf".</li>
+        <li>אם המשרה באנגלית, עדיף קו״ח באנגלית (או לפחות המונחים המקצועיים באנגלית).</li>
+        <li>כל מילת מפתח חשובה פעמיים: בכישורים וגם בתיאור הניסיון.</li>
+      </ul>
+    </details>
+
+    <div class="section-title">שורות מהקו״ח שלך, הרלוונטיות ביותר קודם</div>
     <div>${t.bullets.length ? t.bullets.map(b => `<div class="bullet">${highlight(b.line, words)}${b.tips.map(tip => `<div class="tip">💡 ${esc(tip)}</div>`).join('')}</div>`).join('') : '<div class="muted small">לא נמצאו שורות שקשורות ישירות למשרה</div>'}</div>
 
-    <button class="btn secondary block" style="margin-top:12px" onclick="aiTailor('${j.id}')">✨ ניתוח וניסוח מחדש עם AI</button>
+    <button class="btn secondary block" style="margin-top:12px" onclick="aiTailor('${j.id}')">✨ ניסוח מחדש עם AI</button>
     <div id="aiTailorOut"></div>
   `;
 }

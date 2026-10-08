@@ -323,3 +323,13 @@ details.card summary::after { content: " ▾"; color: var(--muted); }
 .junior-btn b { background: var(--good); color: #fff; border-radius: 999px; padding: 0 7px; font-size: 12px; }
 .junior-btn.on { border-style: solid; background: var(--good); color: #fff; }
 .junior-btn.on b { background: #fff; color: var(--good); }
+
+/* ---------- התאמת קו"ח ל-ATS ---------- */
+.ats-score { display: flex; align-items: center; justify-content: space-around; gap: 8px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px; text-align: center; }
+.ats-score .k { font-size: 12px; color: var(--muted); }
+.ats-score .v { font-size: 26px; font-weight: 800; }
+.ats-score .arrow { font-size: 22px; color: var(--muted); }
+.ats-item { padding: 10px 0; border-bottom: 1px solid var(--line); }
+.ats-item:last-child { border-bottom: 0; }
+.ats-item .row { gap: 8px; margin-bottom: 4px; }
+.ats-term { font-size: 16px; background: var(--good-soft); color: var(--good); border-radius: 6px; padding: 1px 8px; }

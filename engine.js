@@ -431,6 +431,57 @@ function tailorCV(cv, job, prof) {
     return { ...r, term, status, tip };
   });
   // כיסוי ATS: כמה ממונחי המשרה מופיעים מילה במילה, והיכן הוא יכול להגיע בלי להמציא
+  // חשיבות לכל מילת מפתח: מופיעה בשם התפקיד? חובה או יתרון? כמה פעמים חוזרת במשרה?
+  const titleText = norm(job.title);
+  const mustIds = new Set(res.skills.must.map(r => r.id));
+  const cvLines = String(cv || '').split('\n').map(l => l.trim()).filter(l => l.length > 3);
+  keywords.forEach(k => {
+    const s = SKILL_BY_ID[k.id];
+    k.inTitle = s.aliases.some(a => hasAlias(titleText, a));
+    k.must = mustIds.has(k.id);
+    const low = jobText;
+    k.count = Math.max(1, s.aliases.reduce((n, a) => n + (low.split(a.toLowerCase().trim()).length - 1), 0));
+    k.importance = (k.inTitle ? 5 : 0) + (k.must ? 3 : 1) + Math.min(k.count, 4);
+    // איפה בקו״ח להוסיף: השורה שכבר מתארת את הכישור (או כלי דומה)
+    if (k.status === 'reword' || k.status === 'similar') {
+      const related = [k.id, ...((k.via || []).map(v => Object.keys(SKILL_BY_ID).find(id => SKILL_BY_ID[id].name === v)))].filter(Boolean);
+      k.where = cvLines.find(l => related.some(id => SKILL_BY_ID[id].aliases.some(a => hasAlias(norm(l), a)))) || '';
+    }
+  });
+  keywords.sort((x, y) => y.importance - x.importance);
+
+  // מונחים נוספים מהמשרה (כלים, ראשי תיבות, מונחים באנגלית) שהמנוע לא מכיר מראש
+  const known = new Set(SKILLS.flatMap(s => s.aliases.map(a => a.trim().toLowerCase())));
+  const STOP = new Set(['the', 'and', 'for', 'with', 'you', 'our', 'are', 'will', 'your', 'this', 'that', 'from', 'have', 'team', 'work', 'experience', 'years', 'year', 'ability', 'skills', 'strong', 'knowledge', 'including', 'about', 'job', 'role', 'we', 'an', 'or', 'of', 'to', 'in', 'on', 'at', 'as', 'be', 'is', 'a', 'israel', 'tel', 'aviv', 'ltd', 'inc', 'advantage', 'must', 'plus', 'degree', 'requirements', 'responsibilities', 'b.sc', 'bsc', 'b.a', 'ba', 'm.sc', 'new', 'join', 'looking', 'excellent', 'good', 'high', 'level', 'english', 'hebrew', 'bachelor', 'master', 'experience', 'knowledge', 'proven', 'ability', 'bonus', 'what', 'who', 'there', 'about', 'description', 'requirements', 'qualifications', 'nice', 'have', 'must', 'israel', 'usa', 'us', 'tel aviv', 'tlv', 'ramat gan', 'herzliya', 'nasdaq', 'nyse', 'ceo', 'hr', 'cv', 'it', 'ok', 'ltd', 'inc'.toLowerCase()]);
+  const extraTerms = [];
+  const seenTerm = new Set();
+  const company = String(job.company || '').toLowerCase();
+  // רק משורות של דרישות (ניסיון, ידע, שליטה...) ורק דברים שנראים כמו כלים: ראשי תיבות, שמות כמו PowerPoint, או "with X"
+  const reqLines = String(job.description || '').split('\n').filter(l =>
+    /experience|knowledge|familiar|proficien|skills?|understanding|background|hands[- ]on|ניסיון|ידע|שליטה|היכרות|יכולת|יתרון|advantage|plus|required|must/i.test(l) || /^\s*[-•*·]/.test(l));
+  const addTerm = term => {
+    term = term.trim().replace(/[.,;:)]+$/, '');
+    const key = term.toLowerCase();
+    if (term.length < 2 || key.length > 30 || STOP.has(key) || known.has(key) || seenTerm.has(key)) return;
+    if (company && (company.includes(key) || key.includes(company))) return;
+    if ([...known].some(k => k.length > 3 && (key.includes(k) || k.includes(key)))) return;
+    seenTerm.add(key);
+    const count = Math.max(1, ((job.title || '') + ' ' + (job.description || '')).split(term).length - 1);
+    extraTerms.push({ term, count, inCv: cvText.includes(key), inTitle: false });
+  };
+  reqLines.forEach(l => {
+    (l.match(/\b[A-Z][A-Z0-9&+]{1,6}\b/g) || []).forEach(addTerm);                       // ראשי תיבות: ETL, CRM, OKR
+    (l.match(/\b[A-Z]?[a-z]+[A-Z][A-Za-z]+\b/g) || []).forEach(addTerm);                 // PowerPoint, HubSpot
+    for (const m of l.matchAll(/\b(?:in|with|using|of|like|such as|e\.g\.?|including)\s+([A-Z][\w+#.]*(?:\s[A-Z][\w+#.]*)?)/g)) addTerm(m[1]);
+  });
+  extraTerms.sort((x, y) => (y.inTitle - x.inTitle) || (y.count - x.count));
+
+  // שורת כישורים בניסוח של המשרה, רק עם מה שיש לך באמת
+  const atsSkillsLine = keywords.filter(k => k.status === 'exact' || k.status === 'reword').map(k => k.term);
+  // כותרת לראש הקו״ח: התואר + שם התפקיד שאת מכוונת אליו (זו מטרה, לא טענה לניסיון)
+  const roleTitle = String(job.title || '').replace(/^(דרוש|דרושה|דרוש\/ה|מגייסת|מגייסים)[^:]*:?\s*/,'').split(/[|\-–(]/)[0].trim();
+  const headline = `בוגרת הנדסת תעשייה וניהול | ${roleTitle}`;
+
   const atsNow = keywords.length ? Math.round(100 * keywords.filter(k => k.status === 'exact').length / keywords.length) : 0;
   const atsPotential = keywords.length ? Math.round(100 * keywords.filter(k => k.status === 'exact' || k.status === 'reword').length / keywords.length) : 0;
 
@@ -452,7 +503,7 @@ function tailorCV(cv, job, prof) {
   // רשימת כישורים מסודרת לפי רלוונטיות, רק כאלה שיש לך באמת
   const ordered = [...cvSkills].sort((a, b) => (jobSkills.has(b) ? 1 : 0) - (jobSkills.has(a) ? 1 : 0)).map(id => SKILL_BY_ID[id].name);
 
-  return { keywords, bullets, skillsLine: ordered, result: res, atsNow, atsPotential };
+  return { keywords, bullets, skillsLine: ordered, result: res, atsNow, atsPotential, extraTerms: extraTerms.slice(0, 12), atsSkillsLine, headline };
 }
 
 // ---------- תפקידים שאולי לא חשבת עליהם ----------
