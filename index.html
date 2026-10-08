@@ -35,6 +35,10 @@
       <div class="small muted" id="feedInfo" style="margin:0 4px 6px"></div>
       <div class="notice row" id="roleFilter" style="display:none"><span id="roleFilterText"></span><span class="spacer"></span><button class="chip" onclick="ui.roleTerms=null;renderJobs()">ביטול ✕</button></div>
       <input class="search" id="jobSearch" type="search" placeholder="חיפוש לפי תפקיד, חברה, עיר…">
+      <div class="row" style="margin-bottom:6px">
+        <select class="input" id="citySelect" style="flex:1"></select>
+        <button class="chip" id="noExpBtn">🎓 ללא ניסיון</button>
+      </div>
       <div class="chips" id="catChips"></div>
       <div class="chips" id="regionChips"></div>
       <div class="chips" id="sourceChips"></div>
@@ -97,6 +101,21 @@
           <select class="input" id="tailorJob"></select>
         </label>
         <div id="tailorOut"></div>
+      </div>
+
+      <div class="section-title">התראות</div>
+      <div class="card">
+        <div class="small muted" style="margin-bottom:8px">קבלי התראה כשנכנסת משרה חדשה עם התאמה גבוהה לקורות החיים שלך.</div>
+        <div class="row">
+          <span class="small">התאמה מינימלית:</span>
+          <select class="input" id="notifyThreshold" style="width:auto">
+            <option value="95">95%</option><option value="90">90%</option><option value="85">85%</option><option value="80">80%</option><option value="75">75%</option>
+          </select>
+          <span class="spacer"></span>
+          <button class="btn" id="notifyBtn">הפעלת התראות</button>
+        </div>
+        <div class="small muted" id="notifyInfo" style="margin-top:8px"></div>
+        <div id="pushCodeBox"></div>
       </div>
 
       <div class="section-title">AI (לא חובה)</div>

@@ -131,6 +131,20 @@ def to_text(raw):
     return text.strip()[:8000]
 
 
+def ago(text):
+    """ממיר "לפני 3 שעות" / "2 ימים" / "היום" לזמן פרסום (ISO, UTC). אם לא זוהה, מחזיר את הזמן הנוכחי."""
+    now = datetime.now(timezone.utc)
+    m = re.search(r'(\d+)\s*(דק|שע|יום|ימים|שבוע|שבועות|חודש|חודשים)', text or '')
+    if m:
+        n, unit = int(m.group(1)), m.group(2)
+        delta = {'דק': timedelta(minutes=n), 'שע': timedelta(hours=n), 'שבוע': timedelta(weeks=n), 'שבועות': timedelta(weeks=n),
+                 'חודש': timedelta(days=30 * n), 'חודשים': timedelta(days=30 * n)}.get(unit, timedelta(days=n))
+        now -= delta
+    elif re.search(r'אתמול', text or ''):
+        now -= timedelta(days=1)
+    return now.isoformat(timespec='minutes')
+
+
 def get(url):
     req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (personal job search)'})
     try:
@@ -143,7 +157,7 @@ def get(url):
 
 def job(company, title, location, url, desc, posted=''):
     return {'title': title.strip(), 'company': company, 'location': (location or '').strip(), 'url': url,
-            'description': to_text(desc), 'postedAt': (posted or '')[:10], 'source': 'אתר החברה'}
+            'description': to_text(desc), 'postedAt': (posted or '')[:16], 'source': 'אתר החברה'}
 
 
 def greenhouse(slug, name):
@@ -232,7 +246,7 @@ ALLJOBS_EXCLUDE = re.compile(
     r'בכיר|ראש צוות|ראש תחום|ראש מחלקה|סמנכ|מנהל.?ת? אגף|דירקטור|\bVP\b|senior|team lead|'
     r'נהג|מלגז|מחסנא|עובד.? ייצור|עובדי ייצור|טכנאי|חשמלאי|מתכנת|מפתח|developer|אחות|אחיות|רופא|מורה|סייע|'
     r'שומר|מאבטח|ניקיון|טבח|מלצר|קופאי|מוקדנ|נציג|טלר|בנקאי|סוכנ|יועצ.? משכנתא|מתכנן.? פנסיוני|'
-    r'סטודנט|משמרות|חלקית|מנהל.?ת? סניף|מנהל.?ת? חנות|מוכר|ספק|גיוס|גבי[יה]|חתמ|טלמרקט|שירות לקוחות|חמשל|קבלן|מפקח|בטיחות|מטפל|אח.?/.?ות|אחות|מכינ|מלקט|משרת ערב|יועצ.{0,3} מכיר|קוסמטיק|מתקין|שליח', re.I)
+    r'סטודנט|משמרות|חלקית|מנהל.?ת? סניף|מנהל.?ת? חנות|מוכר|ספק|גיוס|גבי[יה]|חתמ|טלמרקט|שירות לקוחות|חמשל|קבלן|מפקח|בטיחות|עו"ד|עורכ.? דין|משפט|legal|counsel|student|intern|מטפל|אח.?/.?ות|אחות|מכינ|מלקט|משרת ערב|יועצ.{0,3} מכיר|קוסמטיק|מתקין|שליח', re.I)
 
 
 class AllJobsBlocked(Exception):
@@ -267,10 +281,8 @@ def alljobs_page(query, page):
         jtype = jtype.group(1).strip() if jtype else ''
         desc = re.search(r'job-content-top-desc[^>]*>(.*?)<div class="job-content-top-(?:links|social|buttons)', b, re.S) \
             or re.search(r'job-content-top-desc[^>]*>(.*)', b, re.S)
-        days = re.search(r'job-content-top-date">\s*(\d+)\s*(ימים|שעות|דקות)', b)
-        posted = date.today().isoformat()
-        if days and days.group(2) == 'ימים':
-            posted = (date.today() - timedelta(days=int(days.group(1)))).isoformat()
+        when = re.search(r'job-content-top-date">([^<]*)<', b)
+        posted = ago(when.group(1) if when else '')
         jobs.append({'title': title, 'company': company, 'location': ', '.join(cities[:8]),
                      'url': f'https://www.alljobs.co.il/Search/UploadSingle.aspx?JobID={jid.group(1)}',
                      'description': to_text((desc.group(1) if desc else '')[:20000]),
@@ -332,7 +344,7 @@ def drushim_page(query, page):
                      'url': 'https://www.drushim.co.il' + link.group(1),
                      'description': _txt(desc.group(1)) if desc else '', 'meta': meta,
                      'minYears': int(exp.group(1)) if exp and exp.group(1) else 0,
-                     'postedAt': date.today().isoformat(), 'source': 'דרושים'})
+                     'postedAt': ago(re.search(r'(?:לפני|היום|אתמול).*', meta).group(0) if re.search(r'לפני|היום|אתמול', meta) else ''), 'source': 'דרושים'})
     return jobs
 
 
@@ -399,10 +411,11 @@ def jobmaster_page(query, page):
         loc = re.search(r'class="jobLocation">(.*?)</li>', c, re.S)
         jtype = re.search(r'class="jobType">(.*?)</li>', c, re.S)
         desc = re.search(r'jobShortDescription[^>]*>(.*?)</div>', c, re.S)
+        when = re.search(r'פורסם\s*([^<]*)', c)
         jobs.append({'title': _txt(title.group(1)), 'company': _txt(comp.group(1)) if comp else 'חברה חסויה',
                      'location': _txt(loc.group(1)) if loc else '', 'jobType': _txt(jtype.group(1)) if jtype else '',
                      'url': f'https://www.jobmaster.co.il/jobs/checknum.asp?key={key.group(1)}',
-                     'description': _txt(desc.group(1)) if desc else '', 'postedAt': date.today().isoformat(), 'source': 'JobMaster'})
+                     'description': _txt(desc.group(1)) if desc else '', 'postedAt': ago(when.group(1) if when else ''), 'source': 'JobMaster'})
     return jobs
 
 

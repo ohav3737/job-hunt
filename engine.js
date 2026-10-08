@@ -208,7 +208,7 @@ function experience(title, text) {
 
   let level, fit;
   if (isSenior && !isJunior) { level = 'בכיר'; fit = 0.1; }
-  else if (years === null) { level = isJunior ? 'ג׳וניור / ללא ניסיון' : 'לא צוין'; fit = isJunior ? 1 : 0.8; }
+  else if (years === null) { level = isJunior ? 'ג׳וניור / ללא ניסיון' : 'לא צוין'; fit = isJunior ? 1 : 0.9; }
   else if (years === 0) { level = 'ללא ניסיון'; fit = 1; }
   else if (years === 1) { level = 'עד שנה'; fit = 0.8; }
   else if (years === 2) { level = '2 שנים'; fit = 0.5; }
@@ -222,9 +222,9 @@ function experience(title, text) {
 function degreeFit(text) {
   const t = norm(text);
   if (['הנדסת תעשייה', 'תעשייה וניהול', 'industrial engineering', 'industrial & management', 'ie degree'].some(w => t.includes(w))) return { fit: 1, label: 'מבקשים בדיוק את התואר שלך' };
-  if (['הנדסה', 'engineering', 'כלכלה', 'economics', 'מדעי הנתונים', 'statistics', 'סטטיסטיקה', 'מתמטיקה', 'quantitative', 'כמותי', 'stem'].some(w => t.includes(w))) return { fit: 0.85, label: 'תואר רלוונטי (הנדסה/כמותי)' };
-  if (['b.sc', 'bsc', 'b.a', 'ba ', 'תואר ראשון', "bachelor", 'degree', 'תואר אקדמי', 'אקדמאי'].some(w => t.includes(w))) return { fit: 0.75, label: 'תואר אקדמי, התואר שלך עונה' };
-  return { fit: 0.7, label: 'לא צוינה דרישת תואר' };
+  if (['הנדסה', 'engineering', 'כלכלה', 'economics', 'מדעי הנתונים', 'statistics', 'סטטיסטיקה', 'מתמטיקה', 'quantitative', 'כמותי', 'stem'].some(w => t.includes(w))) return { fit: 0.95, label: 'תואר רלוונטי (הנדסה/כמותי)' };
+  if (['b.sc', 'bsc', 'b.a', 'ba ', 'תואר ראשון', "bachelor", 'degree', 'תואר אקדמי', 'אקדמאי'].some(w => t.includes(w))) return { fit: 0.9, label: 'תואר אקדמי, התואר שלך עונה' };
+  return { fit: 0.85, label: 'לא צוינה דרישת תואר' };
 }
 
 // ---------- מיקום ----------
@@ -265,7 +265,7 @@ const REGION = {
   center: { label: 'מרכז', fit: 0.78 },
   far: { label: 'מחוץ למרכז', fit: 0.3 },
   remote: { label: 'מהבית', fit: 0.9 },
-  unknown: { label: 'לא ידוע', fit: 0.6 },
+  unknown: { label: 'לא ידוע', fit: 0.8 },
 };
 
 function detectCity(text) {
@@ -273,6 +273,14 @@ function detectCity(text) {
   for (const c of CITIES) if (c.words.some(w => hasAlias(t, w))) return { city: c.name, region: c.region };
   if (/remote|מהבית|עבודה מרחוק/.test(t)) return { city: 'מהבית', region: 'remote' };
   return { city: '', region: 'unknown' };
+}
+
+// כל הערים שמוזכרות במיקום של משרה (משרה יכולה להיות בכמה ערים)
+function jobCities(text) {
+  const t = norm(text);
+  const out = CITIES.filter(c => c.words.some(w => hasAlias(t, w))).map(c => c.name);
+  if (/remote|מהבית|עבודה מרחוק/.test(t)) out.push('מהבית');
+  return out;
 }
 
 function regionOf(city) {
@@ -327,7 +335,7 @@ function analyze(job, profile) {
   for (const r of mustRes) { const w = GROUP_WEIGHT[SKILL_BY_ID[r.id].group] || 1; num += w * r.credit; den += w; }
   for (const r of niceRes) { const w = 0.4 * (GROUP_WEIGHT[SKILL_BY_ID[r.id].group] || 1); num += w * r.credit; den += w; }
   // החלקה: כשהמשרה מזכירה מעט כישורים, הציון נמשך לאמצע ולא קופץ ל-100%
-  const skillScore = (num + 0.5 * 1.5) / (den + 1.5);
+  const skillScore = (num + 0.5 * 0.6) / (den + 0.6);
 
   const cat = classify(job.title, job.description);
   const exp = experience(job.title, text);
@@ -336,7 +344,8 @@ function analyze(job, profile) {
   const region = REGION[loc.region];
 
   // ציון התאמה כללי
-  let score = 0.55 * skillScore + 0.2 * exp.fit + 0.1 * deg.fit + 0.15 * region.fit;
+  let score = 0.6 * skillScore + 0.2 * exp.fit + 0.1 * deg.fit + 0.1 * region.fit;
+  if (cat.id === 'other') score *= 0.92; // תחומים שאינם ביעד שלך
   if (exp.notFullTime) score *= 0.85;
   const match = Math.round(score * 100);
 
@@ -477,4 +486,4 @@ function suggestRoles(prof) {
   }).filter(r => r.fit >= 40).sort((a, b) => b.fit - a.fit);
 }
 
-window.Engine = { SKILLS, SKILL_BY_ID, GROUP_LABEL, REGION, extractSkills, analyze, tailorCV, suggestRoles, detectCity, regionOf, classify };
+window.Engine = { SKILLS, SKILL_BY_ID, GROUP_LABEL, REGION, extractSkills, analyze, tailorCV, suggestRoles, detectCity, jobCities, regionOf, classify, CITIES };

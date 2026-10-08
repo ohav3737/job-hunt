@@ -13,7 +13,7 @@ const STATUSES = [
 const STATUS_LABEL = Object.fromEntries(STATUSES.map(s => [s.id, s.label]));
 
 let state = load();
-const ui = { view: 'jobs', cat: 'all', region: 'core', sort: state.profile.cv.trim() ? 'fit' : 'smart', q: '', trackSort: 'date', trackFilter: 'active', source: 'all' };
+const ui = { view: 'jobs', cat: 'all', region: 'core', sort: state.profile.cv.trim() ? 'fit' : 'smart', q: '', trackSort: 'date', trackFilter: 'active', source: 'all', city: '', noexp: false };
 
 function load() {
   try {
@@ -33,6 +33,22 @@ const fmtDate = d => d ? new Date(d + 'T00:00').toLocaleDateString('he-IL', { da
 const fmtStamp = d => d.length > 10
   ? new Date(d).toLocaleString('he-IL', { day: 'numeric', month: 'numeric', hour: '2-digit', minute: '2-digit' })
   : fmtDate(d);
+function timeAgo(d) {
+  if (!d) return '';
+  const t = new Date(d.length <= 10 ? d + 'T12:00' : d).getTime();
+  if (isNaN(t)) return '';
+  const min = Math.max(0, Math.round((Date.now() - t) / 60000));
+  if (min < 60) return min <= 1 ? 'עכשיו' : `לפני ${min} דקות`;
+  const h = Math.round(min / 60);
+  if (h < 24) return h === 1 ? 'לפני שעה' : h === 2 ? 'לפני שעתיים' : `לפני ${h} שעות`;
+  const days = Math.round(h / 24);
+  if (days < 7) return days === 1 ? 'אתמול' : days === 2 ? 'לפני יומיים' : `לפני ${days} ימים`;
+  const w = Math.round(days / 7);
+  if (days < 30) return w === 1 ? 'לפני שבוע' : w === 2 ? 'לפני שבועיים' : `לפני ${w} שבועות`;
+  const m = Math.round(days / 30);
+  return m === 1 ? 'לפני חודש' : `לפני ${m} חודשים`;
+}
+const postedTime = j => new Date(j.postedAt ? (j.postedAt.length <= 10 ? j.postedAt + 'T12:00' : j.postedAt) : (j.dateAdded || '2000-01-01') + 'T00:00').getTime() || 0;
 const fmtMoney = n => '₪' + Math.round(n / 1000) + 'K';
 const $ = id => document.getElementById(id);
 
@@ -77,9 +93,10 @@ function renderJobs() {
   chips($('regionChips'), [['ta', 'ת"א + רמת גן'], ['core', 'ת"א + סובב'], ['center', 'כל המרכז'], ['all', 'כל הארץ']], ui.region, v => { ui.region = v; renderJobs(); });
   const sources = [...new Set(state.jobs.map(j => j.source).filter(Boolean))].sort();
   chips($('sourceChips'), [['all', 'כל המקורות'], ...sources.map(x => [x, x])], ui.source, v => { ui.source = v; renderJobs(); });
-  chips($('sortChips'), [['fit', 'מתאימות לי'], ['smart', 'הכל, מיון חכם'], ['match', 'לפי התאמה'], ['date', 'החדשות קודם'], ['fresh', 'רק חדשות'], ['junior', 'רק ג׳וניור'], ['hide', 'בלי לא רלוונטיות']], ui.sort, v => { ui.sort = v; renderJobs(); });
+  chips($('sortChips'), [['fit', 'מתאימות לי'], ['smart', 'הכל, מיון חכם'], ['match', 'לפי התאמה'], ['date', 'שפורסמו לאחרונה'], ['fresh', 'רק חדשות'], ['junior', 'רק ג׳וניור'], ['hide', 'בלי לא רלוונטיות']], ui.sort, v => { ui.sort = v; renderJobs(); });
 
   $('cvNudge').style.display = state.profile.cv.trim() ? 'none' : 'block';
+  renderCityFilter();
   const freshCount = state.jobs.filter(j => j.fresh).length;
   $('roleFilter').style.display = ui.roleTerms ? 'flex' : 'none';
   if (ui.roleTerms) $('roleFilterText').textContent = 'מסונן לפי תפקיד: ' + ui.roleTerms[0];
@@ -94,13 +111,15 @@ function renderJobs() {
     if (ui.sort === 'fit' && a.verdict.level === 'no') return false;
     if (ui.sort === 'fresh' && !j.fresh) return false;
     if (ui.source !== 'all' && j.source !== ui.source) return false;
+    if (ui.city && !Engine.jobCities((j.location || '') + ' ' + (j.location ? '' : j.description || '')).includes(ui.city)) return false;
+    if (ui.noexp && !noExperience(j, a)) return false;
     if (ui.roleTerms && !ui.roleTerms.some(t => (j.title + ' ' + (j.description || '')).toLowerCase().includes(t))) return false;
     if (ui.sort === 'hide' && (j.status === 'skip' || j.status === 'rejected')) return false;
     if (q && ![j.title, j.company, j.location, a.city].join(' ').toLowerCase().includes(q)) return false;
     return true;
   });
   if (ui.sort === 'match') list.sort((x, y) => y.a.match - x.a.match);
-  else if (ui.sort === 'date') list.sort((x, y) => (y.j.dateAdded || '').localeCompare(x.j.dateAdded || ''));
+  else if (ui.sort === 'date') list.sort((x, y) => postedTime(y.j) - postedTime(x.j));
   else list.sort((x, y) => x.a.sortKey - y.a.sortKey); // 'fit' + 'smart'
 
   if (!state.jobs.length) {
@@ -114,23 +133,42 @@ function renderJobs() {
   $('jobList').innerHTML = list.map(({ j, a }) => jobCard(j, a)).join('');
 }
 
+function noExperience(j, a) {
+  if (a.experience.isSenior || a.experience.years > 0) return false;
+  return a.experience.years === 0 || a.experience.isJunior || /ללא ניסיון|ללא נסיון|no experience|entry[- ]level|graduate|בוגר/i.test(j.title + ' ' + (j.description || ''));
+}
+function renderCityFilter() {
+  // ערים לפי מספר המשרות בהן; תל אביב ורמת גן תמיד ראשונות
+  const counts = {};
+  state.jobs.forEach(j => Engine.jobCities(j.location || '').forEach(c => counts[c] = (counts[c] || 0) + 1));
+  const top = ['תל אביב', 'רמת גן'];
+  const rest = Object.keys(counts).filter(c => !top.includes(c)).sort((a, b) => counts[b] - counts[a]);
+  $('citySelect').innerHTML = '<option value="">📍 כל הערים</option>' + [...top, ...rest]
+    .map(c => `<option value="${esc(c)}" ${ui.city === c ? 'selected' : ''}>${esc(c)} (${counts[c] || 0})</option>`).join('');
+  $('noExpBtn').classList.toggle('on', ui.noexp);
+}
+$('citySelect').onchange = e => { ui.city = e.target.value; if (ui.city) ui.region = 'all'; renderJobs(); };
+$('noExpBtn').onclick = () => { ui.noexp = !ui.noexp; renderJobs(); };
+
 function ringColor(p) { return p >= 70 ? 'var(--good)' : p >= 55 ? 'var(--warn)' : 'var(--bad)'; }
 
 function jobCard(j, a) {
+  const noCv = !state.profile.cv.trim();
   return `<div class="card job" onclick="openJob('${j.id}')">
     <div>
       <h3>${esc(j.title || 'משרה ללא שם')}</h3>
       <div class="meta">${esc(j.company || '')}${j.company && (j.location || a.city) ? ' · ' : ''}${esc(j.location || a.city)}</div>
     </div>
-    <div class="ring" style="--p:${a.match};--c:${ringColor(a.match)}"><span>${a.match}%</span></div>
+    ${noCv ? '<div class="ring" style="--p:0"><span class="small muted">?</span></div>' : `<div class="ring" style="--p:${a.match};--c:${ringColor(a.match)}"><span>${a.match}%</span></div>`}
     <div class="tags">
-      <span class="badge ${a.verdict.level}">${esc(a.verdict.text)}</span>
+      ${noCv ? '<span class="badge">העלי קו״ח לחישוב התאמה</span>' : `<span class="badge ${a.verdict.level}">${esc(a.verdict.text)}</span>`}
       <span class="badge accent">${esc(a.category.label)}</span>
       <span class="badge">${esc(a.experience.level)}</span>
       <span class="badge">${fmtMoney(a.salary.min)}–${fmtMoney(a.salary.max)}</span>
       ${j.status !== 'new' ? `<span class="badge">${STATUS_LABEL[j.status]}</span>` : ''}
       ${j.demo ? '<span class="badge">דוגמה</span>' : ''}
       ${j.fresh ? '<span class="badge yes">חדש</span>' : ''}
+      ${j.postedAt ? `<span class="badge">🕒 ${timeAgo(j.postedAt)}</span>` : ''}
     </div>
   </div>`;
 }
@@ -164,7 +202,7 @@ function openJob(id) {
   const a = analysis(j);
   const noCv = !state.profile.cv.trim();
   openSheet(j.title || 'משרה', `
-    <div class="muted" style="margin-bottom:10px">${esc(j.company)}${j.company ? ' · ' : ''}${esc(j.location || a.city || 'מיקום לא ידוע')} · ${esc(a.regionLabel)}${j.source ? ' · מקור: ' + esc(j.source) : ''}${j.postedAt ? ' · פורסמה ' + fmtDate(j.postedAt) : ''}</div>
+    <div class="muted" style="margin-bottom:10px">${esc(j.company)}${j.company ? ' · ' : ''}${esc(j.location || a.city || 'מיקום לא ידוע')} · ${esc(a.regionLabel)}${j.source ? ' · מקור: ' + esc(j.source) : ''}${j.postedAt ? ' · פורסמה ' + timeAgo(j.postedAt) : ''}</div>
     ${noCv ? '<div class="notice">⚠️ עוד לא הדבקת קורות חיים, אז הציון לא מדויק. הדביקי אותם בלשונית קו״ח.</div>' : ''}
     <div class="verdict ${a.verdict.level}">${esc(a.verdict.text)}</div>
     <div class="stats">
@@ -362,6 +400,7 @@ function renderCv() {
   sel.value = cur;
   renderTailor();
   renderRoles();
+  renderNotify();
   if (document.activeElement !== $('apiKey')) $('apiKey').value = apiKey();
 }
 
@@ -615,11 +654,15 @@ async function loadFeed(manual) {
     const known = new Set(state.jobs.map(j => j.url).filter(Boolean));
     // משרות חדשות מסומנות כ"חדש" עד שפותחים אותן
     let added = 0;
+    const addedJobs = [];
     for (const f of feed.jobs || []) {
       if (!f.url || known.has(f.url)) continue;
-      state.jobs.push({ id: uid(), ...f, status: 'new', fresh: true, auto: true, dateAdded: today(), updated: Date.now(), history: [] });
+      const nj = { id: uid(), ...f, status: 'new', fresh: true, auto: true, dateAdded: today(), updated: Date.now(), history: [] };
+      state.jobs.push(nj); addedJobs.push(nj);
       added++;
     }
+    // בטעינה הראשונה כל המשרות "חדשות", אז לא מתריעים עליהן
+    if (state.feedUpdated) notifyMatches(addedJobs);
     state.feedUpdated = feed.updated;
     save();
     if (manual || added) toast(added ? 'נמצאו ' + added + ' משרות חדשות' : 'אין משרות חדשות מאז הבדיקה הקודמת');
@@ -634,6 +677,101 @@ $('refreshBtn').onclick = () => loadFeed(true);
 // בדיקה אוטומטית למשרות חדשות כל 5 דקות, ובכל פעם שחוזרים לאפליקציה
 setInterval(() => loadFeed(false), 5 * 60 * 1000);
 document.addEventListener('visibilitychange', () => { if (!document.hidden) loadFeed(false); });
+
+// ---------- התראות על משרות עם התאמה גבוהה ----------
+const isStandalone = () => window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+const isIOS = () => /iphone|ipad|ipod/i.test(navigator.userAgent) || (/macintosh/i.test(navigator.userAgent) && 'ontouchend' in document);
+function notifySettings() { return state.notify || (state.notify = { on: false, threshold: 95 }); }
+
+async function notifyMatches(jobs) {
+  const n = notifySettings();
+  if (!n.on || !state.profile.cv.trim() || !('Notification' in window) || Notification.permission !== 'granted') return;
+  const hits = jobs.map(j => ({ j, a: analysis(j) })).filter(x => x.a.match >= n.threshold && x.a.verdict.level !== 'no')
+    .sort((x, y) => y.a.match - x.a.match);
+  if (!hits.length) return;
+  const reg = await navigator.serviceWorker?.getRegistration();
+  for (const { j, a } of hits.slice(0, 3)) {
+    const title = `🎯 ${a.match}% התאמה: ${j.title}`;
+    const opts = { body: [j.company, j.location || a.city].filter(Boolean).join(' · '), tag: j.id, icon: 'icons/icon-192.png', badge: 'icons/icon-192.png', data: { job: j.id } };
+    try { reg ? await reg.showNotification(title, opts) : new Notification(title, opts); } catch (e) { /* התראה לא נתמכת */ }
+  }
+  if (hits.length > 3) {
+    try { reg?.showNotification(`ועוד ${hits.length - 3} משרות מתאימות`, { tag: 'more', icon: 'icons/icon-192.png', data: {} }); } catch (e) {}
+  }
+  // מספר על אייקון האפליקציה במסך הבית
+  try { navigator.setAppBadge?.(state.jobs.filter(j => j.fresh && analysis(j).match >= n.threshold).length); } catch (e) {}
+}
+
+function renderNotify() {
+  const n = notifySettings();
+  $('notifyThreshold').value = String(n.threshold);
+  const perm = 'Notification' in window ? Notification.permission : 'unsupported';
+  const on = n.on && perm === 'granted';
+  $('notifyBtn').textContent = on ? 'כיבוי התראות' : 'הפעלת התראות';
+  $('notifyBtn').className = on ? 'btn secondary' : 'btn';
+  let info = '';
+  if (isIOS() && !isStandalone()) info = '📱 באייפון התראות עובדות רק אחרי שמוסיפים את האפליקציה למסך הבית (שיתוף ← "הוספה למסך הבית"), ופותחים אותה משם.';
+  else if (perm === 'unsupported') info = 'הדפדפן הזה לא תומך בהתראות.';
+  else if (perm === 'denied') info = 'ההתראות חסומות. אפשר לאשר אותן בהגדרות המכשיר ← התראות ← משרות.';
+  else if (!state.profile.cv.trim()) info = 'צריך להעלות קורות חיים כדי לחשב התאמה.';
+  else {
+    const count = state.jobs.filter(j => analysis(j).match >= n.threshold).length;
+    info = (on ? '✅ התראות פעילות. ' : '') + `כרגע יש ${count} משרות עם התאמה של ${n.threshold}% ומעלה.` +
+      (count === 0 ? ' אם לא תגיע אף התראה לאורך זמן, אפשר להוריד את הסף.' : '');
+  }
+  $('notifyInfo').textContent = info;
+  if (on && !$('pushCodeBox').innerHTML) $('pushCodeBox').innerHTML = '<button class="chip" style="margin-top:8px" onclick="showPushCode()">קוד חיבור להתראות כשהאפליקציה סגורה</button>';
+  if (!on) $('pushCodeBox').innerHTML = '';
+}
+$('notifyThreshold').onchange = e => { notifySettings().threshold = +e.target.value; save(); renderNotify(); if (notifySettings().on) showPushCode(); };
+$('notifyBtn').onclick = async () => {
+  const n = notifySettings();
+  if (n.on && Notification.permission === 'granted') { n.on = false; save(); renderNotify(); return; }
+  if (!('Notification' in window)) { renderNotify(); return; }
+  const perm = await Notification.requestPermission();
+  n.on = perm === 'granted'; save(); renderNotify();
+  if (n.on) { toast('התראות הופעלו'); showPushCode(); }
+};
+// ---------- התראות גם כשהאפליקציה סגורה (Web Push דרך GitHub) ----------
+const PUSH_KEY = 'BNp-0rq5A4Gy9w-7umzuTvj74lNWRvxyVYydIt8ofW2jEr-ORrwvAmgtII-6YKQ_aogyCZXnZxlvPBL7LfFBo-E';
+function b64ToBytes(b64) {
+  const s = atob((b64 + '='.repeat((4 - b64.length % 4) % 4)).replace(/-/g, '+').replace(/_/g, '/'));
+  return Uint8Array.from(s, c => c.charCodeAt(0));
+}
+async function pushCode() {
+  const reg = await navigator.serviceWorker.ready;
+  let sub = await reg.pushManager.getSubscription();
+  if (!sub) sub = await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: b64ToBytes(PUSH_KEY) });
+  // קוד החיבור כולל רק את כתובת ההתראות, רשימת הכישורים והסף. לא את קורות החיים
+  return JSON.stringify({ devices: [sub.toJSON()], skills: profile().extraSkills, threshold: notifySettings().threshold });
+}
+async function showPushCode() {
+  const box = $('pushCodeBox');
+  if (!('PushManager' in window) || !navigator.serviceWorker) { box.innerHTML = '<div class="small muted">המכשיר הזה לא תומך בהתראות כשהאפליקציה סגורה.</div>'; return; }
+  try {
+    const code = await pushCode();
+    box.innerHTML = `<div class="small" style="margin:10px 0 6px"><b>שלב אחרון:</b> כדי שההתראות יגיעו גם כשהאפליקציה סגורה, העתיקי את הקוד ושלחי אותו ל-Claude בצ׳אט. אם עדכנת קורות חיים או סף, צריך לשלוח קוד חדש.</div>
+      <textarea class="input" readonly style="min-height:70px;font-size:12px" dir="ltr" id="pushCode">${esc(code)}</textarea>
+      <button class="btn secondary block" style="margin-top:6px" onclick="navigator.clipboard.writeText($('pushCode').value).then(()=>toast('הקוד הועתק'))">העתקת הקוד</button>`;
+  } catch (e) {
+    box.innerHTML = `<div class="small muted">לא הצלחתי להירשם להתראות: ${esc(e.message || e)}</div>`;
+  }
+}
+
+// פתיחת משרה מתוך התראה
+function openJobByUrl(url) {
+  const j = state.jobs.find(x => x.url === url);
+  if (j) { go('jobs'); openJob(j.id); } else loadFeed(false).then(() => { const k = state.jobs.find(x => x.url === url); if (k) { go('jobs'); openJob(k.id); } });
+}
+navigator.serviceWorker?.addEventListener('message', e => {
+  if (e.data?.openJob) { go('jobs'); openJob(e.data.openJob); }
+  if (e.data?.openJobUrl) openJobByUrl(e.data.openJobUrl);
+});
+const startJobUrl = new URLSearchParams(location.search).get('jobUrl');
+if (startJobUrl) setTimeout(() => openJobByUrl(startJobUrl), 500);
+const startJob = new URLSearchParams(location.search).get('job');
+if (startJob) setTimeout(() => openJob(startJob), 300);
+document.addEventListener('visibilitychange', () => { if (!document.hidden) try { navigator.clearAppBadge?.(); } catch (e) {} });
 
 // ---------- כללי ----------
 let toastTimer;
