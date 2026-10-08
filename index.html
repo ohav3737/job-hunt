@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>חיפוש עבודה</title>
+  <meta name="theme-color" content="#5b4bdb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="משרות">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/icon-180.png">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1 id="title">משרות</h1>
+    <button class="icon-btn" id="addBtn" aria-label="הוספת משרה">+</button>
+  </header>
+
+  <main>
+    <!-- משרות -->
+    <section class="view active" id="view-jobs">
+      <div class="card install-hint" id="installHint">
+        <b>להתקנה כאפליקציה באייפון/אייפד:</b>
+        <div class="small">ב-Safari לחצי על כפתור השיתוף <b>⎙</b> ואז <b>"הוספה למסך הבית"</b>.</div>
+      </div>
+      <input class="search" id="jobSearch" type="search" placeholder="חיפוש לפי תפקיד, חברה, עיר…">
+      <div class="chips" id="catChips"></div>
+      <div class="chips" id="regionChips"></div>
+      <div class="chips" id="sortChips"></div>
+      <div id="jobList"></div>
+    </section>
+
+    <!-- מעקב -->
+    <section class="view" id="view-track">
+      <div class="pipeline" id="pipeline"></div>
+      <div class="chips" id="trackSort"></div>
+      <div class="chips" id="trackFilter"></div>
+      <div id="trackList"></div>
+      <div class="section-title">לפי חברה</div>
+      <div id="companyList"></div>
+    </section>
+
+    <!-- חיפוש -->
+    <section class="view" id="view-search">
+      <div class="notice">
+        לחיצה על כפתור פותחת חיפוש מוכן באתר, ממוקד בתל אביב והמרכז ובמשרות ג׳וניור ומשרה מלאה.
+        מצאת משרה? העתיקי את הקישור והתיאור שלה ולחצי <b>+</b> כדי לקבל ניתוח התאמה.
+      </div>
+      <div class="chips" id="queryChips"></div>
+      <input class="search" id="customQuery" type="search" placeholder="או כתבי חיפוש משלך…">
+      <div id="searchLinks"></div>
+    </section>
+
+    <!-- קו"ח -->
+    <section class="view" id="view-cv">
+      <div class="section-title">קורות החיים שלך</div>
+      <div class="card">
+        <label class="field">
+          <span>הדביקי כאן את כל הטקסט של קורות החיים (עברית או אנגלית)</span>
+          <textarea class="input" id="cvText" placeholder="השכלה, ניסיון, פרויקטים, כישורים…"></textarea>
+        </label>
+        <button class="btn block" id="saveCv">שמירה וזיהוי כישורים</button>
+      </div>
+      <div class="section-title">כישורים שזוהו</div>
+      <div class="card">
+        <div class="small muted" style="margin-bottom:8px">אלה הכישורים שהמנוע זיהה. לחיצה על כישור מסומן מסירה אותו, ולחיצה על כישור לא מסומן מוסיפה אותו (רק אם הוא באמת שלך).</div>
+        <div id="skillChips"></div>
+      </div>
+
+      <div class="section-title">התאמת קו״ח למשרה</div>
+      <div class="card">
+        <label class="field">
+          <span>בחרי משרה</span>
+          <select class="input" id="tailorJob"></select>
+        </label>
+        <div id="tailorOut"></div>
+      </div>
+
+      <div class="section-title">גיבוי</div>
+      <div class="card row">
+        <button class="btn secondary" id="exportBtn">ייצוא גיבוי</button>
+        <label class="btn secondary">ייבוא קובץ<input type="file" id="importFile" accept=".json,application/json" hidden></label>
+      </div>
+    </section>
+  </main>
+
+  <nav class="tabbar">
+    <button data-view="jobs" class="active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7M3 12.5h18"/></svg>
+      משרות
+    </button>
+    <button data-view="track">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h16M4 12h10M4 19h6"/><circle cx="18" cy="16" r="3"/></svg>
+      מעקב
+    </button>
+    <button data-view="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg>
+      חיפוש
+    </button>
+    <button data-view="cv">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3h7l5 5v12a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>
+      קו״ח
+    </button>
+  </nav>
+
+  <div class="sheet-backdrop" id="sheet">
+    <div class="sheet" role="dialog" aria-modal="true">
+      <div class="grabber"></div>
+      <div class="sheet-head"><h2 id="sheetTitle"></h2><button class="close" id="sheetClose" aria-label="סגירה">✕</button></div>
+      <div id="sheetBody"></div>
+    </div>
+  </div>
+  <div class="toast" id="toast"></div>
+
+  <script src="engine.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
