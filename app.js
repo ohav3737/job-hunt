@@ -221,13 +221,26 @@ function jobCard(j, a) {
 }
 
 // ---------- פרטי משרה ----------
-function openSheet(title, html) {
+function openSheet(title, html, opts = {}) {
+  const sheet = $('sheet').querySelector('.sheet');
+  const already = $('sheet').classList.contains('open');
+  const keepScroll = already && opts.key && sheet.dataset.key === opts.key;
+  const top = sheet.scrollTop;
   $('sheetTitle').textContent = title;
   $('sheetBody').innerHTML = html;
+  sheet.classList.toggle('full', !!opts.full);
+  sheet.dataset.key = opts.key || '';
   $('sheet').classList.add('open');
-  $('sheet').querySelector('.sheet').scrollTop = 0;
+  sheet.scrollTop = keepScroll ? top : 0;
+  // כפתור "אחורה" / החלקה מהצד באייפון סוגרים את הדף
+  if (!already) history.pushState({ sheet: true }, '');
 }
-function closeSheet() { $('sheet').classList.remove('open'); }
+function closeSheet() {
+  if (!$('sheet').classList.contains('open')) return;
+  $('sheet').classList.remove('open');
+  if (history.state && history.state.sheet) history.back();
+}
+window.addEventListener('popstate', () => $('sheet').classList.remove('open'));
 $('sheetClose').onclick = closeSheet;
 $('sheet').addEventListener('click', e => { if (e.target.id === 'sheet') closeSheet(); });
 
@@ -242,52 +255,110 @@ function skillRows(list) {
       <div><b>${esc(r.name)}</b> <span class="muted small">${STATE_LABEL[r.state]}${r.via ? ': ' + esc(r.via.join(', ')) : ''}</span></div></li>`).join('') + '</ul>';
 }
 
+// מעצב את תיאור המשרה: כותרות, רשימות, והדגשת כישורים (ירוק = יש לך, אדום = חסר)
+function formatDescription(text, a) {
+  if (!text || !text.trim()) return '<div class="muted small">אין תיאור מלא. אפשר לפתוח את המשרה באתר המקורי.</div>';
+  const states = {};
+  [...a.skills.must, ...a.skills.nice].forEach(r => { states[r.id] = r.state; });
+  const marks = [];
+  Object.entries(states).forEach(([id, st]) => Engine.SKILL_BY_ID[id].aliases.map(x => x.trim()).filter(x => x.length > 1)
+    .forEach(alias => marks.push({ alias, cls: st === 'have' ? 'kw-have' : st === 'missing' ? 'kw-miss' : 'kw-sim' })));
+  marks.sort((x, y) => y.alias.length - x.alias.length);
+  const hl = line => {
+    let out = esc(line);
+    marks.forEach(({ alias, cls }) => {
+      const re = /^[a-z0-9 .\/&+#()-]+$/i.test(alias)
+        ? new RegExp('(^|[^a-z0-9>])(' + esc(alias).replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')(?=$|[^a-z0-9<])', 'gi')
+        : new RegExp('()(' + esc(alias).replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'g');
+      out = out.replace(re, (m, pre, word) => pre + `<mark class="${cls}">${word}</mark>`);
+    });
+    return out;
+  };
+  const HEAD = /^(תיאור (ה)?(משרה|תפקיד)|דרישות( התפקיד| המשרה)?|דרישות חובה|יתרון|יתרונות|מה (את|אתה|תעשו|תעשי|נדרש)|תחומי אחריות|על החברה|על התפקיד|כישורים|requirements|qualifications|responsibilities|what you.?ll do|about (the )?(role|company|us|you)|nice to have|the role|who you are|bonus points|description)[:\s]*$/i;
+  let html = '', list = false;
+  for (const raw of text.split('\n')) {
+    const line = raw.trim();
+    if (!line) continue;
+    const bullet = /^[-•*·▪●◦]\s*/.test(line) || /^\d+[.)]\s+/.test(line);
+    if (HEAD.test(line) || (line.length < 40 && /:$/.test(line))) {
+      if (list) { html += '</ul>'; list = false; }
+      html += `<h4>${esc(line.replace(/:$/, ''))}</h4>`;
+    } else if (bullet) {
+      if (!list) { html += '<ul>'; list = true; }
+      html += `<li>${hl(line.replace(/^[-•*·▪●◦]\s*|^\d+[.)]\s+/, ''))}</li>`;
+    } else {
+      if (list) { html += '</ul>'; list = false; }
+      html += `<p>${hl(line)}</p>`;
+    }
+  }
+  return html + (list ? '</ul>' : '');
+}
+
 function openJob(id) {
   const j = state.jobs.find(x => x.id === id);
   if (!j) return;
   if (j.fresh) { j.fresh = false; save(); render(); }
   const a = analysis(j);
   const noCv = !state.profile.cv.trim();
+  const missing = a.skills.must.filter(r => r.state === 'missing');
+  const meta = [
+    ['🏢', j.company || 'חברה לא צוינה'],
+    ['📍', (j.location || a.city || 'מיקום לא ידוע') + ' · ' + a.regionLabel],
+    j.postedAt && ['🕒', 'פורסמה ' + timeAgo(j.postedAt)],
+    ['💼', a.category.label + ' · ' + a.experience.level],
+    ['💰', `${fmtMoney(a.salary.min)}–${fmtMoney(a.salary.max)} ${a.salary.source === 'הערכה' ? '(הערכה)' : ''}`],
+    j.source && ['🔗', 'מקור: ' + j.source + (j.alsoAt?.length ? ` (ועוד ${j.alsoAt.length} אתרים)` : '')],
+  ].filter(Boolean);
   openSheet(j.title || 'משרה', `
-    <div class="muted" style="margin-bottom:10px">${esc(j.company)}${j.company ? ' · ' : ''}${esc(j.location || a.city || 'מיקום לא ידוע')} · ${esc(a.regionLabel)}${j.source ? ' · מקור: ' + esc(j.source) : ''}${j.postedAt ? ' · פורסמה ' + timeAgo(j.postedAt) : ''}</div>
-    ${noCv ? '<div class="notice">⚠️ עוד לא הדבקת קורות חיים, אז הציון לא מדויק. הדביקי אותם בלשונית קו״ח.</div>' : ''}
-    <div class="verdict ${a.verdict.level}">${esc(a.verdict.text)}</div>
-    <div class="stats">
-      <div class="stat"><div class="k">התאמה</div><div class="v" style="color:${ringColor(a.match)}">${a.match}%</div></div>
-      <div class="stat"><div class="k">סיכוי לעבור סינון</div><div class="v">${a.screenPct}%</div></div>
-      <div class="stat"><div class="k">שכר ${a.salary.source === 'הערכה' ? 'משוער' : ''}</div><div class="v">${fmtMoney(a.salary.min)}–${fmtMoney(a.salary.max)}</div></div>
-      <div class="stat"><div class="k">רמת ניסיון</div><div class="v" style="font-size:15px">${esc(a.experience.level)}</div></div>
-    </div>
-    <div class="row small muted" style="margin:8px 2px">
-      <span>תחום: <b>${esc(a.category.label)}</b></span> · <span>${esc(a.degree.label)}</span>
-    </div>
+    <div class="job-page">
+      <h1 class="job-title" dir="auto">${esc(j.title)}</h1>
+      <ul class="job-meta">${meta.map(([i, t]) => `<li><span>${i}</span><span dir="auto">${esc(t)}</span></li>`).join('')}</ul>
 
-    ${j.alsoAt?.length ? `<div class="small muted" style="margin:0 4px 8px">🔁 אותה משרה מתפרסמת גם ב-${j.alsoAt.length} מקומות נוספים (זוהתה ככפילות ולא מוצגת פעמיים)</div>` : ''}
-    ${a.reasons.length ? `<div class="section-title">למה</div><div class="card"><ul class="reasons">${a.reasons.map(r => `<li>${esc(r)}</li>`).join('')}</ul></div>` : ''}
-
-    <div class="section-title">דרישות חובה</div>
-    <div class="card">${skillRows(a.skills.must)}</div>
-    ${a.skills.nice.length ? `<div class="section-title">יתרון</div><div class="card">${skillRows(a.skills.nice)}</div>` : ''}
-
-    <div class="section-title">סטטוס</div>
-    <div class="card">
-      <div class="status-picker">${STATUSES.map(s => `<button class="chip ${j.status === s.id ? 'on' : ''}" onclick="setStatus('${j.id}','${s.id}', true)">${s.label}</button>`).join('')}</div>
-      <div class="row small muted" style="margin-top:10px">
-        <span>נוספה ${fmtDate(j.dateAdded)}</span>
-        ${j.dateApplied ? `<span>· הוגשה ${fmtDate(j.dateApplied)}</span>` : ''}
+      <div class="job-actions">
+        ${j.url ? `<a class="btn" href="${esc(j.url)}" target="_blank" rel="noopener">להגשה באתר ↗</a>` : ''}
+        <button class="btn secondary" onclick="setStatus('${j.id}','${j.status === 'saved' ? 'new' : 'saved'}', true)">${j.status === 'saved' ? '★ שמורה' : '☆ שמירה'}</button>
+        <button class="btn secondary" onclick="tailorFor('${j.id}')">התאמת קו״ח</button>
       </div>
-      <label class="field" style="margin:10px 0 0"><span>הערות</span>
-        <textarea class="input" style="min-height:70px" onchange="setNotes('${j.id}', this.value)" placeholder="איש קשר, מועד ראיון, מה שאלו…">${esc(j.notes || '')}</textarea></label>
-    </div>
 
-    <div class="row" style="margin-top:12px">
-      ${j.url ? `<a class="btn" href="${esc(j.url)}" target="_blank" rel="noopener">למשרה ↗</a>` : ''}
-      <button class="btn secondary" onclick="tailorFor('${j.id}')">התאמת קו״ח</button>
-      <button class="btn secondary" onclick="editJob('${j.id}')">עריכה</button>
-      <span class="spacer"></span>
-      <button class="btn danger" onclick="deleteJob('${j.id}')">מחיקה</button>
+      ${noCv ? '<div class="notice">📄 העלי קורות חיים בלשונית קו״ח כדי לראות כמה המשרה מתאימה לך.</div>' : `
+      <div class="match-strip">
+        <div class="ring" style="--p:${a.match};--c:${ringColor(a.match)}"><span>${a.match}%</span></div>
+        <div style="flex:1">
+          <div class="verdict-inline ${a.verdict.level}">${esc(a.verdict.text)}</div>
+          <div class="small muted">סיכוי לעבור סינון: <b>${a.screenPct}%</b>${missing.length ? ' · חסר: ' + esc(missing.map(r => r.name).join(', ')) : ''}</div>
+        </div>
+      </div>`}
+
+      <div class="section-title">תיאור המשרה</div>
+      ${noCv ? '' : '<div class="small muted legend"><mark class="kw-have">יש לך</mark> <mark class="kw-sim">דומה</mark> <mark class="kw-miss">חסר</mark></div>'}
+      <div class="card job-desc" dir="auto">${formatDescription(j.description, a)}</div>
+
+      ${noCv ? '' : `
+      <details class="card"><summary><b>ניתוח ההתאמה המלא</b></summary>
+        ${a.reasons.length ? `<ul class="reasons" style="margin-top:10px">${a.reasons.map(r => `<li>${esc(r)}</li>`).join('')}</ul>` : ''}
+        <div class="small muted" style="margin:10px 0 4px">דרישות חובה</div>${skillRows(a.skills.must)}
+        ${a.skills.nice.length ? `<div class="small muted" style="margin:10px 0 4px">יתרון</div>${skillRows(a.skills.nice)}` : ''}
+        <div class="small muted" style="margin-top:8px">${esc(a.degree.label)}</div>
+      </details>`}
+
+      <div class="section-title">סטטוס והערות</div>
+      <div class="card">
+        <div class="status-picker">${STATUSES.map(st => `<button class="chip ${j.status === st.id ? 'on' : ''}" onclick="setStatus('${j.id}','${st.id}', true)">${st.label}</button>`).join('')}</div>
+        <div class="row small muted" style="margin-top:10px">
+          <span>נוספה ${fmtDate(j.dateAdded)}</span>
+          ${j.dateApplied ? `<span>· הוגשה ${fmtDate(j.dateApplied)}</span>` : ''}
+        </div>
+        <label class="field" style="margin:10px 0 0"><span>הערות</span>
+          <textarea class="input" style="min-height:70px" onchange="setNotes('${j.id}', this.value)" placeholder="איש קשר, מועד ראיון, מה שאלו…">${esc(j.notes || '')}</textarea></label>
+      </div>
+
+      <div class="row" style="margin-top:12px">
+        <button class="btn secondary" onclick="editJob('${j.id}')">עריכה</button>
+        <span class="spacer"></span>
+        <button class="btn danger" onclick="deleteJob('${j.id}')">מחיקה</button>
+      </div>
     </div>
-  `);
+  `, { full: true, key: 'job:' + j.id });
 }
 
 function setStatus(id, status, reopen) {
@@ -704,7 +775,13 @@ async function loadFeed(manual) {
     // משרות חדשות מסומנות כ"חדש" עד שפותחים אותן
     let added = 0;
     const addedJobs = [];
+    const byUrl = new Map(state.jobs.filter(j => j.url).map(j => [j.url, j]));
     for (const f of feed.jobs || []) {
+      const old = f.url && byUrl.get(f.url);
+      if (old && old.auto && (old.description !== f.description || old.postedAt !== f.postedAt)) {
+        Object.assign(old, { description: f.description, postedAt: f.postedAt, location: f.location, alsoAt: f.alsoAt, updated: Date.now() });
+        searchCache.delete(old.id);
+      }
       if (!f.url || known.has(f.url)) continue;
       const nj = { id: uid(), ...f, status: 'new', fresh: true, auto: true, dateAdded: today(), updated: Date.now(), history: [] };
       state.jobs.push(nj); addedJobs.push(nj);

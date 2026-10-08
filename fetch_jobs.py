@@ -145,6 +145,17 @@ def ago(text):
     return now.isoformat(timespec='minutes')
 
 
+# טקסט ממשק של אתרי הדרושים שנכנס לפעמים לסוף התיאור ("הגשת מועמדות", "המשרה נמחקה" וכו׳)
+JUNK_MARKERS = ['\nעוד...', 'הגשת מועמדות\nעדכון קורות', 'מחיקת משרה\nללקוח VIP', 'ללקוח VIP בלבד', 'דיווח על תוכן לא הולם',
+                'שמירת משרה\nביטול שמירה', 'לעוד משרות ומידע על', 'תודה על שיתוף הפעולה', 'אירעה שגיאה בשליחת']
+
+
+def clean_desc(text):
+    text = (text or '').replace('\r', '')
+    cuts = [i for i in (text.find(m) for m in JUNK_MARKERS) if i > 40]
+    return (text[:min(cuts)] if cuts else text).strip()
+
+
 def get(url):
     req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (personal job search)'})
     try:
@@ -661,6 +672,8 @@ def main():
                 jobs += fut.result()
             except Exception as e:
                 print(f'  ! {e}')
+    for j in jobs:
+        j['description'] = clean_desc(j['description'])
     before = len(jobs)
     jobs = [j for j in jobs if fits_me(j)]
     print(f'הוסרו {before - len(jobs)} משרות מחוץ לתחומים שלך או עם 3+ שנות ניסיון')
@@ -691,6 +704,8 @@ def refilter():
     out = Path(__file__).with_name('jobs.json')
     data = json.loads(out.read_text())
     before = len(data['jobs'])
+    for j in data['jobs']:
+        j['description'] = clean_desc(j['description'])
     data['jobs'] = dedupe([j for j in data['jobs'] if fits_me(j) and in_center(j['location'])])
     out.write_text(json.dumps(data, ensure_ascii=False, indent=1))
     print(f'נשארו {len(data["jobs"])} מתוך {before}')

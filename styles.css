@@ -245,3 +245,31 @@ textarea.input { min-height: 140px; resize: vertical; }
   .sheet { border-radius: 20px; margin-bottom: 24px; }
   .sheet-backdrop { align-items: center; }
 }
+
+/* ---------- דף משרה ---------- */
+.sheet.full { max-height: 100vh; max-height: 100dvh; height: 100dvh; border-radius: 0; padding-top: env(safe-area-inset-top); }
+.sheet.full .grabber { display: none; }
+.sheet.full .sheet-head h2 { font-size: 15px; color: var(--muted); font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.job-title { font-size: 22px; line-height: 1.3; margin: 2px 0 10px; letter-spacing: -.01em; }
+.job-meta { list-style: none; margin: 0 0 14px; padding: 0; display: grid; gap: 6px; font-size: 14px; }
+.job-meta li { display: flex; gap: 8px; align-items: flex-start; }
+.job-meta li span:first-child { flex: none; width: 20px; text-align: center; }
+.job-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+.job-actions .btn { flex: 1; text-align: center; text-decoration: none; min-width: 110px; }
+.match-strip { display: flex; gap: 12px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px; }
+.verdict-inline { font-weight: 700; font-size: 16px; }
+.verdict-inline.yes { color: var(--good); } .verdict-inline.maybe { color: var(--warn); } .verdict-inline.no { color: var(--bad); }
+.job-desc { font-size: 15px; line-height: 1.65; }
+.job-desc h4 { margin: 14px 0 6px; font-size: 15px; }
+.job-desc h4:first-child { margin-top: 0; }
+.job-desc p { margin: 0 0 8px; }
+.job-desc ul { margin: 0 0 10px; padding-inline-start: 20px; }
+.job-desc li { margin-bottom: 4px; }
+mark { border-radius: 4px; padding: 0 2px; color: inherit; }
+mark.kw-have { background: var(--good-soft); color: var(--good); }
+mark.kw-sim { background: var(--accent-soft); color: var(--accent); }
+mark.kw-miss { background: var(--bad-soft); color: var(--bad); }
+.legend { margin: -4px 4px 8px; display: flex; gap: 6px; }
+details.card summary { cursor: pointer; list-style: none; }
+details.card summary::-webkit-details-marker { display: none; }
+details.card summary::after { content: " ▾"; color: var(--muted); }
