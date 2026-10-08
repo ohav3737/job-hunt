@@ -30,6 +30,9 @@ const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 
 const today = () => new Date().toISOString().slice(0, 10);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const fmtDate = d => d ? new Date(d + 'T00:00').toLocaleDateString('he-IL', { day: 'numeric', month: 'numeric', year: '2-digit' }) : '';
+const fmtStamp = d => d.length > 10
+  ? new Date(d).toLocaleString('he-IL', { day: 'numeric', month: 'numeric', hour: '2-digit', minute: '2-digit' })
+  : fmtDate(d);
 const fmtMoney = n => '₪' + Math.round(n / 1000) + 'K';
 const $ = id => document.getElementById(id);
 
@@ -80,7 +83,7 @@ function renderJobs() {
   const freshCount = state.jobs.filter(j => j.fresh).length;
   $('roleFilter').style.display = ui.roleTerms ? 'flex' : 'none';
   if (ui.roleTerms) $('roleFilterText').textContent = 'מסונן לפי תפקיד: ' + ui.roleTerms[0];
-  $('feedInfo').textContent = state.feedUpdated ? 'משרות נאספו לאחרונה: ' + fmtDate(state.feedUpdated) + (freshCount ? ' · ' + freshCount + ' חדשות' : '') : '';
+  $('feedInfo').textContent = state.feedUpdated ? 'משרות נאספו לאחרונה: ' + fmtStamp(state.feedUpdated) + (freshCount ? ' · ' + freshCount + ' חדשות' : '') : '';
   const allowed = { ta: ['ta', 'remote', 'unknown'], core: ['ta', 'core', 'remote', 'unknown'], center: ['ta', 'core', 'center', 'remote', 'unknown'], all: null }[ui.region];
   const q = ui.q.trim().toLowerCase();
   let list = state.jobs.map(j => ({ j, a: analysis(j) })).filter(({ j, a }) => {

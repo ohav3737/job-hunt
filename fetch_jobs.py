@@ -10,7 +10,7 @@ import re
 import time
 import urllib.parse
 import urllib.request
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta, timezone
 from html.parser import HTMLParser
 from pathlib import Path
 
@@ -604,7 +604,18 @@ def main():
             seen |= keys
             unique.append(j)
     out = Path(__file__).with_name('jobs.json')
-    out.write_text(json.dumps({'updated': date.today().isoformat(), 'jobs': unique}, ensure_ascii=False, indent=1))
+    # אם מקור שלם לא החזיר כלום הפעם (חסימה זמנית, תקלה), משאירים את המשרות הקודמות שלו
+    if out.exists():
+        try:
+            old = json.loads(out.read_text()).get('jobs', [])
+        except ValueError:
+            old = []
+        now_sources = {j.get('source') for j in unique}
+        kept_old = [j for j in old if j.get('source') not in now_sources]
+        if kept_old:
+            print(f'נשמרו {len(kept_old)} משרות קודמות ממקורות שלא הגיבו: {sorted({j.get("source") for j in kept_old})}')
+            unique += kept_old
+    out.write_text(json.dumps({'updated': datetime.now(timezone.utc).isoformat(timespec='minutes'), 'jobs': unique}, ensure_ascii=False, indent=1))
     print(f'\nנשמרו {len(unique)} משרות ב-{out.name}')
 
 

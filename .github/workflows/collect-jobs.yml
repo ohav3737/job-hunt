@@ -1,0 +1,35 @@
+# איסוף משרות אוטומטי כל שעה, ושמירת jobs.json במאגר (האפליקציה טוענת אותו)
+name: איסוף משרות
+
+on:
+  schedule:
+    - cron: '7 * * * *'   # כל שעה (GitHub מריץ לפעמים באיחור של כמה דקות)
+  workflow_dispatch:       # הפעלה ידנית מלשונית Actions
+
+permissions:
+  contents: write
+
+concurrency:
+  group: collect-jobs
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: איסוף
+        run: python3 -u fetch_jobs.py
+      - name: שמירה
+        run: |
+          git config user.name "job-collector"
+          git config user.email "job-collector@users.noreply.github.com"
+          git add jobs.json
+          git diff --cached --quiet && exit 0
+          git commit -m "עדכון משרות $(TZ=Asia/Jerusalem date '+%d/%m %H:%M')"
+          git pull --rebase -X theirs origin main
+          git push
