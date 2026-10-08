@@ -13,7 +13,7 @@ const STATUSES = [
 const STATUS_LABEL = Object.fromEntries(STATUSES.map(s => [s.id, s.label]));
 
 let state = load();
-const ui = { view: 'jobs', cat: 'all', region: 'core', sort: state.profile.cv.trim() ? 'best' : 'smart', q: '', trackSort: 'date', trackFilter: 'active', source: 'all', city: '', noexp: false, age: 'week' };
+const ui = { view: 'jobs', cat: 'all', region: 'core', list: state.profile.cv.trim() ? 'best' : 'all', order: 'rec', q: '', trackSort: 'date', trackFilter: 'active', source: 'all', city: '', noexp: false, age: 'week' };
 
 function load() {
   try {
@@ -88,73 +88,145 @@ function chips(el, items, current, onPick) {
 }
 
 // ---------- מסך משרות ----------
-function renderJobs() {
-  chips($('catChips'), [['all', 'כל התחומים'], ['pm', 'ניהול פרויקטים'], ['product', 'מוצר'], ['analyst', 'אנליסט'], ['ops', 'תפעול / תעשייה'], ['consulting', 'ייעוץ'], ['other', 'אחר']], ui.cat, v => { ui.cat = v; ui.sub = 'all'; renderJobs(); });
-  // תת-סוגים של אנליסט
-  if (ui.cat === 'analyst') {
-    chips($('subChips'), [['all', 'כל האנליסטים'], ...['BI', 'דאטה', 'מוצר', 'שיווק', 'עסקי', 'פיננסי', 'תפעולי'].map(x => [x, x])], ui.sub || 'all', v => { ui.sub = v; renderJobs(); });
-    $('subChips').style.display = '';
-  } else $('subChips').style.display = 'none';
-  chips($('regionChips'), [['ta', 'ת"א + רמת גן'], ['core', 'ת"א + סובב'], ['center', 'כל המרכז'], ['all', 'כל הארץ']], ui.region, v => { ui.region = v; renderJobs(); });
-  chips($('ageChips'), [['day', '🕒 24 שעות'], ['3days', '3 ימים'], ['week', 'שבוע'], ['month', 'חודש'], ['any', 'הכל']], ui.age, v => { ui.age = v; renderJobs(); });
-  const sources = [...new Set(state.jobs.map(j => j.source).filter(Boolean))].sort();
-  chips($('sourceChips'), [['all', 'כל המקורות'], ...sources.map(x => [x, x])], ui.source, v => { ui.source = v; renderJobs(); });
-  chips($('sortChips'), [['best', '🔥 הכי שוות'], ['fit', 'מתאימות לי'], ['smart', 'הכל, לפי תחום'], ['match', 'לפי התאמה'], ['date', 'שפורסמו לאחרונה'], ['fresh', 'רק חדשות'], ['junior', 'רק ג׳וניור'], ['hide', 'בלי לא רלוונטיות']], ui.sort, v => { ui.sort = v; renderJobs(); });
+const CATS = [['all', 'כל התחומים'], ['pm', 'ניהול פרויקטים'], ['product', 'מוצר'], ['analyst', 'אנליסט'], ['ops', 'תפעול / תעשייה'], ['consulting', 'ייעוץ'], ['other', 'אחר']];
+const SUBS = ['BI', 'דאטה', 'מוצר', 'שיווק', 'עסקי', 'פיננסי', 'תפעולי'];
+const REGIONS = [['ta', 'ת"א + רמת גן'], ['core', 'ת"א והסביבה'], ['center', 'כל המרכז'], ['all', 'כל הארץ']];
+const AGES = [['day', '24 שעות'], ['3days', '3 ימים'], ['week', 'שבוע'], ['month', 'חודש'], ['any', 'הכל']];
+const ORDERS = [['rec', 'מומלץ'], ['match', 'התאמה גבוהה'], ['date', 'הכי חדשות']];
+const DEFAULTS = { cat: 'all', sub: 'all', region: 'core', city: '', age: 'week', noexp: false, source: 'all', order: 'rec' };
+const label = (list, id) => (list.find(x => x[0] === id) || [])[1] || id;
 
-  $('cvNudge').style.display = state.profile.cv.trim() ? 'none' : 'block';
-  renderCityFilter();
-  const freshCount = state.jobs.filter(j => j.fresh).length;
-  $('roleFilter').style.display = ui.roleTerms ? 'flex' : 'none';
-  if (ui.roleTerms) $('roleFilterText').textContent = 'מסונן לפי תפקיד: ' + ui.roleTerms[0];
-  $('feedInfo').textContent = state.feedUpdated ? 'משרות נאספו לאחרונה: ' + fmtStamp(state.feedUpdated) + (freshCount ? ' · ' + freshCount + ' חדשות' : '') : '';
-  const allowed = { ta: ['ta', 'remote', 'unknown'], core: ['ta', 'core', 'remote', 'unknown'], center: ['ta', 'core', 'center', 'remote', 'unknown'], all: null }[ui.region];
-  const terms = searchTerms(ui.q);
-  const bypass = terms.length && ui.searchAll; // "הצגת כל התוצאות": חיפוש בלי הסינונים האחרים
+// הסינון עצמו: מחזיר את המשרות שעוברות את כל הסינונים, ממוינות
+function filteredJobs(f = ui) {
+  const allowed = { ta: ['ta', 'remote', 'unknown'], core: ['ta', 'core', 'remote', 'unknown'], center: ['ta', 'core', 'center', 'remote', 'unknown'], all: null }[f.region];
+  const terms = searchTerms(f.q);
+  const bypass = terms.length && f.searchAll;
+  const maxAge = { day: 1, '3days': 3, week: 7, month: 31 }[f.age];
   let list = state.jobs.map(j => ({ j, a: analysis(j) })).filter(({ j, a }) => {
     if (a.experience.isSenior) return false; // משרות בכירות / ראש צוות לא מוצגות בכלל
     if (terms.length && !matchesSearch(j, terms)) return false;
     if (bypass) return true;
-    if (ui.cat !== 'all' && a.category.id !== ui.cat) return false;
-    if (ui.cat === 'analyst' && ui.sub && ui.sub !== 'all' && !a.category.label.endsWith('· ' + ui.sub)) return false;
-    if (allowed && !allowed.includes(a.region)) return false;
-    if (ui.sort === 'junior' && a.experience.isSenior) return false;
-    if (ui.sort === 'junior' && a.experience.years >= 2) return false;
-    const maxAge = { day: 1, '3days': 3, week: 7, month: 31 }[ui.age];
+    if (j.status === 'skip' || j.status === 'rejected') return false;
+    if (f.list === 'best' && a.verdict.level !== 'yes') return false;
+    if (f.list === 'fit' && a.verdict.level === 'no') return false;
+    if (f.cat !== 'all' && a.category.id !== f.cat) return false;
+    if (f.cat === 'analyst' && f.sub && f.sub !== 'all' && !a.category.label.endsWith('· ' + f.sub)) return false;
+    if (f.city) { if (!Engine.jobCities(j.location || j.description || '').includes(f.city)) return false; }
+    else if (allowed && !allowed.includes(a.region)) return false;
     if (maxAge && Date.now() - postedTime(j) > maxAge * 86400000) return false;
-    if (ui.sort === 'best' && a.verdict.level !== 'yes') return false;
-    if (ui.sort === 'fit' && a.verdict.level === 'no') return false;
-    if (ui.sort === 'fresh' && !j.fresh) return false;
-    if (ui.source !== 'all' && j.source !== ui.source) return false;
-    if (ui.city && !Engine.jobCities((j.location || '') + ' ' + (j.location ? '' : j.description || '')).includes(ui.city)) return false;
-    if (ui.noexp && !noExperience(j, a)) return false;
-    if (ui.roleTerms && !ui.roleTerms.some(t => (j.title + ' ' + (j.description || '')).toLowerCase().includes(t))) return false;
-    if (ui.sort === 'hide' && (j.status === 'skip' || j.status === 'rejected')) return false;
+    if (f.source !== 'all' && j.source !== f.source) return false;
+    if (f.noexp && !noExperience(j, a)) return false;
+    if (f.roleTerms && !f.roleTerms.some(t => (j.title + ' ' + (j.description || '')).toLowerCase().includes(t))) return false;
     return true;
   });
-  if (ui.sort === 'match') list.sort((x, y) => y.a.match - x.a.match);
-  else if (ui.sort === 'date') list.sort((x, y) => postedTime(y.j) - postedTime(x.j));
-  else if (ui.sort === 'smart') list.sort((x, y) => x.a.sortKey - y.a.sortKey);
-  else list.sort((x, y) => worth(y.j, y.a) - worth(x.j, x.a)); // 'best' + 'fit': הכי שוות להגשה קודם
-  // בחיפוש: משרות שהמילים מופיעות בשם התפקיד שלהן קודם
+  if (f.order === 'match') list.sort((x, y) => y.a.match - x.a.match);
+  else if (f.order === 'date') list.sort((x, y) => postedTime(y.j) - postedTime(x.j));
+  else if (f.list === 'all' && !state.profile.cv.trim()) list.sort((x, y) => x.a.sortKey - y.a.sortKey);
+  else list.sort((x, y) => worth(y.j, y.a) - worth(x.j, x.a));
   if (terms.length) list.sort((x, y) => titleHits(y.j, terms) - titleHits(x.j, terms));
+  return { list, terms, bypass };
+}
+
+// תגיות של הסינונים הפעילים (אפשר להסיר כל אחת ב-✕)
+function activeFilters() {
+  const out = [];
+  if (ui.cat !== 'all') out.push(['cat', label(CATS, ui.cat) + (ui.cat === 'analyst' && ui.sub !== 'all' ? ' · ' + ui.sub : '')]);
+  if (ui.city) out.push(['city', '📍 ' + ui.city]);
+  else if (ui.region !== DEFAULTS.region) out.push(['region', '📍 ' + label(REGIONS, ui.region)]);
+  if (ui.age !== DEFAULTS.age) out.push(['age', '🕒 ' + label(AGES, ui.age)]);
+  if (ui.noexp) out.push(['noexp', '🎓 ללא ניסיון']);
+  if (ui.source !== 'all') out.push(['source', ui.source]);
+  if (ui.order !== 'rec') out.push(['order', '↕ ' + label(ORDERS, ui.order)]);
+  return out;
+}
+function clearFilter(k) {
+  if (k === 'cat') { ui.cat = 'all'; ui.sub = 'all'; } else if (k === 'city') ui.city = ''; else ui[k] = DEFAULTS[k];
+  renderJobs();
+}
+
+function renderJobs() {
+  const hasCv = !!state.profile.cv.trim();
+  const segs = hasCv ? [['best', '🔥 הכי שוות'], ['fit', 'מתאימות לי'], ['all', 'הכל']] : [['all', 'כל המשרות']];
+  if (!hasCv) ui.list = 'all';
+  $('listSeg').innerHTML = segs.map(([id, t]) => `<button class="${ui.list === id ? 'on' : ''}" data-id="${id}">${t}</button>`).join('');
+  $('listSeg').onclick = e => { const b = e.target.closest('button'); if (b) { ui.list = b.dataset.id; renderJobs(); } };
+  $('listSeg').style.display = segs.length > 1 ? '' : 'none';
+
+  const act = activeFilters();
+  $('filterCount').textContent = act.length || '';
+  $('filterBtn').classList.toggle('has', act.length > 0);
+  $('activePills').innerHTML = act.map(([k, t]) => `<button class="pill" onclick="clearFilter('${k}')">${esc(t)} <span>✕</span></button>`).join('')
+    + (act.length > 1 ? `<button class="pill clear" onclick="Object.assign(ui, DEFAULTS);renderJobs()">ניקוי הכל</button>` : '');
+
+  $('cvNudge').style.display = hasCv ? 'none' : 'block';
+  $('roleFilter').style.display = ui.roleTerms ? 'flex' : 'none';
+  if (ui.roleTerms) $('roleFilterText').textContent = 'מסונן לפי תפקיד: ' + ui.roleTerms[0];
+
+  const { list, terms, bypass } = filteredJobs();
+  const freshCount = state.jobs.filter(j => j.fresh).length;
+  $('feedInfo').innerHTML = `<b>${list.length}</b> משרות` + (freshCount ? ` · <span style="color:var(--good)">${freshCount} חדשות</span>` : '') +
+    (state.feedUpdated ? ` · עודכן ${timeAgo(state.feedUpdated)}` : '');
 
   if (!state.jobs.length) {
-    $('jobList').innerHTML = `<div class="empty"><div class="big">🔎</div>
-      <p><b>עוד אין משרות</b></p>
-      <p class="small">כדי להתחיל, הדביקי את קורות החיים בלשונית <b>קו״ח</b>. אחר כך מצאי משרות בלשונית <b>חיפוש</b> והוסיפי אותן עם <b>+</b>.</p>
-      <button class="btn secondary" onclick="loadDemo()">הצגת משרות לדוגמה</button></div>`;
+    $('jobList').innerHTML = `<div class="empty"><div class="big">🔎</div><p><b>טוען משרות…</b></p></div>`;
     return;
   }
   let head = '';
   if (terms.length) {
     const total = state.jobs.filter(j => matchesSearch(j, terms)).length;
-    head = `<div class="row small muted" style="margin:0 4px 8px"><span>${list.length} תוצאות</span><span class="spacer"></span>` +
-      (bypass ? `<button class="chip" onclick="ui.searchAll=false;renderJobs()">חזרה לסינונים</button>`
-        : total > list.length ? `<button class="chip" onclick="ui.searchAll=true;renderJobs()">עוד ${total - list.length} מוסתרות בגלל הסינונים, הצגת הכל</button>` : '') + '</div>';
+    if (bypass) head = `<button class="pill clear" style="margin-bottom:8px" onclick="ui.searchAll=false;renderJobs()">חזרה לסינונים</button>`;
+    else if (total > list.length) head = `<button class="pill clear" style="margin-bottom:8px" onclick="ui.searchAll=true;renderJobs()">עוד ${total - list.length} תוצאות מוסתרות בגלל הסינון · הצגה</button>`;
   }
-  if (!list.length) { $('jobList').innerHTML = head + '<div class="empty">אין משרות שמתאימות לחיפוש ולסינון</div>'; return; }
+  if (!list.length) {
+    $('jobList').innerHTML = head + `<div class="empty"><div class="big">🤷‍♀️</div><p>אין משרות שמתאימות לסינון הזה</p>
+      ${act.length || ui.list !== 'all' ? `<button class="btn secondary" onclick="Object.assign(ui, DEFAULTS, {list: 'all'});renderJobs()">הרחבת החיפוש</button>` : ''}</div>`;
+    return;
+  }
   $('jobList').innerHTML = head + list.map(({ j, a }) => jobCard(j, a)).join('');
 }
+
+// ---------- חלון הסינון ----------
+function openFilters() {
+  const draw = () => {
+    const sources = [...new Set(state.jobs.map(j => j.source).filter(Boolean))].sort();
+    const counts = {};
+    state.jobs.forEach(j => Engine.jobCities(j.location || '').forEach(c => counts[c] = (counts[c] || 0) + 1));
+    const cities = ['תל אביב', 'רמת גן', ...Object.keys(counts).filter(c => c !== 'תל אביב' && c !== 'רמת גן').sort((a, b) => counts[b] - counts[a])];
+    const group = (title, key, items, cur) => `<div class="f-group"><div class="f-title">${title}</div>
+      <div class="f-chips">${items.map(([id, t]) => `<button class="chip ${id === cur ? 'on' : ''}" data-k="${key}" data-v="${esc(id)}">${esc(t)}</button>`).join('')}</div></div>`;
+    $('sheetBody').innerHTML = `
+      ${group('תחום', 'cat', CATS, ui.cat)}
+      ${ui.cat === 'analyst' ? group('סוג אנליסט', 'sub', [['all', 'הכל'], ...SUBS.map(x => [x, x])], ui.sub) : ''}
+      <div class="f-group"><div class="f-title">מיקום</div>
+        <div class="f-chips">${REGIONS.map(([id, t]) => `<button class="chip ${!ui.city && id === ui.region ? 'on' : ''}" data-k="region" data-v="${id}">${t}</button>`).join('')}</div>
+        <select class="input" id="fCity" style="margin-top:8px"><option value="">או עיר ספציפית…</option>
+          ${cities.map(c => `<option value="${esc(c)}" ${ui.city === c ? 'selected' : ''}>${esc(c)} (${counts[c] || 0})</option>`).join('')}</select>
+      </div>
+      ${group('פורסמו ב…', 'age', AGES, ui.age)}
+      <div class="f-group"><div class="f-title">ניסיון</div>
+        <label class="toggle"><input type="checkbox" id="fNoexp" ${ui.noexp ? 'checked' : ''}><span>רק משרות ללא ניסיון</span></label></div>
+      ${group('מיון', 'order', ORDERS, ui.order)}
+      ${group('מקור', 'source', [['all', 'כל המקורות'], ...sources.map(x => [x, x])], ui.source)}
+      <div class="f-footer">
+        <button class="btn secondary" id="fReset">איפוס</button>
+        <button class="btn" id="fApply" style="flex:1">הצגת ${filteredJobs().list.length} משרות</button>
+      </div>`;
+    $('sheetBody').querySelectorAll('.chip[data-k]').forEach(b => b.onclick = () => {
+      const k = b.dataset.k;
+      ui[k] = b.dataset.v;
+      if (k === 'cat') ui.sub = 'all';
+      if (k === 'region') ui.city = '';
+      draw();
+    });
+    $('fCity').onchange = e => { ui.city = e.target.value; draw(); };
+    $('fNoexp').onchange = e => { ui.noexp = e.target.checked; draw(); };
+    $('fReset').onclick = () => { Object.assign(ui, DEFAULTS); draw(); };
+    $('fApply').onclick = () => { closeSheet(); renderJobs(); };
+  };
+  openSheet('סינון', '', { key: 'filters' });
+  draw();
+}
+$('filterBtn').onclick = openFilters;
 
 // ---------- חיפוש חופשי ----------
 // מחפש בכל הטקסט של המשרה. כמה מילים = כולן צריכות להופיע. "בגרשיים" = ביטוי מדויק.
@@ -184,38 +256,22 @@ function noExperience(j, a) {
   if (a.experience.isSenior || a.experience.years > 0) return false;
   return a.experience.years === 0 || a.experience.isJunior || /ללא ניסיון|ללא נסיון|no experience|entry[- ]level|graduate|בוגר/i.test(j.title + ' ' + (j.description || ''));
 }
-function renderCityFilter() {
-  // ערים לפי מספר המשרות בהן; תל אביב ורמת גן תמיד ראשונות
-  const counts = {};
-  state.jobs.forEach(j => Engine.jobCities(j.location || '').forEach(c => counts[c] = (counts[c] || 0) + 1));
-  const top = ['תל אביב', 'רמת גן'];
-  const rest = Object.keys(counts).filter(c => !top.includes(c)).sort((a, b) => counts[b] - counts[a]);
-  $('citySelect').innerHTML = '<option value="">📍 כל הערים</option>' + [...top, ...rest]
-    .map(c => `<option value="${esc(c)}" ${ui.city === c ? 'selected' : ''}>${esc(c)} (${counts[c] || 0})</option>`).join('');
-  $('noExpBtn').classList.toggle('on', ui.noexp);
-}
-$('citySelect').onchange = e => { ui.city = e.target.value; if (ui.city) ui.region = 'all'; renderJobs(); };
-$('noExpBtn').onclick = () => { ui.noexp = !ui.noexp; renderJobs(); };
-
 function ringColor(p) { return p >= 70 ? 'var(--good)' : p >= 55 ? 'var(--warn)' : 'var(--bad)'; }
 
 function jobCard(j, a) {
   const noCv = !state.profile.cv.trim();
+  const city = (Engine.jobCities(j.location || '')[0]) || a.city || (j.location || '').split(',')[0];
   return `<div class="card job" onclick="openJob('${j.id}')">
     <div>
-      <h3>${esc(j.title || 'משרה ללא שם')}</h3>
-      <div class="meta">${esc(j.company || '')}${j.company && (j.location || a.city) ? ' · ' : ''}${esc(j.location || a.city)}</div>
+      <h3 dir="auto">${esc(j.title || 'משרה ללא שם')}</h3>
+      <div class="meta">${esc(j.company || '')}${j.company && city ? ' · ' : ''}${esc(city)}</div>
+      <div class="meta small">${esc(a.category.label)} · ${esc(a.experience.level)}${j.postedAt ? ' · ' + timeAgo(j.postedAt) : ''}</div>
     </div>
-    ${noCv ? '<div class="ring" style="--p:0"><span class="small muted">?</span></div>' : `<div class="ring" style="--p:${a.match};--c:${ringColor(a.match)}"><span>${a.match}%</span></div>`}
+    ${noCv ? '' : `<div class="ring" style="--p:${a.match};--c:${ringColor(a.match)}"><span>${a.match}%</span></div>`}
     <div class="tags">
-      ${noCv ? '<span class="badge">העלי קו״ח לחישוב התאמה</span>' : `<span class="badge ${a.verdict.level}">${esc(a.verdict.text)}</span>`}
-      <span class="badge accent">${esc(a.category.label)}</span>
-      <span class="badge">${esc(a.experience.level)}</span>
-      <span class="badge">${fmtMoney(a.salary.min)}–${fmtMoney(a.salary.max)}</span>
-      ${j.status !== 'new' ? `<span class="badge">${STATUS_LABEL[j.status]}</span>` : ''}
-      ${j.demo ? '<span class="badge">דוגמה</span>' : ''}
+      ${noCv ? '' : `<span class="badge ${a.verdict.level}">${esc(a.verdict.text)}</span>`}
       ${j.fresh ? '<span class="badge yes">חדש</span>' : ''}
-      ${j.postedAt ? `<span class="badge">🕒 ${timeAgo(j.postedAt)}</span>` : ''}
+      ${j.status !== 'new' ? `<span class="badge accent">${STATUS_LABEL[j.status]}</span>` : ''}
     </div>
   </div>`;
 }
@@ -240,7 +296,7 @@ function closeSheet() {
   $('sheet').classList.remove('open');
   if (history.state && history.state.sheet) history.back();
 }
-window.addEventListener('popstate', () => $('sheet').classList.remove('open'));
+window.addEventListener('popstate', () => { $('sheet').classList.remove('open'); if (ui.view === 'jobs') renderJobs(); });
 $('sheetClose').onclick = closeSheet;
 $('sheet').addEventListener('click', e => { if (e.target.id === 'sheet') closeSheet(); });
 
@@ -315,7 +371,7 @@ function openJob(id) {
       <ul class="job-meta">${meta.map(([i, t]) => `<li><span>${i}</span><span dir="auto">${esc(t)}</span></li>`).join('')}</ul>
 
       <div class="job-actions">
-        ${j.url ? `<a class="btn" href="${esc(j.url)}" target="_blank" rel="noopener">להגשה באתר ↗</a>` : ''}
+        <button class="btn" onclick="applyJob('${j.id}')">📤 הגשת קו״ח</button>
         <button class="btn secondary" onclick="setStatus('${j.id}','${j.status === 'saved' ? 'new' : 'saved'}', true)">${j.status === 'saved' ? '★ שמורה' : '☆ שמירה'}</button>
         <button class="btn secondary" onclick="tailorFor('${j.id}')">התאמת קו״ח</button>
       </div>
@@ -360,6 +416,53 @@ function openJob(id) {
     </div>
   `, { full: true, key: 'job:' + j.id });
 }
+
+// ---------- הגשה ----------
+function applyJob(id) {
+  const j = state.jobs.find(x => x.id === id);
+  if (!j) return;
+  const email = j.applyEmail;
+  if (!email) {
+    if (!j.url) { toast('אין קישור או מייל להגשה במשרה הזו'); return; }
+    markPending(j); window.open(j.url, '_blank', 'noopener'); return;
+  }
+  const subject = `קורות חיים – ${j.title}`;
+  const body = `שלום,\n\nמצורפים קורות החיים שלי למשרת ${j.title}${j.company && j.company !== 'חברה חסויה' ? ' ב' + j.company : ''}.\nאשמח לשוחח ולספר עוד.\n\nתודה,\n`;
+  openSheet('הגשת קו״ח', `
+    <div class="small muted" style="margin-bottom:12px">ההגשה למשרה הזו במייל: <b dir="ltr">${esc(email)}</b></div>
+    <a class="btn block" style="display:block;text-align:center;text-decoration:none;margin-bottom:8px" href="mailto:${encodeURIComponent(email)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}" onclick="markPending(state.jobs.find(x=>x.id==='${j.id}'))">✉️ פתיחת מייל מוכן</a>
+    <div class="small muted" style="margin:0 2px 12px">במייל שייפתח, צרפי את קובץ קורות החיים (📎 ← "עיון" ← הקובץ שלך).</div>
+    <button class="btn secondary block" style="margin-bottom:8px" onclick="shareCv('${j.id}')">📎 שליחת קובץ קו״ח דרך אפליקציה אחרת</button>
+    ${j.url ? `<a class="btn secondary block" style="display:block;text-align:center;text-decoration:none" href="${esc(j.url)}" target="_blank" rel="noopener" onclick="markPending(state.jobs.find(x=>x.id==='${j.id}'))">או הגשה באתר המשרה ↗</a>` : ''}
+  `, { key: 'apply:' + j.id });
+}
+async function shareCv(id) {
+  const j = state.jobs.find(x => x.id === id);
+  const file = await getCvFile();
+  if (!file) { toast('צריך להעלות קובץ קורות חיים בלשונית קו״ח'); return; }
+  const f = new File([file], state.profile.cvFile || file.name || 'cv.pdf', { type: file.type || 'application/pdf' });
+  if (!navigator.canShare || !navigator.canShare({ files: [f] })) { toast('המכשיר הזה לא תומך בשיתוף קבצים'); return; }
+  try { await navigator.clipboard.writeText(j.applyEmail || ''); } catch (e) {}
+  try {
+    await navigator.share({ files: [f], title: `קורות חיים – ${j.title}` });
+    markPending(j);
+    if (j.applyEmail) toast('כתובת המייל הועתקה. הדביקי אותה בשדה "אל"');
+  } catch (e) { /* בוטל */ }
+}
+// אחרי שיוצאים להגשה, כשחוזרים לאפליקציה שואלים אם הוגש
+function markPending(j) { if (j) { state.pendingApply = { id: j.id, at: Date.now() }; save(); } }
+document.addEventListener('visibilitychange', () => {
+  const p = state.pendingApply;
+  if (document.hidden || !p || Date.now() - p.at < 8000) return;
+  const j = state.jobs.find(x => x.id === p.id);
+  state.pendingApply = null; save();
+  if (!j || ['applied', 'interview', 'process', 'offer'].includes(j.status)) return;
+  const bar = $('askApplied');
+  bar.innerHTML = `<div>הגשת למשרה <b>${esc(j.title)}</b>?</div><div class="row" style="margin-top:8px">
+    <button class="btn" onclick="setStatus('${j.id}','applied');$('askApplied').classList.remove('show');toast('נרשם במעקב ✓')">כן, הגשתי</button>
+    <button class="btn secondary" onclick="$('askApplied').classList.remove('show')">עוד לא</button></div>`;
+  bar.classList.add('show');
+});
 
 function setStatus(id, status, reopen) {
   const j = state.jobs.find(x => x.id === id);
@@ -536,10 +639,28 @@ function toggleSkill(id) {
 
 $('saveCv').onclick = () => {
   state.profile.cv = $('cvText').value;
-  if (state.profile.cv.trim()) ui.sort = 'best';
+  if (state.profile.cv.trim()) ui.list = 'best';
   save(); profileChanged(); renderCv();
   toast('נשמר. זוהו ' + Engine.extractSkills(state.profile.cv).size + ' כישורים');
 };
+
+// ---------- קובץ קו"ח שמור במכשיר (לשיתוף בהגשה) ----------
+function idb() {
+  return new Promise((ok, fail) => {
+    const r = indexedDB.open('jobhunt', 1);
+    r.onupgradeneeded = () => r.result.createObjectStore('files');
+    r.onsuccess = () => ok(r.result); r.onerror = () => fail(r.error);
+  });
+}
+async function saveCvFile(file) {
+  try { const db = await idb(); db.transaction('files', 'readwrite').objectStore('files').put(file, 'cv'); } catch (e) { /* לא קריטי */ }
+}
+async function getCvFile() {
+  try {
+    const db = await idb();
+    return await new Promise(ok => { const r = db.transaction('files').objectStore('files').get('cv'); r.onsuccess = () => ok(r.result || null); r.onerror = () => ok(null); });
+  } catch (e) { return null; }
+}
 
 // ---------- העלאת קובץ קו"ח ----------
 function loadScript(src) {
@@ -594,7 +715,8 @@ $('cvFile').onchange = async e => {
     if (!text.trim()) throw new Error('empty');
     state.profile.cv = text.replace(/\n{3,}/g, '\n\n').trim();
     state.profile.cvFile = f.name;
-    ui.sort = 'best';
+    saveCvFile(f);
+    ui.list = 'best';
     save(); profileChanged(); renderCv();
     toast('קורות החיים נטענו. זוהו ' + Engine.extractSkills(state.profile.cv).size + ' כישורים');
   } catch (err) {
@@ -668,7 +790,7 @@ function renderRoles() {
 }
 function showRoleJobs(terms) {
   ui.roleTerms = terms.map(t => t.toLowerCase());
-  ui.sort = 'smart';
+  ui.list = 'all';
   go('jobs');
   toast('מציג משרות שקשורות ל: ' + terms[0]);
 }
@@ -778,8 +900,8 @@ async function loadFeed(manual) {
     const byUrl = new Map(state.jobs.filter(j => j.url).map(j => [j.url, j]));
     for (const f of feed.jobs || []) {
       const old = f.url && byUrl.get(f.url);
-      if (old && old.auto && (old.description !== f.description || old.postedAt !== f.postedAt)) {
-        Object.assign(old, { description: f.description, postedAt: f.postedAt, location: f.location, alsoAt: f.alsoAt, updated: Date.now() });
+      if (old && old.auto && (old.description !== f.description || old.postedAt !== f.postedAt || old.applyEmail !== f.applyEmail)) {
+        Object.assign(old, { description: f.description, postedAt: f.postedAt, location: f.location, alsoAt: f.alsoAt, applyEmail: f.applyEmail, updated: Date.now() });
         searchCache.delete(old.id);
       }
       if (!f.url || known.has(f.url)) continue;

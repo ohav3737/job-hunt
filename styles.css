@@ -273,3 +273,44 @@ mark.kw-miss { background: var(--bad-soft); color: var(--bad); }
 details.card summary { cursor: pointer; list-style: none; }
 details.card summary::-webkit-details-marker { display: none; }
 details.card summary::after { content: " ▾"; color: var(--muted); }
+
+/* ---------- מסך משרות: חיפוש, לשוניות, סינון ---------- */
+.search-row { display: flex; gap: 8px; align-items: center; margin: 4px 0 10px; }
+.search-row .search { margin: 0; flex: 1; }
+.filter-btn {
+  flex: none; display: flex; align-items: center; gap: 6px; height: 42px; padding: 0 12px;
+  border: 1px solid var(--line); background: var(--surface); border-radius: 12px; cursor: pointer; font-size: 14px;
+}
+.filter-btn svg { width: 18px; height: 18px; }
+.filter-btn b { background: var(--accent); color: #fff; border-radius: 999px; min-width: 18px; height: 18px; font-size: 11px; display: none; place-items: center; padding: 0 5px; }
+.filter-btn.has { border-color: var(--accent); color: var(--accent); }
+.filter-btn.has b { display: grid; }
+.seg { display: flex; background: var(--surface-2); border-radius: 12px; padding: 3px; margin-bottom: 8px; }
+.seg button { flex: 1; border: 0; background: none; border-radius: 9px; padding: 8px 4px; font-size: 14px; cursor: pointer; color: var(--muted); }
+.seg button.on { background: var(--surface); color: var(--text); font-weight: 600; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+.pills { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 4px; }
+.pills:empty { display: none; }
+.pill { border: 0; background: var(--accent-soft); color: var(--accent); border-radius: 999px; padding: 5px 10px; font-size: 13px; cursor: pointer; }
+.pill span { opacity: .7; margin-inline-start: 2px; }
+.pill.clear { background: none; color: var(--muted); text-decoration: underline; }
+.list-meta { margin: 6px 4px 8px; }
+
+.f-group { padding: 12px 0; border-bottom: 1px solid var(--line); }
+.f-group:last-of-type { border-bottom: 0; }
+.f-title { font-size: 13px; font-weight: 600; color: var(--muted); margin-bottom: 8px; }
+.f-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.toggle { display: flex; align-items: center; gap: 10px; font-size: 15px; cursor: pointer; }
+.toggle input { width: 22px; height: 22px; accent-color: var(--accent); }
+.f-footer { position: sticky; bottom: calc(-24px - env(safe-area-inset-bottom)); display: flex; gap: 8px; background: var(--bg); padding: 12px 0 calc(12px + env(safe-area-inset-bottom)); margin-top: 8px; }
+
+/* כרטיס משרה: קצת יותר אוורירי */
+.job .tags { gap: 5px; }
+.job .tags .badge { font-weight: 500; }
+
+.ask-bar {
+  position: fixed; inset-inline: 12px; bottom: calc(var(--tabbar) + env(safe-area-inset-bottom) + 12px); z-index: 70;
+  max-width: 480px; margin: 0 auto; background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
+  padding: 14px; box-shadow: 0 8px 30px rgba(0,0,0,.18); display: none;
+}
+.ask-bar.show { display: block; animation: up .2s ease-out; }
+.ask-bar .btn { flex: 1; }

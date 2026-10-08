@@ -32,19 +32,17 @@
         <div class="small">ב-Safari לחצי על כפתור השיתוף <b>⎙</b> ואז <b>"הוספה למסך הבית"</b>.</div>
       </div>
       <div class="notice" id="cvNudge" style="display:none">📄 כדי לקבל אחוזי התאמה אמיתיים, העלי את קורות החיים שלך. <a href="#" onclick="go('cv');return false">להעלאה</a></div>
-      <div class="small muted" id="feedInfo" style="margin:0 4px 6px"></div>
       <div class="notice row" id="roleFilter" style="display:none"><span id="roleFilterText"></span><span class="spacer"></span><button class="chip" onclick="ui.roleTerms=null;renderJobs()">ביטול ✕</button></div>
-      <input class="search" id="jobSearch" type="search" placeholder="🔍 חיפוש חופשי: תפקיד, חברה, עיר, כלי (למשל SQL)…">
-      <div class="row" style="margin-bottom:6px">
-        <select class="input" id="citySelect" style="flex:1"></select>
-        <button class="chip" id="noExpBtn">🎓 ללא ניסיון</button>
+      <div class="search-row">
+        <input class="search" id="jobSearch" type="search" placeholder="🔍 חיפוש: תפקיד, חברה, עיר, כלי…">
+        <button class="filter-btn" id="filterBtn" aria-label="סינון">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+          <span>סינון</span><b id="filterCount"></b>
+        </button>
       </div>
-      <div class="chips" id="ageChips"></div>
-      <div class="chips" id="catChips"></div>
-      <div class="chips" id="subChips"></div>
-      <div class="chips" id="regionChips"></div>
-      <div class="chips" id="sourceChips"></div>
-      <div class="chips" id="sortChips"></div>
+      <div class="seg" id="listSeg"></div>
+      <div class="pills" id="activePills"></div>
+      <div class="list-meta small muted" id="feedInfo"></div>
       <div id="jobList"></div>
     </section>
 
@@ -164,6 +162,7 @@
     </div>
   </div>
   <div class="toast" id="toast"></div>
+  <div class="ask-bar" id="askApplied"></div>
 
   <script src="engine.js"></script>
   <script src="app.js"></script>

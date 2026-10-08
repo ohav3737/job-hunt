@@ -150,6 +150,23 @@ JUNK_MARKERS = ['\nעוד...', 'הגשת מועמדות\nעדכון קורות',
                 'שמירת משרה\nביטול שמירה', 'לעוד משרות ומידע על', 'תודה על שיתוף הפעולה', 'אירעה שגיאה בשליחת']
 
 
+EMAIL = re.compile(r'[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}')
+
+
+def find_email(text):
+    """כתובת מייל להגשה מתוך תיאור המשרה (בלי כתובות כלליות כמו פרטיות/noreply)."""
+    text = text or ''
+    for m in EMAIL.finditer(text):
+        addr = m.group(0).rstrip('.')
+        if re.search(r'noreply|no-reply|privacy|dpo|equal|accessib|example|support@|@sentry', addr, re.I):
+            continue
+        # רק כתובת שמופיעה ליד הוראה לשלוח קורות חיים
+        around = text[max(0, m.start() - 120):m.end() + 40]
+        if re.search(r'קו"ח|קו״ח|קורות|cv|resume|לשלוח|לפנות|שלחו|send|apply|מועמד', around, re.I):
+            return addr
+    return ''
+
+
 def clean_desc(text):
     text = (text or '').replace('\r', '')
     cuts = [i for i in (text.find(m) for m in JUNK_MARKERS) if i > 40]
@@ -535,7 +552,10 @@ def comeet(slug, name):
         details = ((j.get('custom_fields') or {}).get('details') or [])
         desc = ''.join(f"<h3>{d.get('name', '')}</h3>{d.get('value') or ''}" for d in details)
         url = j.get('url_active_page') or j.get('url_comeet_hosted_page')
-        out.append(job(name, j.get('name', ''), location, url, desc, j.get('time_updated')))
+        jj = job(name, j.get('name', ''), location, url, desc, j.get('time_updated'))
+        if j.get('email'):
+            jj['applyEmail'] = j['email']
+        out.append(jj)
     return out
 
 
@@ -665,8 +685,15 @@ def main():
         jobs = [j for batch in ex.map(fetch_company, COMPANIES) for j in batch]
     # כל אתר נסרק ברצף (בנימוס), אבל האתרים השונים נסרקים במקביל
     keys = {(re.sub(r'\W+', '', j['title']).lower(), j['company']) for j in jobs}
+    # לוחות הדרושים נסרקים כל שעתיים (בנימוס); בשעות האחרות נשארות המשרות מהסריקה הקודמת
+    import sys
+    if '--all' not in sys.argv and datetime.now(timezone.utc).hour % 2 == 1:
+        print('לוחות הדרושים ייסרקו בשעה הבאה')
+        boards = []
+    else:
+        boards = [(fetch_alljobs,), (fetch_drushim, keys), (fetch_jobmaster, keys), (fetch_jobify, keys)]
     with cf.ThreadPoolExecutor(4) as ex:
-        futures = [ex.submit(fetch_alljobs), ex.submit(fetch_drushim, keys), ex.submit(fetch_jobmaster, keys), ex.submit(fetch_jobify, keys)]
+        futures = [ex.submit(*b) for b in boards]
         for fut in futures:
             try:
                 jobs += fut.result()
@@ -674,6 +701,7 @@ def main():
                 print(f'  ! {e}')
     for j in jobs:
         j['description'] = clean_desc(j['description'])
+        j['applyEmail'] = j.get('applyEmail') or find_email(j['description'])
     before = len(jobs)
     jobs = [j for j in jobs if fits_me(j)]
     print(f'הוסרו {before - len(jobs)} משרות מחוץ לתחומים שלך או עם 3+ שנות ניסיון')
@@ -706,6 +734,7 @@ def refilter():
     before = len(data['jobs'])
     for j in data['jobs']:
         j['description'] = clean_desc(j['description'])
+        j['applyEmail'] = j.get('applyEmail') or find_email(j['description'])
     data['jobs'] = dedupe([j for j in data['jobs'] if fits_me(j) and in_center(j['location'])])
     out.write_text(json.dumps(data, ensure_ascii=False, indent=1))
     print(f'נשארו {len(data["jobs"])} מתוך {before}')
