@@ -386,16 +386,41 @@ function tailorCV(cv, job, prof) {
   const res = analyze(job, prof || { cv });
   const all = [...res.skills.must, ...res.skills.nice];
 
-  // מילות מפתח: מה יש, מה דומה (ואיך לנסח בכנות), מה חסר
+  // מילות מפתח למערכות סינון אוטומטיות (ATS). הן מחפשות את הניסוח המדויק של המשרה,
+  // לכן לכל כישור בודקים גם אם המונח כפי שכתוב במשרה מופיע מילה במילה בקו״ח.
+  const jobText = norm((job.title || '') + '\n' + (job.description || ''));
+  const cvText = norm(cv);
+  const CONFIRMABLE = new Set(['soft', 'lang', 'pm', 'pmtools', 'data']);
   const keywords = all.map(r => {
     const s = SKILL_BY_ID[r.id];
-    let tip = '';
-    if (r.state === 'have') tip = 'השתמשי במונח "' + s.name + '" כפי שהוא כתוב במשרה, ושימי אותו גבוה בקו״ח';
-    else if (r.state === 'similar') tip = 'אל תכתבי "' + s.name + '" אם לא עבדת איתו. אפשר להדגיש את ' + r.via.join(', ') + ' ולציין במכתב הפנייה שזה כלי מקביל שקל לך ללמוד';
-    else if (r.state === 'partial') tip = 'אין התאמה ישירה. אפשר להבליט ניסיון קרוב (' + r.via.join(', ') + ') בלי לטעון לידע ב-' + s.name;
-    else tip = 'חסר. לא להוסיף לקו״ח. אפשר לשקול קורס קצר אם זה חוזר בהרבה משרות';
-    return { ...r, tip };
+    const alias = (s.aliases.find(a => hasAlias(jobText, a)) || s.name).trim();
+    // מציגים את המונח כמו שהוא כתוב במשרה (כולל אותיות גדולות)
+    const rawJob = (job.title || '') + '\n' + (job.description || '');
+    const at = rawJob.toLowerCase().indexOf(alias.toLowerCase());
+    const term = at >= 0 ? rawJob.substr(at, alias.length) : alias;
+    const exact = hasAlias(cvText, term);
+    let status, tip;
+    if (r.state === 'have' && exact) {
+      status = 'exact';
+      tip = 'מופיע בקו״ח בדיוק כמו במשרה. מספיק לוודא שהוא בחלק העליון';
+    } else if (r.state === 'have') {
+      status = 'reword';
+      tip = 'יש לך את זה, אבל בניסוח אחר. הוסיפי את המונח "' + term + '" כפי שכתוב במשרה, ליד המקום שבו את מתארת אותו היום';
+    } else if (r.state === 'similar') {
+      status = 'similar';
+      tip = 'אין לך "' + term + '", אבל יש ' + r.via.join(', ') + '. הדגישי אותם, ואל תכתבי "' + term + '". אפשר לציין במכתב הפנייה שזה כלי מקביל';
+    } else if (CONFIRMABLE.has(s.group)) {
+      status = 'confirm';
+      tip = 'לא מופיע בקו״ח. אם זה נכון לגבייך (למשל מפרויקט, מהתואר או מעבודה), אפשר להוסיף את המונח "' + term + '" עם דוגמה אמיתית';
+    } else {
+      status = 'missing';
+      tip = 'חסר. לא להוסיף לקו״ח. אם זה חוזר בהרבה משרות, כדאי לשקול קורס קצר';
+    }
+    return { ...r, term, status, tip };
   });
+  // כיסוי ATS: כמה ממונחי המשרה מופיעים מילה במילה, והיכן הוא יכול להגיע בלי להמציא
+  const atsNow = keywords.length ? Math.round(100 * keywords.filter(k => k.status === 'exact').length / keywords.length) : 0;
+  const atsPotential = keywords.length ? Math.round(100 * keywords.filter(k => k.status === 'exact' || k.status === 'reword').length / keywords.length) : 0;
 
   // שורות/בולטים מקו״ח, מדורגים לפי רלוונטיות למשרה
   const lines = String(cv || '').split('\n').map(l => l.trim()).filter(l => l.length > 15);
@@ -407,7 +432,7 @@ function tailorCV(cv, job, prof) {
     if (WEAK_STARTS.some(w => low.startsWith(w))) tips.push('פתיחה חלשה. עדיף פועל פעיל (' + (/[a-z]/.test(low[0]) ? STRONG_VERBS_EN : STRONG_VERBS_HE) + ')');
     const isList = /^[^:]{0,20}:/.test(low) || low.split(' ').length < 6;
     if (!/\d/.test(line) && hits.length && !isList) tips.push('אין מספר. אם יש תוצאה אמיתית שאפשר למדוד (אחוז, זמן, כמות), כדאי להוסיף');
-    const simHere = keywords.filter(k => k.state === 'similar' && k.via.some(v => ls.has(Object.keys(SKILL_BY_ID).find(id => SKILL_BY_ID[id].name === v))));
+    const simHere = keywords.filter(k => k.state === 'similar' && k.via && k.via.some(v => ls.has(Object.keys(SKILL_BY_ID).find(id => SKILL_BY_ID[id].name === v))));
     if (simHere.length) tips.push('המשרה מבקשת ' + simHere.map(k => k.name).join(', ') + '. הבולט הזה מראה כלי מקביל, אז כדאי להבליט אותו');
     return { line, hits: hits.map(id => SKILL_BY_ID[id].name), score: hits.length, tips };
   }).filter(b => b.score > 0 || b.tips.length).sort((a, b) => b.score - a.score);
@@ -415,7 +440,41 @@ function tailorCV(cv, job, prof) {
   // רשימת כישורים מסודרת לפי רלוונטיות, רק כאלה שיש לך באמת
   const ordered = [...cvSkills].sort((a, b) => (jobSkills.has(b) ? 1 : 0) - (jobSkills.has(a) ? 1 : 0)).map(id => SKILL_BY_ID[id].name);
 
-  return { keywords, bullets, skillsLine: ordered, result: res };
+  return { keywords, bullets, skillsLine: ordered, result: res, atsNow, atsPotential };
 }
 
-window.Engine = { SKILLS, SKILL_BY_ID, GROUP_LABEL, REGION, extractSkills, analyze, tailorCV, detectCity, regionOf, classify };
+// ---------- תפקידים שאולי לא חשבת עליהם ----------
+// לכל תפקיד: הכישורים שמרכזיים לו. מציגים תפקידים שיש לך חלק גדול מהכישורים שלהם.
+const ROLES = [
+  { he: 'אנליסט/ית BI', en: 'BI Analyst', skills: ['powerbi', 'tableau', 'sql', 'excel', 'dataviz', 'kpi'], core: true },
+  { he: 'אנליסט/ית מוצר', en: 'Product Analyst', skills: ['sql', 'python', 'ab', 'stats', 'ga', 'kpi'], core: true },
+  { he: 'רכז/ת פרויקטים / PMO', en: 'Project Coordinator / PMO', skills: ['pm', 'msproject', 'jira', 'monday', 'excel', 'stakeholders'], core: true },
+  { he: 'Product Operations', en: 'Product Operations', skills: ['product', 'prd', 'jira', 'sql', 'process', 'stakeholders'] },
+  { he: 'אנליסט/ית Revenue / Sales Operations', en: 'Revenue Operations Analyst', skills: ['crm', 'excel', 'sql', 'kpi', 'dataviz', 'process'] },
+  { he: 'אנליסט/ית תמחור', en: 'Pricing Analyst', skills: ['excel', 'costing', 'sql', 'stats', 'finmodel'] },
+  { he: 'Business Operations (BizOps)', en: 'Business Operations Analyst', skills: ['excel', 'sql', 'process', 'kpi', 'stakeholders', 'presentation'] },
+  { he: 'מיישם/ת מערכות / Implementation', en: 'Implementation Specialist', skills: ['erp', 'process', 'prd', 'stakeholders', 'pm'] },
+  { he: 'מנתח/ת מערכות', en: 'Business Systems Analyst', skills: ['prd', 'process', 'sql', 'erp', 'stakeholders'] },
+  { he: 'מתכנן/ת שרשרת אספקה / ביקושים', en: 'Supply Chain / Demand Planner', skills: ['supply', 'planning', 'excel', 'erp', 'stats'] },
+  { he: 'תפ"י: תכנון ובקרת ייצור', en: 'Production Planner', skills: ['planning', 'erp', 'excel', 'lean', 'supply'] },
+  { he: 'מהנדס/ת שיפור תהליכים', en: 'Process Improvement Engineer', skills: ['process', 'lean', 'simulation', 'excel', 'stats'] },
+  { he: 'אנליסט/ית רכש', en: 'Procurement Analyst', skills: ['supply', 'excel', 'costing', 'erp', 'stakeholders'] },
+  { he: 'אנליסט/ית חקר ביצועים / אופטימיזציה', en: 'Operations Research Analyst', skills: ['or', 'simulation', 'python', 'stats', 'excel'] },
+  { he: 'יועץ/ת ניהולי/ת ג׳וניור', en: 'Junior Management Consultant', skills: ['excel', 'presentation', 'process', 'dataanalysis', 'stakeholders'] },
+  { he: 'אנליסט/ית FP&A', en: 'FP&A Analyst', skills: ['excel', 'finmodel', 'costing', 'sql', 'dataviz'] },
+  { he: 'אנליסט/ית שיווק / Growth', en: 'Marketing / Growth Analyst', skills: ['ga', 'mktanalytics', 'sql', 'ab', 'excel'] },
+  { he: 'אנליסט/ית סיכונים והונאות', en: 'Risk / Fraud Analyst', skills: ['sql', 'excel', 'stats', 'dataanalysis', 'python'] },
+  { he: 'מהנדס/ת איכות', en: 'Quality Engineer', skills: ['quality', 'process', 'stats', 'lean'] },
+  { he: 'Customer Success Operations', en: 'Customer Success Operations', skills: ['crm', 'process', 'kpi', 'stakeholders', 'excel'] },
+];
+
+function suggestRoles(prof) {
+  const have = new Set(prof.extraSkills || []);
+  return ROLES.map(r => {
+    const got = r.skills.filter(id => have.has(id));
+    return { ...r, fit: Math.round(100 * got.length / r.skills.length), got: got.map(id => SKILL_BY_ID[id].name),
+             gap: r.skills.filter(id => !have.has(id)).map(id => SKILL_BY_ID[id].name) };
+  }).filter(r => r.fit >= 40).sort((a, b) => b.fit - a.fit);
+}
+
+window.Engine = { SKILLS, SKILL_BY_ID, GROUP_LABEL, REGION, extractSkills, analyze, tailorCV, suggestRoles, detectCity, regionOf, classify };

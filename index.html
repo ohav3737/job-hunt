@@ -32,6 +32,7 @@
       </div>
       <div class="notice" id="cvNudge" style="display:none">📄 כדי לקבל אחוזי התאמה אמיתיים, העלי את קורות החיים שלך. <a href="#" onclick="go('cv');return false">להעלאה</a></div>
       <div class="small muted" id="feedInfo" style="margin:0 4px 6px"></div>
+      <div class="notice row" id="roleFilter" style="display:none"><span id="roleFilterText"></span><span class="spacer"></span><button class="chip" onclick="ui.roleTerms=null;renderJobs()">ביטול ✕</button></div>
       <input class="search" id="jobSearch" type="search" placeholder="חיפוש לפי תפקיד, חברה, עיר…">
       <div class="chips" id="catChips"></div>
       <div class="chips" id="regionChips"></div>
@@ -81,6 +82,13 @@
         <div id="skillChips"></div>
       </div>
 
+      <div class="section-title">תפקידים שאולי לא חשבת עליהם</div>
+      <div class="card">
+        <div id="rolesOut"></div>
+        <button class="btn secondary block" id="aiRolesBtn" style="margin-top:10px">✨ ניתוח מעמיק של קו״ח עם AI</button>
+        <div id="aiRolesOut"></div>
+      </div>
+
       <div class="section-title">התאמת קו״ח למשרה</div>
       <div class="card">
         <label class="field">
@@ -88,6 +96,15 @@
           <select class="input" id="tailorJob"></select>
         </label>
         <div id="tailorOut"></div>
+      </div>
+
+      <div class="section-title">AI (לא חובה)</div>
+      <div class="card">
+        <div class="small muted" style="margin-bottom:8px">כדי להפעיל ניתוח עם Claude צריך מפתח API אישי מ-console.anthropic.com. כל ניתוח עולה בערך כמה סנטים, והחיוב הוא על החשבון שלך. המפתח נשמר רק במכשיר הזה ונשלח רק ל-Anthropic.</div>
+        <div class="row">
+          <input class="input" id="apiKey" type="password" dir="ltr" placeholder="sk-ant-…" autocomplete="off" style="flex:1">
+          <button class="btn secondary" id="saveKey">שמירה</button>
+        </div>
       </div>
 
       <div class="section-title">גיבוי</div>

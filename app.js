@@ -78,6 +78,8 @@ function renderJobs() {
 
   $('cvNudge').style.display = state.profile.cv.trim() ? 'none' : 'block';
   const freshCount = state.jobs.filter(j => j.fresh).length;
+  $('roleFilter').style.display = ui.roleTerms ? 'flex' : 'none';
+  if (ui.roleTerms) $('roleFilterText').textContent = 'מסונן לפי תפקיד: ' + ui.roleTerms[0];
   $('feedInfo').textContent = state.feedUpdated ? 'משרות נאספו לאחרונה: ' + fmtDate(state.feedUpdated) + (freshCount ? ' · ' + freshCount + ' חדשות' : '') : '';
   const allowed = { ta: ['ta', 'remote', 'unknown'], core: ['ta', 'core', 'remote', 'unknown'], center: ['ta', 'core', 'center', 'remote', 'unknown'], all: null }[ui.region];
   const q = ui.q.trim().toLowerCase();
@@ -89,6 +91,7 @@ function renderJobs() {
     if (ui.sort === 'fit' && a.verdict.level === 'no') return false;
     if (ui.sort === 'fresh' && !j.fresh) return false;
     if (ui.source !== 'all' && j.source !== ui.source) return false;
+    if (ui.roleTerms && !ui.roleTerms.some(t => (j.title + ' ' + (j.description || '')).toLowerCase().includes(t))) return false;
     if (ui.sort === 'hide' && (j.status === 'skip' || j.status === 'rejected')) return false;
     if (q && ![j.title, j.company, j.location, a.city].join(' ').toLowerCase().includes(q)) return false;
     return true;
@@ -355,6 +358,8 @@ function renderCv() {
   sel.innerHTML = '<option value="">בחרי משרה…</option>' + state.jobs.map(j => `<option value="${j.id}">${esc(j.title)}${j.company ? ' · ' + esc(j.company) : ''}</option>`).join('');
   sel.value = cur;
   renderTailor();
+  renderRoles();
+  if (document.activeElement !== $('apiKey')) $('apiKey').value = apiKey();
 }
 
 function toggleSkill(id) {
@@ -442,25 +447,116 @@ function highlight(line, words) {
   return out;
 }
 
+const ATS_LABEL = {
+  exact: ['✓', 'have', 'מופיע'], reword: ['✎', 'similar', 'יש לך, לנסח כמו במשרה'], similar: ['≈', 'partial', 'כלי דומה'],
+  confirm: ['?', 'partial', 'צריך אישור שלך'], missing: ['✕', 'missing', 'חסר, לא להוסיף'],
+};
 function renderTailor() {
   const id = $('tailorJob').value;
   const j = state.jobs.find(x => x.id === id);
   if (!j) { $('tailorOut').innerHTML = ''; return; }
-  if (!state.profile.cv.trim()) { $('tailorOut').innerHTML = '<div class="notice">קודם צריך להדביק קורות חיים למעלה.</div>'; return; }
+  if (!state.profile.cv.trim()) { $('tailorOut').innerHTML = '<div class="notice">קודם צריך להעלות קורות חיים למעלה.</div>'; return; }
   const t = Engine.tailorCV(state.profile.cv, j, profile());
-  // מילים להדגשה: כל הכינויים של כישורי המשרה
   const words = t.keywords.flatMap(k => Engine.SKILL_BY_ID[k.id].aliases).map(a => a.trim()).filter(a => a.length > 2);
+  const order = { reword: 0, confirm: 1, similar: 2, missing: 3, exact: 4 };
   $('tailorOut').innerHTML = `
-    <div class="notice small">🔒 ההצעות מבוססות רק על מה שכבר כתוב בקורות החיים שלך. המערכת לא ממציאה ניסיון או כישורים, ומסמנת במפורש מה חסר.</div>
-    <div class="section-title">מילות מפתח מהמשרה</div>
-    <ul class="skill-list">${t.keywords.map(k => `<li><span class="mark ${k.state}">${MARK[k.state]}</span><div><b>${esc(k.name)}</b><div class="small muted">${esc(k.tip)}</div></div></li>`).join('') || '<li class="muted">לא זוהו כישורים במשרה</li>'}</ul>
+    <div class="notice small">🔒 ההמלצות מבוססות רק על מה שכתוב בקורות החיים שלך. שום דבר לא מומצא. מה שחסר מסומן כחסר.</div>
+    <div class="stats" style="margin-bottom:8px">
+      <div class="stat"><div class="k">מילות מפתח שמופיעות היום</div><div class="v">${t.atsNow}%</div></div>
+      <div class="stat"><div class="k">אחרי ניסוח מחדש (בלי להמציא)</div><div class="v" style="color:var(--good)">${t.atsPotential}%</div></div>
+    </div>
+    <div class="section-title">מילות מפתח למערכות הסינון האוטומטיות</div>
+    <ul class="skill-list">${[...t.keywords].sort((a, b) => order[a.status] - order[b.status]).map(k => {
+      const [m, cls, label] = ATS_LABEL[k.status];
+      return `<li><span class="mark ${cls}">${m}</span><div style="flex:1"><b dir="auto">${esc(k.term)}</b> <span class="small muted">${label}</span>
+        <div class="small muted">${esc(k.tip)}</div>
+        ${k.status === 'confirm' ? `<button class="chip" style="margin-top:6px" onclick="confirmSkill('${k.id}')">יש לי את זה</button>` : ''}</div></li>`;
+    }).join('') || '<li class="muted">לא זוהו מילות מפתח במשרה</li>'}</ul>
 
     <div class="section-title">שורת כישורים מומלצת (לפי סדר רלוונטיות)</div>
     <div class="card small" style="user-select:all">${esc(t.skillsLine.join(' · ') || '—')}</div>
 
     <div class="section-title">בולטים מקו״ח, הרלוונטיים ביותר קודם</div>
     <div>${t.bullets.length ? t.bullets.map(b => `<div class="bullet">${highlight(b.line, words)}${b.tips.map(tip => `<div class="tip">💡 ${esc(tip)}</div>`).join('')}</div>`).join('') : '<div class="muted small">לא נמצאו שורות שקשורות ישירות למשרה</div>'}</div>
+
+    <button class="btn secondary block" style="margin-top:12px" onclick="aiTailor('${j.id}')">✨ ניתוח וניסוח מחדש עם AI</button>
+    <div id="aiTailorOut"></div>
   `;
+}
+function confirmSkill(id) {
+  const p = state.profile;
+  p.extraSkills = [...new Set([...(p.extraSkills || []), id])];
+  p.removedSkills = (p.removedSkills || []).filter(x => x !== id);
+  save(); profileChanged(); renderCv();
+  toast('נוסף לכישורים שלך. זכרי להוסיף אותו גם לקובץ קורות החיים');
+}
+
+// ---------- תפקידים מומלצים ----------
+function renderRoles() {
+  if (!state.profile.cv.trim()) { $('rolesOut').innerHTML = '<div class="muted small">אחרי שתעלי קורות חיים, יופיעו כאן תפקידים שמתאימים לכישורים שלך.</div>'; return; }
+  const roles = Engine.suggestRoles(profile());
+  $('rolesOut').innerHTML = roles.length ? roles.slice(0, 10).map(r => `
+    <div class="bullet">
+      <div class="row"><b>${esc(r.he)}</b> <span class="small muted" dir="ltr">${esc(r.en)}</span><span class="spacer"></span>
+        <span class="badge ${r.fit >= 70 ? 'yes' : 'maybe'}">${r.fit}%</span>${r.core ? '' : '<span class="badge accent">אולי לא חשבת על זה</span>'}</div>
+      <div class="small muted">יש לך: ${esc(r.got.join(', '))}${r.gap.length ? ' · חסר: ' + esc(r.gap.join(', ')) : ''}</div>
+      <div class="row" style="margin-top:6px"><button class="chip" onclick='showRoleJobs(${JSON.stringify([r.en, r.he.split(/[\/ ]/)[0]])})'>משרות כאלה באפליקציה</button>
+        <a class="chip" target="_blank" rel="noopener" href="https://www.linkedin.com/jobs/search/?keywords=${encodeURIComponent(r.en)}&location=${encodeURIComponent('Tel Aviv District, Israel')}&f_E=1%2C2">לינקדאין ↗</a></div>
+    </div>`).join('') : '<div class="muted small">לא נמצאו התאמות. נסי להוסיף כישורים ידנית למעלה.</div>';
+}
+function showRoleJobs(terms) {
+  ui.roleTerms = terms.map(t => t.toLowerCase());
+  ui.sort = 'smart';
+  go('jobs');
+  toast('מציג משרות שקשורות ל: ' + terms[0]);
+}
+
+// ---------- AI ----------
+function apiKey() { try { return localStorage.getItem('jobhunt.apikey') || ''; } catch { return ''; } }
+$('saveKey').onclick = () => {
+  try { localStorage.setItem('jobhunt.apikey', $('apiKey').value.trim()); toast('המפתח נשמר במכשיר'); } catch { toast('לא הצלחתי לשמור'); }
+};
+async function withAI(outEl, run) {
+  if (!apiKey()) { outEl.innerHTML = '<div class="notice small">כדי להשתמש ב-AI צריך להזין מפתח API בסעיף "AI" למטה.</div>'; return; }
+  if (!state.profile.cv.trim()) { outEl.innerHTML = '<div class="notice small">קודם צריך להעלות קורות חיים.</div>'; return; }
+  outEl.innerHTML = '<div class="muted small" style="padding:10px 0">✨ מנתח… זה יכול לקחת כחצי דקה</div>';
+  try {
+    const AI = await import('./ai.js');
+    outEl.innerHTML = await run(AI);
+  } catch (e) {
+    const msg = e.status === 401 ? 'מפתח ה-API לא תקין. בדקי אותו בסעיף "AI"'
+      : e.status === 429 ? 'יותר מדי בקשות. נסי שוב בעוד דקה'
+      : e.status === 400 && /credit/i.test(e.message) ? 'אין מספיק קרדיט בחשבון ה-API'
+      : !navigator.onLine ? 'אין חיבור לאינטרנט' : (e.message || String(e));
+    outEl.innerHTML = `<div class="notice small">הניתוח נכשל: ${esc(msg)}</div>`;
+  }
+}
+$('aiRolesBtn').onclick = () => withAI($('aiRolesOut'), async AI => {
+  const r = await AI.suggestRoles(apiKey(), state.profile.cv, 'ניהול פרויקטים, ניהול מוצר, אנליסט (BI, דאטה, מוצר, שיווק, עסקי)');
+  state.profile.aiRoles = r.roles; save();
+  return `<div class="notice small" style="margin-top:10px">${esc(r.summary)}</div>` + r.roles.map(x => `
+    <div class="bullet">
+      <div class="row"><b>${esc(x.title_he)}</b> <span class="small muted" dir="ltr">${esc(x.title_en)}</span><span class="spacer"></span><span class="badge ${x.fit >= 70 ? 'yes' : 'maybe'}">${x.fit}%</span></div>
+      <div class="small">${esc(x.why)}</div>
+      ${x.evidence.length ? `<div class="small muted">מהקו״ח שלך: ${esc(x.evidence.join(' · '))}</div>` : ''}
+      ${x.gaps.length ? `<div class="small muted">חסר: ${esc(x.gaps.join(', '))}</div>` : ''}
+      <div class="row" style="margin-top:6px"><button class="chip" onclick='showRoleJobs(${esc(JSON.stringify(x.search_terms))})'>משרות כאלה באפליקציה</button></div>
+    </div>`).join('');
+});
+function aiTailor(id) {
+  const j = state.jobs.find(x => x.id === id);
+  withAI($('aiTailorOut'), async AI => {
+    const r = await AI.tailor(apiKey(), state.profile.cv, j);
+    const lab = { exact: ['✓', 'have'], reword: ['✎', 'similar'], confirm: ['?', 'partial'], missing: ['✕', 'missing'] };
+    return `<div class="section-title">✨ ניתוח AI: מילות מפתח</div><ul class="skill-list">${r.keywords.map(k => `
+        <li><span class="mark ${lab[k.status][1]}">${lab[k.status][0]}</span><div><b dir="auto">${esc(k.keyword)}</b>
+        ${k.evidence ? `<div class="small muted">מהקו״ח: ${esc(k.evidence)}</div>` : ''}<div class="small">${esc(k.advice)}</div></div></li>`).join('')}</ul>
+      <div class="section-title">✨ משפט פתיחה מותאם</div><div class="card small" style="user-select:all">${esc(r.summary_line)}</div>
+      <div class="section-title">✨ בולטים בניסוח משופר (רק עובדות מהקו״ח)</div>
+      ${r.bullets.map(b => `<div class="bullet"><div class="small muted"><s>${esc(b.original)}</s></div><div style="user-select:all" dir="auto">${esc(b.improved)}</div>
+        ${b.keywords_used.length ? `<div class="small muted">מונחים מהמשרה: ${esc(b.keywords_used.join(', '))}</div>` : ''}</div>`).join('')}
+      <div class="notice small" style="margin-top:8px">בדקי כל שורה לפני שאת מעתיקה. אם משהו לא מדויק לגבייך, אל תשתמשי בו.</div>`;
+  });
 }
 $('tailorJob').addEventListener('change', renderTailor);
 function tailorFor(id) { closeSheet(); go('cv'); $('tailorJob').value = id; renderTailor(); setTimeout(() => $('tailorJob').scrollIntoView({ behavior: 'smooth', block: 'start' }), 50); }
