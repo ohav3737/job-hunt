@@ -185,7 +185,7 @@ function classify(title, desc) {
 function experience(title, text) {
   const t = norm(text), tt = norm(title);
   const junior = ['junior', "ג'וניור", 'ג׳וניור', 'entry level', 'entry-level', 'graduate', 'בוגר', 'בוגרת', 'בוגרי', 'ללא ניסיון', 'no experience', 'סטודנט', 'student', 'intern', 'התמחות', 'משרת כניסה', 'first job'];
-  const senior = ['senior', 'סניור', 'בכיר', 'בכירה', 'lead', 'team lead', 'head of', 'director', 'vp', 'ראש צוות', 'ראש תחום', 'principal', 'staff'];
+  const senior = ['senior', 'sr.', 'סניור', 'בכיר', 'בכירה', 'lead', 'team lead', 'head of', 'director', 'vp', 'ראש צוות', 'ראש תחום', 'ראש מחלקה', 'principal', 'staff', 'expert', 'מומחה', 'מנוסה', 'מנהל צוות', 'מנהל מחלקה', 'team manager', 'group manager'];
   const studentOnly = ['משרת סטודנט', 'student position', 'סטודנט/ית בלבד', 'חלקית', 'part time', 'part-time', 'משמרות'];
 
   let years = null;

@@ -111,6 +111,7 @@ function renderJobs() {
   const terms = searchTerms(ui.q);
   const bypass = terms.length && ui.searchAll; // "הצגת כל התוצאות": חיפוש בלי הסינונים האחרים
   let list = state.jobs.map(j => ({ j, a: analysis(j) })).filter(({ j, a }) => {
+    if (a.experience.isSenior) return false; // משרות בכירות / ראש צוות לא מוצגות בכלל
     if (terms.length && !matchesSearch(j, terms)) return false;
     if (bypass) return true;
     if (ui.cat !== 'all' && a.category.id !== ui.cat) return false;
